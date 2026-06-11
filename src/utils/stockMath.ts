@@ -322,3 +322,61 @@ export const formatCurrency = (
     return formatUSD(amount);
   }
 };
+
+export interface PortfolioSummary {
+  initialCapital: number;
+  totalRealizedPL: number;
+  totalUnsoldSpent: number;
+  totalUnsoldFees: number;
+  availableCash: number;
+  currentPortfolioValue: number;
+}
+
+export const calculatePortfolioSummary = (
+  portfolio: any,
+  plans: CalculationResult[],
+  currentExchangeRate: number = 36.5
+): PortfolioSummary => {
+  const filteredPlans = plans.filter(p => p.portfolioId === portfolio.id);
+  
+  const getDefaultInitialCapital = () => {
+    if (filteredPlans.length === 0) return 0;
+    const firstPlan = filteredPlans[0];
+    return firstPlan.currency === 'THB' ? firstPlan.totalBudget / currentExchangeRate : firstPlan.totalBudget;
+  };
+
+  const initialCapital = portfolio.initialCapital !== undefined ? portfolio.initialCapital : getDefaultInitialCapital();
+
+  let totalRealizedPL = 0;
+  let totalUnsoldSpent = 0;
+  let totalUnsoldFees = 0;
+
+  filteredPlans.forEach(plan => {
+    const isSold = !!plan.soldAt || (plan.actualSellPrice && plan.actualSellPrice > 0);
+    const toUSD = (amount: number) => plan.currency === 'THB' ? amount / currentExchangeRate : amount;
+    
+    const spent = toUSD(plan.actualSpent ?? plan.totalActualSpent);
+    
+    if (isSold) {
+      totalRealizedPL += toUSD(plan.actualRealizedProfitLossAmount ?? plan.realizedProfitLossAmount ?? 0);
+    } else {
+      totalUnsoldSpent += spent;
+      const feeRate = (plan.feePercent ?? 0.5) / 100;
+      const baseSpent = spent / (1 + feeRate);
+      const fee = spent - baseSpent;
+      totalUnsoldFees += fee;
+    }
+  });
+
+  const availableCash = initialCapital + totalRealizedPL - totalUnsoldSpent;
+  const currentPortfolioValue = initialCapital + totalRealizedPL - totalUnsoldFees;
+
+  return {
+    initialCapital,
+    totalRealizedPL,
+    totalUnsoldSpent,
+    totalUnsoldFees,
+    availableCash,
+    currentPortfolioValue
+  };
+};

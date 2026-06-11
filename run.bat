@@ -3,7 +3,7 @@ title WealthFlow Dev Server Launcher
 echo ===================================================
 echo   🟢 Starting WealthFlow Dev Server...
 echo ===================================================
-cd /d "f:\All_Works\Programming\React_Programming\Investment_Calculation_System"
+cd /d "f:\All_Works\Programming\React_Programming\MoneyLust"
 
 :: Start Vite dev server in a minimized window
 start /min cmd /c "yarn dev || npm run dev"

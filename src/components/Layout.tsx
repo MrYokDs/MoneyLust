@@ -367,7 +367,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
             )}
 
             <Typography variant="h6" fontWeight="bold" sx={{ fontFamily: 'Prompt', fontSize: { xs: '1rem', md: '1.25rem' } }}>
-              {location.pathname === '/' ? 'เครื่องมือคำนวณแบ่งไม้ถัวหุ้น' : 'ประวัติแผนการเทรดที่บันทึกไว้'}
+              {location.pathname === '/' ? 'เครื่องมือคำนวณแบ่งไม้ถัวหุ้น' : 'การจัดการพอร์ต'}
             </Typography>
           </Stack>
 

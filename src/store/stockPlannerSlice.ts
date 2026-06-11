@@ -1,10 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CalculationResult } from '../utils/stockMath';
 
+export interface CapitalAdjustment {
+  id: string;
+  date: string;
+  amountChange: number;
+}
+
 export interface Portfolio {
   id: string;
   name: string;
   createdAt: string;
+  initialCapital?: number;
+  adjustments?: CapitalAdjustment[];
 }
 
 export interface StockPlannerState {
@@ -111,6 +119,14 @@ export const stockPlannerSlice = createSlice({
       } else {
         // Save as a brand-new plan
         state.savedPlans = [action.payload, ...state.savedPlans];
+        // Auto-set initial capital for portfolio if not set
+        if (action.payload.portfolioId && action.payload.portfolioId !== 'unassigned') {
+          const port = state.portfolios.find(p => p.id === action.payload.portfolioId);
+          if (port && port.initialCapital === undefined) {
+            port.initialCapital = action.payload.totalBudget;
+            savePortfoliosToLocalStorage(state.portfolios);
+          }
+        }
       }
       savePlansToLocalStorage(state.savedPlans);
     },
@@ -151,9 +167,35 @@ export const stockPlannerSlice = createSlice({
     reorderPortfolios: (state, action: PayloadAction<Portfolio[]>) => {
       state.portfolios = action.payload;
       savePortfoliosToLocalStorage(state.portfolios);
+    },
+    updatePortfolioCapital: (state, action: PayloadAction<{ id: string; capital: number }>) => {
+      const p = state.portfolios.find(p => p.id === action.payload.id);
+      if (p) {
+        const oldCapital = p.initialCapital || 0;
+        const diff = action.payload.capital - oldCapital;
+        if (diff !== 0) {
+          p.initialCapital = action.payload.capital;
+          
+          if (!p.adjustments) p.adjustments = [];
+          p.adjustments.push({
+            id: Date.now().toString(),
+            date: new Date().toISOString(),
+            amountChange: diff
+          });
+          
+          savePortfoliosToLocalStorage(state.portfolios);
+        }
+      }
+    },
+    clearPortfolioAdjustments: (state, action: PayloadAction<string>) => {
+      const p = state.portfolios.find(p => p.id === action.payload);
+      if (p) {
+        p.adjustments = [];
+        savePortfoliosToLocalStorage(state.portfolios);
+      }
     }
   },
 });
 
-export const { savePlan, deletePlan, updateCurrentParams, setActivePlanId, clearAllPlans, addPortfolio, deletePortfolio, reorderPortfolios } = stockPlannerSlice.actions;
+export const { savePlan, deletePlan, updateCurrentParams, setActivePlanId, clearAllPlans, addPortfolio, deletePortfolio, reorderPortfolios, updatePortfolioCapital, clearPortfolioAdjustments } = stockPlannerSlice.actions;
 export default stockPlannerSlice.reducer;

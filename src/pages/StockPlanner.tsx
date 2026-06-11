@@ -1,5 +1,6 @@
 import React, { useMemo, useEffect } from 'react';
 import { useSnackbar } from 'notistack';
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Grid,
@@ -45,13 +46,14 @@ import {
 } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../store';
 import { updateCurrentParams, savePlan, setActivePlanId, addPortfolio } from '../store/stockPlannerSlice';
-import { calculateStockTranches, formatNumber, formatCurrency } from '../utils/stockMath';
+import { calculateStockTranches, formatNumber, formatCurrency, calculatePortfolioSummary } from '../utils/stockMath';
 import GlassCard from '../components/GlassCard';
 import GridVisualizer from '../components/GridVisualizer';
 
 export const StockPlanner: React.FC = () => {
   const dispatch = useAppDispatch();
   const theme = useTheme();
+  const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const currentParams = useAppSelector(state => state.stockPlanner.currentParams);
   const activePlanId = useAppSelector(state => state.stockPlanner.activePlanId);
@@ -317,10 +319,53 @@ export const StockPlanner: React.FC = () => {
     portfolioId
   ]);
 
+  // Check available limit if assigned to an existing portfolio
+  const maxAvailableUSD = useMemo(() => {
+    if (!portfolioId || portfolioId === 'unassigned') return null;
+    
+    // Check if it's a completely new portfolio being typed
+    const isNewPortfolio = portfolioInputValue && portfolioInputValue.trim() !== '' && !portfolios.find(p => p.id === portfolioId);
+    if (isNewPortfolio) return null;
+
+    const portfolio = portfolios.find(p => p.id === portfolioId);
+    if (!portfolio) return null;
+
+    const summary = calculatePortfolioSummary(portfolio, savedPlans, exchangeRate);
+    
+    // If we're editing an existing plan, add its spent amount back to available cash
+    let currentPlanSpentUSD = 0;
+    if (activePlanId) {
+      const existingPlan = savedPlans.find(p => p.id === activePlanId);
+      if (existingPlan) {
+        const spent = existingPlan.actualSpent ?? existingPlan.totalActualSpent ?? existingPlan.totalBudget;
+        currentPlanSpentUSD = (existingPlan.currency || 'THB') === 'THB' ? spent / exchangeRate : spent;
+      }
+    }
+
+    return summary.availableCash + currentPlanSpentUSD;
+  }, [portfolioId, portfolioInputValue, portfolios, savedPlans, exchangeRate, activePlanId]);
+
+  const maxAvailableBudget = useMemo(() => {
+    if (maxAvailableUSD === null) return null;
+    return currency === 'THB' ? maxAvailableUSD * exchangeRate : maxAvailableUSD;
+  }, [maxAvailableUSD, currency, exchangeRate]);
+
+  const maxAvailableBudgetClamped = useMemo(() => {
+    if (maxAvailableBudget === null) return null;
+    return Math.floor(maxAvailableBudget * 100) / 100;
+  }, [maxAvailableBudget]);
+
+  const isAtMaxLimit = maxAvailableBudgetClamped !== null && totalBudget >= maxAvailableBudgetClamped;
+
   // Handle Save Plan
   const handleSave = () => {
     if (!calcResult) {
       enqueueSnackbar('กรุณากรอกข้อมูลให้ครบถ้วนก่อนบันทึก', { variant: 'error' });
+      return;
+    }
+
+    if (maxAvailableBudgetClamped !== null && totalBudget > maxAvailableBudgetClamped + 0.01) {
+      enqueueSnackbar(`งบลงทุนต้องไม่เกินเงินที่สามารถลงทุนได้ของพอร์ต`, { variant: 'error' });
       return;
     }
 
@@ -368,9 +413,10 @@ export const StockPlanner: React.FC = () => {
       });
     }
 
+    dispatch(setActivePlanId(null));
     setTimeout(() => {
-      window.location.reload();
-    }, 1500);
+      navigate(`/portfolio/${currentPortfolioId}`);
+    }, 800);
   };
 
   // Reset parameters
@@ -475,6 +521,14 @@ export const StockPlanner: React.FC = () => {
                     } else if (newValue && typeof newValue === 'object') {
                       handleChange('portfolioId', newValue.id);
                       setPortfolioInputValue(newValue.name);
+                      
+                      // Pull available cash as new total budget
+                      if (newValue.id !== 'unassigned') {
+                        const summary = calculatePortfolioSummary(newValue, savedPlans, parseFloat(currentParams.exchangeRate) || 36.5);
+                        if (summary.availableCash > 0) {
+                          handleChange('totalBudget', summary.availableCash.toString());
+                        }
+                      }
                     } else {
                       handleChange('portfolioId', 'unassigned');
                       setPortfolioInputValue('');
@@ -790,8 +844,22 @@ export const StockPlanner: React.FC = () => {
                 type="number"
                 placeholder="0.00"
                 value={currentParams.totalBudget}
-                onChange={(e) => handleChange('totalBudget', e.target.value)}
+                onChange={(e) => {
+                  let val = e.target.value;
+                  if (maxAvailableBudgetClamped !== null && parseFloat(val) > maxAvailableBudgetClamped) {
+                    val = maxAvailableBudgetClamped.toString();
+                  }
+                  handleChange('totalBudget', val);
+                }}
                 fullWidth
+                error={isAtMaxLimit}
+                helperText={
+                  isAtMaxLimit
+                    ? `ถึงขีดจำกัดแล้ว! พอร์ตนี้ลงทุนได้สูงสุด: ${formatCurrency(maxAvailableBudget || 0, currency, false, exchangeRate)}`
+                    : maxAvailableBudget !== null
+                      ? `พอร์ตนี้จำกัดงบลงทุนได้สูงสุด: ${formatCurrency(maxAvailableBudget, currency, false, exchangeRate)}`
+                      : undefined
+                }
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
