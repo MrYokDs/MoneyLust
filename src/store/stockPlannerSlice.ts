@@ -92,7 +92,7 @@ const initialState: StockPlannerState = {
     tranchesCount: '1',
     dropPercentage: '3',
     dropMode: 'progressive',
-    roundingMode: 'fractional',
+    roundingMode: 'integer',
     currency: 'USD',
     exchangeRate: '36.50',
     targetProfitPercent: '10',

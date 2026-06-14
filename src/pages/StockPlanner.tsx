@@ -250,6 +250,35 @@ export const StockPlanner: React.FC = () => {
   const portfolioId = currentParams.portfolioId;
   const exchangeRate = parseFloat(currentParams.exchangeRate) || 36.5;
 
+  const maxPossibleTranches = useMemo(() => {
+    if (totalBudget <= 0 || currentPrice <= 0) return 99;
+    if (roundingMode === 'fractional') return 99;
+
+    const firstPrice = currentParams.currentPriceIsFirstTranche !== false 
+      ? currentPrice 
+      : currentPrice * (1 - dropPercentage / 100);
+      
+    const feeRate = (parseFloat(currentParams.feePercent) || 0) / 100;
+    const costPerShare = firstPrice * (1 + feeRate);
+    
+    const minCostPerTranche = roundingMode === 'boardlot' ? costPerShare * 100 : costPerShare;
+    
+    const max = Math.floor(totalBudget / minCostPerTranche);
+    return max > 0 ? max : 0;
+  }, [totalBudget, currentPrice, dropPercentage, roundingMode, currentParams.feePercent, currentParams.currentPriceIsFirstTranche]);
+
+  // Auto-clamp tranches count when maxPossibleTranches drops below the current value
+  useEffect(() => {
+    if (roundingMode === 'integer' || roundingMode === 'boardlot') {
+      const current = parseInt(currentParams.tranchesCount) || 1;
+      const maxAllowed = maxPossibleTranches > 0 ? maxPossibleTranches : 1;
+      
+      if (current > maxAllowed) {
+        dispatch(updateCurrentParams({ tranchesCount: maxAllowed.toString() }));
+      }
+    }
+  }, [maxPossibleTranches, roundingMode, currentParams.tranchesCount, dispatch]);
+
   // Poll real-time USD/THB exchange rate every 5 seconds if currency is USD
   useEffect(() => {
     if (currency !== 'USD') return;
@@ -869,23 +898,6 @@ export const StockPlanner: React.FC = () => {
                 }}
               />
 
-              {/* Tranches count */}
-              <TextField
-                label="จำนวนไม้ที่ต้องการแบ่งซื้อ"
-                type="number"
-                placeholder="เช่น 3 หรือ 4 ไม้"
-                value={currentParams.tranchesCount}
-                onChange={(e) => handleChange('tranchesCount', e.target.value)}
-                fullWidth
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <Layers size={18} color="#9ca3af" />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-
               {/* Drop percentage */}
               <TextField
                 label="ราคาที่จะถัวเฉลี่ยลดลงต่อไม้ (%)"
@@ -900,6 +912,33 @@ export const StockPlanner: React.FC = () => {
                       <Percent size={18} color="#9ca3af" />
                     </InputAdornment>
                   ),
+                }}
+              />
+
+              {/* Tranches count */}
+              <TextField
+                label="จำนวนไม้ที่ต้องการแบ่งซื้อ"
+                type="number"
+                placeholder="เช่น 3 หรือ 4 ไม้"
+                value={currentParams.tranchesCount}
+                onChange={(e) => {
+                  let val = parseInt(e.target.value);
+                  if (!isNaN(val) && (roundingMode === 'integer' || roundingMode === 'boardlot')) {
+                    if (val > maxPossibleTranches) val = maxPossibleTranches;
+                  }
+                  handleChange('tranchesCount', isNaN(val) ? e.target.value : val.toString());
+                }}
+                fullWidth
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Layers size={18} color="#9ca3af" />
+                    </InputAdornment>
+                  ),
+                }}
+                helperText={(roundingMode === 'integer' || roundingMode === 'boardlot') ? `สามารถแบ่งได้สูงสุด ${maxPossibleTranches} ไม้ (เพื่อให้ซื้อได้อย่างน้อยไม้ละ ${roundingMode === 'boardlot' ? '100' : '1'} หุ้น)` : undefined}
+                sx={{
+                  '& .MuiFormHelperText-root': { fontFamily: 'Prompt', color: 'info.main' }
                 }}
               />
 

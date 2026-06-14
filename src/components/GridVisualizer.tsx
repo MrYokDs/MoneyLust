@@ -186,7 +186,7 @@ export const GridVisualizer: React.FC<GridVisualizerProps> = ({ result }) => {
                     </Stack>
 
                     <Typography variant="h5" fontWeight="800" color={isLast ? 'secondary.light' : 'text.primary'}>
-                      {formatCurrency(t.budgetAllocated, currency, false, exchangeRate)}
+                      {formatCurrency(t.sharesBought * t.price, currency, false, exchangeRate)}
                     </Typography>
 
                     {isLast && t.budgetAllocated > baseBudget && (

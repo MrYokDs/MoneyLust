@@ -27,7 +27,11 @@ import {
   DialogContent,
   DialogContentText,
   DialogActions,
-  TextField
+  TextField,
+  TablePagination,
+  Select,
+  MenuItem,
+  FormControl
 } from '@mui/material';
 import { Trash2, ExternalLink, Calendar, FolderHeart, LayoutGrid, List, Edit2, TrendingUp, TrendingDown } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../store';
@@ -48,6 +52,10 @@ export const SavedPlans: React.FC = () => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [planToDelete, setPlanToDelete] = useState<{ id: string; symbol: string } | null>(null);
   const [openClearAllModal, setOpenClearAllModal] = useState(false);
+  
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [filterType, setFilterType] = useState<'all' | 'plan' | 'adjustment'>('all');
 
   const { id } = useParams<{ id: string }>();
   const portfolioId = id || 'unassigned';
@@ -66,6 +74,13 @@ export const SavedPlans: React.FC = () => {
   });
 
   const summary = calculatePortfolioSummary(portfolio, savedPlans, exchangeRate);
+
+  const filteredTimelineItems = timelineItems.filter(item => {
+    if (filterType === 'all') return true;
+    return item.type === filterType;
+  });
+
+  const paginatedItems = filteredTimelineItems.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
   const [isEditingCapital, setIsEditingCapital] = useState(false);
   const [editedCapital, setEditedCapital] = useState('');
@@ -333,14 +348,34 @@ export const SavedPlans: React.FC = () => {
         </Grid>
       )}
 
-      <Typography variant="h6" fontWeight="bold" sx={{ fontFamily: 'Prompt', mb: 2, color: 'text.secondary' }}>
-        ประวัติแผนการเทรดที่บันทึกไว้
-      </Typography>
+      <Stack direction="row" justifyContent="space-between" alignItems="center" mb={2}>
+        <Typography variant="h6" fontWeight="bold" sx={{ fontFamily: 'Prompt', color: 'text.secondary' }}>
+          ประวัติแผนการเทรดที่บันทึกไว้
+        </Typography>
+
+        {timelineItems.length > 0 && (
+          <FormControl size="small" sx={{ minWidth: 200 }}>
+            <Select
+              value={filterType}
+              onChange={(e) => {
+                setFilterType(e.target.value as 'all' | 'plan' | 'adjustment');
+                setPage(0);
+              }}
+              sx={{ borderRadius: 3, fontFamily: 'Prompt', fontSize: '0.85rem' }}
+            >
+              <MenuItem value="all" sx={{ fontFamily: 'Prompt' }}>ทั้งหมด</MenuItem>
+              <MenuItem value="plan" sx={{ fontFamily: 'Prompt' }}>เฉพาะหุ้น</MenuItem>
+              <MenuItem value="adjustment" sx={{ fontFamily: 'Prompt' }}>เฉพาะวันที่เติมเงิน/ถอนเงิน</MenuItem>
+            </Select>
+          </FormControl>
+        )}
+      </Stack>
 
       {timelineItems.length > 0 ? (
-        viewMode === 'grid' ? (
-          <Grid container spacing={3}>
-            {timelineItems.map((item) => {
+        <>
+          {viewMode === 'grid' ? (
+            <Grid container spacing={3}>
+              {paginatedItems.map((item) => {
               if (item.type === 'adjustment') {
                 const adj = item.data;
                 const isDeposit = adj.amountChange > 0;
@@ -525,7 +560,7 @@ export const SavedPlans: React.FC = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {timelineItems.map((item) => {
+                {paginatedItems.map((item) => {
                   if (item.type === 'adjustment') {
                     const adj = item.data;
                     const isDeposit = adj.amountChange > 0;
@@ -642,8 +677,34 @@ export const SavedPlans: React.FC = () => {
                 })}
               </TableBody>
             </Table>
-          </TableContainer>
-        )
+            </TableContainer>
+          )}
+
+          <TablePagination
+            component="div"
+            count={filteredTimelineItems.length}
+            page={page}
+            onPageChange={(_, newPage) => setPage(newPage)}
+            rowsPerPage={rowsPerPage}
+            onRowsPerPageChange={(e) => {
+              setRowsPerPage(parseInt(e.target.value, 10));
+              setPage(0);
+            }}
+            rowsPerPageOptions={[5, 10, 15, 20, 25]}
+            labelRowsPerPage="แสดงรายการต่อหน้า:"
+            labelDisplayedRows={({ from, to, count }) => `${from}-${to} จาก ${count}`}
+            sx={{ 
+              mt: 2, 
+              borderTop: 'none',
+              '& .MuiTablePagination-selectLabel, & .MuiTablePagination-displayedRows': {
+                fontFamily: 'Prompt',
+              },
+              '& .MuiTablePagination-select': {
+                fontFamily: 'Prompt',
+              }
+            }}
+          />
+        </>
       ) : (
         <Box 
           sx={{ 
