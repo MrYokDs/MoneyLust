@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { getTheme } from './theme';
 import Layout from './components/Layout';
-import StockPlanner from './pages/StockPlanner';
-import SavedPlans from './pages/SavedPlans';
+import AppRoutes from './routes';
 
+/**
+ * คอมโพเนนต์หลักของแอปพลิเคชัน (Root Application Component)
+ * ทำหน้าที่กำหนด Theme Provider, Dark/Light Mode และโครงสร้าง Routing ส่วนกลาง
+ * 
+ * @returns JSX Element โครงสร้างหลักของแอปพลิเคชัน
+ */
 export const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     const saved = localStorage.getItem('wealthflow_theme');
-    return saved ? saved === 'dark' : true; // Default is Dark Mode
+    return saved ? saved === 'dark' : true; // ค่าเริ่มต้นคือ Dark Mode
   });
 
   useEffect(() => {
@@ -33,10 +38,7 @@ export const App: React.FC = () => {
       <CssBaseline />
       <BrowserRouter>
         <Layout darkMode={darkMode} setDarkMode={setDarkMode}>
-          <Routes>
-            <Route path="/" element={<StockPlanner />} />
-            <Route path="/portfolio/:id" element={<SavedPlans />} />
-          </Routes>
+          <AppRoutes />
         </Layout>
       </BrowserRouter>
     </ThemeProvider>

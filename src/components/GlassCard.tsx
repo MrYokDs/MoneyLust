@@ -3,10 +3,19 @@ import { Box, BoxProps } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 interface GlassCardProps extends BoxProps {
+  /** เนื้อหาภายในคอมโพเนนต์ Card */
   children: React.ReactNode;
+  /** เปิดใช้งานเอฟเฟกต์ยกตัวลอย (Hover Lift Effect) หรือไม่ */
   hoverEffect?: boolean;
 }
 
+/**
+ * คอมโพเนนต์การ์ดแสดงผลสไตล์กระจกเงาโปร่งใส (Glassmorphism Card)
+ * รองรับทั้ง Dark Mode และ Light Mode พร้อมการเบลอพื้นหลัง
+ * 
+ * @param props - คุณสมบัติของการ์ด เช่น children, hoverEffect, sx
+ * @returns JSX Element แสดงแผง Card สไตล์กระจก
+ */
 export const GlassCard: React.FC<GlassCardProps> = ({ 
   children, 
   hoverEffect = false, 

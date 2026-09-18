@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { PATHS } from '../routes';
 import { useAppSelector, useAppDispatch } from '../store';
 import { reorderPortfolios } from '../store/stockPlannerSlice';
 import {
@@ -42,6 +43,13 @@ interface LayoutProps {
   setDarkMode: (val: boolean) => void;
 }
 
+/**
+ * คอมโพเนนต์เลย์เอาต์หลักของแอปพลิเคชัน (Master Layout)
+ * ประกอบด้วยแถบ AppBar ด้านบน, แถบนำทาง Sidebar ด้านข้าง (รองรับการยุบ/ขยาย และการลากจัดลำดับพอร์ต Drag & Drop)
+ * 
+ * @param props - คุณสมบัติประกอบด้วย children และฟังก์ชันสลับธีม darkMode / setDarkMode
+ * @returns JSX Element โครงสร้างเลย์เอาต์หลัก
+ */
 export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode }) => {
   const theme = useTheme();
   const navigate = useNavigate();
@@ -55,7 +63,12 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
   const dispatch = useAppDispatch();
   const portfolios = useAppSelector(state => state.stockPlanner.portfolios);
 
-  const handleDrawerToggle = () => {
+  /**
+   * สลับสถานะการเปิด/ปิดแถบเมนูด้านข้างสำหรับหน้าจอมือถือ
+   * 
+   * @returns void
+   */
+  const handleDrawerToggle = (): void => {
     setMobileOpen(!mobileOpen);
   };
 
@@ -116,7 +129,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
           <ListItem disablePadding sx={{ display: 'block', mb: 0.5 }}>
             <ListItemButton
               onClick={() => {
-                navigate('/');
+                navigate(PATHS.HOME);
                 if (isMobile) setMobileOpen(false);
               }}
               sx={{
@@ -125,7 +138,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
                 px: 2.5,
                 borderRadius: 3,
                 transition: 'all 0.2s',
-                ...(location.pathname === '/' ? {
+                ...(location.pathname === PATHS.HOME ? {
                   backgroundColor: 'rgba(16, 185, 129, 0.12)',
                   color: theme.palette.mode === 'light' ? 'primary.dark' : 'primary.light',
                   borderLeft: '4px solid',
@@ -161,7 +174,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
                   primary="สร้างแผนการเทรด"
                   primaryTypographyProps={{
                     fontSize: '0.92rem',
-                    fontWeight: location.pathname === '/' ? 600 : 500,
+                    fontWeight: location.pathname === PATHS.HOME ? 600 : 500,
                     fontFamily: 'Prompt'
                   }}
                 />
@@ -226,39 +239,71 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
           <Collapse in={portfoliosOpen && !sidebarCollapsed} timeout="auto" unmountOnExit>
             <List component="div" disablePadding sx={{ pl: 2 }}>
               {portfolios.map((portfolio) => {
-                const pPath = `/portfolio/${portfolio.id}`;
+                const pPath = PATHS.PORTFOLIO(portfolio.id);
                 const isActive = location.pathname === pPath;
+
+                /**
+                 * เริ่มต้นการลากรายการพอร์ตโฟลิโอเพื่อสลับลำดับ
+                 * 
+                 * @param e - DragEvent ของ HTML5
+                 * @returns void
+                 */
+                const handleDragStart = (e: React.DragEvent<HTMLElement>): void => {
+                  setDraggedPortfolioId(portfolio.id);
+                  e.dataTransfer.effectAllowed = 'move';
+                  setTimeout(() => {
+                    (e.target as HTMLElement).style.opacity = '0.5';
+                  }, 0);
+                };
+
+                /**
+                 * สิ้นสุดการลากรายการพอร์ตโฟลิโอ คืนค่าความโปร่งใสปกติ
+                 * 
+                 * @param e - DragEvent ของ HTML5
+                 * @returns void
+                 */
+                const handleDragEnd = (e: React.DragEvent<HTMLElement>): void => {
+                  (e.target as HTMLElement).style.opacity = '1';
+                  setDraggedPortfolioId(null);
+                };
+
+                /**
+                 * จัดการเหตุการณ์ลากผ่าน เพื่อเปิดให้สามารถ Drop ได้
+                 * 
+                 * @param e - DragEvent ของ HTML5
+                 * @returns void
+                 */
+                const handleDragOver = (e: React.DragEvent<HTMLElement>): void => {
+                  e.preventDefault();
+                  e.dataTransfer.dropEffect = 'move';
+                };
+
+                /**
+                 * ปล่อย (Drop) รายการพอร์ตเพื่อสลับลำดับและอัปเดตลง Redux Store
+                 * 
+                 * @param e - DragEvent ของ HTML5
+                 * @returns void
+                 */
+                const handleDrop = (e: React.DragEvent<HTMLElement>): void => {
+                  e.preventDefault();
+                  if (draggedPortfolioId && draggedPortfolioId !== portfolio.id) {
+                    const oldIndex = portfolios.findIndex((p) => p.id === draggedPortfolioId);
+                    const newIndex = portfolios.findIndex((p) => p.id === portfolio.id);
+                    const newOrder = [...portfolios];
+                    const [movedItem] = newOrder.splice(oldIndex, 1);
+                    newOrder.splice(newIndex, 0, movedItem);
+                    dispatch(reorderPortfolios(newOrder));
+                  }
+                };
+
                 return (
                   <ListItemButton
                     key={portfolio.id}
                     draggable
-                    onDragStart={(e) => {
-                      setDraggedPortfolioId(portfolio.id);
-                      e.dataTransfer.effectAllowed = 'move';
-                      // Optional: Make dragged item slightly transparent
-                      setTimeout(() => {
-                        (e.target as HTMLElement).style.opacity = '0.5';
-                      }, 0);
-                    }}
-                    onDragEnd={(e) => {
-                      (e.target as HTMLElement).style.opacity = '1';
-                      setDraggedPortfolioId(null);
-                    }}
-                    onDragOver={(e) => {
-                      e.preventDefault();
-                      e.dataTransfer.dropEffect = 'move';
-                    }}
-                    onDrop={(e) => {
-                      e.preventDefault();
-                      if (draggedPortfolioId && draggedPortfolioId !== portfolio.id) {
-                        const oldIndex = portfolios.findIndex((p) => p.id === draggedPortfolioId);
-                        const newIndex = portfolios.findIndex((p) => p.id === portfolio.id);
-                        const newOrder = [...portfolios];
-                        const [movedItem] = newOrder.splice(oldIndex, 1);
-                        newOrder.splice(newIndex, 0, movedItem);
-                        dispatch(reorderPortfolios(newOrder));
-                      }
-                    }}
+                    onDragStart={handleDragStart}
+                    onDragEnd={handleDragEnd}
+                    onDragOver={handleDragOver}
+                    onDrop={handleDrop}
                     onClick={() => {
                       navigate(pPath);
                       if (isMobile) setMobileOpen(false);

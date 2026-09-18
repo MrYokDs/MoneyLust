@@ -1,19 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CalculationResult } from '../utils/stockMath';
+import {
+  CalculationResult,
+  Portfolio,
+  CapitalAdjustment,
+  DropMode,
+  RoundingMode,
+  CurrencyMode,
+} from '../types';
 
-export interface CapitalAdjustment {
-  id: string;
-  date: string;
-  amountChange: number;
-}
-
-export interface Portfolio {
-  id: string;
-  name: string;
-  createdAt: string;
-  initialCapital?: number;
-  adjustments?: CapitalAdjustment[];
-}
+export type { Portfolio, CapitalAdjustment };
 
 export interface StockPlannerState {
   savedPlans: CalculationResult[];
@@ -25,9 +20,9 @@ export interface StockPlannerState {
     totalBudget: string;
     tranchesCount: string;
     dropPercentage: string;
-    dropMode: 'progressive' | 'fixed';
-    roundingMode: 'fractional' | 'integer' | 'boardlot';
-    currency: 'THB' | 'USD';
+    dropMode: DropMode;
+    roundingMode: RoundingMode;
+    currency: CurrencyMode;
     exchangeRate: string;
     targetProfitPercent: string;
     feePercent: string;
@@ -40,6 +35,11 @@ export interface StockPlannerState {
 
 const LOCAL_STORAGE_KEY = 'wealthflow_saved_plans';
 
+/**
+ * โหลดรายการแผนการลงทุนที่บันทึกไว้จาก LocalStorage ของเบราว์เซอร์
+ * 
+ * @returns รายการแผนการลงทุน (CalculationResult[]) หากไม่พบจะคืนค่า Array ว่าง []
+ */
 const loadPlansFromLocalStorage = (): CalculationResult[] => {
   try {
     const data = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -50,7 +50,13 @@ const loadPlansFromLocalStorage = (): CalculationResult[] => {
   }
 };
 
-const savePlansToLocalStorage = (plans: CalculationResult[]) => {
+/**
+ * บันทึกรายการแผนการลงทุนลงใน LocalStorage ของเบราว์เซอร์
+ * 
+ * @param plans - รายการแผนการลงทุนที่ต้องการจัดเก็บ
+ * @returns void
+ */
+const savePlansToLocalStorage = (plans: CalculationResult[]): void => {
   try {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(plans));
   } catch (e) {
@@ -60,6 +66,11 @@ const savePlansToLocalStorage = (plans: CalculationResult[]) => {
 
 const LOCAL_PORTFOLIOS_KEY = 'wealthflow_portfolios';
 
+/**
+ * โหลดข้อมูลพอร์ตโฟลิโอทั้งหมดจาก LocalStorage ของเบราว์เซอร์
+ * 
+ * @returns รายการพอร์ตโฟลิโอ (Portfolio[]) หากไม่พบจะสร้างพอร์ตเริ่มต้น 'unassigned'
+ */
 const loadPortfoliosFromLocalStorage = (): Portfolio[] => {
   try {
     const data = localStorage.getItem(LOCAL_PORTFOLIOS_KEY);
@@ -73,7 +84,13 @@ const loadPortfoliosFromLocalStorage = (): Portfolio[] => {
   }
 };
 
-const savePortfoliosToLocalStorage = (portfolios: Portfolio[]) => {
+/**
+ * บันทึกรายการพอร์ตโฟลิโอทั้งหมดลงใน LocalStorage ของเบราว์เซอร์
+ * 
+ * @param portfolios - รายการพอร์ตโฟลิโอที่ต้องการจัดเก็บ
+ * @returns void
+ */
+const savePortfoliosToLocalStorage = (portfolios: Portfolio[]): void => {
   try {
     localStorage.setItem(LOCAL_PORTFOLIOS_KEY, JSON.stringify(portfolios));
   } catch (e) {

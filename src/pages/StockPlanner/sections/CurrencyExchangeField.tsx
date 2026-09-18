@@ -1,0 +1,119 @@
+/**
+ * Route: /
+ * Section: CurrencyExchangeField (ส่วนจัดการสกุลเงิน THB/USD และอัตราแลกเปลี่ยน)
+ */
+
+import React from 'react';
+import {
+  FormControl,
+  FormLabel,
+  ToggleButtonGroup,
+  ToggleButton,
+  TextField,
+  InputAdornment,
+  Stack,
+} from '@mui/material';
+import { Coins } from 'lucide-react';
+
+interface CurrencyExchangeFieldProps {
+  currency: 'THB' | 'USD';
+  exchangeRate: string;
+  onCurrencyChange: (currency: 'THB' | 'USD') => void;
+  onExchangeRateChange: (rate: string) => void;
+}
+
+export const CurrencyExchangeField: React.FC<CurrencyExchangeFieldProps> = ({
+  currency,
+  exchangeRate,
+  onCurrencyChange,
+  onExchangeRateChange,
+}) => {
+  return (
+    <>
+      <FormControl fullWidth>
+        <FormLabel
+          sx={{
+            mb: 1,
+            fontSize: '0.85rem',
+            color: 'text.secondary',
+            fontFamily: 'Prompt',
+            fontWeight: '500',
+          }}
+        >
+          สกุลเงินที่ใช้งาน (Currency)
+        </FormLabel>
+        <ToggleButtonGroup
+          value={currency}
+          exclusive
+          onChange={(_, val) => val && onCurrencyChange(val)}
+          fullWidth
+          size="small"
+          sx={{
+            '& .MuiToggleButton-root': {
+              py: 0.75,
+              border: '1px solid rgba(255,255,255,0.08)',
+              color: 'text.secondary',
+              fontFamily: 'Prompt',
+              fontSize: '0.825rem',
+              fontWeight: 'bold',
+              textTransform: 'none',
+              '&.Mui-selected': {
+                backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                borderColor: '#10b981',
+                color: '#10b981',
+                '&:hover': {
+                  backgroundColor: 'rgba(16, 185, 129, 0.25)',
+                },
+              },
+            },
+          }}
+        >
+          <ToggleButton value="THB">🇹🇭 THB (บาท)</ToggleButton>
+          <ToggleButton value="USD">🇺🇸 USD (ดอลลาร์)</ToggleButton>
+        </ToggleButtonGroup>
+      </FormControl>
+
+      {currency === 'USD' && (
+        <TextField
+          label="อัตราแลกเปลี่ยน (บาทต่อ 1 USD)"
+          type="number"
+          placeholder="36.50"
+          value={exchangeRate}
+          onChange={(e) => onExchangeRateChange(e.target.value)}
+          fullWidth
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <Coins size={18} color="#10b981" />
+              </InputAdornment>
+            ),
+          }}
+          helperText={
+            <Stack direction="row" spacing={1} alignItems="center">
+              <span
+                style={{
+                  width: '8px',
+                  height: '8px',
+                  backgroundColor: '#10b981',
+                  borderRadius: '50%',
+                  display: 'inline-block',
+                  animation: 'pulse 1.5s infinite ease-in-out',
+                }}
+              />
+              <span>เรตจริงเรียลไทม์ (อัปเดตอัตโนมัติทุก 5 วินาที)</span>
+            </Stack>
+          }
+          sx={{
+            '& .MuiFormHelperText-root': {
+              fontFamily: 'Prompt',
+              color: '#10b981',
+              fontWeight: 'bold',
+            },
+          }}
+        />
+      )}
+    </>
+  );
+};
+
+export default CurrencyExchangeField;

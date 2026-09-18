@@ -1,69 +1,42 @@
-export interface TrancheDetail {
-  trancheNumber: number;
-  budgetAllocated: number;
-  price: number;
-  sharesBought: number;
-  actualSpent: number;
-  leftoverCash: number;
-  
-  // Cumulative stats
-  cumulativeBudgetAllocated: number;
-  cumulativeSpent: number;
-  cumulativeShares: number;
-  cumulativeAverageCost: number;
-  cumulativeLeftoverCash: number;
-  priceDiscountPercent: number;
-  averageCostDiscountPercent: number;
-}
+import {
+  TrancheDetail,
+  CalculationResult,
+  DropMode,
+  RoundingMode,
+  CurrencyMode,
+  Portfolio,
+  PortfolioSummary,
+} from '../types';
 
-export interface CalculationResult {
-  id: string;
-  stockSymbol: string;
-  currentPrice: number;
-  totalBudget: number;
-  tranchesCount: number;
-  dropPercentage: number;
-  dropMode: 'progressive' | 'fixed';
-  roundingMode: 'fractional' | 'integer' | 'boardlot';
-  createdAt: string;
-  
-  tranches: TrancheDetail[];
-  
-  // Summary stats
-  totalActualSpent: number;
-  totalSharesBought: number;
-  finalAverageCost: number;
-  totalLeftoverCash: number;
-  overallDiscountPercent: number;
-  currency?: 'THB' | 'USD';
-  exchangeRate?: number;
-  targetProfitPercent?: number;
-  feePercent?: number;
-  actualSellPrice?: number;
-  targetSellPrice?: number;
-  realizedProfitLossAmount?: number;
-  realizedProfitLossPercent?: number;
-  currentPriceIsFirstTranche?: boolean;
-
-  // Actual executed stats (if actualTranchesCount is less than tranchesCount)
-  actualTranchesCount?: number;
-  actualSpent?: number;
-  actualShares?: number;
-  actualAverageCost?: number;
-  actualLeftoverCash?: number;
-  actualDiscountPercent?: number;
-  actualTargetSellPrice?: number;
-  actualEquivalentTargetSellPrice?: number;
-  actualRealizedProfitLossAmount?: number;
-  actualRealizedProfitLossPercent?: number;
-  actualRealizedProfitLossPercentOfFullPlan?: number;
-  portfolioId?: string;
-  soldAt?: string;
-}
+export type {
+  TrancheDetail,
+  CalculationResult,
+  DropMode,
+  RoundingMode,
+  CurrencyMode,
+  PortfolioSummary,
+};
 
 /**
- * Calculates stock purchase tranches (average-down strategy).
- * Divide budget equally, allocating remainder to the final tranche.
+ * คำนวณการแบ่งไม้เข้าซื้อหุ้นตามกลยุทธ์ถัวเฉลี่ยต้นทุนขาลง (Average-Down Strategy)
+ * แบ่งสัดส่วนงบประมาณเท่าๆ กันในแต่ละไม้ และทบเศษที่เหลือไปรวมไว้ที่ไม้สุดท้ายอัตโนมัติ
+ * 
+ * @param stockSymbol - สัญลักษณ์หุ้น เช่น AAPL, NVDA, PTT
+ * @param currentPrice - ราคาหุ้นปัจจุบัน
+ * @param totalBudget - งบประมาณรวมที่ต้องการลงทุน
+ * @param tranchesCount - จำนวนไม้ที่ต้องการแบ่งซื้อ
+ * @param dropPercentage - เปอร์เซ็นต์การย่อตัวของราคาในแต่ละไม้
+ * @param dropMode - รูปแบบการย่อตัว ('progressive' ย่อทบสะสม หรือ 'fixed' คงที่)
+ * @param roundingMode - วิธีการปัดเศษหุ้น ('fractional' เศษหุ้น, 'integer' จำนวนเต็ม, 'boardlot' ขั้นละ 100 หุ้น)
+ * @param currency - สกุลเงิน ('THB' หรือ 'USD')
+ * @param exchangeRate - อัตราแลกเปลี่ยน THB ต่อ 1 USD
+ * @param targetProfitPercent - เป้าหมายกำไรที่ต้องการ (%)
+ * @param feePercent - อัตราค่าธรรมเนียมการซื้อขาย (%)
+ * @param actualSellPrice - ราคาที่ขายได้จริง (สำหรับคำนวณกำไร/ขาดทุนจริง)
+ * @param actualTranchesCount - จำนวนไม้ที่เข้าซื้อจริงได้
+ * @param currentPriceIsFirstTranche - กำหนดว่าราคาปัจจุบันคือไม้แรกหรือไม่
+ * @param portfolioId - รหัสพอร์ตโฟลิโอที่เชื่อมโยง
+ * @returns ผลลัพธ์การคำนวณแจกแจงรายไม้และสถิติสะสมทั้งหมด (CalculationResult)
  */
 export const calculateStockTranches = (
   stockSymbol: string,
@@ -274,7 +247,10 @@ export const calculateStockTranches = (
 };
 
 /**
- * Format currency to beautiful Thai Baht format
+ * แปลงตัวเลขเป็นข้อความสกุลเงินบาท (THB) พร้อมใส่เครื่องหมายคอมม่าและทศนิยม 2 ตำแหน่ง
+ * 
+ * @param amount - จำนวนเงินบาท
+ * @returns ข้อความฟอร์แมตสกุลเงิน เช่น "฿1,250.00"
  */
 export const formatTHB = (amount: number): string => {
   return new Intl.NumberFormat('th-TH', {
@@ -286,7 +262,11 @@ export const formatTHB = (amount: number): string => {
 };
 
 /**
- * Format standard number with commas
+ * จัดรูปแบบตัวเลขทั่วไปพร้อมเครื่องหมายคอมม่าคั่นหลักพัน
+ * 
+ * @param num - ตัวเลขที่ต้องการจัดรูปแบบ
+ * @param decimals - จำนวนตำแหน่งทศนิยม (ค่าเริ่มต้น 0)
+ * @returns ข้อความตัวเลขที่มีคอมม่า เช่น "1,250,000"
  */
 export const formatNumber = (num: number, decimals: number = 0): string => {
   return new Intl.NumberFormat('th-TH', {
@@ -296,7 +276,10 @@ export const formatNumber = (num: number, decimals: number = 0): string => {
 };
 
 /**
- * Format currency to USD format
+ * แปลงตัวเลขเป็นข้อความสกุลเงินดอลลาร์สหรัฐ (USD) พร้อมสัญลักษณ์ $
+ * 
+ * @param amount - จำนวนเงินดอลลาร์
+ * @returns ข้อความฟอร์แมตสกุลเงิน เช่น "$1,250.00"
  */
 export const formatUSD = (amount: number): string => {
   return new Intl.NumberFormat('en-US', {
@@ -308,7 +291,13 @@ export const formatUSD = (amount: number): string => {
 };
 
 /**
- * Format currency dynamically based on THB/USD and optionally include conversion
+ * แปลงตัวเลขเป็นข้อความสกุลเงินตามสกุลที่เลือก (THB หรือ USD) แบบไดนามิก
+ * 
+ * @param amount - จำนวนเงิน
+ * @param currency - สกุลเงินเป้าหมาย ('THB' หรือ 'USD')
+ * @param _showExchange - แสดงอัตราแลกเปลี่ยนเทียบเคียง (ไม่บังคับ)
+ * @param _exchangeRate - อัตราแลกเปลี่ยนที่ใช้อ้างอิง
+ * @returns ข้อความสกุลเงินที่ฟอร์แมตแล้ว
  */
 export const formatCurrency = (
   amount: number,
@@ -323,17 +312,16 @@ export const formatCurrency = (
   }
 };
 
-export interface PortfolioSummary {
-  initialCapital: number;
-  totalRealizedPL: number;
-  totalUnsoldSpent: number;
-  totalUnsoldFees: number;
-  availableCash: number;
-  currentPortfolioValue: number;
-}
-
+/**
+ * คำนวณผลสรุปภาพรวมพอร์ตโฟลิโอ มูลค่าเงินทุน เงินที่ใช้ไป กำไรขาดทุนที่รับรู้แล้ว และเงินสดคงเหลือ
+ * 
+ * @param portfolio - ข้อมูลพอร์ตโฟลิโอ
+ * @param plans - รายการแผนการลงทุนทั้งหมดในระบบ
+ * @param currentExchangeRate - อัตราแลกเปลี่ยนปัจจุบันสำหรับแปลงค่าเงิน
+ * @returns วัตถุสรุปภาพรวมพอร์ตการลงทุน (PortfolioSummary)
+ */
 export const calculatePortfolioSummary = (
-  portfolio: any,
+  portfolio: Portfolio,
   plans: CalculationResult[],
   currentExchangeRate: number = 36.5
 ): PortfolioSummary => {

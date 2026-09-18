@@ -1,5 +1,11 @@
 import { createTheme } from '@mui/material/styles';
 
+/**
+ * สร้างและกำหนดค่าธีมหลักของระบบ (Material-UI Theme) ทั้งโหมดสว่างและโหมดมืด
+ * 
+ * @param mode - โหมดการแสดงผลของธีม ('light' หรือ 'dark')
+ * @returns ออบเจกต์ Theme ที่ผ่านการปรับแต่งพร้อมใช้งาน
+ */
 export const getTheme = (mode: 'light' | 'dark') => {
   const isDark = mode === 'dark';
 
