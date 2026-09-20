@@ -5,12 +5,12 @@
 
 import React, { useState } from 'react';
 import {
-  Paper,
   Stack,
   Typography,
   Box,
   useTheme,
 } from '@mui/material';
+import GlassCard from '../GlassCard';
 import { TrendingDown } from 'lucide-react';
 import { CalculationResult, formatNumber } from '../../utils/stockMath';
 
@@ -112,24 +112,9 @@ export const AverageCostChart: React.FC<AverageCostChartProps> = ({ result }) =>
   });
 
   return (
-    <Paper
-      elevation={0}
+    <GlassCard
       sx={{
         p: 3,
-        borderRadius: 4,
-        border:
-          theme.palette.mode === 'light'
-            ? '1px solid rgba(0, 0, 0, 0.08)'
-            : '1px solid rgba(255, 255, 255, 0.08)',
-        background:
-          theme.palette.mode === 'light'
-            ? 'linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 250, 252, 0.9) 100%)'
-            : 'linear-gradient(180deg, rgba(17, 25, 40, 0.5) 0%, rgba(10, 15, 30, 0.7) 100%)',
-        backdropFilter: 'blur(16px) saturate(180%)',
-        boxShadow:
-          theme.palette.mode === 'light'
-            ? '0 8px 32px 0 rgba(31, 38, 135, 0.05)'
-            : '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
         width: '100%',
         height: '100%',
         display: 'flex',
@@ -341,7 +326,7 @@ export const AverageCostChart: React.FC<AverageCostChartProps> = ({ result }) =>
           })}
         </svg>
       </Box>
-    </Paper>
+    </GlassCard>
   );
 };
 

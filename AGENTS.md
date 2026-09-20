@@ -51,8 +51,9 @@ Whenever the user uses phrases like **"คราวหลัง..."** หรื�
   - **Always ask the user first** whether they want to delete it.
   - **STRICTLY FORBIDDEN to delete any file or code block before receiving explicit permission from the user.**
 
-## 8. Mandatory Build Check (ทดสอบ Build ทุกครั้งหลังแก้โค้ด)
+## 8. Mandatory Build Check (ทดสอบ Build ทุกครั้งหลังแก้โค้ด - ได้รับอนุญาตให้รันอัตโนมัติได้ทันที)
 - **Every time code is modified**, you MUST execute `yarn build` (via `cmd /c "yarn build"`) to test for compilation, type errors, or bundle issues immediately.
+- **Pre-authorized Execution**: The user has explicitly authorized running `cmd /c "yarn build"` automatically. Do NOT ask for user permission before executing this command.
 - Never complete a turn with unverified code modifications.
 
 ## 9. Function Documentation & Thai Comments Standard (การเขียน Comment อธิบายฟังก์ชันเป็นภาษาไทย)
@@ -68,4 +69,11 @@ Whenever the user uses phrases like **"คราวหลัง..."** หรื�
 - All route paths and route tables MUST be centralized under `src/routes/` (`paths.ts`, `AppRoutes.tsx`).
 - Never hardcode route paths in application components; always use constants from `src/routes/paths.ts` (e.g. `PATHS.HOME`, `PATHS.PORTFOLIO(id)`).
 - Every main UI page file and its sub-components/sections MUST have a top-of-file comment indicating its route path (`/** Route: /... */`).
+
+## 12. Autonomous Workspace Terminal Execution (สิทธิ์การรัน Terminal อัตโนมัติภายใน Workspace)
+- **Pre-authorized Terminal Execution**: The user has explicitly granted full permission to run any terminal command via `run_command` needed for project development, building, testing, linting, code verification, math simulation, and package management autonomously without asking for user permission before executing.
+- **Strict Workspace Boundary**: All commands and operations MUST strictly have their working directory (`Cwd`) within the MoneyLust project workspace. It is **STRICTLY FORBIDDEN** to touch, read, modify, or delete anything outside this workspace.
+- For complete specification, refer to:
+  - [workspace-terminal-execution SKILL.md](file:///f:/All_Works/Programming/React_Programming/MoneyLust/.agents/skills/workspace-terminal-execution/SKILL.md)
+
 

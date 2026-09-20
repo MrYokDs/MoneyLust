@@ -5,7 +5,6 @@
 
 import React from 'react';
 import {
-  Paper,
   Typography,
   TableContainer,
   Table,
@@ -15,6 +14,7 @@ import {
   TableBody,
   useTheme,
 } from '@mui/material';
+import GlassCard from '../../../components/GlassCard';
 import { CalculationResult, formatCurrency, formatNumber } from '../../../utils/stockMath';
 
 interface TrancheDetailsTableProps {
@@ -33,27 +33,7 @@ export const TrancheDetailsTable: React.FC<TrancheDetailsTableProps> = ({
   const theme = useTheme();
 
   return (
-    <Paper
-      elevation={0}
-      sx={{
-        p: 3,
-        borderRadius: 4,
-        border:
-          theme.palette.mode === 'light'
-            ? '1px solid rgba(0, 0, 0, 0.08)'
-            : '1px solid rgba(255, 255, 255, 0.08)',
-        background:
-          theme.palette.mode === 'light'
-            ? 'rgba(255, 255, 255, 0.7)'
-            : 'rgba(17, 25, 40, 0.65)',
-        backdropFilter: 'blur(16px) saturate(180%)',
-        boxShadow:
-          theme.palette.mode === 'light'
-            ? '0 8px 32px 0 rgba(31, 38, 135, 0.05)'
-            : '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
-        overflow: 'hidden',
-      }}
-    >
+    <GlassCard sx={{ p: 3, overflow: 'hidden' }}>
       <Typography variant="h6" fontWeight="bold" mb={2.5} fontFamily="Prompt">
         ตารางแสดงรายละเอียดรายไม้ (Tranche Details)
       </Typography>
@@ -157,7 +137,7 @@ export const TrancheDetailsTable: React.FC<TrancheDetailsTableProps> = ({
           </TableBody>
         </Table>
       </TableContainer>
-    </Paper>
+    </GlassCard>
   );
 };
 

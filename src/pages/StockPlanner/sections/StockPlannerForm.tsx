@@ -16,10 +16,12 @@ import PortfolioSelectField from './PortfolioSelectField';
 import CurrencyExchangeField from './CurrencyExchangeField';
 import StockSearchSection from './StockSearchSection';
 import InvestmentParamsSection from './InvestmentParamsSection';
+import TradingFeeSection from './TradingFeeSection';
 import ExitStrategySection from './ExitStrategySection';
 import { Portfolio } from '../../../store/stockPlannerSlice';
 import { StockOption, StockDetail } from '../types';
 import { CalculationResult } from '../../../utils/stockMath';
+import { FeeMode } from '../../../types';
 
 interface StockPlannerFormProps {
   activePlanId: string | null;
@@ -33,6 +35,7 @@ interface StockPlannerFormProps {
   exchangeRate: string;
   onCurrencyChange: (c: 'THB' | 'USD') => void;
   onExchangeRateChange: (rate: string) => void;
+  onConvertCurrencyValues?: () => void;
   stockInputValue: string;
   setStockInputValue: (val: string) => void;
   stockOptions: StockOption[];
@@ -54,6 +57,9 @@ interface StockPlannerFormProps {
   roundingMode: 'fractional' | 'integer' | 'boardlot';
   targetProfitPercent: string;
   feePercent: string;
+  feeMode: FeeMode;
+  feePerShare: string;
+  minFeePerTranche: string;
   actualSellPrice: string;
   actualTranchesCount: string;
   calcResult: CalculationResult | null;
@@ -75,6 +81,7 @@ export const StockPlannerForm: React.FC<StockPlannerFormProps> = ({
   exchangeRate,
   onCurrencyChange,
   onExchangeRateChange,
+  onConvertCurrencyValues,
   stockInputValue,
   setStockInputValue,
   stockOptions,
@@ -96,6 +103,9 @@ export const StockPlannerForm: React.FC<StockPlannerFormProps> = ({
   roundingMode,
   targetProfitPercent,
   feePercent,
+  feeMode,
+  feePerShare,
+  minFeePerTranche,
   actualSellPrice,
   actualTranchesCount,
   calcResult,
@@ -137,7 +147,7 @@ export const StockPlannerForm: React.FC<StockPlannerFormProps> = ({
             severity="info"
             icon={false}
             sx={{
-              borderRadius: 3,
+              borderRadius: '10px',
               background: 'rgba(6, 182, 212, 0.08)',
               border: '1px solid rgba(6, 182, 212, 0.2)',
               py: 1,
@@ -181,6 +191,7 @@ export const StockPlannerForm: React.FC<StockPlannerFormProps> = ({
           exchangeRate={exchangeRate}
           onCurrencyChange={onCurrencyChange}
           onExchangeRateChange={onExchangeRateChange}
+          onConvertCurrencyValues={onConvertCurrencyValues}
         />
 
         {/* Stock Search & Company Details */}
@@ -210,15 +221,31 @@ export const StockPlannerForm: React.FC<StockPlannerFormProps> = ({
           maxPossibleTranches={maxPossibleTranches}
           dropMode={dropMode}
           roundingMode={roundingMode}
+          feePercent={feePercent}
+          feeMode={feeMode}
+          feePerShare={feePerShare}
+          minFeePerTranche={minFeePerTranche}
+          onChange={onParamChange}
+        />
+
+        {/* Trading Fees */}
+        <TradingFeeSection
+          currency={currency}
+          feePercent={feePercent}
+          feeMode={feeMode}
+          feePerShare={feePerShare}
+          minFeePerTranche={minFeePerTranche}
+          currentPrice={parseFloat(currentPrice) || 0}
           onChange={onParamChange}
         />
 
         {/* Exit Strategy */}
         <ExitStrategySection
           currency={currency}
+          exchangeRate={parseFloat(exchangeRate) || 36.5}
+          averageCost={calcResult?.finalAverageCost || parseFloat(currentPrice) || 0}
           tranchesCount={parseInt(tranchesCount) || 1}
           targetProfitPercent={targetProfitPercent}
-          feePercent={feePercent}
           actualSellPrice={actualSellPrice}
           actualTranchesCount={actualTranchesCount}
           onChange={onParamChange}

@@ -30,7 +30,7 @@ export const GlassCard: React.FC<GlassCardProps> = ({
       className={isLight ? 'glass-panel-light' : 'glass-panel'}
       sx={{
         p: { xs: 2.5, md: 3 },
-        borderRadius: 4,
+        borderRadius: '16px',
         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
         ...(hoverEffect && {
           '&:hover': {

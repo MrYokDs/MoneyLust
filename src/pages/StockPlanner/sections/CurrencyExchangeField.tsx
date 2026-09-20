@@ -1,6 +1,6 @@
 /**
  * Route: /
- * Section: CurrencyExchangeField (ส่วนจัดการสกุลเงิน THB/USD และอัตราแลกเปลี่ยน)
+ * Section: CurrencyExchangeField (ส่วนจัดการสกุลเงิน THB/USD และอัตราแลกเปลี่ยน พร้อมปุ่มแปลงค่าตัวเลข)
  */
 
 import React from 'react';
@@ -12,21 +12,31 @@ import {
   TextField,
   InputAdornment,
   Stack,
+  Button,
 } from '@mui/material';
-import { Coins } from 'lucide-react';
+import { Coins, ArrowLeftRight } from 'lucide-react';
 
 interface CurrencyExchangeFieldProps {
   currency: 'THB' | 'USD';
   exchangeRate: string;
   onCurrencyChange: (currency: 'THB' | 'USD') => void;
   onExchangeRateChange: (rate: string) => void;
+  onConvertCurrencyValues?: () => void;
 }
 
+/**
+ * คอมโพเนนต์สำหรับเลือกสกุลเงิน ตั้งค่าอัตราแลกเปลี่ยน
+ * และปุ่มแปลงค่าตัวเลขที่กรอกค้างไว้ตามอัตราแลกเปลี่ยน
+ * 
+ * @param props - พารามิเตอร์ของคอมโพเนนต์
+ * @returns JSX Element สำหรับส่วนจัดการสกุลเงิน
+ */
 export const CurrencyExchangeField: React.FC<CurrencyExchangeFieldProps> = ({
   currency,
   exchangeRate,
   onCurrencyChange,
   onExchangeRateChange,
+  onConvertCurrencyValues,
 }) => {
   return (
     <>
@@ -71,9 +81,36 @@ export const CurrencyExchangeField: React.FC<CurrencyExchangeFieldProps> = ({
           <ToggleButton value="THB">🇹🇭 THB (บาท)</ToggleButton>
           <ToggleButton value="USD">🇺🇸 USD (ดอลลาร์)</ToggleButton>
         </ToggleButtonGroup>
+
+        {/* ปุ่มแปลงค่าตัวเลขที่กรอกไว้ตามเรตแลกเปลี่ยน */}
+        {onConvertCurrencyValues && (
+          <Button
+            size="small"
+            variant="outlined"
+            color="primary"
+            startIcon={<ArrowLeftRight size={14} />}
+            onClick={onConvertCurrencyValues}
+            fullWidth
+            sx={{
+              mt: 1,
+              fontFamily: 'Prompt',
+              fontSize: '0.78rem',
+              fontWeight: '600',
+              borderRadius: 2,
+              textTransform: 'none',
+              borderColor: 'rgba(16, 185, 129, 0.4)',
+              '&:hover': {
+                borderColor: '#10b981',
+                bgcolor: 'rgba(16, 185, 129, 0.08)',
+              },
+            }}
+          >
+            แปลงค่าตัวเลขที่กรอกเป็น {currency === 'THB' ? 'USD (ดอลลาร์)' : 'THB (บาท)'} ตามเรต
+          </Button>
+        )}
       </FormControl>
 
-      {currency === 'USD' && (
+      {currency === 'USD' ? (
         <TextField
           label="อัตราแลกเปลี่ยน (บาทต่อ 1 USD)"
           type="number"
@@ -111,6 +148,21 @@ export const CurrencyExchangeField: React.FC<CurrencyExchangeFieldProps> = ({
             },
           }}
         />
+      ) : (
+        <Stack direction="row" spacing={1} alignItems="center" sx={{ px: 0.5 }}>
+          <span
+            style={{
+              width: '8px',
+              height: '8px',
+              backgroundColor: '#10b981',
+              borderRadius: '50%',
+              display: 'inline-block',
+            }}
+          />
+          <span style={{ fontSize: '0.75rem', color: '#6b7280', fontFamily: 'Prompt' }}>
+            อัตราแลกเปลี่ยนอ้างอิง: 1 USD = {exchangeRate} THB
+          </span>
+        </Stack>
       )}
     </>
   );

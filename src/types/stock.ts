@@ -1,6 +1,7 @@
 export type DropMode = 'progressive' | 'fixed';
 export type RoundingMode = 'fractional' | 'integer' | 'boardlot';
 export type CurrencyMode = 'THB' | 'USD';
+export type FeeMode = 'percent' | 'per_share';
 
 export interface TrancheDetail {
   trancheNumber: number;
@@ -43,6 +44,9 @@ export interface CalculationResult {
   exchangeRate?: number;
   targetProfitPercent?: number;
   feePercent?: number;
+  feeMode?: FeeMode;
+  feePerShare?: number;
+  minFeePerTranche?: number;
   actualSellPrice?: number;
   targetSellPrice?: number;
   realizedProfitLossAmount?: number;

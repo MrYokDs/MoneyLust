@@ -29,11 +29,12 @@ description: Core foundational guidelines and development standards for the Mone
 
 ---
 
-## 3. การทดสอบ Build ทุกครั้งที่มีการแก้ไขโค้ด (Mandatory Build Check)
+## 3. การทดสอบ Build ทุกครั้งที่มีการแก้ไขโค้ด (Mandatory Build Check - รันอัตโนมัติได้ทันที)
 
 > [!IMPORTANT]
 > **ทุกครั้งที่มีการแก้ไขหรือเพิ่มโค้ดในโปรเจกต์:**
-> - ต้องรันคำสั่ง **`yarn build`** (หรือ `cmd /c "yarn build"`) เพื่อทดสอบ TypeScript types, Syntax errors, และ Bundling เสมอ
+> - ต้องรันคำสั่ง **`cmd /c "yarn build"`** เพื่อทดสอบ TypeScript types, Syntax errors, และ Bundling เสมอ
+> - **ได้รับอนุญาตล่วงหน้าจากผู้ใช้แล้ว**: สามารถรันคำสั่งนี้ได้ทันทีโดยไม่ต้องขออนุญาตผู้ใช้ก่อน
 > - ต้องมั่นใจว่า Build ผ่าน (Exit code 0) จึงจะถือว่าการทำงานในส่วนนั้นเสร็จสิ้น
 
 ---

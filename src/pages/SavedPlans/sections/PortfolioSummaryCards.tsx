@@ -52,7 +52,6 @@ export const PortfolioSummaryCards: React.FC<PortfolioSummaryCardsProps> = ({
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            borderRadius: 0,
           }}
         >
           <Typography variant="body2" color="text.secondary" fontFamily="Prompt" mb={1}>
@@ -119,7 +118,6 @@ export const PortfolioSummaryCards: React.FC<PortfolioSummaryCardsProps> = ({
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            borderRadius: 0,
           }}
         >
           <Stack direction="row" alignItems="center" spacing={1} mb={1}>
@@ -169,7 +167,6 @@ export const PortfolioSummaryCards: React.FC<PortfolioSummaryCardsProps> = ({
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            borderRadius: 0,
           }}
         >
           <Typography variant="body2" color="text.secondary" fontFamily="Prompt" mb={1}>

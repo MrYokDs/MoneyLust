@@ -20,6 +20,7 @@ import {
   calculateStockTranches,
   formatNumber,
   calculatePortfolioSummary,
+  convertCurrencyAmount,
 } from '../../utils/stockMath';
 import GridVisualizer from '../../components/GridVisualizer';
 import { StockOption, StockDetail } from './types';
@@ -275,6 +276,9 @@ export const StockPlanner: React.FC = () => {
     const fee = parseFloat(currentParams.feePercent) || 0;
     const actualSell = parseFloat(currentParams.actualSellPrice) || 0;
     const actualTranches = parseInt(currentParams.actualTranchesCount) || tranchesCount;
+    const feeMode = currentParams.feeMode || 'percent';
+    const feePerShare = parseFloat(currentParams.feePerShare) || 0.005;
+    const minFeePerTranche = parseFloat(currentParams.minFeePerTranche) || 0;
 
     return calculateStockTranches(
       stockSymbol,
@@ -291,7 +295,10 @@ export const StockPlanner: React.FC = () => {
       actualSell,
       actualTranches,
       currentParams.currentPriceIsFirstTranche !== false,
-      portfolioId
+      portfolioId,
+      feeMode,
+      feePerShare,
+      minFeePerTranche
     );
   }, [
     stockSymbol,
@@ -305,6 +312,9 @@ export const StockPlanner: React.FC = () => {
     exchangeRate,
     currentParams.targetProfitPercent,
     currentParams.feePercent,
+    currentParams.feeMode,
+    currentParams.feePerShare,
+    currentParams.minFeePerTranche,
     currentParams.actualSellPrice,
     currentParams.actualTranchesCount,
     currentParams.currentPriceIsFirstTranche,
@@ -471,23 +481,43 @@ export const StockPlanner: React.FC = () => {
     dispatch(setActivePlanId(null));
     dispatch(
       updateCurrentParams({
-        stockSymbol: '',
-        currentPrice: '',
-        totalBudget: '1000',
-        tranchesCount: '1',
-        dropPercentage: '3',
-        dropMode: 'progressive',
-        roundingMode: 'fractional',
-        currency: 'USD',
-        targetProfitPercent: '10',
-        feePercent: '1.2',
-        actualSellPrice: '',
-        actualTranchesCount: '',
-        currentPriceIsFirstTranche: true,
-        portfolioId: 'unassigned',
+        stockSymbol: '', currentPrice: '', totalBudget: '1000', tranchesCount: '2',
+        dropPercentage: '15', dropMode: 'progressive', roundingMode: 'fractional',
+        currency: 'USD', targetProfitPercent: '10', feePercent: '0.10', feeMode: 'percent',
+        feePerShare: '0.005', minFeePerTranche: '0', actualSellPrice: '',
+        actualTranchesCount: '', currentPriceIsFirstTranche: false, portfolioId: 'unassigned',
       })
     );
     enqueueSnackbar('รีเซ็ตข้อมูลเริ่มต้นเรียบร้อย', { variant: 'info' });
+  };
+
+  /**
+   * แปลงค่าตัวเลขที่กรอกไว้ตามอัตราแลกเปลี่ยน พร้อมสลับสกุลเงินอัตโนมัติ
+   * 
+   * @returns void
+   */
+  const handleConvertCurrencyValues = (): void => {
+    const targetCurrency = currency === 'THB' ? 'USD' : 'THB';
+    const rate = parseFloat(currentParams.exchangeRate) || 36.5;
+    const currentPriceNum = parseFloat(currentParams.currentPrice) || 0;
+    const totalBudgetNum = parseFloat(currentParams.totalBudget) || 0;
+    const actualSellPriceNum = parseFloat(currentParams.actualSellPrice) || 0;
+
+    const updates: any = { currency: targetCurrency };
+    if (currentPriceNum > 0) {
+      updates.currentPrice = convertCurrencyAmount(currentPriceNum, currency, targetCurrency, rate).toString();
+    }
+    if (totalBudgetNum > 0) {
+      updates.totalBudget = convertCurrencyAmount(totalBudgetNum, currency, targetCurrency, rate).toString();
+    }
+    if (actualSellPriceNum > 0) {
+      updates.actualSellPrice = convertCurrencyAmount(actualSellPriceNum, currency, targetCurrency, rate).toString();
+    }
+
+    dispatch(updateCurrentParams(updates));
+    enqueueSnackbar(`แปลงค่าตัวเลขเป็น ${targetCurrency} เรียบร้อย (เรต ${rate.toFixed(2)})`, {
+      variant: 'success',
+    });
   };
 
   return (
@@ -507,6 +537,7 @@ export const StockPlanner: React.FC = () => {
             exchangeRate={currentParams.exchangeRate}
             onCurrencyChange={(c) => handleChange('currency', c)}
             onExchangeRateChange={(r) => handleChange('exchangeRate', r)}
+            onConvertCurrencyValues={handleConvertCurrencyValues}
             stockInputValue={inputValue}
             setStockInputValue={setInputValue}
             stockOptions={options}
@@ -516,9 +547,7 @@ export const StockPlanner: React.FC = () => {
             onSelectStock={(sym) => handleChange('stockSymbol', sym)}
             onApplyPrice={(price) => {
               handleChange('currentPrice', price);
-              enqueueSnackbar(`ดึงราคาล่าสุด ${stockDetail?.previousClose} เรียบร้อย!`, {
-                variant: 'success',
-              });
+              enqueueSnackbar(`ดึงราคาล่าสุด ${stockDetail?.previousClose} เรียบร้อย!`, { variant: 'success' });
             }}
             currentPrice={currentParams.currentPrice}
             currentPriceIsFirstTranche={currentParams.currentPriceIsFirstTranche !== false}
@@ -533,6 +562,9 @@ export const StockPlanner: React.FC = () => {
             roundingMode={roundingMode}
             targetProfitPercent={currentParams.targetProfitPercent}
             feePercent={currentParams.feePercent}
+            feeMode={currentParams.feeMode || 'percent'}
+            feePerShare={currentParams.feePerShare || '0.005'}
+            minFeePerTranche={currentParams.minFeePerTranche || '0'}
             actualSellPrice={currentParams.actualSellPrice}
             actualTranchesCount={currentParams.actualTranchesCount}
             calcResult={calcResult}

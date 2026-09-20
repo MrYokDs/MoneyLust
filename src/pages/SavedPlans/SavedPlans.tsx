@@ -16,11 +16,13 @@ import {
   deletePortfolio,
   updatePortfolioCapital,
   clearPortfolioAdjustments,
+  deletePortfolioGrowthPlan,
 } from '../../store/stockPlannerSlice';
 import { calculatePortfolioSummary, CalculationResult } from '../../utils/stockMath';
 import { TimelineItem, PlanToDelete } from './types';
 import PortfolioHeader from './sections/PortfolioHeader';
 import PortfolioSummaryCards from './sections/PortfolioSummaryCards';
+import PortfolioGrowthPlanCard from './sections/PortfolioGrowthPlanCard';
 import TimelineFilter from './sections/TimelineFilter';
 import PlanGridView from './sections/PlanGridView';
 import PlanTableView from './sections/PlanTableView';
@@ -102,7 +104,10 @@ export const SavedPlans: React.FC = () => {
           ? plan.targetProfitPercent
           : 10
         ).toString(),
-        feePercent: (plan.feePercent !== undefined ? plan.feePercent : 0.5).toString(),
+        feePercent: (plan.feePercent !== undefined ? plan.feePercent : 0.10).toString(),
+        feeMode: plan.feeMode || 'percent',
+        feePerShare: (plan.feePerShare !== undefined ? plan.feePerShare : 0.005).toString(),
+        minFeePerTranche: (plan.minFeePerTranche !== undefined ? plan.minFeePerTranche : 0).toString(),
         actualSellPrice: plan.actualSellPrice ? plan.actualSellPrice.toString() : '',
         actualTranchesCount: plan.actualTranchesCount ? plan.actualTranchesCount.toString() : '',
         currentPriceIsFirstTranche: plan.currentPriceIsFirstTranche !== false,
@@ -224,6 +229,18 @@ export const SavedPlans: React.FC = () => {
         portfolioId={portfolioId}
         onUpdateCapital={(capital) => {
           dispatch(updatePortfolioCapital({ id: portfolioId, capital }));
+        }}
+      />
+
+      {/* 2.5 Linked Portfolio Growth Plan Card */}
+      <PortfolioGrowthPlanCard
+        portfolio={portfolio}
+        currentPortfolioValue={summary.currentPortfolioValue}
+        exchangeRate={exchangeRate}
+        onOpenPlan={() => navigate(`${PATHS.INVESTMENT_PLAN}?portfolioId=${portfolioId}`)}
+        onDeletePlan={() => {
+          dispatch(deletePortfolioGrowthPlan(portfolioId));
+          enqueueSnackbar('ยกเลิกแผนการลงทุนของพอร์ตนี้เรียบร้อยแล้ว', { variant: 'info' });
         }}
       />
 

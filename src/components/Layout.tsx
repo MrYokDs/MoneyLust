@@ -32,7 +32,8 @@ import {
   Briefcase,
   ChevronDown,
   ChevronUp,
-  GripVertical
+  GripVertical,
+  Target
 } from 'lucide-react';
 
 const drawerWidth = 260;
@@ -175,6 +176,63 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
                   primaryTypographyProps={{
                     fontSize: '0.92rem',
                     fontWeight: location.pathname === PATHS.HOME ? 600 : 500,
+                    fontFamily: 'Prompt'
+                  }}
+                />
+              )}
+            </ListItemButton>
+          </ListItem>
+
+          {/* Investment Plan Menu (สร้างแผนการลงทุน) */}
+          <ListItem disablePadding sx={{ display: 'block', mb: 0.5 }}>
+            <ListItemButton
+              onClick={() => {
+                navigate(PATHS.INVESTMENT_PLAN);
+                if (isMobile) setMobileOpen(false);
+              }}
+              sx={{
+                minHeight: 48,
+                justifyContent: sidebarCollapsed ? 'center' : 'initial',
+                px: 2.5,
+                borderRadius: 3,
+                transition: 'all 0.2s',
+                ...(location.pathname === PATHS.INVESTMENT_PLAN ? {
+                  backgroundColor: 'rgba(16, 185, 129, 0.12)',
+                  color: theme.palette.mode === 'light' ? 'primary.dark' : 'primary.light',
+                  borderLeft: '4px solid',
+                  borderColor: 'primary.main',
+                  '& .MuiListItemIcon-root': {
+                    color: theme.palette.mode === 'light' ? 'primary.dark' : 'primary.light',
+                  },
+                } : {
+                  color: 'text.secondary',
+                  '&:hover': {
+                    backgroundColor: theme.palette.mode === 'light' ? 'rgba(0, 0, 0, 0.04)' : 'rgba(255, 255, 255, 0.03)',
+                    color: 'text.primary',
+                    '& .MuiListItemIcon-root': {
+                      color: 'text.primary',
+                    }
+                  }
+                })
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: sidebarCollapsed ? 0 : 2,
+                  justifyContent: 'center',
+                  color: 'inherit',
+                  transition: 'color 0.2s',
+                }}
+              >
+                <Target size={20} />
+              </ListItemIcon>
+              {!sidebarCollapsed && (
+                <ListItemText
+                  primary="สร้างแผนการลงทุน"
+                  primaryTypographyProps={{
+                    fontSize: '0.92rem',
+                    fontWeight: location.pathname === PATHS.INVESTMENT_PLAN ? 600 : 500,
                     fontFamily: 'Prompt'
                   }}
                 />
@@ -412,7 +470,11 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
             )}
 
             <Typography variant="h6" fontWeight="bold" sx={{ fontFamily: 'Prompt', fontSize: { xs: '1rem', md: '1.25rem' } }}>
-              {location.pathname === '/' ? 'เครื่องมือคำนวณแบ่งไม้ถัวหุ้น' : 'การจัดการพอร์ต'}
+              {location.pathname === PATHS.HOME
+                ? 'เครื่องมือคำนวณแบ่งไม้ถัวหุ้น'
+                : location.pathname === PATHS.INVESTMENT_PLAN
+                ? 'สร้างแผนการลงทุนทบต้น'
+                : 'การจัดการพอร์ต'}
             </Typography>
           </Stack>
 

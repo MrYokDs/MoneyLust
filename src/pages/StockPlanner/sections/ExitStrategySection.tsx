@@ -9,7 +9,6 @@ import {
   Divider,
   TextField,
   InputAdornment,
-  Autocomplete,
   FormControl,
   FormLabel,
   Select,
@@ -19,20 +18,34 @@ import {
 import { Percent, DollarSign } from 'lucide-react';
 
 interface ExitStrategySectionProps {
+  /** สกุลเงิน ('THB' หรือ 'USD') */
   currency: 'THB' | 'USD';
+  /** อัตราแลกเปลี่ยน */
+  exchangeRate?: number;
+  /** ราคาต้นทุนเฉลี่ยต่อหุ้น */
+  averageCost?: number;
+  /** จำนวนไม้ทั้งหมดในแผน */
   tranchesCount: number;
+  /** เปอร์เซ็นต์กำไรเป้าหมายที่ต้องการ */
   targetProfitPercent: string;
-  feePercent: string;
+  /** ราคาขายจริงที่ระบุ */
   actualSellPrice: string;
+  /** จำนวนไม้ที่ซื้อได้จริง */
   actualTranchesCount: string;
+  /** ฟังก์ชันส่งค่าการเปลี่ยนแปลงฟิลด์กลับ */
   onChange: (field: string, value: string) => void;
 }
 
+/**
+ * คอมโพเนนต์สำหรับกำหนดเป้าหมายการขายทำกำไร และจำลองราคาขายจริง
+ * 
+ * @param props - คุณสมบัติของคอมโพเนนต์
+ * @returns JSX Element สำหรับส่วน Exit Strategy
+ */
 export const ExitStrategySection: React.FC<ExitStrategySectionProps> = ({
   currency,
   tranchesCount,
   targetProfitPercent,
-  feePercent,
   actualSellPrice,
   actualTranchesCount,
   onChange,
@@ -47,14 +60,14 @@ export const ExitStrategySection: React.FC<ExitStrategySectionProps> = ({
         fontWeight="bold"
         sx={{ fontFamily: 'Prompt', display: 'flex', alignItems: 'center', gap: 1 }}
       >
-        🎯 กลยุทธ์ทางออก & ค่าดำเนินการ (Exit Strategy)
+        🎯 กลยุทธ์การขายทำกำไร (Exit Strategy)
       </Typography>
 
       {/* Target Profit % */}
       <TextField
         label="เปอร์เซ็นต์กำไรที่ต้องการ (%)"
         type="number"
-        placeholder="เช่น 10"
+        placeholder="เช่น 10 หรือ 15"
         value={targetProfitPercent}
         onChange={(e) => onChange('targetProfitPercent', e.target.value)}
         fullWidth
@@ -65,57 +78,10 @@ export const ExitStrategySection: React.FC<ExitStrategySectionProps> = ({
             </InputAdornment>
           ),
         }}
-        helperText="คำนวณราคาขายเป้าหมายหักค่าดำเนินการแล้ว"
+        helperText="คำนวณราคาขายเป้าหมายที่หักค่าธรรมเนียมแล้ว"
         sx={{
           '& .MuiFormHelperText-root': { fontFamily: 'Prompt', color: 'text.secondary' },
         }}
-      />
-
-      {/* Transaction Fee % */}
-      <Autocomplete
-        freeSolo
-        options={['1.2', '0.15', '0.10', '0']}
-        renderOption={(props, option) => {
-          let label = option;
-          if (option === '1.2') label = 'Dime (เฉลี่ย ~1.2%)';
-          if (option === '0.15') label = 'InnovestX / อื่นๆ (0.15%)';
-          if (option === '0.10') label = 'Webull (0.10%)';
-          if (option === '0') label = 'ฟรีค่าดำเนินการ (0%)';
-          return (
-            <li {...props}>
-              <Typography variant="body2" sx={{ fontFamily: 'Prompt' }}>
-                {label}
-              </Typography>
-            </li>
-          );
-        }}
-        value={feePercent}
-        onChange={(_, newValue) => onChange('feePercent', newValue || '')}
-        onInputChange={(_, newInputValue) => {
-          onChange('feePercent', newInputValue);
-        }}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="ค่าดำเนินการซื้อขาย (%)"
-            placeholder="เช่น 1.2 หรือ 0.15"
-            InputProps={{
-              ...params.InputProps,
-              startAdornment: (
-                <>
-                  <InputAdornment position="start" sx={{ pl: 1 }}>
-                    <Percent size={18} color="#f59e0b" />
-                  </InputAdornment>
-                  {params.InputProps.startAdornment}
-                </>
-              ),
-            }}
-            helperText="เลือกจากรายการ หรือพิมพ์กรอก % ค่าดำเนินการได้เอง"
-            sx={{
-              '& .MuiFormHelperText-root': { fontFamily: 'Prompt', color: 'text.secondary' },
-            }}
-          />
-        )}
       />
 
       {/* Actual Selling Price */}
@@ -150,7 +116,7 @@ export const ExitStrategySection: React.FC<ExitStrategySectionProps> = ({
             tranchesCount.toString()
           }
           onChange={(e) => onChange('actualTranchesCount', e.target.value as string)}
-          sx={{ borderRadius: 3 }}
+          sx={{ borderRadius: '12px' }}
         >
           {Array.from({ length: tranchesCount }, (_, i) => i + 1).map((val) => (
             <MenuItem key={val} value={val.toString()} style={{ fontFamily: 'Prompt' }}>

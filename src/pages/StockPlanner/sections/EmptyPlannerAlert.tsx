@@ -22,7 +22,7 @@ export const EmptyPlannerAlert: React.FC = () => {
       <Alert
         severity="info"
         sx={{
-          borderRadius: 4,
+          borderRadius: '16px',
           background: 'rgba(16, 185, 129, 0.05)',
           border: '1px solid rgba(16, 185, 129, 0.1)',
           maxWidth: 500,

@@ -9,6 +9,9 @@ export const PATHS = {
   /** หน้าหลัก (Alias): แผนการลงทุน */
   PLANNER: '/',
 
+  /** หน้าสร้างแผนการลงทุนและคำนวณการเติบโตทบต้น (Investment Growth Plan) */
+  INVESTMENT_PLAN: '/investment-plan',
+
   /**
    * สร้าง Path สำหรับหน้ารายละเอียดพอร์ตการลงทุน
    * 

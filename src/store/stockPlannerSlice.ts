@@ -6,6 +6,8 @@ import {
   DropMode,
   RoundingMode,
   CurrencyMode,
+  FeeMode,
+  GrowthPlanConfig,
 } from '../types';
 
 export type { Portfolio, CapitalAdjustment };
@@ -26,6 +28,9 @@ export interface StockPlannerState {
     exchangeRate: string;
     targetProfitPercent: string;
     feePercent: string;
+    feeMode: FeeMode;
+    feePerShare: string;
+    minFeePerTranche: string;
     actualSellPrice: string;
     actualTranchesCount: string;
     currentPriceIsFirstTranche?: boolean;
@@ -106,17 +111,20 @@ const initialState: StockPlannerState = {
     stockSymbol: 'NVDA',
     currentPrice: '100',
     totalBudget: '1000',
-    tranchesCount: '1',
-    dropPercentage: '3',
+    tranchesCount: '2',
+    dropPercentage: '15',
     dropMode: 'progressive',
     roundingMode: 'integer',
     currency: 'USD',
     exchangeRate: '36.50',
     targetProfitPercent: '10',
-    feePercent: '1.2',
+    feePercent: '0.10', // Webull (0.10%)
+    feeMode: 'percent',
+    feePerShare: '0.005',
+    minFeePerTranche: '0',
     actualSellPrice: '',
     actualTranchesCount: '',
-    currentPriceIsFirstTranche: true,
+    currentPriceIsFirstTranche: false,
     portfolioId: 'unassigned',
   },
 };
@@ -210,9 +218,36 @@ export const stockPlannerSlice = createSlice({
         p.adjustments = [];
         savePortfoliosToLocalStorage(state.portfolios);
       }
-    }
+    },
+    savePortfolioGrowthPlan: (state, action: PayloadAction<{ id: string; growthPlan: GrowthPlanConfig }>) => {
+      const p = state.portfolios.find(p => p.id === action.payload.id);
+      if (p) {
+        p.growthPlan = action.payload.growthPlan;
+        savePortfoliosToLocalStorage(state.portfolios);
+      }
+    },
+    deletePortfolioGrowthPlan: (state, action: PayloadAction<string>) => {
+      const p = state.portfolios.find(p => p.id === action.payload);
+      if (p) {
+        delete p.growthPlan;
+        savePortfoliosToLocalStorage(state.portfolios);
+      }
+    },
   },
 });
 
-export const { savePlan, deletePlan, updateCurrentParams, setActivePlanId, clearAllPlans, addPortfolio, deletePortfolio, reorderPortfolios, updatePortfolioCapital, clearPortfolioAdjustments } = stockPlannerSlice.actions;
+export const {
+  savePlan,
+  deletePlan,
+  updateCurrentParams,
+  setActivePlanId,
+  clearAllPlans,
+  addPortfolio,
+  deletePortfolio,
+  reorderPortfolios,
+  updatePortfolioCapital,
+  clearPortfolioAdjustments,
+  savePortfolioGrowthPlan,
+  deletePortfolioGrowthPlan,
+} = stockPlannerSlice.actions;
 export default stockPlannerSlice.reducer;

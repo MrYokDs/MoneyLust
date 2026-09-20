@@ -4,6 +4,7 @@ import {
   DropMode,
   RoundingMode,
   CurrencyMode,
+  FeeMode,
   Portfolio,
   PortfolioSummary,
 } from '../types';
@@ -14,6 +15,7 @@ export type {
   DropMode,
   RoundingMode,
   CurrencyMode,
+  FeeMode,
   PortfolioSummary,
 };
 
@@ -36,6 +38,9 @@ export type {
  * @param actualTranchesCount - จำนวนไม้ที่เข้าซื้อจริงได้
  * @param currentPriceIsFirstTranche - กำหนดว่าราคาปัจจุบันคือไม้แรกหรือไม่
  * @param portfolioId - รหัสพอร์ตโฟลิโอที่เชื่อมโยง
+ * @param feeMode - รูปแบบการคิดค่าธรรมเนียม ('percent' หรือ 'per_share' สำหรับ Penny Stock)
+ * @param feePerShare - ค่าธรรมเนียมต่อหุ้น (กรณีคิดต่อหุ้น เช่น $0.005)
+ * @param minFeePerTranche - ค่าธรรมเนียมขั้นต่ำต่อคำสั่ง (เช่น 0 หรือ 1 USD)
  * @returns ผลลัพธ์การคำนวณแจกแจงรายไม้และสถิติสะสมทั้งหมด (CalculationResult)
  */
 export const calculateStockTranches = (
@@ -53,7 +58,10 @@ export const calculateStockTranches = (
   actualSellPrice: number = 0,
   actualTranchesCount?: number,
   currentPriceIsFirstTranche: boolean = true,
-  portfolioId: string = 'unassigned'
+  portfolioId: string = 'unassigned',
+  feeMode: FeeMode = 'percent',
+  feePerShare: number = 0.005,
+  minFeePerTranche: number = 0
 ): CalculationResult => {
   const symbol = stockSymbol.trim().toUpperCase() || 'STOCK';
   const cleanPrice = Math.max(0.01, currentPrice);
@@ -73,6 +81,15 @@ export const calculateStockTranches = (
   let accumSpent = 0;
   let accumShares = 0;
   let accumLeftover = 0;
+
+  // ฟังก์ชันคำนวณค่าธรรมเนียม (รองรับทั้งแบบ % มูลค่า และแบบต่อหุ้น Penny Stock พร้อมเช็กค่าธรรมเนียมขั้นต่ำ)
+  const calcFee = (shares: number, grossAmount: number): number => {
+    let fee = feeMode === 'per_share' ? shares * feePerShare : grossAmount * feeRate;
+    if (minFeePerTranche > 0 && shares > 0) {
+      fee = Math.max(minFeePerTranche, fee);
+    }
+    return parseFloat(fee.toFixed(4));
+  };
 
   for (let i = 1; i <= cleanTranches; i++) {
     // Allocate remainder to the last tranche
@@ -104,10 +121,16 @@ export const calculateStockTranches = (
     // Clamp price to a minimum of 0.01
     price = Math.max(0.01, parseFloat(price.toFixed(4)));
 
-    // 3. Calculate shares bought based on roundingMode
-    const rawShares = budgetAllocated / (price * (1 + feeRate));
+    // 3. Calculate shares bought based on roundingMode and feeMode
+    let rawShares = 0;
+    if (feeMode === 'per_share') {
+      const availBudget = Math.max(0, budgetAllocated - minFeePerTranche);
+      rawShares = availBudget / (price + feePerShare);
+    } else {
+      rawShares = budgetAllocated / (price * (1 + feeRate));
+    }
+
     let sharesBought = 0;
-    
     if (roundingMode === 'fractional') {
       sharesBought = parseFloat(rawShares.toFixed(4));
     } else if (roundingMode === 'integer') {
@@ -116,8 +139,24 @@ export const calculateStockTranches = (
       sharesBought = Math.floor(rawShares / 100) * 100;
     }
 
-    const baseSpent = sharesBought * price;
-    const feeAmount = baseSpent * feeRate;
+    let baseSpent = sharesBought * price;
+    let feeAmount = sharesBought > 0 ? calcFee(sharesBought, baseSpent) : 0;
+
+    // ป้องกันยอดรวมค่าหุ้น + ค่าธรรมเนียม เกินงบที่จัดสรรในไม้นั้น
+    while (sharesBought > 0 && (baseSpent + feeAmount) > budgetAllocated) {
+      if (roundingMode === 'boardlot' && sharesBought >= 100) {
+        sharesBought -= 100;
+      } else if (roundingMode === 'integer') {
+        sharesBought -= 1;
+      } else if (roundingMode === 'fractional') {
+        sharesBought = Math.max(0, parseFloat((sharesBought - 0.001).toFixed(4)));
+      } else {
+        break;
+      }
+      baseSpent = sharesBought * price;
+      feeAmount = sharesBought > 0 ? calcFee(sharesBought, baseSpent) : 0;
+    }
+
     const actualSpent = parseFloat((baseSpent + feeAmount).toFixed(4));
     const leftoverCash = parseFloat((budgetAllocated - actualSpent).toFixed(4));
 
@@ -154,20 +193,33 @@ export const calculateStockTranches = (
   const overallDiscountPercent = parseFloat((((cleanPrice - finalAverageCost) / cleanPrice) * 100).toFixed(2));
 
   // Sell Strategy & Profit Calculations (accounting for transaction fees)
-  // Formula: targetSellPrice = finalAverageCost * (1 + profitRate) / (1 - feeRate)
-  // Since finalAverageCost already includes the buy fee
-  const targetSellPrice = finalAverageCost > 0 && (1 - feeRate) > 0
-    ? parseFloat(((finalAverageCost * (1 + profitRate)) / (1 - feeRate)).toFixed(4))
-    : 0;
+  const targetNetFull = totalActualSpent * (1 + profitRate);
+  let targetSellPrice = 0;
+  if (totalSharesBought > 0) {
+    if (feeMode === 'per_share') {
+      const sellFee = Math.max(minFeePerTranche, totalSharesBought * feePerShare);
+      targetSellPrice = (targetNetFull + sellFee) / totalSharesBought;
+    } else {
+      const priceWithRate = (1 - feeRate) > 0 ? targetNetFull / (totalSharesBought * (1 - feeRate)) : 0;
+      const gross = totalSharesBought * priceWithRate;
+      if (gross * feeRate < minFeePerTranche) {
+        targetSellPrice = (targetNetFull + minFeePerTranche) / totalSharesBought;
+      } else {
+        targetSellPrice = priceWithRate;
+      }
+    }
+    targetSellPrice = parseFloat(targetSellPrice.toFixed(4));
+  }
 
   // Realized profit/loss based on actualSellPrice
   let realizedProfitLossAmount = 0;
   let realizedProfitLossPercent = 0;
-  if (actualSellPrice > 0) {
-    const totalBuyCost = totalActualSpent; // already includes fee
-    const totalSellAmount = totalSharesBought * actualSellPrice * (1 - feeRate);
-    realizedProfitLossAmount = totalSellAmount - totalBuyCost;
-    realizedProfitLossPercent = totalBuyCost > 0 ? (realizedProfitLossAmount / totalBuyCost) * 100 : 0;
+  if (actualSellPrice > 0 && totalSharesBought > 0) {
+    const grossSell = totalSharesBought * actualSellPrice;
+    const sellFee = calcFee(totalSharesBought, grossSell);
+    const netSell = grossSell - sellFee;
+    realizedProfitLossAmount = netSell - totalActualSpent;
+    realizedProfitLossPercent = totalActualSpent > 0 ? (realizedProfitLossAmount / totalActualSpent) * 100 : 0;
   }
 
   // Actual execution stats based on actualTranchesCount parameter
@@ -181,24 +233,52 @@ export const calculateStockTranches = (
   const actualLeftoverCash = actualTrancheObj ? actualTrancheObj.cumulativeLeftoverCash : 0;
   const actualDiscountPercent = parseFloat((((cleanPrice - actualAverageCost) / cleanPrice) * 100).toFixed(2));
 
-  const actualTargetSellPrice = actualAverageCost > 0 && (1 - feeRate) > 0
-    ? parseFloat(((actualAverageCost * (1 + profitRate)) / (1 - feeRate)).toFixed(4))
-    : 0;
+  let actualTargetSellPrice = 0;
+  if (actualShares > 0) {
+    const actualTargetNet = actualSpent * (1 + profitRate);
+    if (feeMode === 'per_share') {
+      const sellFee = Math.max(minFeePerTranche, actualShares * feePerShare);
+      actualTargetSellPrice = (actualTargetNet + sellFee) / actualShares;
+    } else {
+      const priceWithRate = (1 - feeRate) > 0 ? actualTargetNet / (actualShares * (1 - feeRate)) : 0;
+      const gross = actualShares * priceWithRate;
+      if (gross * feeRate < minFeePerTranche) {
+        actualTargetSellPrice = (actualTargetNet + minFeePerTranche) / actualShares;
+      } else {
+        actualTargetSellPrice = priceWithRate;
+      }
+    }
+    actualTargetSellPrice = parseFloat(actualTargetSellPrice.toFixed(4));
+  }
 
   const fullTargetProfitAmount = totalActualSpent * profitRate;
-  const actualBuyCost = actualSpent; // already includes fee
-  const actualEquivalentTargetSellPrice = (actualShares > 0 && (1 - feeRate) > 0)
-    ? parseFloat(((fullTargetProfitAmount + actualBuyCost) / (actualShares * (1 - feeRate))).toFixed(4))
-    : 0;
+  let actualEquivalentTargetSellPrice = 0;
+  if (actualShares > 0) {
+    const equivTargetNet = actualSpent + fullTargetProfitAmount;
+    if (feeMode === 'per_share') {
+      const sellFee = Math.max(minFeePerTranche, actualShares * feePerShare);
+      actualEquivalentTargetSellPrice = (equivTargetNet + sellFee) / actualShares;
+    } else {
+      const priceWithRate = (1 - feeRate) > 0 ? equivTargetNet / (actualShares * (1 - feeRate)) : 0;
+      const gross = actualShares * priceWithRate;
+      if (gross * feeRate < minFeePerTranche) {
+        actualEquivalentTargetSellPrice = (equivTargetNet + minFeePerTranche) / actualShares;
+      } else {
+        actualEquivalentTargetSellPrice = priceWithRate;
+      }
+    }
+    actualEquivalentTargetSellPrice = parseFloat(actualEquivalentTargetSellPrice.toFixed(4));
+  }
 
   let actualRealizedProfitLossAmount = 0;
   let actualRealizedProfitLossPercent = 0;
   let actualRealizedProfitLossPercentOfFullPlan = 0;
-  if (actualSellPrice > 0) {
-    const totalBuyCost = actualSpent; // already includes fee
-    const totalSellAmount = actualShares * actualSellPrice * (1 - feeRate);
-    actualRealizedProfitLossAmount = totalSellAmount - totalBuyCost;
-    actualRealizedProfitLossPercent = totalBuyCost > 0 ? (actualRealizedProfitLossAmount / totalBuyCost) * 100 : 0;
+  if (actualSellPrice > 0 && actualShares > 0) {
+    const grossSell = actualShares * actualSellPrice;
+    const sellFee = calcFee(actualShares, grossSell);
+    const netSell = grossSell - sellFee;
+    actualRealizedProfitLossAmount = netSell - actualSpent;
+    actualRealizedProfitLossPercent = actualSpent > 0 ? (actualRealizedProfitLossAmount / actualSpent) * 100 : 0;
 
     const fullPlanBuyCost = totalActualSpent; // already includes fee
     actualRealizedProfitLossPercentOfFullPlan = fullPlanBuyCost > 0 ? (actualRealizedProfitLossAmount / fullPlanBuyCost) * 100 : 0;
@@ -224,6 +304,9 @@ export const calculateStockTranches = (
     exchangeRate,
     targetProfitPercent,
     feePercent,
+    feeMode,
+    feePerShare,
+    minFeePerTranche,
     actualSellPrice,
     targetSellPrice,
     realizedProfitLossAmount: parseFloat(realizedProfitLossAmount.toFixed(4)),
@@ -313,6 +396,33 @@ export const formatCurrency = (
 };
 
 /**
+ * แปลงจำนวนเงินระหว่างสกุล THB และ USD ตามอัตราแลกเปลี่ยน
+ * 
+ * @param amount - จำนวนเงินที่ต้องการแปลง
+ * @param from - สกุลเงินต้นทาง ('THB' หรือ 'USD')
+ * @param to - สกุลเงินปลายทาง ('THB' หรือ 'USD')
+ * @param exchangeRate - อัตราแลกเปลี่ยน (บาทต่อ 1 USD)
+ * @param decimals - จำนวนทศนิยมที่ต้องการปัด (ค่าเริ่มต้น 2 ตำแหน่ง)
+ * @returns จำนวนเงินที่แปลงแล้ว (ตัวเลข)
+ */
+export const convertCurrencyAmount = (
+  amount: number,
+  from: 'THB' | 'USD',
+  to: 'THB' | 'USD',
+  exchangeRate: number = 36.5,
+  decimals: number = 2
+): number => {
+  if (from === to || amount <= 0 || exchangeRate <= 0) {
+    return amount;
+  }
+  const converted = from === 'THB' && to === 'USD'
+    ? amount / exchangeRate
+    : amount * exchangeRate;
+
+  return Number(converted.toFixed(decimals));
+};
+
+/**
  * คำนวณผลสรุปภาพรวมพอร์ตโฟลิโอ มูลค่าเงินทุน เงินที่ใช้ไป กำไรขาดทุนที่รับรู้แล้ว และเงินสดคงเหลือ
  * 
  * @param portfolio - ข้อมูลพอร์ตโฟลิโอ
@@ -366,5 +476,67 @@ export const calculatePortfolioSummary = (
     totalUnsoldFees,
     availableCash,
     currentPortfolioValue
+  };
+};
+
+/**
+ * โครงสร้างข้อมูลผลการคำนวณระดับราคาตัดขาดทุน (Stop Loss Levels)
+ */
+export interface StopLossLevels {
+  /** % ขาดทุนแนะนำ เพื่อให้ผลตอบแทน 2 วันยังเหลือกำไรสุทธิ 50% ของเป้าหมาย */
+  conservativeLossPercent: number;
+  /** ราคาตัดขาดทุนแนะนำ */
+  conservativeStopPrice: number;
+  /** % ขาดทุนสูงสุดที่ยังไม่กินเงินต้นของวันก่อนหน้า (จุด Breakeven คืนเฉพาะกำไร) */
+  breakevenLossPercent: number;
+  /** ราคาตัดขาดทุนระดับวิกฤต (ห้ามหลุดเพื่อไม่ให้กินเงินต้นเดิม) */
+  breakevenStopPrice: number;
+  /** อัตราส่วนผลตอบแทนต่อความเสี่ยง (Risk-Reward Ratio) */
+  riskRewardRatio: number;
+}
+
+/**
+ * คำนวณระดับราคาตัดขาดทุน (Stop Loss) อัจฉริยะ อิงจาก % กำไรที่คาดหวัง และราคาต้นทุนเฉลี่ย
+ * 
+ * @param targetProfitPercent - เปอร์เซ็นต์กำไรที่คาดหวัง (เช่น 15)
+ * @param baseCost - ราคาต้นทุนเฉลี่ยต่อหุ้น หรือราคาเข้าซื้อ
+ * @returns ผลลัพธ์ระดับ Stop Loss ทั้งระดับคุมเสี่ยงและระดับวิกฤต (StopLossLevels)
+ */
+export const calculateStopLossLevels = (
+  targetProfitPercent: number,
+  baseCost: number
+): StopLossLevels => {
+  const p = Math.max(0, targetProfitPercent);
+  const cost = Math.max(0, baseCost);
+
+  if (p === 0 || cost === 0) {
+    return {
+      conservativeLossPercent: 0,
+      conservativeStopPrice: cost,
+      breakevenLossPercent: 0,
+      breakevenStopPrice: cost,
+      riskRewardRatio: 0,
+    };
+  }
+
+  // 1. ระดับคุมความเสี่ยงแนะนำ (Conservative): ขาดทุนได้ไม่เกินเท่านี้ เพื่อให้ 2 วันเฉลี่ยยังเหลือกำไรสุทธิ 50% ของเป้าหมาย
+  // สูตร: (P / 2) / (100 + P) * 100
+  const conservativeLossPercent = parseFloat((((p / 2) / (100 + p)) * 100).toFixed(2));
+  const conservativeStopPrice = parseFloat(Math.max(0.01, cost * (1 - conservativeLossPercent / 100)).toFixed(2));
+
+  // 2. ระดับวิกฤตกันทุนเดิม (Breakeven): คืนเฉพาะกำไรที่เพิ่งได้มา ไม่กินทุนของวันก่อนหน้า
+  // สูตร: P / (100 + P) * 100
+  const breakevenLossPercent = parseFloat(((p / (100 + p)) * 100).toFixed(2));
+  const breakevenStopPrice = parseFloat(Math.max(0.01, cost * (1 - breakevenLossPercent / 100)).toFixed(2));
+
+  // 3. Risk-Reward Ratio (เป้าหมายกำไร เทียบกับ ความเสี่ยงที่ยอมรับ)
+  const riskRewardRatio = conservativeLossPercent > 0 ? parseFloat((p / conservativeLossPercent).toFixed(2)) : 0;
+
+  return {
+    conservativeLossPercent,
+    conservativeStopPrice,
+    breakevenLossPercent,
+    breakevenStopPrice,
+    riskRewardRatio,
   };
 };

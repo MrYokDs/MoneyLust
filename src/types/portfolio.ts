@@ -1,3 +1,5 @@
+import { GrowthPlanConfig } from './growthPlan';
+
 export interface CapitalAdjustment {
   id: string;
   date: string;
@@ -10,6 +12,7 @@ export interface Portfolio {
   createdAt: string;
   initialCapital?: number;
   adjustments?: CapitalAdjustment[];
+  growthPlan?: GrowthPlanConfig;
 }
 
 export interface PortfolioSummary {

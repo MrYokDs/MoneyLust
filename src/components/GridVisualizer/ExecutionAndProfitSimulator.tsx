@@ -5,7 +5,6 @@
 
 import React from 'react';
 import {
-  Paper,
   Stack,
   Typography,
   Box,
@@ -14,8 +13,9 @@ import {
   Grid,
   useTheme,
 } from '@mui/material';
-import { TrendingUp, TrendingDown, CheckCircle2 } from 'lucide-react';
-import { CalculationResult, formatNumber, formatCurrency } from '../../utils/stockMath';
+import GlassCard from '../GlassCard';
+import { TrendingUp, TrendingDown, CheckCircle2, ShieldAlert } from 'lucide-react';
+import { CalculationResult, formatNumber, formatCurrency, calculateStopLossLevels } from '../../utils/stockMath';
 
 interface ExecutionAndProfitSimulatorProps {
   /** ข้อมูลผลการคำนวณการแบ่งไม้ */
@@ -33,33 +33,26 @@ export const ExecutionAndProfitSimulator: React.FC<ExecutionAndProfitSimulatorPr
 }) => {
   const theme = useTheme();
   const { roundingMode, currency = 'THB', exchangeRate = 36.5 } = result;
+  const targetProfit = result.targetProfitPercent || 0;
+  const costPerShare = result.actualAverageCost || result.finalAverageCost || result.currentPrice;
+  const stopLoss = calculateStopLossLevels(targetProfit, costPerShare);
 
   return (
     <Grid container spacing={4} sx={{ width: '100%', m: 0 }}>
       {/* 1. Actual Execution Stats Summary Card */}
       <Grid size={{ xs: 12, md: 6 }} sx={{ display: 'flex', pl: '0 !important', pr: { xs: 0, md: 2 } }}>
-        <Paper
-          elevation={0}
+        <GlassCard
           sx={{
             p: 3,
-            borderRadius: 4,
             width: '100%',
-            border:
-              theme.palette.mode === 'light'
-                ? '1px solid rgba(0, 0, 0, 0.08)'
-                : '1px solid rgba(255, 255, 255, 0.08)',
             background:
               theme.palette.mode === 'light'
                 ? 'linear-gradient(135deg, rgba(6, 182, 212, 0.06) 0%, rgba(255, 255, 255, 0.85) 100%)'
                 : 'linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(10, 15, 25, 0.6) 100%)',
-            backdropFilter: 'blur(16px) saturate(180%)',
-            boxShadow:
+            border:
               theme.palette.mode === 'light'
-                ? '0 8px 32px 0 rgba(31, 38, 135, 0.05)'
-                : '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
+                ? '1px solid rgba(0, 0, 0, 0.08)'
+                : '1px solid rgba(255, 255, 255, 0.08)',
           }}
         >
           <Typography
@@ -210,16 +203,14 @@ export const ExecutionAndProfitSimulator: React.FC<ExecutionAndProfitSimulatorPr
               </>
             )}
           </Stack>
-        </Paper>
+        </GlassCard>
       </Grid>
 
       {/* 2. Exit & Profit Simulator Card */}
       <Grid size={{ xs: 12, md: 6 }} sx={{ display: 'flex', pr: '0 !important', pl: { xs: 0, md: 2 } }}>
-        <Paper
-          elevation={0}
+        <GlassCard
           sx={{
             p: 3,
-            borderRadius: 4,
             width: '100%',
             position: 'relative',
             overflow: 'hidden',
@@ -231,11 +222,6 @@ export const ExecutionAndProfitSimulator: React.FC<ExecutionAndProfitSimulatorPr
               theme.palette.mode === 'light'
                 ? '1px solid rgba(6, 182, 212, 0.3)'
                 : '1px solid rgba(6, 182, 212, 0.15)',
-            backdropFilter: 'blur(16px) saturate(180%)',
-            boxShadow:
-              theme.palette.mode === 'light'
-                ? '0 8px 32px 0 rgba(31, 38, 135, 0.05)'
-                : '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
@@ -325,6 +311,89 @@ export const ExecutionAndProfitSimulator: React.FC<ExecutionAndProfitSimulatorPr
 
             <Divider sx={{ opacity: 0.1 }} />
 
+            {targetProfit > 0 && costPerShare > 0 && (
+              <>
+                <Box
+                  sx={{
+                    p: 2,
+                    borderRadius: '12px',
+                    border: '1px solid rgba(239, 68, 68, 0.25)',
+                    backgroundColor: 'rgba(239, 68, 68, 0.04)',
+                    backdropFilter: 'blur(10px)',
+                  }}
+                >
+                  <Stack direction="row" alignItems="center" justifyContent="space-between" mb={1.2}>
+                    <Stack direction="row" spacing={1} alignItems="center">
+                      <ShieldAlert size={18} color="#ef4444" />
+                      <Typography variant="subtitle2" fontWeight="bold" color="error.light">
+                        คำแนะนำจุดตัดขาดทุน (Stop Loss Guide)
+                      </Typography>
+                    </Stack>
+                    {stopLoss.riskRewardRatio > 0 && (
+                      <Chip
+                        size="small"
+                        label={`R:R = 1 : ${stopLoss.riskRewardRatio}`}
+                        color="primary"
+                        variant="outlined"
+                        sx={{ fontWeight: 'bold', fontSize: '0.72rem', height: 22 }}
+                      />
+                    )}
+                  </Stack>
+
+                  <Stack spacing={1}>
+                    {/* ระดับที่ 1: คุมเสี่ยงเพื่อรักษาผลตอบแทน 50% ของเป้า */}
+                    <Box
+                      sx={{
+                        p: 1.2,
+                        borderRadius: '8px',
+                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                        border: '1px solid rgba(245, 158, 11, 0.25)',
+                      }}
+                    >
+                      <Stack direction="row" justifyContent="space-between" alignItems="center">
+                        <Box>
+                          <Typography variant="caption" fontWeight="bold" color="warning.main" display="block">
+                            🛡️ จุดคุมเสี่ยงแนะนำ (รักษาผลตอบแทน 50%)
+                          </Typography>
+                          <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.72rem' }}>
+                            ขาดทุนไม่เกิน {stopLoss.conservativeLossPercent}% (ภาพรวม 2 วันยังเหลือกำไร +{(targetProfit / 2).toFixed(1)}%)
+                          </Typography>
+                        </Box>
+                        <Typography variant="body1" fontWeight="bold" color="warning.light">
+                          {formatCurrency(stopLoss.conservativeStopPrice, currency, false, exchangeRate)}
+                        </Typography>
+                      </Stack>
+                    </Box>
+
+                    {/* ระดับที่ 2: จุดวิกฤตกันเงินต้น (Breakeven) */}
+                    <Box
+                      sx={{
+                        p: 1.2,
+                        borderRadius: '8px',
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                        border: '1px solid rgba(239, 68, 68, 0.25)',
+                      }}
+                    >
+                      <Stack direction="row" justifyContent="space-between" alignItems="center">
+                        <Box>
+                          <Typography variant="caption" fontWeight="bold" color="error.main" display="block">
+                            🛑 จุดตัดขาดทุนวิกฤต (Breakeven กันเงินต้น)
+                          </Typography>
+                          <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.72rem' }}>
+                            ห้ามขาดทุนเกิน {stopLoss.breakevenLossPercent}% (เพื่อไม่ให้กินเงินต้นเดิมของวันก่อนหน้า)
+                          </Typography>
+                        </Box>
+                        <Typography variant="body1" fontWeight="bold" color="error.light">
+                          {formatCurrency(stopLoss.breakevenStopPrice, currency, false, exchangeRate)}
+                        </Typography>
+                      </Stack>
+                    </Box>
+                  </Stack>
+                </Box>
+                <Divider sx={{ opacity: 0.1 }} />
+              </>
+            )}
+
             {!!result.actualSellPrice && result.actualSellPrice > 0 ? (
               <Stack spacing={2}>
                 <Stack direction="row" justifyContent="space-between" alignItems="center">
@@ -410,7 +479,7 @@ export const ExecutionAndProfitSimulator: React.FC<ExecutionAndProfitSimulatorPr
                 <Box
                   sx={{
                     p: 1.5,
-                    borderRadius: 2,
+                    borderRadius: '8px',
                     border: '1px solid',
                     borderColor:
                       (result.actualRealizedProfitLossAmount || 0) >= 0
@@ -450,7 +519,7 @@ export const ExecutionAndProfitSimulator: React.FC<ExecutionAndProfitSimulatorPr
               <Box
                 sx={{
                   p: 2,
-                  borderRadius: 3,
+                  borderRadius: '12px',
                   backgroundColor: 'rgba(255,255,255,0.02)',
                   border: '1px dashed rgba(255,255,255,0.1)',
                   textAlign: 'center',
@@ -462,7 +531,7 @@ export const ExecutionAndProfitSimulator: React.FC<ExecutionAndProfitSimulatorPr
               </Box>
             )}
           </Stack>
-        </Paper>
+        </GlassCard>
       </Grid>
     </Grid>
   );

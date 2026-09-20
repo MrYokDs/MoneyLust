@@ -15,10 +15,14 @@ import {
   RadioGroup,
   Radio,
   Tooltip,
-  Select,
-  MenuItem,
+  Box,
+  Stack,
+  Button,
+  Chip,
+  ToggleButton,
+  ToggleButtonGroup,
 } from '@mui/material';
-import { DollarSign, Coins, Percent, Layers } from 'lucide-react';
+import { DollarSign, Coins, Percent, Layers, AlertTriangle } from 'lucide-react';
 import { formatCurrency } from '../../../utils/stockMath';
 
 interface InvestmentParamsSectionProps {
@@ -35,6 +39,10 @@ interface InvestmentParamsSectionProps {
   maxPossibleTranches: number;
   dropMode: 'progressive' | 'fixed';
   roundingMode: 'fractional' | 'integer' | 'boardlot';
+  feePercent?: string;
+  feeMode?: 'percent' | 'per_share';
+  feePerShare?: string;
+  minFeePerTranche?: string;
   onChange: (field: string, value: any) => void;
 }
 
@@ -52,8 +60,30 @@ export const InvestmentParamsSection: React.FC<InvestmentParamsSectionProps> = (
   maxPossibleTranches,
   dropMode,
   roundingMode,
+  feePercent,
+  feeMode = 'percent',
+  feePerShare,
+  minFeePerTranche,
   onChange,
 }) => {
+  const priceNum = parseFloat(currentPrice) || 0;
+  const budgetNum = parseFloat(totalBudget) || 0;
+  const feePercentNum = parseFloat(feePercent || '0') || 0;
+  const feePerShareNum = parseFloat(feePerShare || '0.005') || 0.005;
+  const minFeeNum = parseFloat(minFeePerTranche || '0') || 0;
+
+  // คำนวณต้นทุนขั้นต่ำในการซื้อ 1 หุ้นเต็ม (ราคาหุ้น + ค่าธรรมเนียม)
+  let feeForOneShare = 0;
+  if (feeMode === 'per_share') {
+    feeForOneShare = Math.max(minFeeNum, 1 * feePerShareNum);
+  } else {
+    feeForOneShare = Math.max(minFeeNum, priceNum * (feePercentNum / 100));
+  }
+  const minCostForOneShare = priceNum > 0 ? priceNum + feeForOneShare : 0;
+  const shortfallForOneShare = Math.max(0, minCostForOneShare - budgetNum);
+  const isBudgetShortForOneShare =
+    roundingMode === 'integer' && priceNum > 0 && budgetNum > 0 && budgetNum < minCostForOneShare;
+
   return (
     <>
       {/* Current Price */}
@@ -98,35 +128,117 @@ export const InvestmentParamsSection: React.FC<InvestmentParamsSectionProps> = (
       />
 
       {/* Investment Budget */}
-      <TextField
-        label={currency === 'USD' ? 'งบลงทุนทั้งหมด (USD)' : 'งบลงทุนทั้งหมด (บาท)'}
-        type="number"
-        placeholder="0.00"
-        value={totalBudget}
-        onChange={(e) => {
-          let val = e.target.value;
-          if (maxAvailableBudgetClamped !== null && parseFloat(val) > maxAvailableBudgetClamped) {
-            val = maxAvailableBudgetClamped.toString();
+      <Box>
+        <TextField
+          label={currency === 'USD' ? 'งบลงทุนทั้งหมด (USD)' : 'งบลงทุนทั้งหมด (บาท)'}
+          type="number"
+          placeholder="0.00"
+          value={totalBudget}
+          onChange={(e) => {
+            let val = e.target.value;
+            if (maxAvailableBudgetClamped !== null && parseFloat(val) > maxAvailableBudgetClamped) {
+              val = maxAvailableBudgetClamped.toString();
+            }
+            onChange('totalBudget', val);
+          }}
+          fullWidth
+          error={isAtMaxLimit}
+          helperText={
+            isAtMaxLimit
+              ? `ถึงขีดจำกัดแล้ว! พอร์ตนี้ลงทุนได้สูงสุด: ${formatCurrency(maxAvailableBudget || 0, currency, false, exchangeRate)}`
+              : maxAvailableBudget !== null
+                ? `พอร์ตนี้จำกัดงบลงทุนได้สูงสุด: ${formatCurrency(maxAvailableBudget, currency, false, exchangeRate)}`
+                : undefined
           }
-          onChange('totalBudget', val);
-        }}
-        fullWidth
-        error={isAtMaxLimit}
-        helperText={
-          isAtMaxLimit
-            ? `ถึงขีดจำกัดแล้ว! พอร์ตนี้ลงทุนได้สูงสุด: ${formatCurrency(maxAvailableBudget || 0, currency, false, exchangeRate)}`
-            : maxAvailableBudget !== null
-              ? `พอร์ตนี้จำกัดงบลงทุนได้สูงสุด: ${formatCurrency(maxAvailableBudget, currency, false, exchangeRate)}`
-              : undefined
-        }
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <Coins size={18} color="#9ca3af" />
-            </InputAdornment>
-          ),
-        }}
-      />
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <Coins size={18} color="#9ca3af" />
+              </InputAdornment>
+            ),
+          }}
+        />
+
+        {/* Smart Live Cost Helper under budget */}
+        {isBudgetShortForOneShare ? (
+          <Box
+            sx={{
+              mt: 1,
+              p: 1.5,
+              borderRadius: 2,
+              backgroundColor: 'rgba(245, 158, 11, 0.12)',
+              border: '1px solid rgba(245, 158, 11, 0.4)',
+            }}
+          >
+            <Stack direction="row" spacing={1} alignItems="flex-start">
+              <AlertTriangle size={16} color="#f59e0b" style={{ flexShrink: 0, marginTop: 2 }} />
+              <Box sx={{ flex: 1 }}>
+                <Typography variant="caption" fontWeight="bold" color="warning.main" display="block">
+                  งบไม่พอซื้อ 1 หุ้นเต็ม
+                </Typography>
+                <Typography
+                  variant="caption"
+                  color="text.secondary"
+                  display="block"
+                  sx={{ fontSize: '0.75rem', lineHeight: 1.3 }}
+                >
+                  ซื้อ 1 หุ้นเต็มต้องใช้ {formatCurrency(minCostForOneShare, currency, false, exchangeRate)} (ราคาหุ้น {formatCurrency(priceNum, currency, false, exchangeRate)} + ค่าธรรมเนียม {formatCurrency(feeForOneShare, currency, false, exchangeRate)}) ขาดอีก{' '}
+                  <Box component="span" sx={{ color: 'error.main', fontWeight: 'bold' }}>
+                    {formatCurrency(shortfallForOneShare, currency, false, exchangeRate)}
+                  </Box>
+                </Typography>
+                <Stack direction="row" spacing={1} mt={0.8} flexWrap="wrap">
+                  <Button
+                    size="small"
+                    variant="outlined"
+                    color="warning"
+                    onClick={() => onChange('roundingMode', 'fractional')}
+                    sx={{
+                      fontSize: '0.72rem',
+                      fontFamily: 'Prompt',
+                      textTransform: 'none',
+                      py: 0.2,
+                      px: 1,
+                      borderRadius: 1.5,
+                    }}
+                  >
+                    ⚡ สลับเป็นโหมดเศษหุ้น (ซื้อตามงบที่มี)
+                  </Button>
+                  {maxAvailableBudgetClamped !== null && maxAvailableBudgetClamped >= minCostForOneShare && (
+                    <Button
+                      size="small"
+                      variant="text"
+                      color="primary"
+                      onClick={() =>
+                        onChange('totalBudget', (Math.ceil(minCostForOneShare * 100) / 100).toString())
+                      }
+                      sx={{
+                        fontSize: '0.72rem',
+                        fontFamily: 'Prompt',
+                        textTransform: 'none',
+                        py: 0.2,
+                        px: 1,
+                      }}
+                    >
+                      ปรับงบเป็นพอดี 1 หุ้น
+                    </Button>
+                  )}
+                </Stack>
+              </Box>
+            </Stack>
+          </Box>
+        ) : (
+          priceNum > 0 && (
+            <Typography
+              variant="caption"
+              color="text.secondary"
+              sx={{ display: 'block', mt: 0.5, fontSize: '0.73rem', ml: 0.5 }}
+            >
+              💡 ซื้อ 1 หุ้นเต็มขั้นต่ำ: {formatCurrency(minCostForOneShare, currency, false, exchangeRate)} (ราคาหุ้น {formatCurrency(priceNum, currency, false, exchangeRate)} + ค่าธรรมเนียม ~{formatCurrency(feeForOneShare, currency, false, exchangeRate)})
+            </Typography>
+          )
+        )}
+      </Box>
 
       {/* Drop percentage */}
       <TextField
@@ -214,28 +326,63 @@ export const InvestmentParamsSection: React.FC<InvestmentParamsSectionProps> = (
         </RadioGroup>
       </FormControl>
 
-      {/* Rounding Mode Option */}
+      {/* Rounding Mode Option - Modern ToggleButtonGroup */}
       <FormControl fullWidth>
-        <FormLabel
-          sx={{ mb: 1, fontSize: '0.875rem', color: 'text.secondary', fontFamily: 'Prompt' }}
-        >
-          รูปแบบการปัดเศษหุ้น
-        </FormLabel>
-        <Select
+        <Stack direction="row" justifyContent="space-between" alignItems="center" mb={1}>
+          <FormLabel sx={{ fontSize: '0.875rem', color: 'text.secondary', fontFamily: 'Prompt' }}>
+            รูปแบบการปัดเศษหุ้น
+          </FormLabel>
+          {currency === 'USD' && (
+            <Chip
+              size="small"
+              label="Webull / US รองรับเศษหุ้น"
+              color="success"
+              variant="outlined"
+              sx={{ fontSize: '0.7rem', height: 20 }}
+            />
+          )}
+        </Stack>
+        <ToggleButtonGroup
           value={roundingMode}
-          onChange={(e) => onChange('roundingMode', e.target.value as string)}
-          sx={{ borderRadius: 3 }}
+          exclusive
+          onChange={(_, val) => {
+            if (val) onChange('roundingMode', val);
+          }}
+          fullWidth
+          size="small"
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr 1fr' },
+            gap: 1,
+            '& .MuiToggleButtonGroup-grouped': {
+              border: '1px solid rgba(255, 255, 255, 0.12) !important',
+              borderRadius: '10px !important',
+              mx: 0,
+            },
+            '& .MuiToggleButton-root': {
+              fontFamily: 'Prompt',
+              fontSize: '0.78rem',
+              py: 1,
+              textTransform: 'none',
+              '&.Mui-selected': {
+                backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                color: 'success.main',
+                borderColor: 'success.main !important',
+                fontWeight: 'bold',
+              },
+            },
+          }}
         >
-          <MenuItem value="integer" style={{ fontFamily: 'Prompt' }}>
-            เต็มหน่วย 1 หุ้น (ตลาดหุ้นทั่วไป)
-          </MenuItem>
-          <MenuItem value="boardlot" style={{ fontFamily: 'Prompt' }}>
-            บอร์ดล็อต 100 หุ้น (สำหรับกระดานหลักไทย / SET)
-          </MenuItem>
-          <MenuItem value="fractional" style={{ fontFamily: 'Prompt' }}>
-            ทศนิยม 4 ตำแหน่ง (สำหรับคริปโต / หุ้นสหรัฐฯ)
-          </MenuItem>
-        </Select>
+          <ToggleButton value="integer">
+            เต็มหน่วย 1 หุ้น
+          </ToggleButton>
+          <ToggleButton value="fractional">
+            ⚡ เศษหุ้น (Fractional)
+          </ToggleButton>
+          <ToggleButton value="boardlot">
+            บอร์ดล็อต 100 หุ้น (SET)
+          </ToggleButton>
+        </ToggleButtonGroup>
       </FormControl>
     </>
   );
