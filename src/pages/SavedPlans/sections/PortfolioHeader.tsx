@@ -10,9 +10,10 @@ import {
   Button,
   ToggleButtonGroup,
   ToggleButton,
+  Divider,
   useTheme,
 } from '@mui/material';
-import { FolderHeart, TrendingUp, Trash2, LayoutGrid, List } from 'lucide-react';
+import { FolderHeart, TrendingUp, Trash2, FolderX, LayoutGrid, List } from 'lucide-react';
 
 interface PortfolioHeaderProps {
   portfolioName: string;
@@ -40,7 +41,7 @@ export const PortfolioHeader: React.FC<PortfolioHeaderProps> = ({
   const theme = useTheme();
 
   return (
-    <Stack direction="row" justifyContent="space-between" alignItems="center" mb={4}>
+    <Stack direction="row" justifyContent="space-between" alignItems="center" mb={4} flexWrap="wrap" gap={2}>
       <Stack direction="row" alignItems="center" spacing={1.5}>
         <FolderHeart size={26} color="#10b981" />
         <Typography variant="h5" fontWeight="bold" fontFamily="Prompt">
@@ -48,33 +49,86 @@ export const PortfolioHeader: React.FC<PortfolioHeaderProps> = ({
         </Typography>
       </Stack>
 
-      <Stack direction="row" spacing={2} alignItems="center">
+      <Stack direction="row" spacing={1.5} alignItems="center" flexWrap="wrap">
+        {/* 1. ปุ่มสร้างแผนการเทรดใหม่ (Action หลัก) */}
         <Button
           variant="contained"
           color="primary"
           size="small"
           onClick={onAddNewPlan}
           startIcon={<TrendingUp size={16} />}
-          sx={{ borderRadius: 3, fontFamily: 'Prompt', fontWeight: 'bold' }}
+          sx={{ borderRadius: '12px', fontFamily: 'Prompt', fontWeight: 'bold' }}
         >
-          สร้างแผนลงทุนใหม่
+          สร้างแผนการเทรดใหม่
         </Button>
 
+        {/* 2. ปุ่มล้างแผนทั้งหมด (โทนส้มแอมเบอร์สไตล์เดียวกับปุ่มหลัก) */}
+        {hasTimelineItems && (
+          <Button
+            variant="contained"
+            size="small"
+            onClick={onClearAll}
+            startIcon={<Trash2 size={16} />}
+            sx={{
+              borderRadius: '12px',
+              fontFamily: 'Prompt',
+              fontWeight: 'bold',
+              color: '#ffffff',
+              background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+              boxShadow: 'none',
+              transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+              '&:hover': {
+                background: 'linear-gradient(135deg, #fbbf24 0%, #b45309 100%)',
+                boxShadow: '0 4px 12px rgba(245, 158, 11, 0.25)',
+              },
+            }}
+          >
+            ล้างแผนทั้งหมด
+          </Button>
+        )}
+
+        {/* 3. ปุ่มลบพอร์ตนี้ (โทนแดง Gradient สไตล์เดียวกับปุ่มหลัก) */}
         {portfolioId !== 'unassigned' && (
           <Button
             variant="contained"
-            color="error"
             size="small"
             onClick={onDeletePortfolio}
-            startIcon={<Trash2 size={16} />}
-            sx={{ borderRadius: 3, fontFamily: 'Prompt' }}
+            startIcon={<FolderX size={16} />}
+            sx={{
+              borderRadius: '12px',
+              fontFamily: 'Prompt',
+              fontWeight: 'bold',
+              color: '#ffffff',
+              background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
+              boxShadow: 'none',
+              transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+              '&:hover': {
+                background: 'linear-gradient(135deg, #f87171 0%, #b91c1c 100%)',
+                boxShadow: '0 4px 12px rgba(239, 68, 68, 0.25)',
+              },
+            }}
           >
             ลบพอร์ตนี้
           </Button>
         )}
 
+        {/* 4. ส่วนสลับมุมมอง Grid / ตาราง (จัดวางไว้ทางขวาสุด) */}
         {hasTimelineItems && (
           <>
+            <Divider
+              orientation="vertical"
+              flexItem
+              sx={{
+                mx: 0.5,
+                height: 24,
+                alignSelf: 'center',
+                borderColor:
+                  theme.palette.mode === 'light'
+                    ? 'rgba(0,0,0,0.1)'
+                    : 'rgba(255,255,255,0.1)',
+              }}
+            />
+
             <ToggleButtonGroup
               value={viewMode}
               exclusive
@@ -84,6 +138,7 @@ export const PortfolioHeader: React.FC<PortfolioHeaderProps> = ({
                 '& .MuiToggleButton-root': {
                   px: 1.5,
                   py: 0.5,
+                  borderRadius: '10px',
                   border:
                     theme.palette.mode === 'light'
                       ? '1px solid rgba(0,0,0,0.08)'
@@ -110,17 +165,6 @@ export const PortfolioHeader: React.FC<PortfolioHeaderProps> = ({
                 ตาราง
               </ToggleButton>
             </ToggleButtonGroup>
-
-            <Button
-              variant="outlined"
-              color="error"
-              size="small"
-              onClick={onClearAll}
-              startIcon={<Trash2 size={16} />}
-              sx={{ borderRadius: 3 }}
-            >
-              ล้างแผนทั้งหมด
-            </Button>
           </>
         )}
       </Stack>
