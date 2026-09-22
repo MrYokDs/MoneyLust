@@ -17,6 +17,8 @@ import {
 } from '@mui/material';
 import { TrendingDown } from 'lucide-react';
 import { StockOption, StockDetail } from '../types';
+import CompanyInsightsCard from './CompanyInsightsCard';
+import InfoTooltipLabel from '../../../components/InfoTooltipLabel';
 
 interface StockSearchSectionProps {
   inputValue: string;
@@ -146,7 +148,8 @@ export const StockSearchSection: React.FC<StockSearchSectionProps> = ({
       )}
 
       {!loadingDetail && stockDetail && (
-        <Box
+        <>
+          <Box
           mt={1.5}
           p={1.5}
           sx={{
@@ -165,26 +168,61 @@ export const StockSearchSection: React.FC<StockSearchSectionProps> = ({
             🏢 {stockDetail.name}
           </Typography>
           <Grid container spacing={1} sx={{ mt: 0.5 }}>
-            <Grid size={{ xs: 6 }}>
-              <Typography variant="caption" color="text.secondary" sx={{ display: 'block', fontSize: '0.7rem' }}>
-                มูลค่าตลาด (Market Cap)
-              </Typography>
+            <Grid size={{ xs: 6, sm: 4 }}>
+              <InfoTooltipLabel
+                label="มูลค่าตลาด (Market Cap)"
+                tooltip="มูลค่ารวมของบริษัทตามราคาตลาด (Market Capitalization) คำนวณจาก ราคาหุ้น × จำนวนหุ้นทั้งหมด บ่งบอกขนาดและความมั่นคงของกิจการ"
+              />
               <Typography variant="body2" fontWeight="bold" sx={{ color: 'text.primary', fontSize: '0.85rem' }}>
                 {stockDetail.marketCap}
               </Typography>
             </Grid>
-            <Grid size={{ xs: 6 }}>
-              <Typography variant="caption" color="text.secondary" sx={{ display: 'block', fontSize: '0.7rem' }}>
-                ปันผล / อัตราค่าดำเนินการ
-              </Typography>
+            <Grid size={{ xs: 6, sm: 4 }}>
+              <InfoTooltipLabel
+                label="ปันผล / อัตราค่าดำเนินการ"
+                tooltip="อัตราเงินปันผลตอบแทนต่อปี (Dividend Yield) หรืออัตราค่าธรรมเนียมบริหารจัดการกองทุน (Expense Ratio สำหรับ ETF) เทียบกับราคาหุ้นปัจจุบัน"
+              />
               <Typography variant="body2" fontWeight="bold" sx={{ color: 'text.primary', fontSize: '0.85rem' }}>
                 {stockDetail.yield}
               </Typography>
             </Grid>
-            <Grid size={{ xs: 6 }}>
-              <Typography variant="caption" color="text.secondary" sx={{ display: 'block', fontSize: '0.7rem' }}>
-                ราคาปิดวันก่อนหน้า
+            <Grid size={{ xs: 6, sm: 4 }}>
+              <InfoTooltipLabel
+                label="อัตราส่วน P/E (PER)"
+                tooltip="ราคาหุ้นเทียบกับกำไรต่อหุ้น (Price to Earnings) บ่งบอกว่าผู้ลงทุนยอมจ่ายกี่เท่าของกำไร ยิ่งต่ำอาจหมายถึงหุ้นราคาไม่แพง (หากบริษัทขาดทุนจะไม่มีค่า P/E)"
+              />
+              <Typography
+                variant="body2"
+                fontWeight="bold"
+                sx={{
+                  color: stockDetail.peRatio && stockDetail.peRatio !== '-' ? '#10b981' : 'text.primary',
+                  fontSize: '0.85rem',
+                }}
+              >
+                {stockDetail.peRatio || '-'}
               </Typography>
+            </Grid>
+            <Grid size={{ xs: 6, sm: 4 }}>
+              <InfoTooltipLabel
+                label="อัตราส่วน P/B (PBR)"
+                tooltip="ราคาหุ้นเทียบกับมูลค่าทางบัญชี (Price to Book Value) หาก P/B ต่ำกว่า 1 หมายถึงซื้อหุ้นได้ต่ำกว่ามูลค่าทรัพย์สินสุทธิทางบัญชีของบริษัท"
+              />
+              <Typography
+                variant="body2"
+                fontWeight="bold"
+                sx={{
+                  color: stockDetail.pbRatio && stockDetail.pbRatio !== '-' ? '#10b981' : 'text.primary',
+                  fontSize: '0.85rem',
+                }}
+              >
+                {stockDetail.pbRatio || '-'}
+              </Typography>
+            </Grid>
+            <Grid size={{ xs: 6, sm: 4 }}>
+              <InfoTooltipLabel
+                label="ราคาปิดวันก่อนหน้า"
+                tooltip="ราคาซื้อขายล่าสุด ณ เวลาปิดตลาดของวันทำการก่อนหน้า ใช้เป็นราคาอ้างอิงเริ่มต้นสำหรับคำนวณและวางแผน (คลิกที่ราคาเพื่อนำไปกรอกได้ทันที)"
+              />
               <Typography
                 variant="body2"
                 fontWeight="bold"
@@ -192,7 +230,7 @@ export const StockSearchSection: React.FC<StockSearchSectionProps> = ({
                   color: '#10b981',
                   fontSize: '0.85rem',
                   cursor: 'pointer',
-                  display: 'inline-flex',
+                  display: 'flex',
                   alignItems: 'center',
                   gap: 0.5,
                   '&:hover': { textDecoration: 'underline', color: '#34d399' },
@@ -210,16 +248,19 @@ export const StockSearchSection: React.FC<StockSearchSectionProps> = ({
                 </Typography>
               </Typography>
             </Grid>
-            <Grid size={{ xs: 6 }}>
-              <Typography variant="caption" color="text.secondary" sx={{ display: 'block', fontSize: '0.7rem' }}>
-                ราคารอบ 52 สัปดาห์
-              </Typography>
+            <Grid size={{ xs: 6, sm: 4 }}>
+              <InfoTooltipLabel
+                label="ราคารอบ 52 สัปดาห์"
+                tooltip="กรอบราคาสูงสุดและต่ำสุดในรอบ 1 ปีที่ผ่านมา ช่วยประเมินว่าระดับราคาปัจจุบันอยู่ในช่วงต่ำ กลาง หรือสูง เมื่อเทียบกับสถิติรอบปี"
+              />
               <Typography variant="body2" fontWeight="bold" sx={{ color: 'text.primary', fontSize: '0.85rem' }}>
                 {stockDetail.fiftyTwoWeekRange}
               </Typography>
             </Grid>
           </Grid>
         </Box>
+        <CompanyInsightsCard stockDetail={stockDetail} />
+        </>
       )}
     </>
   );

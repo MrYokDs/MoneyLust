@@ -18,10 +18,10 @@ import {
 } from '../../store/stockPlannerSlice';
 import {
   calculateStockTranches,
-  formatNumber,
   calculatePortfolioSummary,
   convertCurrencyAmount,
 } from '../../utils/stockMath';
+import { fetchCompleteStockDetail } from '../../utils/stockApi';
 import GridVisualizer from '../../components/GridVisualizer';
 import { StockOption, StockDetail } from './types';
 import StockPlannerForm from './sections/StockPlannerForm';
@@ -74,60 +74,10 @@ export const StockPlanner: React.FC = () => {
     const fetchDetail = async () => {
       setLoadingDetail(true);
       try {
-        const symbol = currentParams.stockSymbol.toUpperCase().trim();
-        let assetClass = 'stocks';
-
-        let response = await fetch(`/api/nasdaq-summary/${symbol}/summary?assetclass=${assetClass}`);
-        let json = await response.json();
-
-        if (!json || json.status?.rCode !== 200 || !json.data?.summaryData) {
-          assetClass = 'etf';
-          response = await fetch(`/api/nasdaq-summary/${symbol}/summary?assetclass=${assetClass}`);
-          json = await response.json();
-        }
-
-        if (json && json.status?.rCode === 200 && json.data?.summaryData) {
-          const d = json.data.summaryData;
-
-          let rawMarketCap = '';
-          if (d.MarketCap?.value) {
-            rawMarketCap = d.MarketCap.value;
-          } else if (d.AUM?.value) {
-            rawMarketCap = d.AUM.value;
-          }
-
-          let formattedMarketCap = '-';
-          if (rawMarketCap && rawMarketCap !== 'N/A') {
-            const cleanNum = parseFloat(rawMarketCap.replace(/,/g, ''));
-            if (!isNaN(cleanNum)) {
-              if (cleanNum >= 1e12) {
-                formattedMarketCap = `$${(cleanNum / 1e12).toFixed(2)}T`;
-              } else if (cleanNum >= 1e9) {
-                formattedMarketCap = `$${(cleanNum / 1e9).toFixed(2)}B`;
-              } else if (cleanNum >= 1e6) {
-                formattedMarketCap = `$${(cleanNum / 1e6).toFixed(2)}M`;
-              } else {
-                formattedMarketCap = `$${formatNumber(cleanNum, 0)}`;
-              }
-            } else {
-              formattedMarketCap = rawMarketCap;
-            }
-          }
-
-          setStockDetail({
-            name: json.data.companyName || d.Exchange?.value || '',
-            marketCap: formattedMarketCap,
-            sector: d.Sector?.value || '-',
-            industry: d.Industry?.value || '-',
-            fiftyTwoWeekRange: d.FiftTwoWeekHighLow?.value || '-',
-            previousClose: d.PreviousClose?.value || '-',
-            yield: d.Yield?.value || d.ExpenseRatio?.value || '-',
-          });
-        } else {
-          setStockDetail(null);
-        }
+        const detail = await fetchCompleteStockDetail(currentParams.stockSymbol);
+        setStockDetail(detail);
       } catch (error) {
-        console.error('Error fetching stock summary:', error);
+        console.error('Error fetching stock detail:', error);
         setStockDetail(null);
       } finally {
         setLoadingDetail(false);
@@ -522,9 +472,9 @@ export const StockPlanner: React.FC = () => {
 
   return (
     <Box sx={{ flexGrow: 1, py: 1 }}>
-      <Grid container spacing={4}>
+      <Grid container spacing={3}>
         {/* 1. Form Inputs Section */}
-        <Grid size={{ xs: 12, lg: 4 }}>
+        <Grid size={{ xs: 12, lg: 5 }}>
           <StockPlannerForm
             activePlanId={activePlanId}
             stockSymbol={stockSymbol}
@@ -576,7 +526,7 @@ export const StockPlanner: React.FC = () => {
         </Grid>
 
         {/* 2. Visualizations and Tables Section */}
-        <Grid size={{ xs: 12, lg: 8 }}>
+        <Grid size={{ xs: 12, lg: 7 }}>
           {calcResult ? (
             <Stack spacing={4}>
               <GridVisualizer result={calcResult} />

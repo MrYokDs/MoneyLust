@@ -31,6 +31,29 @@ export default defineConfig({
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
           'Referer': 'https://www.nasdaq.com'
         }
+      },
+      '/api/nasdaq-company': {
+        target: 'https://api.nasdaq.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/nasdaq-company/, '/api/company'),
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Referer': 'https://www.nasdaq.com'
+        }
+      },
+      '/api/translate': {
+        target: 'https://translate.googleapis.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/translate/, '/translate_a/single'),
+      },
+      '/api/nasdaq-analyst': {
+        target: 'https://api.nasdaq.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/nasdaq-analyst/, '/api/analyst'),
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Referer': 'https://www.nasdaq.com'
+        }
       }
     }
   },
