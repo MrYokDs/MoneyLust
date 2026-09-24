@@ -1,49 +1,65 @@
 /**
  * Component: DraggableTradingNote (วิดเจ็ตกระดาษโน้ตเตือนสติตารางเวลาเข้าซื้อแบบลากได้อิสระ แสดงผลทุกหน้า)
+ * พร้อมระบบแท็บสลับดูปฏิทินวันหยุดตลาดหุ้นสหรัฐฯ (Finnhub API) และระบบแจ้งเตือนไม่ควรเทรดเมื่อวันถัดไปตลาดปิด
  */
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import {
   Box,
   Typography,
   IconButton,
   Tooltip,
   Stack,
-  Chip,
   useTheme,
   Collapse,
 } from '@mui/material';
 import {
-  Pin,
   Minimize2,
   Maximize2,
-  Clock,
   RotateCcw,
-  Sparkles,
   GripHorizontal,
-  TrendingDown,
-  CheckCircle2,
-  AlertCircle,
+  Clock,
+  CalendarDays,
+  AlertTriangle,
 } from 'lucide-react';
+import {
+  getUsMarketSeasonInfo,
+  checkActiveTradingWindow,
+} from '../utils/usMarketTime';
+import {
+  fetchFinnhubHolidays,
+  checkUpcomingMarketClosure,
+  MarketHolidayItem,
+  UpcomingClosureCheck,
+} from '../utils/finnhubMarketHolidays';
+import { TradingWindowsTab, MarketHolidaysTab } from './trading-note';
 
 interface NotePosition {
   x: number;
   y: number;
 }
 
-const STORAGE_KEY = 'moneylust_trading_note_pos_v2';
+const STORAGE_KEY = 'moneylust_trading_note_pos_v4';
 const STORAGE_MINIMIZED_KEY = 'moneylust_trading_note_minimized';
 
 /**
  * คอมโพเนนต์กระดาษโน้ตเตือนสตินักเทรด (Global Draggable Trading Sticky Note)
  * แสดงช่วงเวลาที่เหมาะสมแก่การเข้าซื้อที่สุด สามารถใช้เมาส์ลากไปมาบนหน้าจอได้อย่างอิสระทุกหน้า
- * พร้อมฟังก์ชันย่อ/ขยาย และระบบตรวจสอบเวลาจริง (Live Window Alert)
+ * พร้อมระบบแท็บสลับดูปฏิทินวันหยุดตลาดหุ้นสหรัฐฯ และระบบแจ้งเตือนเมื่อวันถัดไปตลาดปิด
  * 
  * @returns JSX Element สำหรับวิดเจ็ตกระดาษโน้ตแบบลากได้ระดับ Global
  */
 export const DraggableTradingNote: React.FC = () => {
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
+
+  // แท็บปัจจุบัน: 'windows' (ตารางเวลาเข้าซื้อ) หรือ 'holidays' (ปฏิทินวันหยุด)
+  const [activeTab, setActiveTab] = useState<'windows' | 'holidays'>('windows');
+
+  // ข้อมูลวันหยุดตลาดหุ้นสหรัฐฯ
+  const [holidays, setHolidays] = useState<MarketHolidayItem[]>([]);
+  const [holidaySource, setHolidaySource] = useState<'finnhub' | 'fallback'>('fallback');
+  const [isLoadingHolidays, setIsLoadingHolidays] = useState<boolean>(false);
 
   // สถานะตำแหน่งการ์ด (ค่าเริ่มต้น: มุมขวาบน)
   const [position, setPosition] = useState<NotePosition>(() => {
@@ -58,7 +74,7 @@ export const DraggableTradingNote: React.FC = () => {
     } catch (e) {
       console.warn('Failed to parse saved note position:', e);
     }
-    const defaultX = typeof window !== 'undefined' ? Math.max(20, window.innerWidth - 340) : 100;
+    const defaultX = typeof window !== 'undefined' ? Math.max(20, window.innerWidth - 415) : 100;
     const defaultY = 85;
     return { x: defaultX, y: defaultY };
   });
@@ -75,10 +91,29 @@ export const DraggableTradingNote: React.FC = () => {
   const dragOffsetRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const [currentTime, setCurrentTime] = useState<Date>(new Date());
 
+  // เดินเวลานาฬิกาทุก 1 วินาที
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
+
+  // โหลดข้อมูลวันหยุดเมื่อ Component Mount
+  const loadHolidays = useCallback(async (customToken?: string) => {
+    setIsLoadingHolidays(true);
+    try {
+      const result = await fetchFinnhubHolidays(customToken);
+      setHolidays(result.data);
+      setHolidaySource(result.source);
+    } catch (err) {
+      console.warn('Error loading holidays:', err);
+    } finally {
+      setIsLoadingHolidays(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    loadHolidays();
+  }, [loadHolidays]);
 
   const savePosition = useCallback((newPos: NotePosition) => {
     setPosition(newPos);
@@ -101,7 +136,7 @@ export const DraggableTradingNote: React.FC = () => {
 
   const handleResetPosition = (e: React.MouseEvent) => {
     e.stopPropagation();
-    const defaultX = Math.max(20, window.innerWidth - 340);
+    const defaultX = Math.max(20, window.innerWidth - 415);
     const defaultY = 85;
     savePosition({ x: defaultX, y: defaultY });
   };
@@ -129,7 +164,7 @@ export const DraggableTradingNote: React.FC = () => {
     if (!isDragging) return;
 
     const handleMouseMove = (e: MouseEvent) => {
-      const cardWidth = isMinimized ? 180 : 320;
+      const cardWidth = 390;
       const cardHeight = isMinimized ? 44 : 260;
       const maxX = Math.max(10, window.innerWidth - cardWidth - 10);
       const maxY = Math.max(10, window.innerHeight - cardHeight - 10);
@@ -144,7 +179,7 @@ export const DraggableTradingNote: React.FC = () => {
     const handleTouchMove = (e: TouchEvent) => {
       if (e.touches.length > 0) {
         const touch = e.touches[0];
-        const cardWidth = isMinimized ? 180 : 320;
+        const cardWidth = 390;
         const cardHeight = isMinimized ? 44 : 260;
         const maxX = Math.max(10, window.innerWidth - cardWidth - 10);
         const maxY = Math.max(10, window.innerHeight - cardHeight - 10);
@@ -179,24 +214,22 @@ export const DraggableTradingNote: React.FC = () => {
     };
   }, [isDragging, isMinimized, position]);
 
-  const checkActiveWindow = (date: Date): { text: string; isHot: boolean } | null => {
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
+  // ข้อมูลฤดูกาลและเวลาเปิดปิดของตลาดสหรัฐฯ ตามช่วงเดือนปัจจุบัน (DST vs Standard)
+  const seasonInfo = useMemo(() => getUsMarketSeasonInfo(currentTime), [
+    currentTime.getDate(),
+    currentTime.getMonth(),
+    currentTime.getFullYear(),
+  ]);
 
-    if ((hours === 3 || hours === 15) && minutes >= 0 && minutes <= 5) {
-      return { text: '⚡ ช่วงเวลาเข้าซื้อที่ดีที่สุด (Window 1)', isHot: true };
-    }
-    if ((hours === 3 || hours === 15) && minutes >= 25 && minutes <= 30) {
-      return { text: '📉 ขาลง: จังหวะเข้าซื้อ (Window 2)', isHot: true };
-    }
-    if ((hours === 4 || hours === 16) && minutes >= 25 && minutes <= 30) {
-      return { text: '📉 ขาลง: จังหวะเข้าซื้อ (Window 3)', isHot: true };
-    }
-    return null;
-  };
-
-  const activeWindow = checkActiveWindow(currentTime);
+  // ตรวจสอบว่าเวลาปัจจุบันตรงกับช่วงเวลาเข้าซื้อหรือไม่
+  const activeWindow = checkActiveTradingWindow(currentTime, seasonInfo);
   const formattedTimeStr = currentTime.toLocaleTimeString('th-TH', { hour12: false });
+
+  // ตรวจสอบวันปิดทำการตลาดหุ้นสหรัฐฯ (วันนี้ / พรุ่งนี้ / เสาร์-อาทิตย์ / วันหยุดนักขัตฤกษ์)
+  const closureCheck: UpcomingClosureCheck = useMemo(
+    () => checkUpcomingMarketClosure(currentTime, holidays),
+    [currentTime.getDate(), holidays]
+  );
 
   return (
     <Box
@@ -212,11 +245,12 @@ export const DraggableTradingNote: React.FC = () => {
     >
       <Box
         sx={{
-          width: isMinimized ? 'auto' : { xs: 290, sm: 320 },
+          width: { xs: 340, sm: 390 },
+          maxWidth: 'calc(100vw - 20px)',
           borderRadius: '14px',
           background: isLight
-            ? 'linear-gradient(135deg, rgba(255, 253, 240, 0.92) 0%, rgba(254, 249, 215, 0.88) 100%)'
-            : 'linear-gradient(135deg, rgba(24, 24, 27, 0.88) 0%, rgba(15, 23, 42, 0.92) 100%)',
+            ? 'linear-gradient(135deg, rgba(255, 253, 240, 0.94) 0%, rgba(254, 249, 215, 0.9) 100%)'
+            : 'linear-gradient(135deg, rgba(24, 24, 27, 0.9) 0%, rgba(15, 23, 42, 0.94) 100%)',
           backdropFilter: 'blur(16px)',
           border: isLight
             ? activeWindow?.isHot
@@ -236,7 +270,7 @@ export const DraggableTradingNote: React.FC = () => {
           cursor: isDragging ? 'grabbing' : 'default',
         }}
       >
-        {/* แถบหัวโน้ต (Draggable Header Bar) */}
+        {/* แถบหัวโน้ต (Draggable Header Bar) พร้อมหมุดสีแดงตัวจริงด้านซ้ายสุด */}
         <Box
           onMouseDown={handleMouseDown}
           onTouchStart={handleTouchStart}
@@ -257,21 +291,23 @@ export const DraggableTradingNote: React.FC = () => {
                 : '1px solid rgba(255, 255, 255, 0.08)',
           }}
         >
-          <Stack direction="row" alignItems="center" spacing={1}>
-            <Box
+          <Stack direction="row" alignItems="center" spacing={0.75}>
+            {/* หมุดกระดาษสีแดงแท้ๆ ไม่มีกรอบ (Authentic Red Pushpin) */}
+            <Typography
+              component="span"
               sx={{
-                display: 'flex',
+                fontSize: '1.05rem',
+                lineHeight: 1,
+                display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: 24,
-                height: 24,
-                borderRadius: '6px',
-                background: isLight ? 'rgba(245, 158, 11, 0.2)' : 'rgba(245, 158, 11, 0.25)',
-                color: isLight ? '#b45309' : '#fbbf24',
+                filter: 'drop-shadow(0 2px 3px rgba(0,0,0,0.25))',
+                transform: 'rotate(-5deg)',
+                userSelect: 'none',
               }}
             >
-              <Pin size={13} style={{ transform: 'rotate(-45deg)' }} />
-            </Box>
+              📌
+            </Typography>
             <Typography
               variant="caption"
               fontWeight="bold"
@@ -282,10 +318,9 @@ export const DraggableTradingNote: React.FC = () => {
                 letterSpacing: '-0.2px',
                 display: 'flex',
                 alignItems: 'center',
-                gap: 0.5,
               }}
             >
-              📌 โน้ตเตือนสติการเข้าซื้อ
+              โน้ตเตือนสติการเข้าซื้อ
             </Typography>
           </Stack>
 
@@ -338,234 +373,151 @@ export const DraggableTradingNote: React.FC = () => {
         {/* เนื้อหากระดาษโน้ต */}
         <Collapse in={!isMinimized} timeout={200}>
           <Box sx={{ p: 1.5 }}>
-            {activeWindow ? (
+            {/* ⚠️ แบนเนอร์เตือนสติอัจฉริยะเมื่อ "วันถัดไป" หรือ "วันนี้" ตลาดปิดทำการ (รวมเสาร์-อาทิตย์) */}
+            {(closureCheck.isClosedToday || closureCheck.isClosedTomorrow) && (
               <Box
                 sx={{
                   mb: 1.25,
-                  p: 0.9,
+                  p: 1,
                   borderRadius: '8px',
-                  backgroundColor: isLight ? 'rgba(16, 185, 129, 0.15)' : 'rgba(16, 185, 129, 0.25)',
-                  border: '1px solid rgba(16, 185, 129, 0.4)',
+                  background: closureCheck.isClosedToday
+                    ? isLight
+                      ? 'linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(220, 38, 38, 0.08) 100%)'
+                      : 'linear-gradient(135deg, rgba(239, 68, 68, 0.25) 0%, rgba(185, 28, 28, 0.2) 100%)'
+                    : isLight
+                      ? 'linear-gradient(135deg, rgba(245, 158, 11, 0.16) 0%, rgba(217, 119, 6, 0.1) 100%)'
+                      : 'linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(180, 83, 9, 0.2) 100%)',
+                  border: closureCheck.isClosedToday
+                    ? '1.5px solid rgba(239, 68, 68, 0.4)'
+                    : '1.5px solid rgba(245, 158, 11, 0.45)',
                   display: 'flex',
-                  alignItems: 'center',
-                  gap: 1,
-                  animation: 'pulse 2s infinite ease-in-out',
-                  '@keyframes pulse': {
-                    '0%': { boxShadow: '0 0 0 0 rgba(16, 185, 129, 0.4)' },
-                    '70%': { boxShadow: '0 0 0 6px rgba(16, 185, 129, 0)' },
-                    '100%': { boxShadow: '0 0 0 0 rgba(16, 185, 129, 0)' },
-                  },
+                  alignItems: 'flex-start',
+                  gap: 0.8,
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
                 }}
               >
-                <Sparkles size={16} color="#10b981" />
-                <Typography
-                  variant="caption"
-                  fontWeight="bold"
-                  sx={{ color: isLight ? '#065f46' : '#34d399', fontSize: '0.72rem' }}
-                >
-                  {activeWindow.text}
-                </Typography>
-              </Box>
-            ) : (
-              <Stack direction="row" justifyContent="space-between" alignItems="center" mb={1.25}>
-                <Stack direction="row" alignItems="center" spacing={0.5}>
-                  <Clock size={12} color={isLight ? '#b45309' : '#fbbf24'} />
-                  <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: '0.7rem' }}>
-                    เวลาปัจจุบัน: <strong style={{ color: isLight ? '#1f2937' : '#f3f4f6' }}>{formattedTimeStr}</strong>
-                  </Typography>
-                </Stack>
-                <Chip
-                  label="เฝ้าระวังจังหวะ"
-                  size="small"
-                  sx={{
-                    height: 18,
-                    fontSize: '0.62rem',
-                    fontWeight: 600,
-                    backgroundColor: isLight ? 'rgba(245, 158, 11, 0.12)' : 'rgba(245, 158, 11, 0.2)',
-                    color: isLight ? '#b45309' : '#f59e0b',
-                    border: '1px solid rgba(245, 158, 11, 0.3)',
-                  }}
+                <AlertTriangle
+                  size={16}
+                  color={closureCheck.isClosedToday ? '#ef4444' : '#f59e0b'}
+                  style={{ flexShrink: 0, marginTop: 1 }}
                 />
-              </Stack>
+                <Box sx={{ minWidth: 0 }}>
+                  <Typography
+                    variant="caption"
+                    fontWeight="bold"
+                    sx={{
+                      fontSize: '0.74rem',
+                      color: closureCheck.isClosedToday
+                        ? isLight ? '#991b1b' : '#fca5a5'
+                        : isLight ? '#92400e' : '#fde047',
+                      display: 'block',
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {closureCheck.reason}
+                  </Typography>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      fontSize: '0.67rem',
+                      color: closureCheck.isClosedToday
+                        ? isLight ? '#b91c1c' : '#f87171'
+                        : isLight ? '#b45309' : '#fcd34d',
+                      display: 'block',
+                      mt: 0.3,
+                      fontWeight: 600,
+                    }}
+                  >
+                    {closureCheck.adviceText}
+                  </Typography>
+                </Box>
+              </Box>
             )}
 
-            {/* รายการช่วงเวลาเข้าซื้อที่กำหนด */}
-            <Stack spacing={0.9}>
-              {/* ช่วงที่ 1: 03:00 - 03:05 */}
+            {/* แถบสลับแท็บ (Tab Switcher: เวลาเข้าซื้อ vs ปฏิทินวันหยุด) */}
+            <Stack
+              direction="row"
+              spacing={0.5}
+              sx={{
+                mb: 1.25,
+                p: 0.4,
+                borderRadius: '8px',
+                backgroundColor: isLight ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.05)',
+                border: isLight ? '1px solid rgba(0,0,0,0.06)' : '1px solid rgba(255,255,255,0.08)',
+              }}
+            >
               <Box
+                onClick={() => setActiveTab('windows')}
                 sx={{
-                  p: 1,
-                  borderRadius: '8px',
-                  backgroundColor: isLight ? 'rgba(255, 255, 255, 0.7)' : 'rgba(255, 255, 255, 0.04)',
-                  border: isLight ? '1px solid rgba(0,0,0,0.06)' : '1px solid rgba(255, 255, 255, 0.06)',
+                  flex: 1,
+                  py: 0.5,
+                  px: 1,
+                  borderRadius: '6px',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'space-between',
-                  transition: 'all 0.2s ease',
-                  '&:hover': {
-                    borderColor: 'rgba(16, 185, 129, 0.4)',
-                    backgroundColor: isLight ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.07)',
-                  },
+                  justifyContent: 'center',
+                  gap: 0.6,
+                  cursor: 'pointer',
+                  backgroundColor: activeTab === 'windows'
+                    ? isLight ? '#ffffff' : 'rgba(255,255,255,0.14)'
+                    : 'transparent',
+                  color: activeTab === 'windows'
+                    ? isLight ? '#0f172a' : '#ffffff'
+                    : 'text.secondary',
+                  boxShadow: activeTab === 'windows' ? '0 1px 4px rgba(0,0,0,0.1)' : 'none',
+                  transition: 'all 0.15s ease',
                 }}
               >
-                <Stack direction="row" alignItems="center" spacing={1}>
-                  <CheckCircle2 size={15} color="#10b981" />
-                  <Box>
-                    <Typography
-                      variant="body2"
-                      fontWeight="bold"
-                      sx={{
-                        fontSize: '0.82rem',
-                        color: isLight ? '#065f46' : '#34d399',
-                        fontFamily: 'monospace',
-                      }}
-                    >
-                      3:00 - 3:05
-                    </Typography>
-                    <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: '0.68rem', display: 'block' }}>
-                      จังหวะเข้าซื้อที่ดีที่สุด (Primary Entry)
-                    </Typography>
-                  </Box>
-                </Stack>
-                <Chip
-                  label="Best Time"
-                  size="small"
-                  sx={{
-                    height: 18,
-                    fontSize: '0.6rem',
-                    fontWeight: 700,
-                    backgroundColor: 'rgba(16, 185, 129, 0.15)',
-                    color: '#10b981',
-                    border: '1px solid rgba(16, 185, 129, 0.3)',
-                  }}
-                />
+                <Clock size={12} color={activeTab === 'windows' ? '#10b981' : 'currentColor'} />
+                <Typography variant="caption" fontWeight={activeTab === 'windows' ? 700 : 500} sx={{ fontSize: '0.7rem' }}>
+                  เวลาเข้าซื้อ
+                </Typography>
               </Box>
 
-              {/* ช่วงที่ 2: 3:25 - 3:30 (ถ้ากราฟเป็นขาลง) */}
               <Box
+                onClick={() => setActiveTab('holidays')}
                 sx={{
-                  p: 1,
-                  borderRadius: '8px',
-                  backgroundColor: isLight ? 'rgba(255, 255, 255, 0.7)' : 'rgba(255, 255, 255, 0.04)',
-                  border: isLight ? '1px solid rgba(0,0,0,0.06)' : '1px solid rgba(255, 255, 255, 0.06)',
+                  flex: 1,
+                  py: 0.5,
+                  px: 1,
+                  borderRadius: '6px',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'space-between',
-                  transition: 'all 0.2s ease',
-                  '&:hover': {
-                    borderColor: 'rgba(245, 158, 11, 0.4)',
-                    backgroundColor: isLight ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.07)',
-                  },
+                  justifyContent: 'center',
+                  gap: 0.6,
+                  cursor: 'pointer',
+                  backgroundColor: activeTab === 'holidays'
+                    ? isLight ? '#ffffff' : 'rgba(255,255,255,0.14)'
+                    : 'transparent',
+                  color: activeTab === 'holidays'
+                    ? isLight ? '#0f172a' : '#ffffff'
+                    : 'text.secondary',
+                  boxShadow: activeTab === 'holidays' ? '0 1px 4px rgba(0,0,0,0.1)' : 'none',
+                  transition: 'all 0.15s ease',
                 }}
               >
-                <Stack direction="row" alignItems="center" spacing={1}>
-                  <TrendingDown size={15} color="#f59e0b" />
-                  <Box>
-                    <Typography
-                      variant="body2"
-                      fontWeight="bold"
-                      sx={{
-                        fontSize: '0.82rem',
-                        color: isLight ? '#92400e' : '#fbbf24',
-                        fontFamily: 'monospace',
-                      }}
-                    >
-                      3:25 - 3:30
-                    </Typography>
-                    <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: '0.68rem', display: 'block' }}>
-                      เฉพาะเมื่อกราฟเป็นขาลง
-                    </Typography>
-                  </Box>
-                </Stack>
-                <Chip
-                  label="Downtrend"
-                  size="small"
-                  sx={{
-                    height: 18,
-                    fontSize: '0.6rem',
-                    fontWeight: 700,
-                    backgroundColor: 'rgba(245, 158, 11, 0.15)',
-                    color: '#f59e0b',
-                    border: '1px solid rgba(245, 158, 11, 0.3)',
-                  }}
-                />
-              </Box>
-
-              {/* ช่วงที่ 3: 4:25 - 4:30 (ถ้ากราฟเป็นขาลง) */}
-              <Box
-                sx={{
-                  p: 1,
-                  borderRadius: '8px',
-                  backgroundColor: isLight ? 'rgba(255, 255, 255, 0.7)' : 'rgba(255, 255, 255, 0.04)',
-                  border: isLight ? '1px solid rgba(0,0,0,0.06)' : '1px solid rgba(255, 255, 255, 0.06)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  transition: 'all 0.2s ease',
-                  '&:hover': {
-                    borderColor: 'rgba(245, 158, 11, 0.4)',
-                    backgroundColor: isLight ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.07)',
-                  },
-                }}
-              >
-                <Stack direction="row" alignItems="center" spacing={1}>
-                  <TrendingDown size={15} color="#f59e0b" />
-                  <Box>
-                    <Typography
-                      variant="body2"
-                      fontWeight="bold"
-                      sx={{
-                        fontSize: '0.82rem',
-                        color: isLight ? '#92400e' : '#fbbf24',
-                        fontFamily: 'monospace',
-                      }}
-                    >
-                      4:25 - 4:30
-                    </Typography>
-                    <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: '0.68rem', display: 'block' }}>
-                      เฉพาะเมื่อกราฟเป็นขาลง
-                    </Typography>
-                  </Box>
-                </Stack>
-                <Chip
-                  label="Downtrend"
-                  size="small"
-                  sx={{
-                    height: 18,
-                    fontSize: '0.6rem',
-                    fontWeight: 700,
-                    backgroundColor: 'rgba(245, 158, 11, 0.15)',
-                    color: '#f59e0b',
-                    border: '1px solid rgba(245, 158, 11, 0.3)',
-                  }}
-                />
+                <CalendarDays size={12} color={activeTab === 'holidays' ? '#3b82f6' : 'currentColor'} />
+                <Typography variant="caption" fontWeight={activeTab === 'holidays' ? 700 : 500} sx={{ fontSize: '0.7rem' }}>
+                  วันหยุดตลาด
+                </Typography>
               </Box>
             </Stack>
 
-            {/* Mindset / Warning Footer Note */}
-            <Box
-              sx={{
-                mt: 1.25,
-                pt: 1,
-                borderTop: isLight ? '1px dashed rgba(0,0,0,0.1)' : '1px dashed rgba(255,255,255,0.1)',
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: 0.75,
-              }}
-            >
-              <AlertCircle size={13} color="#06b6d4" style={{ marginTop: 2, flexShrink: 0 }} />
-              <Typography
-                variant="caption"
-                sx={{
-                  color: 'text.secondary',
-                  fontSize: '0.67rem',
-                  lineHeight: 1.35,
-                  fontStyle: 'italic',
-                }}
-              >
-                💡 เตือนใจ: รอรอบเวลาแท่งเทียน อย่ารีบเข้าซื้อก่อนเวลา คุมอารมณ์และแผนการแบ่งไม้เสมอ
-              </Typography>
-            </Box>
+            {/* แสดงเนื้อหาตามแท็บที่เลือก */}
+            {activeTab === 'windows' ? (
+              <TradingWindowsTab
+                seasonInfo={seasonInfo}
+                activeWindow={activeWindow}
+                formattedTimeStr={formattedTimeStr}
+              />
+            ) : (
+              <MarketHolidaysTab
+                holidays={holidays}
+                source={holidaySource}
+                isLoading={isLoadingHolidays}
+                onRefresh={loadHolidays}
+              />
+            )}
           </Box>
         </Collapse>
       </Box>
