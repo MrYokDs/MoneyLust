@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { PATHS } from '../routes';
 import { useAppSelector, useAppDispatch } from '../store';
 import { reorderPortfolios } from '../store/stockPlannerSlice';
+import { DataBackupModal } from './DataBackupModal';
 import {
   Box,
   Drawer,
@@ -478,8 +479,10 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
             </Typography>
           </Stack>
 
-          {/* Theme switcher & Profile */}
-          <Stack direction="row" alignItems="center" spacing={2}>
+          {/* Theme switcher, Backup & Profile */}
+          <Stack direction="row" alignItems="center" spacing={1.5}>
+            <DataBackupModal />
+
             <IconButton onClick={() => setDarkMode(!darkMode)} color="inherit">
               {darkMode ? <Sun size={20} color="#f59e0b" /> : <Moon size={20} color="#6366f1" />}
             </IconButton>

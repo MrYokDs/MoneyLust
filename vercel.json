@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/stock-search/(.*)",
+      "destination": "https://query2.finance.yahoo.com/v1/finance/search/$1"
+    },
+    {
+      "source": "/api/nasdaq-summary/(.*)",
+      "destination": "https://api.nasdaq.com/api/quote/$1"
+    },
+    {
+      "source": "/api/nasdaq-company/(.*)",
+      "destination": "https://api.nasdaq.com/api/company/$1"
+    },
+    {
+      "source": "/api/translate/(.*)",
+      "destination": "https://translate.googleapis.com/translate_a/single/$1"
+    },
+    {
+      "source": "/api/nasdaq-analyst/(.*)",
+      "destination": "https://api.nasdaq.com/api/analyst/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
