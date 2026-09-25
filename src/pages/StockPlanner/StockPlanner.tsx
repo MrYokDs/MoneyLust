@@ -22,6 +22,7 @@ import {
   convertCurrencyAmount,
 } from '../../utils/stockMath';
 import { fetchCompleteStockDetail } from '../../utils/stockApi';
+import { fetchLiveExchangeRate, getCachedExchangeRate } from '../../utils/exchangeRate';
 import GridVisualizer from '../../components/GridVisualizer';
 import { StockOption, StockDetail } from './types';
 import StockPlannerForm from './sections/StockPlannerForm';
@@ -156,7 +157,7 @@ export const StockPlanner: React.FC = () => {
   const roundingMode = currentParams.roundingMode;
   const currency = currentParams.currency;
   const portfolioId = currentParams.portfolioId;
-  const exchangeRate = parseFloat(currentParams.exchangeRate) || 36.5;
+  const exchangeRate = parseFloat(currentParams.exchangeRate) || getCachedExchangeRate();
 
   const maxPossibleTranches = useMemo(() => {
     if (totalBudget <= 0 || currentPrice <= 0) return 99;
@@ -195,26 +196,24 @@ export const StockPlanner: React.FC = () => {
     }
   }, [maxPossibleTranches, roundingMode, currentParams.tranchesCount, dispatch]);
 
-  // Poll real-time USD/THB exchange rate every 5 seconds if currency is USD
+  // Poll real-time USD/THB exchange rate every 15 seconds if currency is USD
   useEffect(() => {
     if (currency !== 'USD') return;
 
+    let isMounted = true;
     const fetchRate = async () => {
-      try {
-        const res = await fetch('https://open.er-api.com/v6/latest/USD');
-        const data = await res.json();
-        if (data && data.rates && data.rates.THB) {
-          const liveRate = data.rates.THB;
-          dispatch(updateCurrentParams({ exchangeRate: liveRate.toFixed(2) }));
-        }
-      } catch (err) {
-        console.error('Failed to fetch real-time exchange rate:', err);
+      const liveRate = await fetchLiveExchangeRate();
+      if (liveRate && isMounted) {
+        dispatch(updateCurrentParams({ exchangeRate: liveRate.toFixed(2) }));
       }
     };
 
     fetchRate();
-    const interval = setInterval(fetchRate, 5000);
-    return () => clearInterval(interval);
+    const interval = setInterval(fetchRate, 15000);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
   }, [currency, dispatch]);
 
   // Memoized Calculation Results

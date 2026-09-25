@@ -15,6 +15,7 @@ import {
   calculateDailyGrowthPlan,
   findPortfolioBenchmarkPosition,
 } from '../../utils/growthPlanMath';
+import { fetchLiveExchangeRate, getCachedExchangeRate } from '../../utils/exchangeRate';
 import { GrowthPlanFormData } from './types';
 import GrowthPlanForm from './sections/GrowthPlanForm';
 import PortfolioBenchmarkCard from './sections/PortfolioBenchmarkCard';
@@ -34,7 +35,7 @@ const loadSavedConfig = (): GrowthPlanFormData => {
       const parsed = JSON.parse(saved);
       return {
         ...parsed,
-        exchangeRate: parsed.exchangeRate || '36.50',
+        exchangeRate: parsed.exchangeRate || getCachedExchangeRate().toFixed(2),
       };
     }
   } catch (e) {
@@ -47,7 +48,7 @@ const loadSavedConfig = (): GrowthPlanFormData => {
     targetAmount: '1000000',
     portfolioId: 'none',
     currency: 'THB',
-    exchangeRate: '36.50',
+    exchangeRate: getCachedExchangeRate().toFixed(2),
   };
 };
 
@@ -164,25 +165,23 @@ export const InvestmentPlan: React.FC = () => {
 
   // ดึงอัตราแลกเปลี่ยน USD/THB แบบเรียลไทม์
   useEffect(() => {
+    let isMounted = true;
     const fetchRate = async () => {
-      try {
-        const res = await fetch('https://open.er-api.com/v6/latest/USD');
-        const data = await res.json();
-        if (data && data.rates && data.rates.THB) {
-          const liveRate = data.rates.THB;
-          setFormData((prev) => ({
-            ...prev,
-            exchangeRate: liveRate.toFixed(2),
-          }));
-        }
-      } catch (err) {
-        console.error('Failed to fetch real-time exchange rate in InvestmentPlan:', err);
+      const liveRate = await fetchLiveExchangeRate();
+      if (liveRate && isMounted) {
+        setFormData((prev) => ({
+          ...prev,
+          exchangeRate: liveRate.toFixed(2),
+        }));
       }
     };
 
     fetchRate();
-    const interval = setInterval(fetchRate, 5000);
-    return () => clearInterval(interval);
+    const interval = setInterval(fetchRate, 15000);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
   }, []);
 
   /**

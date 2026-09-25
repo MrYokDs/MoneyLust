@@ -9,6 +9,7 @@ import {
   FeeMode,
   GrowthPlanConfig,
 } from '../types';
+import { getCachedExchangeRate, saveCachedExchangeRate } from '../utils/exchangeRate';
 
 export type { Portfolio, CapitalAdjustment };
 
@@ -116,7 +117,7 @@ const initialState: StockPlannerState = {
     dropMode: 'progressive',
     roundingMode: 'integer',
     currency: 'USD',
-    exchangeRate: '36.50',
+    exchangeRate: getCachedExchangeRate().toFixed(2),
     targetProfitPercent: '10',
     feePercent: '0.10', // Webull (0.10%)
     feeMode: 'percent',
@@ -164,6 +165,12 @@ export const stockPlannerSlice = createSlice({
     },
     updateCurrentParams: (state, action: PayloadAction<Partial<StockPlannerState['currentParams']>>) => {
       state.currentParams = { ...state.currentParams, ...action.payload };
+      if (action.payload.exchangeRate) {
+        const parsed = parseFloat(action.payload.exchangeRate);
+        if (!isNaN(parsed) && parsed > 0) {
+          saveCachedExchangeRate(parsed);
+        }
+      }
     },
     setActivePlanId: (state, action: PayloadAction<string | null>) => {
       state.activePlanId = action.payload;

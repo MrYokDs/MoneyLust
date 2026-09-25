@@ -4,6 +4,7 @@ import { PATHS } from '../routes';
 import { useAppSelector, useAppDispatch } from '../store';
 import { reorderPortfolios } from '../store/stockPlannerSlice';
 import { DataBackupModal } from './DataBackupModal';
+import { TradingNoteHeaderWidget } from './TradingNoteHeaderWidget';
 import {
   Box,
   Drawer,
@@ -479,8 +480,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
             </Typography>
           </Stack>
 
-          {/* Theme switcher, Backup & Profile */}
+          {/* Theme switcher, Backup, Trading Note & Profile */}
           <Stack direction="row" alignItems="center" spacing={1.5}>
+            <TradingNoteHeaderWidget />
             <DataBackupModal />
 
             <IconButton onClick={() => setDarkMode(!darkMode)} color="inherit">

@@ -5,7 +5,9 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { getTheme } from './theme';
 import Layout from './components/Layout';
 import AppRoutes from './routes';
-import DraggableTradingNote from './components/DraggableTradingNote';
+import { useAppDispatch } from './store';
+import { updateCurrentParams } from './store/stockPlannerSlice';
+import { fetchLiveExchangeRate } from './utils/exchangeRate';
 
 /**
  * คอมโพเนนต์หลักของแอปพลิเคชัน (Root Application Component)
@@ -33,6 +35,26 @@ export const App: React.FC = () => {
     }
   }, [darkMode]);
 
+  const dispatch = useAppDispatch();
+
+  // ดึงอัตราแลกเปลี่ยน USD/THB แบบเรียลไทม์ระดับ Global ทันทีที่เปิดแอป และคอยอัปเดตทุก 60 วินาที
+  useEffect(() => {
+    let isMounted = true;
+    const updateRate = async () => {
+      const rate = await fetchLiveExchangeRate();
+      if (rate && isMounted) {
+        dispatch(updateCurrentParams({ exchangeRate: rate.toFixed(2) }));
+      }
+    };
+
+    updateRate();
+    const interval = setInterval(updateRate, 60000);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
+  }, [dispatch]);
+
   const theme = getTheme(darkMode ? 'dark' : 'light');
 
   return (
@@ -42,8 +64,6 @@ export const App: React.FC = () => {
         <Layout darkMode={darkMode} setDarkMode={setDarkMode}>
           <AppRoutes />
         </Layout>
-        {/* วิดเจ็ตกระดาษโน้ตเตือนสติการเข้าซื้อ แสดงผลลอยอยู่ทุกหน้า */}
-        <DraggableTradingNote />
       </BrowserRouter>
     </ThemeProvider>
   );

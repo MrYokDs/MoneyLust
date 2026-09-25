@@ -394,8 +394,8 @@ export const checkUpcomingMarketClosure = (
   // 1. กรณีวันนี้ตลาดปิดทำการ
   if (isTodayWeekend || holidayToday) {
     const reason = holidayToday
-      ? `วันนี้ตลาดหุ้นปิดทำการเนื่องใน${holidayToday.eventNameTh}`
-      : `วันนี้เป็นวันหยุดสุดสัปดาห์ (${nyWeekday === 'Sat' ? 'วันเสาร์' : 'วันอาทิตย์'}) ตลาดหุ้นปิดทำการ`;
+      ? `วันนี้ตลาดปิดทำการเนื่องใน${holidayToday.eventNameTh}`
+      : `วันนี้ตลาดปิดทำการ (${nyWeekday === 'Sat' ? 'วันเสาร์' : 'วันอาทิตย์'})`;
 
     return {
       isClosedTomorrow: isTomorrowWeekend || Boolean(holidayTomorrow),
@@ -404,15 +404,15 @@ export const checkUpcomingMarketClosure = (
       closureType: holidayToday ? 'holiday' : 'weekend',
       holidayName: holidayToday?.eventNameTh,
       thaiDateStr: formatUsDateToThai(todayNyDateStr),
-      adviceText: '⚠️ วันนี้ตลาดปิดทำการ: ไม่ควรเปิดออร์เดอร์ / แนะนำรอเปิดตลาดในรอบถัดไป',
+      adviceText: 'คำแนะนำ: งดส่งคำสั่งซื้อ • แนะนำรอเปิดตลาดในรอบถัดไป',
     };
   }
 
   // 2. กรณีวันพรุ่งนี้เป็นวันปิดทำการ (เตือนล่วงหน้า)
   if (isTomorrowWeekend || holidayTomorrow) {
     const reason = holidayTomorrow
-      ? `วันถัดไป (${formatUsDateToThai(tomorrowNyDateStr)}) ตลาดปิดทำการเนื่องใน${holidayTomorrow.eventNameTh}`
-      : `วันถัดไปเป็นวันหยุดสุดสัปดาห์ (${tomorrowNyWeekday === 'Sat' ? 'วันเสาร์' : 'วันอาทิตย์'}) ตลาดหุ้นปิดทำการ`;
+      ? `พรุ่งนี้ตลาดปิดเนื่องใน${holidayTomorrow.eventNameTh}`
+      : `พรุ่งนี้ตลาดปิดทำการ (${tomorrowNyWeekday === 'Sat' ? 'วันเสาร์' : 'วันอาทิตย์'})`;
 
     return {
       isClosedTomorrow: true,
@@ -421,7 +421,7 @@ export const checkUpcomingMarketClosure = (
       closureType: holidayTomorrow ? 'holiday' : 'weekend',
       holidayName: holidayTomorrow?.eventNameTh,
       thaiDateStr: formatUsDateToThai(tomorrowNyDateStr),
-      adviceText: '⚠️ วันถัดไปตลาดหุ้นปิดทำการ: ไม่ควรเข้าซื้อ / หลีกเลี่ยงการถือข้ามวันหยุด',
+      adviceText: 'คำแนะนำ: งดเปิดสถานะใหม่ • หลีกเลี่ยงการถือหุ้นข้ามวันหยุด',
     };
   }
 

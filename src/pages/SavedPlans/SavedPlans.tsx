@@ -3,7 +3,7 @@
  * หน้าแสดงรายละเอียดพอร์ตการลงทุน แผนการแบ่งไม้ที่บันทึกไว้ และการปรับปรุงเงินต้นทุน
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSnackbar } from 'notistack';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Box } from '@mui/material';
@@ -19,6 +19,7 @@ import {
   deletePortfolioGrowthPlan,
 } from '../../store/stockPlannerSlice';
 import { calculatePortfolioSummary, CalculationResult } from '../../utils/stockMath';
+import { fetchLiveExchangeRate, getCachedExchangeRate } from '../../utils/exchangeRate';
 import { TimelineItem, PlanToDelete } from './types';
 import PortfolioHeader from './sections/PortfolioHeader';
 import PortfolioSummaryCards from './sections/PortfolioSummaryCards';
@@ -37,7 +38,20 @@ export const SavedPlans: React.FC = () => {
   const savedPlans = useAppSelector((state) => state.stockPlanner.savedPlans);
   const portfolios = useAppSelector((state) => state.stockPlanner.portfolios);
   const currentParams = useAppSelector((state) => state.stockPlanner.currentParams);
-  const exchangeRate = parseFloat(currentParams.exchangeRate) || 36.5;
+  const exchangeRate = parseFloat(currentParams.exchangeRate) || getCachedExchangeRate();
+
+  // ดึงอัตราแลกเปลี่ยน USD/THB ล่าสุดทันทีเมื่อโหลดเข้าหน้าพอร์ตการลงทุน
+  useEffect(() => {
+    let isMounted = true;
+    fetchLiveExchangeRate().then((rate) => {
+      if (rate && isMounted) {
+        dispatch(updateCurrentParams({ exchangeRate: rate.toFixed(2) }));
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, [dispatch]);
 
   const [viewMode, setViewMode] = useState<'grid' | 'table'>('table');
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
