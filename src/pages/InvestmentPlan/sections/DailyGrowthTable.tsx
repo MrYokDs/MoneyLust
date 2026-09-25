@@ -19,7 +19,7 @@ import {
   Button,
   LinearProgress,
 } from '@mui/material';
-import { MapPin, Calendar, ArrowUpRight } from 'lucide-react';
+import { MapPin, Calendar, ArrowUpRight, Target } from 'lucide-react';
 import GlassCard from '../../../components/GlassCard';
 import { DailyGrowthItem, CurrencyMode, PortfolioBenchmark } from '../../../types';
 
@@ -46,6 +46,7 @@ export const DailyGrowthTable: React.FC<DailyGrowthTableProps> = ({
   const [rowsPerPage, setRowsPerPage] = useState(25);
 
   const matchedDay = benchmark?.matchedDay;
+  const expectedDay = benchmark?.expectedDay;
 
   // ฟังก์ชันจัดรูปแบบตัวเลขเงิน
   const formatMoney = (val: number): string => {
@@ -63,6 +64,18 @@ export const DailyGrowthTable: React.FC<DailyGrowthTableProps> = ({
   const handleJumpToMatchedDay = (): void => {
     if (matchedDay && matchedDay > 0) {
       const targetPage = Math.floor((matchedDay - 1) / rowsPerPage);
+      setPage(targetPage);
+    }
+  };
+
+  /**
+   * นำทางไปยังหน้าที่ควรจะอยู่ตามแผนคำนวณจากวันเริ่มเทรด (Expected Day)
+   * 
+   * @returns void
+   */
+  const handleJumpToExpectedDay = (): void => {
+    if (expectedDay && expectedDay > 0) {
+      const targetPage = Math.floor((expectedDay - 1) / rowsPerPage);
       setPage(targetPage);
     }
   };
@@ -112,18 +125,33 @@ export const DailyGrowthTable: React.FC<DailyGrowthTableProps> = ({
             </Box>
           </Stack>
 
-          {matchedDay && matchedDay > 0 && (
-            <Button
-              size="small"
-              variant="outlined"
-              color="info"
-              startIcon={<MapPin size={14} />}
-              onClick={handleJumpToMatchedDay}
-              sx={{ fontFamily: 'Prompt', fontSize: '0.8rem', borderRadius: 2 }}
-            >
-              กระโดดไปที่พอร์ตปัจจุบัน (Day {matchedDay})
-            </Button>
-          )}
+          <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+            {matchedDay && matchedDay > 0 && (
+              <Button
+                size="small"
+                variant="outlined"
+                color="success"
+                startIcon={<MapPin size={14} />}
+                onClick={handleJumpToMatchedDay}
+                sx={{ fontFamily: 'Prompt', fontSize: '0.78rem', borderRadius: 2 }}
+              >
+                พอร์ตคุณ (Day {matchedDay})
+              </Button>
+            )}
+
+            {expectedDay && expectedDay > 0 && expectedDay !== matchedDay && (
+              <Button
+                size="small"
+                variant="outlined"
+                color="warning"
+                startIcon={<Target size={14} />}
+                onClick={handleJumpToExpectedDay}
+                sx={{ fontFamily: 'Prompt', fontSize: '0.78rem', borderRadius: 2 }}
+              >
+                ตามแผนวันนี้ (Day {expectedDay})
+              </Button>
+            )}
+          </Stack>
         </Stack>
 
         {/* ตารางแสดงผล */}
@@ -131,7 +159,7 @@ export const DailyGrowthTable: React.FC<DailyGrowthTableProps> = ({
           <Table size="small">
             <TableHead>
               <TableRow sx={{ bgcolor: (theme) => theme.palette.mode === 'light' ? 'rgba(0,0,0,0.03)' : 'rgba(255,255,255,0.03)' }}>
-                <TableCell sx={{ fontWeight: 'bold', fontFamily: 'Prompt', width: '100px' }}>วันที่</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', fontFamily: 'Prompt', width: '130px' }}>วันที่</TableCell>
                 <TableCell align="right" sx={{ fontWeight: 'bold', fontFamily: 'Prompt' }}>เงินต้นต้นวัน</TableCell>
                 <TableCell align="right" sx={{ fontWeight: 'bold', fontFamily: 'Prompt' }}>กำไรประจำวัน</TableCell>
                 <TableCell align="right" sx={{ fontWeight: 'bold', fontFamily: 'Prompt' }}>ยอดสิ้นวัน</TableCell>
@@ -143,18 +171,40 @@ export const DailyGrowthTable: React.FC<DailyGrowthTableProps> = ({
             <TableBody>
               {paginatedItems.map((item) => {
                 const isCurrentPosition = matchedDay === item.day;
+                const isExpectedPosition = expectedDay === item.day;
+                const isBothSame = isCurrentPosition && isExpectedPosition;
+
+                let rowBgColor: any = undefined;
+                let rowBorderLeft: any = undefined;
+
+                if (isBothSame) {
+                  rowBgColor = (theme: any) =>
+                    theme.palette.mode === 'light'
+                      ? 'rgba(16, 185, 129, 0.18)'
+                      : 'rgba(16, 185, 129, 0.25)';
+                  rowBorderLeft = '4px solid #10b981';
+                } else if (isCurrentPosition) {
+                  rowBgColor = (theme: any) =>
+                    theme.palette.mode === 'light'
+                      ? 'rgba(16, 185, 129, 0.15)'
+                      : 'rgba(16, 185, 129, 0.22)';
+                  rowBorderLeft = '4px solid #10b981';
+                } else if (isExpectedPosition) {
+                  rowBgColor = (theme: any) =>
+                    theme.palette.mode === 'light'
+                      ? 'rgba(245, 158, 11, 0.12)'
+                      : 'rgba(245, 158, 11, 0.18)';
+                  rowBorderLeft = '4px solid #f59e0b';
+                }
 
                 return (
                   <TableRow
                     key={item.day}
                     sx={{
                       transition: 'background-color 0.2s',
-                      ...(isCurrentPosition ? {
-                        bgcolor: (theme) =>
-                          theme.palette.mode === 'light'
-                            ? 'rgba(16, 185, 129, 0.15)'
-                            : 'rgba(16, 185, 129, 0.22)',
-                        borderLeft: '4px solid #10b981',
+                      ...(rowBgColor ? {
+                        bgcolor: rowBgColor,
+                        borderLeft: rowBorderLeft,
                       } : {
                         '&:hover': {
                           bgcolor: (theme) =>
@@ -166,17 +216,38 @@ export const DailyGrowthTable: React.FC<DailyGrowthTableProps> = ({
                     }}
                   >
                     {/* วันที่ */}
-                    <TableCell sx={{ fontFamily: 'Prompt', fontWeight: isCurrentPosition ? 'bold' : 'normal' }}>
-                      <Stack direction="row" alignItems="center" spacing={0.8}>
+                    <TableCell sx={{ fontFamily: 'Prompt', fontWeight: (isCurrentPosition || isExpectedPosition) ? 'bold' : 'normal' }}>
+                      <Stack direction="row" alignItems="center" spacing={0.8} flexWrap="wrap">
                         <span>Day {item.day}</span>
-                        {isCurrentPosition && (
+                        {isBothSame ? (
                           <Chip
                             icon={<MapPin size={12} />}
-                            label="พอร์ตคุณ"
+                            label="พอร์ตคุณ (ตรงตามแผน)"
                             size="small"
                             color="success"
                             sx={{ height: 20, fontSize: '0.65rem', fontWeight: 'bold', fontFamily: 'Prompt' }}
                           />
+                        ) : (
+                          <>
+                            {isCurrentPosition && (
+                              <Chip
+                                icon={<MapPin size={12} />}
+                                label="พอร์ตคุณ"
+                                size="small"
+                                color="success"
+                                sx={{ height: 20, fontSize: '0.65rem', fontWeight: 'bold', fontFamily: 'Prompt' }}
+                              />
+                            )}
+                            {isExpectedPosition && (
+                              <Chip
+                                icon={<Target size={12} />}
+                                label="ตามแผนวันนี้"
+                                size="small"
+                                color="warning"
+                                sx={{ height: 20, fontSize: '0.65rem', fontWeight: 'bold', fontFamily: 'Prompt' }}
+                              />
+                            )}
+                          </>
                         )}
                       </Stack>
                     </TableCell>

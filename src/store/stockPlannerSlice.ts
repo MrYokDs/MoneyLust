@@ -82,11 +82,16 @@ const loadPortfoliosFromLocalStorage = (): Portfolio[] => {
     const data = localStorage.getItem(LOCAL_PORTFOLIOS_KEY);
     const parsed = data ? JSON.parse(data) : [];
     if (parsed.length === 0) {
-      return [{ id: 'unassigned', name: 'ยังไม่ได้จัดพอร์ตการลงทุน', createdAt: new Date().toISOString() }];
+      return [{ id: 'unassigned', name: 'ยังไม่ได้จัดพอร์ต', createdAt: new Date().toISOString() }];
     }
-    return parsed;
+    // แปลงชื่อเก่าถ้ามี เพื่อให้อัปเดตเป็น 'ยังไม่ได้จัดพอร์ต' เสมอ
+    return parsed.map((p: Portfolio) =>
+      p.id === 'unassigned' && (p.name === 'ยังไม่ได้จัดพอร์ตการลงทุน' || !p.name)
+        ? { ...p, name: 'ยังไม่ได้จัดพอร์ต' }
+        : p
+    );
   } catch (e) {
-    return [{ id: 'unassigned', name: 'ยังไม่ได้จัดพอร์ตการลงทุน', createdAt: new Date().toISOString() }];
+    return [{ id: 'unassigned', name: 'ยังไม่ได้จัดพอร์ต', createdAt: new Date().toISOString() }];
   }
 };
 

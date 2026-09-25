@@ -35,6 +35,7 @@ interface PortfolioGrowthPlanCardProps {
   portfolio: Portfolio;
   currentPortfolioValue: number;
   exchangeRate: number;
+  firstTradeDate?: string;
   onOpenPlan: () => void;
   onDeletePlan: () => void;
 }
@@ -49,6 +50,7 @@ interface PortfolioGrowthPlanCardProps {
 export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = ({
   portfolio,
   currentPortfolioValue,
+  firstTradeDate,
   onOpenPlan,
   onDeletePlan,
 }) => {
@@ -126,26 +128,33 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
     currentPortfolioValue,
     growthPlan.initialCapital,
     growthPlan.targetAmount,
-    dailyItems
+    dailyItems,
+    firstTradeDate
   );
 
   const currencySymbol = growthPlan.currency === 'USD' ? '$' : '฿';
   const totalDays = dailyItems.length;
 
   const formatMoney = (val: number): string => {
-    return `${currencySymbol}${val.toLocaleString('en-US', {
+    const isNegative = val < 0;
+    const absVal = Math.abs(val);
+    const formatted = `${currencySymbol}${absVal.toLocaleString('en-US', {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     })}`;
+    return isNegative ? `-${formatted}` : formatted;
   };
 
-  const renderStatusBadge = (status?: string): React.ReactElement | null => {
+  const renderStatusBadge = (bench?: typeof benchmark): React.ReactElement | null => {
+    if (!bench) return null;
+    const { status } = bench;
+
     switch (status) {
       case 'achieved':
         return (
           <Chip
             icon={<Award size={13} />}
-            label="🏆 บรรลุเป้าหมายพอร์ตแล้ว!"
+            label="บรรลุเป้าหมายแล้ว"
             color="success"
             size="small"
             sx={{ fontWeight: 'bold', fontFamily: 'Prompt' }}
@@ -155,7 +164,7 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
         return (
           <Chip
             icon={<Zap size={13} />}
-            label="🚀 เติบโตเร็วกว่าแผน"
+            label="เร็วกว่าแผน"
             color="success"
             size="small"
             variant="outlined"
@@ -166,7 +175,7 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
         return (
           <Chip
             icon={<AlertTriangle size={13} />}
-            label="⏳ ตามหลังแผน"
+            label="ช้ากว่าแผน"
             color="warning"
             size="small"
             variant="outlined"
@@ -177,7 +186,7 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
         return (
           <Chip
             icon={<CheckCircle2 size={13} />}
-            label="✅ เดินหน้าตามแผน"
+            label="เดินหน้าตามแผน"
             color="primary"
             size="small"
             variant="outlined"
@@ -221,11 +230,11 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
               <Target size={20} />
             </Box>
             <Box>
-              <Stack direction="row" alignItems="center" spacing={1}>
+              <Stack direction="row" alignItems="center" spacing={1} flexWrap="wrap" useFlexGap>
                 <Typography variant="h6" fontWeight="bold" fontFamily="Prompt">
                   แผนการเติบโตของพอร์ต (Linked Growth Plan)
                 </Typography>
-                {renderStatusBadge(benchmark?.status)}
+                {renderStatusBadge(benchmark)}
               </Stack>
               <Typography variant="caption" color="text.secondary" fontFamily="Prompt">
                 เป้าหมาย {formatMoney(growthPlan.targetAmount)} (+{growthPlan.dailyReturnPercent}% / วัน)
@@ -278,7 +287,7 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
                   : '1px solid rgba(255,255,255,0.06)',
             }}
           >
-            <Grid container spacing={2} alignItems="center">
+            <Grid container spacing={2} alignItems="flex-start">
               <Grid size={{ xs: 6, sm: 3 }}>
                 <Typography variant="caption" color="text.secondary" fontFamily="Prompt">
                   ตำแหน่งปัจจุบัน
@@ -286,14 +295,48 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
                 <Typography variant="h6" fontWeight="900" color="info.main" fontFamily="Prompt">
                   Day {benchmark.matchedDay} <span style={{ fontSize: '0.8rem', color: '#888' }}>/ {totalDays} วัน</span>
                 </Typography>
+                <Typography
+                  variant="caption"
+                  sx={{
+                    display: 'block',
+                    mt: 0.5,
+                    fontFamily: 'Prompt',
+                    fontSize: '0.72rem',
+                    color: benchmark.daysBehind > 0 ? 'warning.main' : benchmark.daysBehind < 0 ? 'success.main' : 'text.secondary',
+                    fontWeight: benchmark.daysBehind !== 0 ? 'bold' : 'normal',
+                  }}
+                >
+                  {benchmark.daysBehind > 0
+                    ? `ควรอยู่ Day ${benchmark.expectedDay} (ช้าไป ${benchmark.daysBehind} วัน)`
+                    : benchmark.daysBehind < 0
+                    ? `ควรอยู่ Day ${benchmark.expectedDay} (เร็วกว่า ${Math.abs(benchmark.daysBehind)} วัน)`
+                    : `ตรงตามวันของแผน (Day ${benchmark.expectedDay})`}
+                </Typography>
               </Grid>
 
               <Grid size={{ xs: 6, sm: 3 }}>
                 <Typography variant="caption" color="text.secondary" fontFamily="Prompt">
-                  ความคืบหน้า
+                  ความคืบหน้าจริง
                 </Typography>
                 <Typography variant="h6" fontWeight="900" color="primary.main" fontFamily="Prompt">
                   {benchmark.progressPercent.toFixed(1)}%
+                </Typography>
+                <Typography
+                  variant="caption"
+                  sx={{
+                    display: 'block',
+                    mt: 0.5,
+                    fontFamily: 'Prompt',
+                    fontSize: '0.72rem',
+                    color: benchmark.progressBehindPercent > 0 ? 'warning.main' : benchmark.progressBehindPercent < 0 ? 'success.main' : 'text.secondary',
+                    fontWeight: Math.abs(benchmark.progressBehindPercent) >= 0.1 ? 'bold' : 'normal',
+                  }}
+                >
+                  {benchmark.progressBehindPercent > 0
+                    ? `ความคืบหน้าช้าไป ${benchmark.progressBehindPercent.toFixed(1)}%`
+                    : benchmark.progressBehindPercent < 0
+                    ? `เร็วกว่าเป้าหมาย +${Math.abs(benchmark.progressBehindPercent).toFixed(1)}%`
+                    : `ตรงตามเป้าหมายของวัน`}
                 </Typography>
               </Grid>
 
@@ -307,6 +350,9 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
                     อีก {benchmark.remainingDays} วัน
                   </Typography>
                 </Stack>
+                <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.5, fontFamily: 'Prompt', fontSize: '0.72rem' }}>
+                  เทรดมาแล้ว {benchmark.elapsedTradingDays} วันทำการ
+                </Typography>
               </Grid>
 
               <Grid size={{ xs: 6, sm: 3 }}>
@@ -315,6 +361,9 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
                 </Typography>
                 <Typography variant="h6" fontWeight="bold" color="text.primary" fontFamily="Prompt">
                   {formatMoney(growthPlan.targetAmount)}
+                </Typography>
+                <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.5, fontFamily: 'Prompt', fontSize: '0.72rem' }}>
+                  เป้าหมายตามแผนวันนี้: {formatMoney(benchmark.expectedBalance)}
                 </Typography>
               </Grid>
 
@@ -337,6 +386,53 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
                   }}
                 />
               </Grid>
+
+              {/* แถบสรุปข้อความภาษาไทย */}
+              {benchmark.summaryText && (
+                <Grid size={{ xs: 12 }}>
+                  <Box
+                    sx={{
+                      p: 1.2,
+                      px: 1.8,
+                      borderRadius: 2,
+                      bgcolor:
+                        benchmark.status === 'behind'
+                          ? 'rgba(245, 158, 11, 0.08)'
+                          : benchmark.status === 'ahead' || benchmark.status === 'achieved'
+                          ? 'rgba(16, 185, 129, 0.08)'
+                          : 'rgba(59, 130, 246, 0.08)',
+                      border: `1px solid ${
+                        benchmark.status === 'behind'
+                          ? 'rgba(245, 158, 11, 0.25)'
+                          : benchmark.status === 'ahead' || benchmark.status === 'achieved'
+                          ? 'rgba(16, 185, 129, 0.25)'
+                          : 'rgba(59, 130, 246, 0.25)'
+                      }`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      flexWrap: 'wrap',
+                      gap: 1,
+                    }}
+                  >
+                    <Stack direction="row" alignItems="center" spacing={1}>
+                      {benchmark.status === 'behind' ? (
+                        <AlertTriangle size={15} color="#f59e0b" />
+                      ) : benchmark.status === 'achieved' ? (
+                        <Award size={15} color="#10b981" />
+                      ) : (
+                        <Zap size={15} color="#10b981" />
+                      )}
+                      <Typography variant="caption" fontWeight="bold" fontFamily="Prompt">
+                        สรุปสถานะ: {benchmark.summaryText}
+                      </Typography>
+                    </Stack>
+                    <Typography variant="caption" color="text.secondary" fontFamily="Prompt" sx={{ fontSize: '0.7rem' }}>
+                      เริ่มนับวันแรกจากวันที่เริ่มเทรด ({benchmark.firstTradeDate ? new Date(benchmark.firstTradeDate).toLocaleDateString('th-TH') : '-'})
+                    </Typography>
+                  </Box>
+                </Grid>
+              )}
             </Grid>
           </Box>
         )}

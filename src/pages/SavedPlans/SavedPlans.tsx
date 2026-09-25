@@ -19,6 +19,7 @@ import {
   deletePortfolioGrowthPlan,
 } from '../../store/stockPlannerSlice';
 import { calculatePortfolioSummary, CalculationResult } from '../../utils/stockMath';
+import { getPortfolioFirstTradeDate } from '../../utils/growthPlanMath';
 import { fetchLiveExchangeRate, getCachedExchangeRate } from '../../utils/exchangeRate';
 import { TimelineItem, PlanToDelete } from './types';
 import PortfolioHeader from './sections/PortfolioHeader';
@@ -67,7 +68,7 @@ export const SavedPlans: React.FC = () => {
   const portfolio =
     portfolios.find((p) => p.id === portfolioId) || {
       id: 'unassigned',
-      name: 'ยังไม่ได้จัดพอร์ตการลงทุน',
+      name: 'ยังไม่ได้จัดพอร์ต',
       createdAt: new Date().toISOString(),
       adjustments: [],
     };
@@ -84,6 +85,7 @@ export const SavedPlans: React.FC = () => {
   });
 
   const summary = calculatePortfolioSummary(portfolio, savedPlans, exchangeRate);
+  const firstTradeDate = getPortfolioFirstTradeDate(filteredPlans, portfolio.createdAt);
 
   const filteredTimelineItems = timelineItems.filter((item) => {
     if (filterType === 'all') return true;
@@ -251,6 +253,7 @@ export const SavedPlans: React.FC = () => {
         portfolio={portfolio}
         currentPortfolioValue={summary.currentPortfolioValue}
         exchangeRate={exchangeRate}
+        firstTradeDate={firstTradeDate}
         onOpenPlan={() => navigate(`${PATHS.INVESTMENT_PLAN}?portfolioId=${portfolioId}`)}
         onDeletePlan={() => {
           dispatch(deletePortfolioGrowthPlan(portfolioId));

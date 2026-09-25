@@ -48,7 +48,7 @@ export interface GrowthPlanConfig {
 export interface PortfolioBenchmark {
   /** มูลค่าพอร์ตจริงปัจจุบัน */
   currentPortfolioValue: number;
-  /** เทียบเท่ากับแผนในวันที่ (Day) */
+  /** เทียบเท่ากับแผนในวันที่ (Day) ที่มูลค่าพอร์ตปัจจุบันไปถึง */
   matchedDay: number;
   /** ยอดเงินตามแผนในวันที่เทียบเท่า */
   planBalanceAtMatchedDay: number;
@@ -60,6 +60,22 @@ export interface PortfolioBenchmark {
   remainingDays: number;
   /** สถานะเมื่อเทียบกับแผน ('ahead' | 'on_track' | 'behind' | 'achieved') */
   status: 'ahead' | 'on_track' | 'behind' | 'achieved';
+  /** วันที่เริ่มต้นเทรดของพอร์ต (ISO String) */
+  firstTradeDate?: string;
+  /** จำนวนวันทำการเทรด (จันทร์-ศุกร์) ที่ผ่านไปแล้วนับจากวันเริ่มเทรดวันแรก */
+  elapsedTradingDays: number;
+  /** วันที่ควรจะอยู่ตามระยะเวลาของแผน (Expected Day) */
+  expectedDay: number;
+  /** ยอดเงินที่ควรจะได้ตามแผน ณ วันที่ควรจะอยู่ */
+  expectedBalance: number;
+  /** % ความคืบหน้าที่ควรจะได้ตามแผน ณ วันที่ควรจะอยู่ */
+  expectedProgressPercent: number;
+  /** จำนวนวันที่ช้ากว่าแผน (> 0 คือช้ากว่า X วัน, < 0 คือเร็วกว่า X วัน, 0 คือตรงตามวัน) */
+  daysBehind: number;
+  /** % ความคืบหน้าที่ช้ากว่าแผน (> 0 คือช้ากว่า X%, < 0 คือเร็วกว่า X%, 0 คือตรงเป้า) */
+  progressBehindPercent: number;
+  /** ข้อความสรุปสถานะการเปรียบเทียบเป็นภาษาไทย */
+  summaryText: string;
 }
 
 /**

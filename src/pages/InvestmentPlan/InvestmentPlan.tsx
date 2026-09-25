@@ -14,6 +14,7 @@ import { calculatePortfolioSummary, convertCurrencyAmount } from '../../utils/st
 import {
   calculateDailyGrowthPlan,
   findPortfolioBenchmarkPosition,
+  getPortfolioFirstTradeDate,
 } from '../../utils/growthPlanMath';
 import { fetchLiveExchangeRate, getCachedExchangeRate } from '../../utils/exchangeRate';
 import { GrowthPlanFormData } from './types';
@@ -295,6 +296,15 @@ export const InvestmentPlan: React.FC = () => {
     });
   }, [initialCapital, dailyReturnPercent, targetAmount, formData.portfolioId, formData.currency]);
 
+  // ค้นหาวันที่เริ่มเทรดวันแรกของพอร์ตที่เลือก (เพื่อเริ่มนับจำนวนวันตามแผน)
+  const firstTradeDate = useMemo(() => {
+    if (!selectedPortfolio || formData.portfolioId === 'none') return undefined;
+    const portPlans = savedPlans.filter(
+      (p) => (p.portfolioId || 'unassigned') === selectedPortfolio.id
+    );
+    return getPortfolioFirstTradeDate(portPlans, selectedPortfolio.createdAt);
+  }, [selectedPortfolio, formData.portfolioId, savedPlans]);
+
   // คำนวณ Benchmark กับพอร์ตจริง
   const benchmark = useMemo(() => {
     if (portfolioCurrentValue === undefined || formData.portfolioId === 'none') {
@@ -304,9 +314,10 @@ export const InvestmentPlan: React.FC = () => {
       portfolioCurrentValue,
       initialCapital,
       targetAmount,
-      dailyItems
+      dailyItems,
+      firstTradeDate
     );
-  }, [portfolioCurrentValue, formData.portfolioId, initialCapital, targetAmount, dailyItems]);
+  }, [portfolioCurrentValue, formData.portfolioId, initialCapital, targetAmount, dailyItems, firstTradeDate]);
 
   return (
     <Box sx={{ pb: 6 }}>
