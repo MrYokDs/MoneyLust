@@ -9,13 +9,13 @@ import {
   Typography,
   Stack,
   Box,
-  TextField,
   Button,
   IconButton,
   Chip,
 } from '@mui/material';
 import { Edit2, TrendingUp, TrendingDown } from 'lucide-react';
 import GlassCard from '../../../components/GlassCard';
+import CurrencyTextField from '../../../components/CurrencyTextField';
 import { PortfolioSummary, formatCurrency } from '../../../utils/stockMath';
 
 interface PortfolioSummaryCardsProps {
@@ -59,11 +59,10 @@ export const PortfolioSummaryCards: React.FC<PortfolioSummaryCardsProps> = ({
           </Typography>
           {isEditingCapital ? (
             <Stack direction="row" spacing={1} alignItems="center">
-              <TextField
+              <CurrencyTextField
                 size="small"
                 value={editedCapital}
-                onChange={(e) => setEditedCapital(e.target.value)}
-                type="number"
+                onChange={(val) => setEditedCapital(val)}
                 autoFocus
                 sx={{ flexGrow: 1 }}
               />

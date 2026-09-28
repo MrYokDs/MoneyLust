@@ -30,6 +30,7 @@ import {
   ArrowLeftRight,
   Save,
 } from 'lucide-react';
+import CurrencyTextField from '../../../components/CurrencyTextField';
 import GlassCard from '../../../components/GlassCard';
 import { Portfolio } from '../../../types';
 import { GrowthPlanFormData, DAILY_RETURN_PRESETS } from '../types';
@@ -288,12 +289,11 @@ export const GrowthPlanForm: React.FC<GrowthPlanFormProps> = ({
             </Stack>
           </Box>
 
-          <TextField
+          <CurrencyTextField
             fullWidth
             size="small"
-            type="number"
             value={formData.initialCapital}
-            onChange={(e) => onFieldChange('initialCapital', e.target.value)}
+            onChange={(val) => onFieldChange('initialCapital', val)}
             placeholder="เช่น 100,000"
             slotProps={{
               input: {
@@ -360,12 +360,11 @@ export const GrowthPlanForm: React.FC<GrowthPlanFormProps> = ({
             เป้าหมายมูลค่าพอร์ต (Target Portfolio Value)
           </Typography>
 
-          <TextField
+          <CurrencyTextField
             fullWidth
             size="small"
-            type="number"
             value={formData.targetAmount}
-            onChange={(e) => onFieldChange('targetAmount', e.target.value)}
+            onChange={(val) => onFieldChange('targetAmount', val)}
             placeholder="เช่น 1,000,000"
             slotProps={{
               input: {

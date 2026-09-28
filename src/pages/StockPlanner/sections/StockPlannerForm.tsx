@@ -50,6 +50,11 @@ interface StockPlannerFormProps {
   maxAvailableBudgetClamped: number | null;
   maxAvailableBudget: number | null;
   isAtMaxLimit: boolean;
+  onePercentMarketCap?: number | null;
+  stockMarketCapUSD?: number | null;
+  budgetLimitReason?: 'market_cap' | 'portfolio' | null;
+  portfolioCashLimit?: number | null;
+  limitBudgetToOnePercentMarketCap?: boolean;
   dropPercentage: string;
   tranchesCount: string;
   maxPossibleTranches: number;
@@ -96,6 +101,11 @@ export const StockPlannerForm: React.FC<StockPlannerFormProps> = ({
   maxAvailableBudgetClamped,
   maxAvailableBudget,
   isAtMaxLimit,
+  onePercentMarketCap,
+  stockMarketCapUSD,
+  budgetLimitReason,
+  portfolioCashLimit,
+  limitBudgetToOnePercentMarketCap,
   dropPercentage,
   tranchesCount,
   maxPossibleTranches,
@@ -210,12 +220,18 @@ export const StockPlannerForm: React.FC<StockPlannerFormProps> = ({
         <InvestmentParamsSection
           currency={currency}
           exchangeRate={parseFloat(exchangeRate) || 36.5}
+          stockSymbol={stockSymbol}
           currentPrice={currentPrice}
           currentPriceIsFirstTranche={currentPriceIsFirstTranche}
           totalBudget={totalBudget}
           maxAvailableBudgetClamped={maxAvailableBudgetClamped}
           maxAvailableBudget={maxAvailableBudget}
           isAtMaxLimit={isAtMaxLimit}
+          onePercentMarketCap={onePercentMarketCap}
+          stockMarketCapUSD={stockMarketCapUSD}
+          budgetLimitReason={budgetLimitReason}
+          portfolioCashLimit={portfolioCashLimit}
+          limitBudgetToOnePercentMarketCap={limitBudgetToOnePercentMarketCap}
           dropPercentage={dropPercentage}
           tranchesCount={tranchesCount}
           maxPossibleTranches={maxPossibleTranches}

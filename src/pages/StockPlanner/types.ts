@@ -40,6 +40,7 @@ export interface CompanyFinancials {
 export interface StockDetail {
   name: string;
   marketCap: string;
+  rawMarketCap?: number;
   sector: string;
   industry: string;
   fiftyTwoWeekRange: string;

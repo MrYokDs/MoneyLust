@@ -21,7 +21,7 @@ import {
   calculatePortfolioSummary,
   convertCurrencyAmount,
 } from '../../utils/stockMath';
-import { fetchCompleteStockDetail } from '../../utils/stockApi';
+import { fetchCompleteStockDetail, parseMarketCapToNumber } from '../../utils/stockApi';
 import { fetchLiveExchangeRate, getCachedExchangeRate } from '../../utils/exchangeRate';
 import GridVisualizer from '../../components/GridVisualizer';
 import { StockOption, StockDetail } from './types';
@@ -57,11 +57,7 @@ export const StockPlanner: React.FC = () => {
   useEffect(() => {
     if (currentParams.portfolioId) {
       const p = portfolios.find((port) => port.id === currentParams.portfolioId);
-      if (p && p.id !== 'unassigned') {
-        setPortfolioInputValue(p.name);
-      } else {
-        setPortfolioInputValue('');
-      }
+      setPortfolioInputValue(p && p.id !== 'unassigned' ? p.name : '');
     }
   }, [currentParams.portfolioId, portfolios]);
 
@@ -299,18 +295,79 @@ export const StockPlanner: React.FC = () => {
     return summary.availableCash + currentPlanSpentUSD;
   }, [portfolioId, portfolioInputValue, portfolios, savedPlans, exchangeRate, activePlanId]);
 
-  const maxAvailableBudget = useMemo(() => {
-    if (maxAvailableUSD === null) return null;
-    return currency === 'THB' ? maxAvailableUSD * exchangeRate : maxAvailableUSD;
-  }, [maxAvailableUSD, currency, exchangeRate]);
+  // คำนวณ 1% ของ Market Cap หุ้นที่เลือก
+  const stockMarketCapUSD = useMemo(() => {
+    if (!stockDetail) return null;
+    return stockDetail.rawMarketCap ?? parseMarketCapToNumber(stockDetail.marketCap);
+  }, [stockDetail]);
+
+  const onePercentMarketCap = useMemo(() => {
+    if (!stockMarketCapUSD || stockMarketCapUSD <= 0) return null;
+    const onePercentUSD = stockMarketCapUSD * 0.01;
+    return currency === 'THB' ? onePercentUSD * exchangeRate : onePercentUSD;
+  }, [stockMarketCapUSD, currency, exchangeRate]);
+
+  const isMarketCapLimitActive = currentParams.limitBudgetToOnePercentMarketCap !== false;
+
+  const { effectiveMaxBudget, budgetLimitReason, portfolioCashLimit } = useMemo(() => {
+    const portfolioCash =
+      maxAvailableUSD !== null
+        ? (currency === 'THB' ? maxAvailableUSD * exchangeRate : maxAvailableUSD)
+        : null;
+
+    if (isMarketCapLimitActive && onePercentMarketCap !== null) {
+      if (portfolioCash !== null) {
+        if (onePercentMarketCap < portfolioCash) {
+          return {
+            effectiveMaxBudget: onePercentMarketCap,
+            budgetLimitReason: 'market_cap' as const,
+            portfolioCashLimit: portfolioCash,
+          };
+        }
+        return {
+          effectiveMaxBudget: portfolioCash,
+          budgetLimitReason: 'portfolio' as const,
+          portfolioCashLimit: portfolioCash,
+        };
+      }
+      return {
+        effectiveMaxBudget: onePercentMarketCap,
+        budgetLimitReason: 'market_cap' as const,
+        portfolioCashLimit: null,
+      };
+    }
+
+    return {
+      effectiveMaxBudget: portfolioCash,
+      budgetLimitReason: portfolioCash !== null ? ('portfolio' as const) : null,
+      portfolioCashLimit: portfolioCash,
+    };
+  }, [maxAvailableUSD, currency, exchangeRate, isMarketCapLimitActive, onePercentMarketCap]);
 
   const maxAvailableBudgetClamped = useMemo(() => {
-    if (maxAvailableBudget === null) return null;
-    return Math.floor(maxAvailableBudget * 100) / 100;
-  }, [maxAvailableBudget]);
+    if (effectiveMaxBudget === null) return null;
+    return Math.floor(effectiveMaxBudget * 100) / 100;
+  }, [effectiveMaxBudget]);
 
   const isAtMaxLimit =
     maxAvailableBudgetClamped !== null && totalBudget >= maxAvailableBudgetClamped;
+
+  // ปรับงบประมาณลงอัตโนมัติหากเกินขีดจำกัด 1% Market Cap ที่กำหนด
+  useEffect(() => {
+    if (
+      isMarketCapLimitActive &&
+      onePercentMarketCap !== null &&
+      totalBudget > 0 &&
+      maxAvailableBudgetClamped !== null &&
+      totalBudget > maxAvailableBudgetClamped
+    ) {
+      handleChange('totalBudget', maxAvailableBudgetClamped.toString());
+      enqueueSnackbar(
+        `ปรับลดงบลงทุนเป็น ${maxAvailableBudgetClamped.toLocaleString()} ${currency} (ไม่เกิน 1% ของ Market Cap หุ้น ${stockSymbol})`,
+        { variant: 'info' }
+      );
+    }
+  }, [isMarketCapLimitActive, onePercentMarketCap, maxAvailableBudgetClamped, totalBudget, currency, stockSymbol, enqueueSnackbar]);
 
   /**
    * จัดการการเลือกหรือสร้างพอร์ตการลงทุนใหม่ และอัปเดตงบประมาณตามเงินสดคงเหลือของพอร์ต
@@ -325,13 +382,20 @@ export const StockPlanner: React.FC = () => {
       setPortfolioInputValue(selected.name);
 
       if (selected.id !== 'unassigned') {
+        const rate = parseFloat(currentParams.exchangeRate) || 36.5;
         const summary = calculatePortfolioSummary(
           selected,
           savedPlans,
-          parseFloat(currentParams.exchangeRate) || 36.5
+          rate
         );
         if (summary.availableCash > 0) {
-          handleChange('totalBudget', summary.availableCash.toString());
+          const cashInCurrentCurrency =
+            currency === 'THB' ? summary.availableCash * rate : summary.availableCash;
+          let targetBudget = cashInCurrentCurrency;
+          if (isMarketCapLimitActive && onePercentMarketCap !== null) {
+            targetBudget = Math.min(cashInCurrentCurrency, onePercentMarketCap);
+          }
+          handleChange('totalBudget', (Math.floor(targetBudget * 100) / 100).toString());
         }
       }
     } else if (textValue !== undefined) {
@@ -367,18 +431,10 @@ export const StockPlanner: React.FC = () => {
         const newId = crypto.randomUUID
           ? crypto.randomUUID()
           : Math.random().toString(36).substring(2, 9);
-        dispatch(
-          addPortfolio({
-            id: newId,
-            name: portfolioInputValue.trim(),
-            createdAt: new Date().toISOString(),
-          })
-        );
+        dispatch(addPortfolio({ id: newId, name: portfolioInputValue.trim(), createdAt: new Date().toISOString() }));
         currentPortfolioId = newId;
         handleChange('portfolioId', newId);
-        enqueueSnackbar(`สร้างพอร์ตใหม่ "${portfolioInputValue.trim()}" เรียบร้อย!`, {
-          variant: 'success',
-        });
+        enqueueSnackbar(`สร้างพอร์ตใหม่ "${portfolioInputValue.trim()}" เรียบร้อย!`, { variant: 'success' });
       } else {
         currentPortfolioId = existing.id;
         handleChange('portfolioId', existing.id);
@@ -453,20 +509,12 @@ export const StockPlanner: React.FC = () => {
     const actualSellPriceNum = parseFloat(currentParams.actualSellPrice) || 0;
 
     const updates: any = { currency: targetCurrency };
-    if (currentPriceNum > 0) {
-      updates.currentPrice = convertCurrencyAmount(currentPriceNum, currency, targetCurrency, rate).toString();
-    }
-    if (totalBudgetNum > 0) {
-      updates.totalBudget = convertCurrencyAmount(totalBudgetNum, currency, targetCurrency, rate).toString();
-    }
-    if (actualSellPriceNum > 0) {
-      updates.actualSellPrice = convertCurrencyAmount(actualSellPriceNum, currency, targetCurrency, rate).toString();
-    }
+    if (currentPriceNum > 0) updates.currentPrice = convertCurrencyAmount(currentPriceNum, currency, targetCurrency, rate).toString();
+    if (totalBudgetNum > 0) updates.totalBudget = convertCurrencyAmount(totalBudgetNum, currency, targetCurrency, rate).toString();
+    if (actualSellPriceNum > 0) updates.actualSellPrice = convertCurrencyAmount(actualSellPriceNum, currency, targetCurrency, rate).toString();
 
     dispatch(updateCurrentParams(updates));
-    enqueueSnackbar(`แปลงค่าตัวเลขเป็น ${targetCurrency} เรียบร้อย (เรต ${rate.toFixed(2)})`, {
-      variant: 'success',
-    });
+    enqueueSnackbar(`แปลงค่าตัวเลขเป็น ${targetCurrency} เรียบร้อย (เรต ${rate.toFixed(2)})`, { variant: 'success' });
   };
 
   return (
@@ -487,12 +535,9 @@ export const StockPlanner: React.FC = () => {
             onCurrencyChange={(c) => handleChange('currency', c)}
             onExchangeRateChange={(r) => handleChange('exchangeRate', r)}
             onConvertCurrencyValues={handleConvertCurrencyValues}
-            stockInputValue={inputValue}
-            setStockInputValue={setInputValue}
-            stockOptions={options}
-            loadingStockOptions={loading}
-            stockDetail={stockDetail}
-            loadingStockDetail={loadingDetail}
+            stockInputValue={inputValue} setStockInputValue={setInputValue}
+            stockOptions={options} loadingStockOptions={loading}
+            stockDetail={stockDetail} loadingStockDetail={loadingDetail}
             onSelectStock={(sym) => handleChange('stockSymbol', sym)}
             onApplyPrice={(price) => {
               handleChange('currentPrice', price);
@@ -502,24 +547,23 @@ export const StockPlanner: React.FC = () => {
             currentPriceIsFirstTranche={currentParams.currentPriceIsFirstTranche !== false}
             totalBudget={currentParams.totalBudget}
             maxAvailableBudgetClamped={maxAvailableBudgetClamped}
-            maxAvailableBudget={maxAvailableBudget}
+            maxAvailableBudget={effectiveMaxBudget}
             isAtMaxLimit={isAtMaxLimit}
+            onePercentMarketCap={onePercentMarketCap}
+            stockMarketCapUSD={stockMarketCapUSD}
+            budgetLimitReason={budgetLimitReason}
+            portfolioCashLimit={portfolioCashLimit}
+            limitBudgetToOnePercentMarketCap={isMarketCapLimitActive}
             dropPercentage={currentParams.dropPercentage}
             tranchesCount={currentParams.tranchesCount}
             maxPossibleTranches={maxPossibleTranches}
-            dropMode={dropMode}
-            roundingMode={roundingMode}
+            dropMode={dropMode} roundingMode={roundingMode}
             targetProfitPercent={currentParams.targetProfitPercent}
-            feePercent={currentParams.feePercent}
-            feeMode={currentParams.feeMode || 'percent'}
-            feePerShare={currentParams.feePerShare || '0.005'}
-            minFeePerTranche={currentParams.minFeePerTranche || '0'}
-            actualSellPrice={currentParams.actualSellPrice}
-            actualTranchesCount={currentParams.actualTranchesCount}
+            feePercent={currentParams.feePercent} feeMode={currentParams.feeMode || 'percent'}
+            feePerShare={currentParams.feePerShare || '0.005'} minFeePerTranche={currentParams.minFeePerTranche || '0'}
+            actualSellPrice={currentParams.actualSellPrice} actualTranchesCount={currentParams.actualTranchesCount}
             calcResult={calcResult}
-            onParamChange={handleChange}
-            onReset={handleReset}
-            onSave={handleSave}
+            onParamChange={handleChange} onReset={handleReset} onSave={handleSave}
             onCancelActivePlan={() => dispatch(setActivePlanId(null))}
           />
         </Grid>

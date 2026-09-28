@@ -23,6 +23,44 @@ export const formatMarketCap = (rawMarketCap: string): string => {
 };
 
 /**
+ * แปลงข้อความ Market Cap (เช่น "$2.85T", "$45.20B", "$320.50M", หรือตัวเลข) กลับเป็นตัวเลข USD
+ * 
+ * @param marketCap - ข้อความหรือตัวเลข Market Cap
+ * @returns ตัวเลข Market Cap ในหน่วย USD หรือ null หากไม่สามารถแปลงได้
+ */
+export const parseMarketCapToNumber = (marketCap?: string | number | null): number | null => {
+  if (marketCap === undefined || marketCap === null || marketCap === '' || marketCap === '-') {
+    return null;
+  }
+  if (typeof marketCap === 'number') {
+    return isNaN(marketCap) || marketCap <= 0 ? null : marketCap;
+  }
+
+  const clean = marketCap.replace(/[$฿,]/g, '').trim().toUpperCase();
+  if (!clean || clean === 'N/A') return null;
+
+  if (clean.endsWith('T')) {
+    const num = parseFloat(clean.slice(0, -1));
+    return isNaN(num) ? null : num * 1e12;
+  }
+  if (clean.endsWith('B')) {
+    const num = parseFloat(clean.slice(0, -1));
+    return isNaN(num) ? null : num * 1e9;
+  }
+  if (clean.endsWith('M')) {
+    const num = parseFloat(clean.slice(0, -1));
+    return isNaN(num) ? null : num * 1e6;
+  }
+  if (clean.endsWith('K')) {
+    const num = parseFloat(clean.slice(0, -1));
+    return isNaN(num) ? null : num * 1e3;
+  }
+
+  const directNum = parseFloat(clean);
+  return isNaN(directNum) || directNum <= 0 ? null : directNum;
+};
+
+/**
  * จัดรูปแบบวันที่รอบงบการเงินให้อยู่ในรูปแบบ วัน/เดือน/ปี (DD/MM/YYYY)
  * เช่น "6/30/2026" -> "30/06/2026" โดยเติม 0 หน้าเดือน/วันที่เป็นหลักเดียว
  * 
@@ -367,6 +405,7 @@ export const fetchCompleteStockDetail = async (
   return {
     name: summary.name || profile?.companyName || cleanSymbol,
     marketCap: summary.marketCap,
+    rawMarketCap: summary.rawMarketCapNumber,
     sector: summary.sector !== '-' ? summary.sector : profile?.sector || '-',
     industry: summary.industry !== '-' ? summary.industry : profile?.industry || '-',
     fiftyTwoWeekRange: summary.fiftyTwoWeekRange,

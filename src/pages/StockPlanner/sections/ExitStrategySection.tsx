@@ -16,6 +16,7 @@ import {
   FormHelperText,
 } from '@mui/material';
 import { Percent, DollarSign } from 'lucide-react';
+import CurrencyTextField from '../../../components/CurrencyTextField';
 
 interface ExitStrategySectionProps {
   /** สกุลเงิน ('THB' หรือ 'USD') */
@@ -85,12 +86,11 @@ export const ExitStrategySection: React.FC<ExitStrategySectionProps> = ({
       />
 
       {/* Actual Selling Price */}
-      <TextField
+      <CurrencyTextField
         label={currency === 'USD' ? 'ราคาที่ขายจริง (USD)' : 'ราคาที่ขายจริง (บาท)'}
-        type="number"
         placeholder="0.00"
         value={actualSellPrice}
-        onChange={(e) => onChange('actualSellPrice', e.target.value)}
+        onChange={(val) => onChange('actualSellPrice', val)}
         fullWidth
         InputProps={{
           startAdornment: (

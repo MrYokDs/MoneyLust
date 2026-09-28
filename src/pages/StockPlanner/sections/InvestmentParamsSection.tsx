@@ -22,18 +22,25 @@ import {
   ToggleButton,
   ToggleButtonGroup,
 } from '@mui/material';
-import { DollarSign, Coins, Percent, Layers, AlertTriangle } from 'lucide-react';
+import { DollarSign, Coins, Percent, Layers, AlertTriangle, ShieldCheck } from 'lucide-react';
 import { formatCurrency } from '../../../utils/stockMath';
+import CurrencyTextField from '../../../components/CurrencyTextField';
 
 interface InvestmentParamsSectionProps {
   currency: 'THB' | 'USD';
   exchangeRate: number;
+  stockSymbol?: string;
   currentPrice: string;
   currentPriceIsFirstTranche: boolean;
   totalBudget: string;
   maxAvailableBudgetClamped: number | null;
   maxAvailableBudget: number | null;
   isAtMaxLimit: boolean;
+  onePercentMarketCap?: number | null;
+  stockMarketCapUSD?: number | null;
+  budgetLimitReason?: 'market_cap' | 'portfolio' | null;
+  portfolioCashLimit?: number | null;
+  limitBudgetToOnePercentMarketCap?: boolean;
   dropPercentage: string;
   tranchesCount: string;
   maxPossibleTranches: number;
@@ -49,12 +56,17 @@ interface InvestmentParamsSectionProps {
 export const InvestmentParamsSection: React.FC<InvestmentParamsSectionProps> = ({
   currency,
   exchangeRate,
+  stockSymbol,
   currentPrice,
   currentPriceIsFirstTranche,
   totalBudget,
   maxAvailableBudgetClamped,
-  maxAvailableBudget,
   isAtMaxLimit,
+  onePercentMarketCap,
+  stockMarketCapUSD,
+  budgetLimitReason,
+  portfolioCashLimit,
+  limitBudgetToOnePercentMarketCap,
   dropPercentage,
   tranchesCount,
   maxPossibleTranches,
@@ -86,69 +98,78 @@ export const InvestmentParamsSection: React.FC<InvestmentParamsSectionProps> = (
 
   return (
     <>
-      {/* Current Price */}
-      <TextField
-        label={currency === 'USD' ? 'ราคาปัจจุบัน (USD)' : 'ราคาปัจจุบัน (บาท)'}
-        type="number"
-        placeholder="0.00"
-        value={currentPrice}
-        onChange={(e) => onChange('currentPrice', e.target.value)}
-        fullWidth
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <DollarSign size={18} color="#9ca3af" />
-            </InputAdornment>
-          ),
-        }}
-      />
+      {/* Current Price & First Tranche Checkbox Grouped together */}
+      <Box>
+        <CurrencyTextField
+          label={currency === 'USD' ? 'ราคาปัจจุบัน (USD)' : 'ราคาปัจจุบัน (บาท)'}
+          placeholder="0.00"
+          value={currentPrice}
+          onChange={(val) => onChange('currentPrice', val)}
+          fullWidth
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <DollarSign size={18} color="#9ca3af" />
+              </InputAdornment>
+            ),
+          }}
+        />
 
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={currentPriceIsFirstTranche}
-            onChange={(e) => onChange('currentPriceIsFirstTranche', e.target.checked)}
-            sx={{
-              color: 'rgba(16, 185, 129, 0.5)',
-              '&.Mui-checked': {
-                color: '#10b981',
-              },
-            }}
-          />
-        }
-        label={
-          <Typography
-            variant="body2"
-            sx={{ fontFamily: 'Prompt', color: 'text.secondary', userSelect: 'none' }}
-          >
-            ใช้ราคาปัจจุบันซื้อเป็นไม้แรก (Tranche 1)
-          </Typography>
-        }
-        sx={{ mt: -0.5, mb: 1, ml: 0 }}
-      />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={currentPriceIsFirstTranche}
+              onChange={(e) => onChange('currentPriceIsFirstTranche', e.target.checked)}
+              size="small"
+              sx={{
+                color: 'rgba(16, 185, 129, 0.5)',
+                '&.Mui-checked': {
+                  color: '#10b981',
+                },
+              }}
+            />
+          }
+          label={
+            <Typography
+              variant="body2"
+              sx={{ fontFamily: 'Prompt', color: 'text.secondary', userSelect: 'none', fontSize: '0.85rem' }}
+            >
+              ใช้ราคาปัจจุบันซื้อเป็นไม้แรก (Tranche 1)
+            </Typography>
+          }
+          sx={{ mt: 0.3, ml: 0 }}
+        />
+      </Box>
 
       {/* Investment Budget */}
       <Box>
-        <TextField
+        <CurrencyTextField
           label={currency === 'USD' ? 'งบลงทุนทั้งหมด (USD)' : 'งบลงทุนทั้งหมด (บาท)'}
-          type="number"
           placeholder="0.00"
           value={totalBudget}
-          onChange={(e) => {
-            let val = e.target.value;
+          onChange={(val) => {
+            let clampedVal = val;
             if (maxAvailableBudgetClamped !== null && parseFloat(val) > maxAvailableBudgetClamped) {
-              val = maxAvailableBudgetClamped.toString();
+              clampedVal = maxAvailableBudgetClamped.toString();
             }
-            onChange('totalBudget', val);
+            onChange('totalBudget', clampedVal);
           }}
           fullWidth
           error={isAtMaxLimit}
           helperText={
-            isAtMaxLimit
-              ? `ถึงขีดจำกัดแล้ว! พอร์ตนี้ลงทุนได้สูงสุด: ${formatCurrency(maxAvailableBudget || 0, currency, false, exchangeRate)}`
-              : maxAvailableBudget !== null
-                ? `พอร์ตนี้จำกัดงบลงทุนได้สูงสุด: ${formatCurrency(maxAvailableBudget, currency, false, exchangeRate)}`
-                : undefined
+            budgetLimitReason === 'market_cap' && maxAvailableBudgetClamped !== null
+              ? isAtMaxLimit
+                ? `ถึงขีดจำกัด 1% Market Cap แล้ว! (สูงสุด ${formatCurrency(maxAvailableBudgetClamped, currency, false, exchangeRate)})`
+                : `จำกัดงบสูงสุดไม่เกิน 1% ของ Market Cap: ${formatCurrency(maxAvailableBudgetClamped, currency, false, exchangeRate)}`
+              : budgetLimitReason === 'portfolio' && maxAvailableBudgetClamped !== null
+                ? isAtMaxLimit
+                  ? `ถึงขีดจำกัดเงินสดในพอร์ตแล้ว! (สูงสุด ${formatCurrency(maxAvailableBudgetClamped, currency, false, exchangeRate)})`
+                  : `พอร์ตนี้จำกัดงบลงทุนได้สูงสุด: ${formatCurrency(maxAvailableBudgetClamped, currency, false, exchangeRate)}`
+                : maxAvailableBudgetClamped !== null
+                  ? isAtMaxLimit
+                    ? `ถึงขีดจำกัดแล้ว! ลงทุนได้สูงสุด: ${formatCurrency(maxAvailableBudgetClamped, currency, false, exchangeRate)}`
+                    : `จำกัดงบลงทุนได้สูงสุด: ${formatCurrency(maxAvailableBudgetClamped, currency, false, exchangeRate)}`
+                  : undefined
           }
           InputProps={{
             startAdornment: (
@@ -158,6 +179,99 @@ export const InvestmentParamsSection: React.FC<InvestmentParamsSectionProps> = (
             ),
           }}
         />
+
+        {/* 1% Market Cap Liquidity Guard Banner (Ultra Minimal & Compact) */}
+        {stockMarketCapUSD && stockMarketCapUSD > 0 ? (
+          <Box
+            sx={{
+              mt: 0.8,
+              mb: 2,
+              py: 0.5,
+              px: 1,
+              borderRadius: 1.5,
+              backgroundColor: 'rgba(59, 130, 246, 0.05)',
+              border: '1px solid rgba(59, 130, 246, 0.2)',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 0.4,
+            }}
+          >
+            <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={1} flexWrap="wrap">
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={limitBudgetToOnePercentMarketCap !== false}
+                    onChange={(e) => onChange('limitBudgetToOnePercentMarketCap', e.target.checked)}
+                    size="small"
+                    sx={{
+                      p: 0.4,
+                      color: 'rgba(59, 130, 246, 0.5)',
+                      '&.Mui-checked': { color: '#60a5fa' },
+                    }}
+                  />
+                }
+                label={
+                  <Stack direction="row" spacing={0.6} alignItems="center">
+                    <ShieldCheck size={14} color="#60a5fa" />
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        fontFamily: 'Prompt',
+                        fontWeight: 600,
+                        color: '#93c5fd',
+                        fontSize: '0.76rem',
+                        userSelect: 'none',
+                      }}
+                    >
+                      จำกัดงบสูงสุด 1% Cap{stockSymbol ? ` (${stockSymbol})` : ''}
+                    </Typography>
+                  </Stack>
+                }
+                sx={{ m: 0 }}
+              />
+
+              {onePercentMarketCap !== null && limitBudgetToOnePercentMarketCap !== false && (
+                <Stack direction="row" spacing={0.8} alignItems="center">
+                  <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: '0.72rem', fontFamily: 'Prompt' }}>
+                    1% Cap: <Box component="span" sx={{ color: '#60a5fa', fontWeight: 600 }}>{formatCurrency(onePercentMarketCap || 0, currency, false, exchangeRate)}</Box>
+                  </Typography>
+                  {maxAvailableBudgetClamped !== null && (
+                    <Button
+                      size="small"
+                      variant="text"
+                      onClick={() => onChange('totalBudget', maxAvailableBudgetClamped.toString())}
+                      sx={{
+                        fontSize: '0.68rem',
+                        fontFamily: 'Prompt',
+                        textTransform: 'none',
+                        py: 0.1,
+                        px: 0.8,
+                        minHeight: 0,
+                        lineHeight: 1.2,
+                        borderRadius: 1,
+                        backgroundColor: 'rgba(56, 189, 248, 0.08)',
+                        color: '#38bdf8',
+                        '&:hover': { backgroundColor: 'rgba(56, 189, 248, 0.18)' },
+                      }}
+                    >
+                      ⚡ ใช้ Cap เต็ม
+                    </Button>
+                  )}
+                </Stack>
+              )}
+            </Stack>
+
+            {limitBudgetToOnePercentMarketCap !== false && budgetLimitReason === 'market_cap' && portfolioCashLimit !== null && (
+              <Typography
+                variant="caption"
+                display="block"
+                sx={{ color: '#fbbf24', fontSize: '0.68rem', fontFamily: 'Prompt', lineHeight: 1.2, pl: 0.5 }}
+              >
+                ⚠️ เงินสดพอร์ตมี {formatCurrency(portfolioCashLimit || 0, currency, false, exchangeRate)} แต่จำกัดที่ 1% Cap เพื่อความปลอดภัยสภาพคล่อง
+              </Typography>
+            )}
+          </Box>
+        ) : null}
 
         {/* Smart Live Cost Helper under budget */}
         {isBudgetShortForOneShare ? (
@@ -229,13 +343,15 @@ export const InvestmentParamsSection: React.FC<InvestmentParamsSectionProps> = (
           </Box>
         ) : (
           priceNum > 0 && (
-            <Typography
-              variant="caption"
-              color="text.secondary"
-              sx={{ display: 'block', mt: 0.5, fontSize: '0.73rem', ml: 0.5 }}
-            >
-              💡 ซื้อ 1 หุ้นเต็มขั้นต่ำ: {formatCurrency(minCostForOneShare, currency, false, exchangeRate)} (ราคาหุ้น {formatCurrency(priceNum, currency, false, exchangeRate)} + ค่าธรรมเนียม ~{formatCurrency(feeForOneShare, currency, false, exchangeRate)})
-            </Typography>
+            <Box sx={{ mt: 2.5, pt: 1, pb: 0.5 }}>
+              <Typography
+                variant="caption"
+                color="text.secondary"
+                sx={{ display: 'block', fontSize: '0.73rem', ml: 0.5 }}
+              >
+                💡 ซื้อ 1 หุ้นเต็มขั้นต่ำ: {formatCurrency(minCostForOneShare, currency, false, exchangeRate)} (ราคาหุ้น {formatCurrency(priceNum, currency, false, exchangeRate)} + ค่าธรรมเนียม ~{formatCurrency(feeForOneShare, currency, false, exchangeRate)})
+              </Typography>
+            </Box>
           )
         )}
       </Box>

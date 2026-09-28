@@ -35,6 +35,7 @@ export interface StockPlannerState {
     actualSellPrice: string;
     actualTranchesCount: string;
     currentPriceIsFirstTranche?: boolean;
+    limitBudgetToOnePercentMarketCap?: boolean;
     portfolioId: string;
   };
 }
@@ -131,6 +132,7 @@ const initialState: StockPlannerState = {
     actualSellPrice: '',
     actualTranchesCount: '',
     currentPriceIsFirstTranche: false,
+    limitBudgetToOnePercentMarketCap: true,
     portfolioId: 'unassigned',
   },
 };
