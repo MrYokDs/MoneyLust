@@ -101,6 +101,13 @@ export const StockPlanner: React.FC = () => {
         const response = await fetch(
           `/api/stock-search?q=${encodeURIComponent(inputValue)}&quotesCount=8&newsCount=0`
         );
+        if (!response.ok) {
+          throw new Error(`HTTP error ${response.status}`);
+        }
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+          throw new Error(`Expected JSON but got ${contentType}`);
+        }
         const data = await response.json();
 
         if (active) {
@@ -120,6 +127,9 @@ export const StockPlanner: React.FC = () => {
         }
       } catch (error) {
         console.error('Error fetching stock suggestions:', error);
+        if (active) {
+          setOptions([]);
+        }
       } finally {
         if (active) {
           setLoading(false);
