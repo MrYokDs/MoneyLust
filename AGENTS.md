@@ -76,4 +76,13 @@ Whenever the user uses phrases like **"คราวหลัง..."** หรื�
 - For complete specification, refer to:
   - [workspace-terminal-execution SKILL.md](file:///f:/All_Works/Programming/React_Programming/MoneyLust/.agents/skills/workspace-terminal-execution/SKILL.md)
 
+## 13. Codebase Knowledge Graph & Graphify Maintenance (การอัปเดต Knowledge Graph ทุกครั้งหลังแก้โค้ด)
+- **Automatic Incremental Update**: ทุกครั้งที่มีการแก้ไขหรือเพิ่มไฟล์โค้ดในโปรเจกต์ หลังจากรันคำสั่งทดสอบ Build (`cmd /c "yarn build"`) เรียบร้อยแล้ว ให้รันคำสั่ง `cmd /c "graphify update ."` ทันทีเพื่ออัปเดต Knowledge Graph ความเชื่อมโยงของระบบให้สดใหม่อยู่เสมอ
+- **Pre-authorized Execution**: ได้รับอนุญาตจากผู้ใช้ล่วงหน้าให้รันคำสั่ง `cmd /c "graphify update ."` ได้อัตโนมัติทันทีโดยไม่ต้องขออนุญาต
+- **Zero Cost & Local AST**: การอัปเดตทำงานบนเครื่องแบบ Incremental ผ่าน Tree-sitter AST รวดเร็วและไม่ใช้ Token ใดๆ
+- **Impact Analysis Before Edit**: ก่อนแก้ไขสถาปัตยกรรมหรือฟังก์ชันส่วนกลาง สามารถใช้คำสั่ง `graphify query` หรือ `graphify path` เพื่อวิเคราะห์ผลกระทบข้ามไฟล์ (Blast Radius) ล่วงหน้าได้
+- ดูมาตรฐานและรายละเอียดเพิ่มเติมได้ที่:
+  - [graphify SKILL.md](file:///f:/All_Works/Programming/React_Programming/MoneyLust/.agents/skills/graphify/SKILL.md)
+
+
 
