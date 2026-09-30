@@ -302,7 +302,11 @@ export const InvestmentPlan: React.FC = () => {
     const portPlans = savedPlans.filter(
       (p) => (p.portfolioId || 'unassigned') === selectedPortfolio.id
     );
-    return getPortfolioFirstTradeDate(portPlans, selectedPortfolio.createdAt);
+    return getPortfolioFirstTradeDate(
+      portPlans,
+      selectedPortfolio.createdAt,
+      selectedPortfolio.firstTradeDate
+    );
   }, [selectedPortfolio, formData.portfolioId, savedPlans]);
 
   // คำนวณ Benchmark กับพอร์ตจริง

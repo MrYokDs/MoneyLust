@@ -247,6 +247,16 @@ export const stockPlannerSlice = createSlice({
         savePortfoliosToLocalStorage(state.portfolios);
       }
     },
+    updatePortfolioFirstTradeDate: (
+      state,
+      action: PayloadAction<{ id: string; firstTradeDate?: string }>
+    ) => {
+      const p = state.portfolios.find((port) => port.id === action.payload.id);
+      if (p) {
+        p.firstTradeDate = action.payload.firstTradeDate;
+        savePortfoliosToLocalStorage(state.portfolios);
+      }
+    },
   },
 });
 
@@ -263,5 +273,6 @@ export const {
   clearPortfolioAdjustments,
   savePortfolioGrowthPlan,
   deletePortfolioGrowthPlan,
+  updatePortfolioFirstTradeDate,
 } = stockPlannerSlice.actions;
 export default stockPlannerSlice.reducer;

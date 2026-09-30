@@ -10,6 +10,7 @@ export interface Portfolio {
   id: string;
   name: string;
   createdAt: string;
+  firstTradeDate?: string;
   initialCapital?: number;
   adjustments?: CapitalAdjustment[];
   growthPlan?: GrowthPlanConfig;

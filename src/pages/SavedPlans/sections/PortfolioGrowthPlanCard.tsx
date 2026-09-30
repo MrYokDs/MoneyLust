@@ -22,6 +22,8 @@ import {
   CheckCircle2,
   Clock,
   AlertTriangle,
+  Calendar,
+  Edit2,
   Trash2,
 } from 'lucide-react';
 import GlassCard from '../../../components/GlassCard';
@@ -38,6 +40,7 @@ interface PortfolioGrowthPlanCardProps {
   firstTradeDate?: string;
   onOpenPlan: () => void;
   onDeletePlan: () => void;
+  onEditFirstTradeDate?: () => void;
 }
 
 /**
@@ -53,6 +56,7 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
   firstTradeDate,
   onOpenPlan,
   onDeletePlan,
+  onEditFirstTradeDate,
 }) => {
   const growthPlan = portfolio.growthPlan;
 
@@ -427,9 +431,41 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
                         สรุปสถานะ: {benchmark.summaryText}
                       </Typography>
                     </Stack>
-                    <Typography variant="caption" color="text.secondary" fontFamily="Prompt" sx={{ fontSize: '0.7rem' }}>
-                      เริ่มนับวันแรกจากวันที่เริ่มเทรด ({benchmark.firstTradeDate ? new Date(benchmark.firstTradeDate).toLocaleDateString('th-TH') : '-'})
-                    </Typography>
+                    <Stack direction="row" alignItems="center" spacing={1} flexWrap="wrap">
+                      <Stack direction="row" alignItems="center" spacing={0.6}>
+                        <Calendar size={13} color="#10b981" />
+                        <Typography variant="caption" color="text.secondary" fontFamily="Prompt" sx={{ fontSize: '0.72rem' }}>
+                          วันเริ่มเทรดแรก:{' '}
+                          <strong style={{ color: portfolio.firstTradeDate ? '#10b981' : 'inherit' }}>
+                            {benchmark.firstTradeDate ? new Date(benchmark.firstTradeDate).toLocaleDateString('th-TH') : '-'}
+                          </strong>{' '}
+                          <span style={{ fontSize: '0.65rem', opacity: 0.85 }}>
+                            {portfolio.firstTradeDate ? '(กำหนดเอง)' : '(คำนวณอัตโนมัติ)'}
+                          </span>
+                        </Typography>
+                      </Stack>
+                      {onEditFirstTradeDate && portfolio.id !== 'unassigned' && (
+                        <Button
+                          size="small"
+                          onClick={onEditFirstTradeDate}
+                          startIcon={<Edit2 size={11} />}
+                          sx={{
+                            py: 0.2,
+                            px: 1,
+                            minWidth: 0,
+                            fontSize: '0.68rem',
+                            fontFamily: 'Prompt',
+                            borderRadius: 1.5,
+                            textTransform: 'none',
+                            color: 'primary.main',
+                            bgcolor: 'rgba(16, 185, 129, 0.12)',
+                            '&:hover': { bgcolor: 'rgba(16, 185, 129, 0.22)' },
+                          }}
+                        >
+                          แก้ไขวัน
+                        </Button>
+                      )}
+                    </Stack>
                   </Box>
                 </Grid>
               )}

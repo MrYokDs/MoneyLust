@@ -61,16 +61,28 @@ export const calculateDailyGrowthPlan = (
 
 /**
  * ค้นหาวันที่เริ่มต้นเทรดวันแรกของพอร์ตการลงทุน (First Trade Date)
- * โดยหาจากวันที่สร้างแผนการเทรดแรกสุดในพอร์ต หรือใช้วันที่สร้างพอร์ตเป็นค่าสำรอง
+ * ลำดับความสำคัญ:
+ * 1. ใช้วันที่ผู้ใช้กำหนดเอง (customFirstTradeDate) หากมีระบุไว้
+ * 2. หากไม่ระบุ จะหาจากวันที่สร้างแผนการเทรดแรกสุดในพอร์ต
+ * 3. หากไม่มีแผน จะใช้วันที่สร้างพอร์ตเป็นค่าสำรอง
  * 
  * @param plans - รายการแผนการเทรดทั้งหมดในพอร์ต
  * @param portfolioCreatedAt - วันที่สร้างพอร์ตการลงทุน (ISO string)
+ * @param customFirstTradeDate - วันที่เริ่มเทรดที่ผู้ใช้กำหนดเอง (ISO string หรือ YYYY-MM-DD)
  * @returns วันที่เริ่มต้นเทรดในรูปแบบ ISO string
  */
 export const getPortfolioFirstTradeDate = (
   plans?: Array<{ createdAt?: string }>,
-  portfolioCreatedAt?: string
+  portfolioCreatedAt?: string,
+  customFirstTradeDate?: string
 ): string => {
+  if (customFirstTradeDate) {
+    const customTime = new Date(customFirstTradeDate).getTime();
+    if (!isNaN(customTime)) {
+      return new Date(customFirstTradeDate).toISOString();
+    }
+  }
+
   if (plans && plans.length > 0) {
     const validTimestamps = plans
       .map((p) => (p.createdAt ? new Date(p.createdAt).getTime() : NaN))

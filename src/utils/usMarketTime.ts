@@ -113,48 +113,33 @@ export const getUsMarketSeasonInfo = (date: Date = new Date()): UsMarketSeasonIn
   const seasonPeriod = isDst ? 'มี.ค. - พ.ย.' : 'พ.ย. - มี.ค.';
 
   // คำนวณช่วงเวลาเข้าซื้อ:
-  // - ช่วง DST (มี.ค. - พ.ย. เช่น เดือนปัจจุบัน): 03:00-03:05, 03:25-03:30, 04:25-04:30
-  // - ช่วง Standard Time (พ.ย. - มี.ค.): ปรับช้าลง 1 ชั่วโมง ➔ 04:00-04:05, 04:25-04:30, 05:25-05:30
+  // - ช่วง DST (ตลาดฤดูนี้ เช่น มี.ค. - พ.ย.): 04:25 - 04:35 น. (เวลาที่เหมาะที่สุด), 05:25 - 05:35 น. (เฉพาะกราฟขาลง)
+  // - ช่วง Standard Time (พ.ย. - มี.ค.): ปรับเวลาตามรอบตลาดเลื่อน 1 ชม. ➔ 05:25 - 05:35 น., 06:25 - 06:35 น.
   const hourOffset = isDst ? 0 : 1;
 
   const windows: TradingWindowItem[] = [
     {
       id: 1,
-      timeRange: `${3 + hourOffset}:00 - ${3 + hourOffset}:05`,
-      startHour: 3 + hourOffset,
-      startMinute: 0,
-      endHour: 3 + hourOffset,
-      endMinute: 5,
-      title: 'จังหวะเข้าซื้อที่ดีที่สุด (Primary Entry)',
-      desc: isDst
-        ? 'ช่วงปิดตลาดรอบ DST (03:00 น.)'
-        : 'ช่วงปิดตลาดรอบ Standard Time (04:00 น.)',
+      timeRange: `${String(4 + hourOffset).padStart(2, '0')}:25 - ${String(4 + hourOffset).padStart(2, '0')}:35`,
+      startHour: 4 + hourOffset,
+      startMinute: 25,
+      endHour: 4 + hourOffset,
+      endMinute: 35,
+      title: 'เวลาที่เหมาะแก่การเข้าซื้อที่สุด (Best Time Entry)',
+      desc: 'จังหวะเข้าซื้อที่ดีที่สุดตามรอบเวลาตลาดฤดูนี้',
       badgeLabel: 'Best Time',
       badgeColor: 'success',
       isDowntrend: false,
     },
     {
       id: 2,
-      timeRange: `${3 + hourOffset}:25 - ${3 + hourOffset}:30`,
-      startHour: 3 + hourOffset,
+      timeRange: `${String(5 + hourOffset).padStart(2, '0')}:25 - ${String(5 + hourOffset).padStart(2, '0')}:35`,
+      startHour: 5 + hourOffset,
       startMinute: 25,
-      endHour: 3 + hourOffset,
-      endMinute: 30,
-      title: 'เฉพาะเมื่อกราฟเป็นขาลง (Downtrend 1)',
-      desc: 'รอสัญญาณแท่งเทียนรอบย่อ',
-      badgeLabel: 'Downtrend',
-      badgeColor: 'warning',
-      isDowntrend: true,
-    },
-    {
-      id: 3,
-      timeRange: `${4 + hourOffset}:25 - ${4 + hourOffset}:30`,
-      startHour: 4 + hourOffset,
-      startMinute: 25,
-      endHour: 4 + hourOffset,
-      endMinute: 30,
-      title: 'เฉพาะเมื่อกราฟเป็นขาลง (Downtrend 2)',
-      desc: 'รอสัญญาณแท่งเทียนรอบย่อถัดไป',
+      endHour: 5 + hourOffset,
+      endMinute: 35,
+      title: 'เฉพาะเมื่อกราฟเป็นขาลง (Downtrend Entry)',
+      desc: 'รอสัญญาณแท่งเทียนรอบย่อเมื่อกราฟเป็นขาลง',
       badgeLabel: 'Downtrend',
       badgeColor: 'warning',
       isDowntrend: true,

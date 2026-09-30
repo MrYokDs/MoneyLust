@@ -17,6 +17,7 @@ import {
   updatePortfolioCapital,
   clearPortfolioAdjustments,
   deletePortfolioGrowthPlan,
+  updatePortfolioFirstTradeDate,
 } from '../../store/stockPlannerSlice';
 import { calculatePortfolioSummary, CalculationResult } from '../../utils/stockMath';
 import { getPortfolioFirstTradeDate } from '../../utils/growthPlanMath';
@@ -58,6 +59,7 @@ export const SavedPlans: React.FC = () => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [planToDelete, setPlanToDelete] = useState<PlanToDelete | null>(null);
   const [openClearAllModal, setOpenClearAllModal] = useState(false);
+  const [openEditDateModal, setOpenEditDateModal] = useState(false);
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -85,7 +87,11 @@ export const SavedPlans: React.FC = () => {
   });
 
   const summary = calculatePortfolioSummary(portfolio, savedPlans, exchangeRate);
-  const firstTradeDate = getPortfolioFirstTradeDate(filteredPlans, portfolio.createdAt);
+  const firstTradeDate = getPortfolioFirstTradeDate(
+    filteredPlans,
+    portfolio.createdAt,
+    portfolio.firstTradeDate
+  );
 
   const filteredTimelineItems = timelineItems.filter((item) => {
     if (filterType === 'all') return true;
@@ -259,6 +265,7 @@ export const SavedPlans: React.FC = () => {
           dispatch(deletePortfolioGrowthPlan(portfolioId));
           enqueueSnackbar('ยกเลิกแผนการลงทุนของพอร์ตนี้เรียบร้อยแล้ว', { variant: 'info' });
         }}
+        onEditFirstTradeDate={() => setOpenEditDateModal(true)}
       />
 
       {/* 3. Timeline Filter */}
@@ -314,6 +321,17 @@ export const SavedPlans: React.FC = () => {
         openClearAllModal={openClearAllModal}
         onCloseClearAllModal={() => setOpenClearAllModal(false)}
         onConfirmClearAll={executeClearAll}
+        openEditDateModal={openEditDateModal}
+        onCloseEditDateModal={() => setOpenEditDateModal(false)}
+        currentFirstTradeDate={portfolio.firstTradeDate}
+        calculatedDefaultDate={getPortfolioFirstTradeDate(filteredPlans, portfolio.createdAt)}
+        onSaveFirstTradeDate={(dateStr) => {
+          dispatch(updatePortfolioFirstTradeDate({ id: portfolioId, firstTradeDate: dateStr }));
+          enqueueSnackbar(
+            dateStr ? 'อัปเดตวันเริ่มต้นเทรดเรียบร้อยแล้ว' : 'รีเซ็ตวันเริ่มต้นเทรดเป็นอัตโนมัติแล้ว',
+            { variant: 'success' }
+          );
+        }}
       />
     </Box>
   );
