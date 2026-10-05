@@ -5,6 +5,7 @@ import { useAppSelector, useAppDispatch } from '../store';
 import { reorderPortfolios } from '../store/stockPlannerSlice';
 import { DataBackupModal } from './DataBackupModal';
 import { TradingNoteHeaderWidget } from './TradingNoteHeaderWidget';
+import { WebullTokenBadge } from './WebullTokenBadge';
 import {
   Box,
   Drawer,
@@ -35,7 +36,8 @@ import {
   ChevronDown,
   ChevronUp,
   GripVertical,
-  Target
+  Target,
+  BarChart3,
 } from 'lucide-react';
 
 const drawerWidth = 260;
@@ -128,11 +130,11 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
 
         {/* Navigation list */}
         <List sx={{ px: 1.5 }}>
-          {/* Main Menu */}
+          {/* Market Overview Menu (ตลาดหุ้น) */}
           <ListItem disablePadding sx={{ display: 'block', mb: 0.5 }}>
             <ListItemButton
               onClick={() => {
-                navigate(PATHS.HOME);
+                navigate(PATHS.MARKET);
                 if (isMobile) setMobileOpen(false);
               }}
               sx={{
@@ -141,7 +143,64 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
                 px: 2.5,
                 borderRadius: 3,
                 transition: 'all 0.2s',
-                ...(location.pathname === PATHS.HOME ? {
+                ...(location.pathname === PATHS.MARKET ? {
+                  backgroundColor: 'rgba(16, 185, 129, 0.12)',
+                  color: theme.palette.mode === 'light' ? 'primary.dark' : 'primary.light',
+                  borderLeft: '4px solid',
+                  borderColor: 'primary.main',
+                  '& .MuiListItemIcon-root': {
+                    color: theme.palette.mode === 'light' ? 'primary.dark' : 'primary.light',
+                  },
+                } : {
+                  color: 'text.secondary',
+                  '&:hover': {
+                    backgroundColor: theme.palette.mode === 'light' ? 'rgba(0, 0, 0, 0.04)' : 'rgba(255, 255, 255, 0.03)',
+                    color: 'text.primary',
+                    '& .MuiListItemIcon-root': {
+                      color: 'text.primary',
+                    }
+                  }
+                })
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: sidebarCollapsed ? 0 : 2,
+                  justifyContent: 'center',
+                  color: 'inherit',
+                  transition: 'color 0.2s',
+                }}
+              >
+                <BarChart3 size={20} />
+              </ListItemIcon>
+              {!sidebarCollapsed && (
+                <ListItemText
+                  primary="ตลาดหุ้น"
+                  primaryTypographyProps={{
+                    fontSize: '0.92rem',
+                    fontWeight: location.pathname === PATHS.MARKET ? 600 : 500,
+                    fontFamily: 'Prompt'
+                  }}
+                />
+              )}
+            </ListItemButton>
+          </ListItem>
+
+          {/* Main Menu */}
+          <ListItem disablePadding sx={{ display: 'block', mb: 0.5 }}>
+            <ListItemButton
+              onClick={() => {
+                navigate(PATHS.PLANNER);
+                if (isMobile) setMobileOpen(false);
+              }}
+              sx={{
+                minHeight: 48,
+                justifyContent: sidebarCollapsed ? 'center' : 'initial',
+                px: 2.5,
+                borderRadius: 3,
+                transition: 'all 0.2s',
+                ...(location.pathname === PATHS.PLANNER ? {
                   backgroundColor: 'rgba(16, 185, 129, 0.12)',
                   color: theme.palette.mode === 'light' ? 'primary.dark' : 'primary.light',
                   borderLeft: '4px solid',
@@ -177,7 +236,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
                   primary="สร้างแผนการเทรด"
                   primaryTypographyProps={{
                     fontSize: '0.92rem',
-                    fontWeight: location.pathname === PATHS.HOME ? 600 : 500,
+                    fontWeight: location.pathname === PATHS.PLANNER ? 600 : 500,
                     fontFamily: 'Prompt'
                   }}
                 />
@@ -472,7 +531,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
             )}
 
             <Typography variant="h6" fontWeight="bold" sx={{ fontFamily: 'Prompt', fontSize: { xs: '1rem', md: '1.25rem' } }}>
-              {location.pathname === PATHS.HOME
+              {location.pathname === PATHS.MARKET
+                ? 'ภาพรวมตลาดหุ้นสหรัฐฯ'
+                : location.pathname === PATHS.PLANNER
                 ? 'เครื่องมือคำนวณแบ่งไม้ถัวหุ้น'
                 : location.pathname === PATHS.INVESTMENT_PLAN
                 ? 'สร้างแผนการลงทุนทบต้น'
@@ -480,8 +541,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
             </Typography>
           </Stack>
 
-          {/* Theme switcher, Backup, Trading Note & Profile */}
+          {/* Webull Token Status, Backup, Trading Note, Theme & Profile */}
           <Stack direction="row" alignItems="center" spacing={1.5}>
+            <WebullTokenBadge />
             <TradingNoteHeaderWidget />
             <DataBackupModal />
 

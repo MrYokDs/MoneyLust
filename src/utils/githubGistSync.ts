@@ -265,3 +265,142 @@ export const disconnectGist = (): void => {
   localStorage.removeItem(STORAGE_GIST_ID_KEY);
   localStorage.removeItem(STORAGE_LAST_SYNC_KEY);
 };
+
+export interface GistDiffResult {
+  hasDiff: boolean;
+  cloudPlansCount: number;
+  localPlansCount: number;
+  cloudPortfoliosCount: number;
+  localPortfoliosCount: number;
+  cloudUpdatedAt: string | null;
+  cloudRawContent: string | null;
+  message?: string;
+}
+
+/**
+ * ตรวจสอบความแตกต่างระหว่างข้อมูลในเครื่อง (Local) กับข้อมูลบน GitHub Gist (Cloud)
+ * 
+ * @returns Promise<GistDiffResult> ผลลัพธ์การเปรียบเทียบข้อมูล
+ */
+export const checkGistDifference = async (): Promise<GistDiffResult> => {
+  const token = localStorage.getItem(STORAGE_GIST_TOKEN_KEY);
+  const gistId = localStorage.getItem(STORAGE_GIST_ID_KEY);
+
+  if (!gistId) {
+    return {
+      hasDiff: false,
+      cloudPlansCount: 0,
+      localPlansCount: 0,
+      cloudPortfoliosCount: 0,
+      localPortfoliosCount: 0,
+      cloudUpdatedAt: null,
+      cloudRawContent: null,
+      message: 'ไม่มีการตั้งค่า Gist ID ในเครื่องนี้',
+    };
+  }
+
+  const headers: Record<string, string> = {
+    Accept: 'application/vnd.github.v3+json',
+  };
+  if (token && token.trim()) {
+    headers.Authorization = `token ${token.trim()}`;
+  }
+
+  try {
+    const getRes = await fetch(`https://api.github.com/gists/${gistId}`, { headers });
+    if (!getRes.ok) {
+      return {
+        hasDiff: false,
+        cloudPlansCount: 0,
+        localPlansCount: 0,
+        cloudPortfoliosCount: 0,
+        localPortfoliosCount: 0,
+        cloudUpdatedAt: null,
+        cloudRawContent: null,
+        message: `ไม่สามารถเข้าถึง Gist ได้ (${getRes.status})`,
+      };
+    }
+
+    const gistData = await getRes.json();
+    const fileObj = gistData.files?.[GIST_FILENAME];
+
+    if (!fileObj || !fileObj.content) {
+      return {
+        hasDiff: false,
+        cloudPlansCount: 0,
+        localPlansCount: 0,
+        cloudPortfoliosCount: 0,
+        localPortfoliosCount: 0,
+        cloudUpdatedAt: null,
+        cloudRawContent: null,
+        message: `ไม่พบไฟล์ ${GIST_FILENAME} บน Gist`,
+      };
+    }
+
+    const cloudRawContent = fileObj.content;
+    const parsedCloud = JSON.parse(cloudRawContent);
+    const cloudData: Record<string, string> = parsedCloud?.data || parsedCloud || {};
+
+    const localPayload = getExportPayload();
+    const localData = localPayload.data || {};
+
+    // นับจำนวนแผนและพอร์ตของทั้งสองฝั่ง
+    const parseCount = (val: string | undefined): number => {
+      if (!val) return 0;
+      try {
+        const arr = JSON.parse(val);
+        return Array.isArray(arr) ? arr.length : 0;
+      } catch {
+        return 0;
+      }
+    };
+
+    const cloudPlansCount = parseCount(cloudData['wealthflow_saved_plans']);
+    const localPlansCount = parseCount(localData['wealthflow_saved_plans']);
+    const cloudPortfoliosCount = parseCount(cloudData['wealthflow_portfolios']);
+    const localPortfoliosCount = parseCount(localData['wealthflow_portfolios']);
+
+    // เปรียบเทียบข้อมูลสาระสำคัญ (Saved Plans, Portfolios, Investment Plan Form)
+    const isPlansDiff = (cloudData['wealthflow_saved_plans'] || '') !== (localData['wealthflow_saved_plans'] || '');
+    const isPortfoliosDiff = (cloudData['wealthflow_portfolios'] || '') !== (localData['wealthflow_portfolios'] || '');
+    const isFormDiff = (cloudData['wealthflow_investment_plan_form'] || '') !== (localData['wealthflow_investment_plan_form'] || '');
+
+    const hasDiff = isPlansDiff || isPortfoliosDiff || isFormDiff;
+
+    return {
+      hasDiff,
+      cloudPlansCount,
+      localPlansCount,
+      cloudPortfoliosCount,
+      localPortfoliosCount,
+      cloudUpdatedAt: gistData.updated_at || parsedCloud.exportedAt || null,
+      cloudRawContent,
+    };
+  } catch (err: any) {
+    return {
+      hasDiff: false,
+      cloudPlansCount: 0,
+      localPlansCount: 0,
+      cloudPortfoliosCount: 0,
+      localPortfoliosCount: 0,
+      cloudUpdatedAt: null,
+      cloudRawContent: null,
+      message: err.message || 'เกิดข้อผิดพลาดในการเชื่อมต่อ Gist',
+    };
+  }
+};
+
+/**
+ * นำเข้าข้อมูล JSON จาก Cloud Gist ลงใน LocalStorage ของเครื่องทันที
+ * 
+ * @param cloudRawContent - เนื้อหา JSON จาก Gist
+ * @returns ImportResult ผลลัพธ์การบันทึก
+ */
+export const applyGistBackup = (cloudRawContent: string) => {
+  const result = importBackupFromJson(cloudRawContent);
+  if (result.success) {
+    localStorage.setItem(STORAGE_LAST_SYNC_KEY, new Date().toISOString());
+  }
+  return result;
+};
+

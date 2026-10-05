@@ -794,7 +794,7 @@
       "file_type": "code",
       "norm_label": "floatingtradingnotewindowprops",
       "source_file": "src/components/trading-note/FloatingTradingNoteWindow.tsx",
-      "source_location": "L31"
+      "source_location": "L32"
     },
     {
       "id": "src_components_trading_note_floatingtradingnotewindow_noteposition",
@@ -807,7 +807,7 @@
       "file_type": "code",
       "norm_label": "noteposition",
       "source_file": "src/components/trading-note/FloatingTradingNoteWindow.tsx",
-      "source_location": "L26"
+      "source_location": "L27"
     },
     {
       "id": "src_components_trading_note_marketholidaystab_marketholidaystabprops",
@@ -859,7 +859,7 @@
       "file_type": "code",
       "norm_label": "noteposition",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L35"
+      "source_location": "L36"
     },
     {
       "id": "src_utils_finnhubmarketholidays_marketholidayitem",
@@ -2080,7 +2080,7 @@
       "file_type": "code",
       "norm_label": "webulltokenbadge()",
       "source_file": "src/components/WebullTokenBadge.tsx",
-      "source_location": "L19"
+      "source_location": "L17"
     },
     {
       "id": "src_components_webulltokenmodal_webulltokenmodal",
@@ -2152,7 +2152,7 @@
       "file_type": "code",
       "norm_label": "floatingtradingnotewindow()",
       "source_file": "src/components/trading-note/FloatingTradingNoteWindow.tsx",
-      "source_location": "L50"
+      "source_location": "L51"
     },
     {
       "id": "src_components_trading_note_marketholidaystab_marketholidaystab",
@@ -2200,7 +2200,7 @@
       "file_type": "code",
       "norm_label": "tradingnoteheaderwidget()",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L49"
+      "source_location": "L50"
     },
     {
       "id": "src_utils_finnhubmarketholidays_calculategoodfriday",
@@ -7379,7 +7379,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L115",
+      "source_location": "L116",
       "weight": 1.0
     },
     {
@@ -7391,7 +7391,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L130",
+      "source_location": "L131",
       "weight": 1.0
     },
     {
@@ -7403,7 +7403,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L137",
+      "source_location": "L138",
       "weight": 1.0
     },
     {
@@ -7415,7 +7415,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L142",
+      "source_location": "L143",
       "weight": 1.0
     },
     {
@@ -7427,7 +7427,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L448",
+      "source_location": "L445",
       "weight": 1.0
     },
     {
@@ -7439,7 +7439,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L464",
+      "source_location": "L461",
       "weight": 1.0
     },
     {
@@ -7451,7 +7451,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/WebullTokenBadge.tsx",
-      "source_location": "L150",
+      "source_location": "L123",
       "weight": 1.0
     },
     {
@@ -7463,7 +7463,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/WebullTokenBadge.tsx",
-      "source_location": "L30",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -9431,7 +9431,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "src/components/trading-note/FloatingTradingNoteWindow.tsx",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -11438,7 +11438,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/trading-note/FloatingTradingNoteWindow.tsx",
-      "source_location": "L24",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -11582,7 +11582,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L23",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -11594,7 +11594,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L23",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -11606,7 +11606,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -11618,7 +11618,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -11630,7 +11630,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -11642,7 +11642,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -11654,7 +11654,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L33",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -11666,7 +11666,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L33",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -15542,7 +15542,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/trading-note/FloatingTradingNoteWindow.tsx",
-      "source_location": "L24",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -15770,7 +15770,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L23",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -15782,7 +15782,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -15794,7 +15794,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L33",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -20346,7 +20346,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/trading-note/FloatingTradingNoteWindow.tsx",
-      "source_location": "L26",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -20357,7 +20357,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/trading-note/FloatingTradingNoteWindow.tsx",
-      "source_location": "L31",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -20368,7 +20368,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/trading-note/FloatingTradingNoteWindow.tsx",
-      "source_location": "L50",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -20445,7 +20445,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -20456,7 +20456,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L49",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -20467,7 +20467,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/WebullTokenBadge.tsx",
-      "source_location": "L19",
+      "source_location": "L17",
       "weight": 1.0
     },
     {

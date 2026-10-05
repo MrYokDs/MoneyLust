@@ -1,5 +1,6 @@
 import { StockDetail, CompanyFinancials } from '../pages/StockPlanner/types';
 import { formatNumber } from './stockMath';
+import { fetchWebullStockQuote } from './webullService';
 
 /**
  * จัดรูปแบบค่า Market Cap ให้อ่านง่าย เช่น $1.25T, $500.00B, $20.50M
@@ -378,42 +379,63 @@ export const fetchCompleteStockDetail = async (
   const cleanSymbol = symbol.trim().toUpperCase();
   if (!cleanSymbol) return null;
 
-  // ดึงข้อมูลทุกส่วนพร้อมกัน
-  const [summaryResult, profileResult, financialsResult, peResult] = await Promise.allSettled([
+  // ดึงข้อมูลทุกส่วนพร้อมกัน รวมถึง Snapshot ราคา Real-time จาก Webull OpenAPI
+  const [summaryResult, profileResult, financialsResult, peResult, webullResult] = await Promise.allSettled([
     fetchStockSummary(cleanSymbol),
     fetchCompanyProfile(cleanSymbol),
     fetchCompanyFinancials(cleanSymbol),
     fetchPeRatio(cleanSymbol),
+    fetchWebullStockQuote(cleanSymbol),
   ]);
 
   const summary = summaryResult.status === 'fulfilled' ? summaryResult.value : null;
-  if (!summary) return null;
-
   const profile = profileResult.status === 'fulfilled' ? profileResult.value : null;
   const financials = financialsResult.status === 'fulfilled' ? financialsResult.value : null;
-  const peRatio = peResult.status === 'fulfilled' ? peResult.value : '-';
+  const peRatioNasdaq = peResult.status === 'fulfilled' ? peResult.value : '-';
+  const webullQuote = webullResult.status === 'fulfilled' && webullResult.value.success ? webullResult.value.data : null;
+
+  // หากไม่มีทั้งข้อมูล Nasdaq Summary และ Webull Quote จะถือว่าไม่พบข้อมูล
+  if (!summary && !webullQuote) return null;
+
+  // จัดการตัวเลข Market Cap
+  const rawMarketCap = (webullQuote?.rawMarketCap && webullQuote.rawMarketCap > 0)
+    ? webullQuote.rawMarketCap
+    : summary?.rawMarketCapNumber;
+
+  const marketCapFormatted = (webullQuote?.marketCap && webullQuote.marketCap !== '-')
+    ? webullQuote.marketCap
+    : (summary?.marketCap || '-');
 
   // คำนวณ P/B Ratio (Market Cap / Total Equity)
-  let pbRatio = '-';
-  if (financials?.totalEquityThousands && summary.rawMarketCapNumber) {
+  let pbRatio = webullQuote?.pbRatio && webullQuote.pbRatio !== '-' ? webullQuote.pbRatio : '-';
+  if (pbRatio === '-' && financials?.totalEquityThousands && rawMarketCap) {
     const totalEquity = financials.totalEquityThousands * 1000;
-    if (totalEquity > 0 && summary.rawMarketCapNumber > 0) {
-      pbRatio = (summary.rawMarketCapNumber / totalEquity).toFixed(2);
+    if (totalEquity > 0 && rawMarketCap > 0) {
+      pbRatio = (rawMarketCap / totalEquity).toFixed(2);
     }
   }
 
+  const peRatio = webullQuote?.peRatio && webullQuote.peRatio !== '-' ? webullQuote.peRatio : peRatioNasdaq;
+  const fiftyTwoWeekRange = webullQuote?.fiftyTwoWeekRange && webullQuote.fiftyTwoWeekRange !== '-'
+    ? webullQuote.fiftyTwoWeekRange
+    : (summary?.fiftyTwoWeekRange || '-');
+
+  const previousClose = webullQuote ? `$${webullQuote.preClose}` : (summary?.previousClose || '-');
+  const yieldVal = webullQuote?.yield && webullQuote.yield !== '0.00%' ? webullQuote.yield : (summary?.yield || '-');
+
   return {
-    name: summary.name || profile?.companyName || cleanSymbol,
-    marketCap: summary.marketCap,
-    rawMarketCap: summary.rawMarketCapNumber,
-    sector: summary.sector !== '-' ? summary.sector : profile?.sector || '-',
-    industry: summary.industry !== '-' ? summary.industry : profile?.industry || '-',
-    fiftyTwoWeekRange: summary.fiftyTwoWeekRange,
-    previousClose: summary.previousClose,
-    yield: summary.yield,
+    name: summary?.name || profile?.companyName || cleanSymbol,
+    marketCap: marketCapFormatted,
+    rawMarketCap,
+    sector: summary?.sector && summary.sector !== '-' ? summary.sector : profile?.sector || '-',
+    industry: summary?.industry && summary.industry !== '-' ? summary.industry : profile?.industry || '-',
+    fiftyTwoWeekRange,
+    previousClose,
+    yield: yieldVal,
     peRatio,
     pbRatio,
     description: profile?.description,
     financials: financials || null,
+    realTimeQuote: webullQuote,
   };
 };

@@ -3,11 +3,14 @@
  * รวมศูนย์ไว้ที่เดียวเพื่อป้องกันการพิมพ์ผิด (Typo) และง่ายต่อการปรับเปลี่ยนในอนาคต
  */
 export const PATHS = {
-  /** หน้าหลัก: วางแผนการแบ่งไม้เข้าซื้อหุ้น (Stock Grid Planner) */
-  HOME: '/',
+  /** หน้าภาพรวมตลาดหุ้น (US Stock Market Screener: Pre-market, After-hours, Top Gainers/Losers) - เมนูเริ่มต้น */
+  MARKET: '/market',
+
+  /** หน้าคำนวณและวางแผนการซื้อหุ้น (Stock Grid Planner) */
+  PLANNER: '/planner',
   
-  /** หน้าหลัก (Alias): แผนการลงทุน */
-  PLANNER: '/',
+  /** หน้าหลัก (Alias เพื่อความเข้ากันได้ย้อนหลัง): นำทางไปยังหน้าคำนวณและวางแผน */
+  HOME: '/planner',
 
   /** หน้าสร้างแผนการลงทุนและคำนวณการเติบโตทบต้น (Investment Growth Plan) */
   INVESTMENT_PLAN: '/investment-plan',

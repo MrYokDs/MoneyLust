@@ -37,6 +37,28 @@ export interface CompanyFinancials {
   totalEquityThousands?: number;
 }
 
+export interface WebullRealTimeQuote {
+  symbol: string;
+  currentPrice: number;
+  preClose: number;
+  change: number;
+  changePercent: number;
+  tradeStatus: string;
+  sessionLabel: string;
+  volume: number;
+  marketCap: string;
+  rawMarketCap: number;
+  peRatio: string;
+  pbRatio: string;
+  fiftyTwoWeekRange: string;
+  yield: string;
+  open: number;
+  high: number;
+  low: number;
+  lastUpdated: string;
+  source: string;
+}
+
 export interface StockDetail {
   name: string;
   marketCap: string;
@@ -50,5 +72,6 @@ export interface StockDetail {
   pbRatio?: string;
   description?: string;
   financials?: CompanyFinancials | null;
+  realTimeQuote?: WebullRealTimeQuote | null;
 }
 

@@ -1,9 +1,9 @@
 /**
- * Route: /
+ * Route: /planner
  * หน้าหลักสำหรับคำนวณและวางแผนกลยุทธ์การแบ่งไม้เข้าซื้อหุ้น (Stock Grid Planner)
  */
 
-import React, { useMemo, useEffect, useState } from 'react';
+import React, { useMemo, useEffect, useState, useRef } from 'react';
 import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
 import { Box, Grid, Stack } from '@mui/material';
@@ -23,6 +23,7 @@ import {
 } from '../../utils/stockMath';
 import { fetchCompleteStockDetail, parseMarketCapToNumber } from '../../utils/stockApi';
 import { fetchLiveExchangeRate, getCachedExchangeRate } from '../../utils/exchangeRate';
+import { fetchWebullStockQuote } from '../../utils/webullService';
 import GridVisualizer from '../../components/GridVisualizer';
 import { StockOption, StockDetail } from './types';
 import StockPlannerForm from './sections/StockPlannerForm';
@@ -61,18 +62,36 @@ export const StockPlanner: React.FC = () => {
     }
   }, [currentParams.portfolioId, portfolios]);
 
-  // Fetch full company name and live market cap from Nasdaq summary API via local Vite proxy
+  // ติดตามสัญลักษณ์หุ้นล่าสุดเพื่อกำหนดราคาเริ่มต้นเป็นราคาปิดวันก่อนหน้าเมื่อเปลี่ยนหรือดูหุ้นตัวใหม่
+  const lastStockSymbolRef = useRef<string>('');
+
+  // Fetch full company name and live market cap from Webull / Nasdaq summary API via local Vite proxy
   useEffect(() => {
     if (!currentParams.stockSymbol || currentParams.stockSymbol.trim().length === 0) {
       setStockDetail(null);
+      lastStockSymbolRef.current = '';
       return;
     }
+
+    const isNewStock = lastStockSymbolRef.current !== currentParams.stockSymbol;
+    lastStockSymbolRef.current = currentParams.stockSymbol;
 
     const fetchDetail = async () => {
       setLoadingDetail(true);
       try {
         const detail = await fetchCompleteStockDetail(currentParams.stockSymbol);
         setStockDetail(detail);
+
+        // กำหนดค่าเริ่มต้นของช่องราคาปัจจุบันเป็นราคาปิดวันก่อนหน้าของหุ้นตัวนั้นๆ อัตโนมัติเมื่อเลือกดูหุ้น
+        if (detail && isNewStock) {
+          const defaultClosePrice = detail.realTimeQuote?.preClose
+            ? detail.realTimeQuote.preClose.toString()
+            : detail.previousClose.replace(/[^0-9.]/g, '');
+
+          if (defaultClosePrice && parseFloat(defaultClosePrice) > 0) {
+            dispatch(updateCurrentParams({ currentPrice: defaultClosePrice }));
+          }
+        }
       } catch (error) {
         console.error('Error fetching stock detail:', error);
         setStockDetail(null);
@@ -83,6 +102,43 @@ export const StockPlanner: React.FC = () => {
 
     const timeoutId = setTimeout(fetchDetail, 400);
     return () => clearTimeout(timeoutId);
+  }, [currentParams.stockSymbol]);
+
+  // ดึงข้อมูลราคา Real-Time Snapshot จาก Webull OpenAPI ทุกๆ 2.5 วินาที สำหรับหุ้นที่กำลังเลือกเปิดดูอยู่
+  useEffect(() => {
+    if (!currentParams.stockSymbol || currentParams.stockSymbol.trim().length === 0) return;
+
+    let isPolling = false;
+    const interval = setInterval(async () => {
+      if (isPolling) return;
+      isPolling = true;
+      try {
+        const res = await fetchWebullStockQuote(currentParams.stockSymbol);
+        if (res.success && res.data) {
+          const q = res.data;
+          setStockDetail((prev) => {
+            if (!prev) return prev;
+            return {
+              ...prev,
+              realTimeQuote: q,
+              previousClose: `$${q.preClose}`,
+              marketCap: q.marketCap !== '-' ? q.marketCap : prev.marketCap,
+              rawMarketCap: q.rawMarketCap > 0 ? q.rawMarketCap : prev.rawMarketCap,
+              peRatio: q.peRatio !== '-' ? q.peRatio : prev.peRatio,
+              pbRatio: q.pbRatio !== '-' ? q.pbRatio : prev.pbRatio,
+              fiftyTwoWeekRange: q.fiftyTwoWeekRange !== '-' ? q.fiftyTwoWeekRange : prev.fiftyTwoWeekRange,
+              yield: q.yield !== '0.00%' ? q.yield : prev.yield,
+            };
+          });
+        }
+      } catch {
+        // เงียบไว้เมื่อเกิดข้อผิดพลาดในการ poll พื้นหลัง
+      } finally {
+        isPolling = false;
+      }
+    }, 2500);
+
+    return () => clearInterval(interval);
   }, [currentParams.stockSymbol]);
 
   // Dynamic search from Yahoo Finance via local Vite dev proxy
@@ -551,7 +607,7 @@ export const StockPlanner: React.FC = () => {
             onSelectStock={(sym) => handleChange('stockSymbol', sym)}
             onApplyPrice={(price) => {
               handleChange('currentPrice', price);
-              enqueueSnackbar(`ดึงราคาล่าสุด ${stockDetail?.previousClose} เรียบร้อย!`, { variant: 'success' });
+              enqueueSnackbar(`นำราคา $${price} ไปใส่ในช่องราคาปัจจุบันเรียบร้อย!`, { variant: 'success' });
             }}
             currentPrice={currentParams.currentPrice}
             currentPriceIsFirstTranche={currentParams.currentPriceIsFirstTranche !== false}

@@ -1,7 +1,7 @@
 # Graph Report - MoneyLust  (2026-10-05)
 
 ## Corpus Check
-- 109 files · ~57,008 words
+- 109 files · ~56,933 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 4 file(s) not represented in the graph (top: .example 1, (none) 1, .bat 1)
 

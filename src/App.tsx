@@ -8,6 +8,7 @@ import AppRoutes from './routes';
 import { useAppDispatch } from './store';
 import { updateCurrentParams } from './store/stockPlannerSlice';
 import { fetchLiveExchangeRate } from './utils/exchangeRate';
+import { GistSyncStartupModal } from './components/GistSyncStartupModal';
 
 /**
  * คอมโพเนนต์หลักของแอปพลิเคชัน (Root Application Component)
@@ -63,6 +64,7 @@ export const App: React.FC = () => {
       <BrowserRouter>
         <Layout darkMode={darkMode} setDarkMode={setDarkMode}>
           <AppRoutes />
+          <GistSyncStartupModal />
         </Layout>
       </BrowserRouter>
     </ThemeProvider>

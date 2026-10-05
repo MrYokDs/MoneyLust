@@ -1,15 +1,109 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
 // https://vite.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '');
+
+  return {
+    plugins: [
+      react(),
+      {
+        name: 'webull-dev-proxy',
+        configureServer(server) {
+          server.middlewares.use(async (req, res, next) => {
+            const url = new URL(req.url || '', 'http://localhost');
+            if (url.pathname === '/api/webull/quote') {
+              process.env.WEBULL_APP_KEY = env.WEBULL_APP_KEY || process.env.WEBULL_APP_KEY;
+              process.env.WEBULL_APP_SECRET = env.WEBULL_APP_SECRET || process.env.WEBULL_APP_SECRET;
+              process.env.WEBULL_API_HOST = env.WEBULL_API_HOST || process.env.WEBULL_API_HOST;
+              process.env.WEBULL_ACCESS_TOKEN = env.WEBULL_ACCESS_TOKEN || process.env.WEBULL_ACCESS_TOKEN;
+
+              (req as any).query = Object.fromEntries(url.searchParams);
+              (res as any).status = (code: number) => {
+                res.statusCode = code;
+                return res;
+              };
+              (res as any).json = (data: any) => {
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify(data));
+                return res;
+              };
+
+              try {
+                const { default: handler } = await import('./api/webull/quote');
+                return await handler(req, res);
+              } catch (err: any) {
+                res.statusCode = 500;
+                res.setHeader('Content-Type', 'application/json');
+                return res.end(JSON.stringify({ success: false, message: err.message }));
+              }
+            }
+
+            if (url.pathname === '/api/webull/screener') {
+              process.env.WEBULL_APP_KEY = env.WEBULL_APP_KEY || process.env.WEBULL_APP_KEY;
+              process.env.WEBULL_APP_SECRET = env.WEBULL_APP_SECRET || process.env.WEBULL_APP_SECRET;
+              process.env.WEBULL_API_HOST = env.WEBULL_API_HOST || process.env.WEBULL_API_HOST;
+              process.env.WEBULL_ACCESS_TOKEN = env.WEBULL_ACCESS_TOKEN || process.env.WEBULL_ACCESS_TOKEN;
+
+              (req as any).query = Object.fromEntries(url.searchParams);
+              (res as any).status = (code: number) => {
+                res.statusCode = code;
+                return res;
+              };
+              (res as any).json = (data: any) => {
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify(data));
+                return res;
+              };
+
+              try {
+                const { default: handler } = await import('./api/webull/screener');
+                return await handler(req, res);
+              } catch (err: any) {
+                res.statusCode = 500;
+                res.setHeader('Content-Type', 'application/json');
+                return res.end(JSON.stringify({ success: false, message: err.message }));
+              }
+            }
+
+            if (url.pathname === '/api/webull/token') {
+              process.env.WEBULL_APP_KEY = env.WEBULL_APP_KEY || process.env.WEBULL_APP_KEY;
+              process.env.WEBULL_APP_SECRET = env.WEBULL_APP_SECRET || process.env.WEBULL_APP_SECRET;
+              process.env.WEBULL_API_HOST = env.WEBULL_API_HOST || process.env.WEBULL_API_HOST;
+              process.env.WEBULL_ACCESS_TOKEN = env.WEBULL_ACCESS_TOKEN || process.env.WEBULL_ACCESS_TOKEN;
+
+              (req as any).query = Object.fromEntries(url.searchParams);
+              (res as any).status = (code: number) => {
+                res.statusCode = code;
+                return res;
+              };
+              (res as any).json = (data: any) => {
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify(data));
+                return res;
+              };
+
+              try {
+                const { default: handler } = await import('./api/webull/token');
+                return await handler(req, res);
+              } catch (err: any) {
+                res.statusCode = 500;
+                res.setHeader('Content-Type', 'application/json');
+                return res.end(JSON.stringify({ success: false, message: err.message }));
+              }
+            }
+            next();
+          });
+        },
+      },
+    ],
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
     },
-  },
   server: {
     port: 9999,
     open: false, // Prevents automatic browser launch during background scripts
@@ -56,5 +150,7 @@ export default defineConfig({
         }
       }
     }
-  },
+  }
+};
 });
+
