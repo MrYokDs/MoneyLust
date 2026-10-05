@@ -96,15 +96,15 @@
     "semantic_hash": ""
   },
   "src/components/TradingNoteHeaderWidget.tsx": {
-    "mtime": 1791196787.2426822,
-    "seen": 1791196815.3800387,
-    "ast_hash": "b555e7e8b7b91444f9afe70b91e0f469",
+    "mtime": 1791196973.7845838,
+    "seen": 1791197117.180643,
+    "ast_hash": "537070a868b641c9d2dad194a76b04de",
     "semantic_hash": ""
   },
   "src/components/trading-note/FloatingTradingNoteWindow.tsx": {
-    "mtime": 1791196797.7336204,
-    "seen": 1791196815.3800418,
-    "ast_hash": "7668f1009434e8a25abdaf3ffa4245f6",
+    "mtime": 1791196973.78407,
+    "seen": 1791197117.180646,
+    "ast_hash": "121f2721a57252898bc481f61acf486f",
     "semantic_hash": ""
   },
   "src/components/trading-note/MarketHolidaysTab.tsx": {
@@ -558,9 +558,9 @@
     "semantic_hash": ""
   },
   "api/webull/quote.ts": {
-    "mtime": 1791194713.5420003,
-    "seen": 1791194935.0426016,
-    "ast_hash": "643bcb3f5235ecedc912d5d1e73728dd",
+    "mtime": 1791198422.5735545,
+    "seen": 1791198505.1206641,
+    "ast_hash": "f1c7f7e8f8e3f4d4750708b42f1b95a7",
     "semantic_hash": ""
   },
   "src/utils/webullService.ts": {
@@ -570,9 +570,9 @@
     "semantic_hash": ""
   },
   "api/webull/screener.ts": {
-    "mtime": 1791193115.0028684,
-    "seen": 1791193232.9485712,
-    "ast_hash": "f0abfe694f153271fdecb552de4f3dc6",
+    "mtime": 1791198412.5828624,
+    "seen": 1791198505.1206656,
+    "ast_hash": "58615d8de17cb8e98d1092b4d0fd4e67",
     "semantic_hash": ""
   },
   "src/pages/Market.tsx": {
@@ -618,33 +618,33 @@
     "semantic_hash": ""
   },
   "scripts/webull_screener.py": {
-    "mtime": 1791192677.9440796,
-    "seen": 1791192748.3096216,
-    "ast_hash": "f74fca19aca0de13e4e04a8a88ebd119",
+    "mtime": 1791198442.6409378,
+    "seen": 1791198505.1206715,
+    "ast_hash": "9ffe6387907d91d1dd5a7084b4ee01c9",
     "semantic_hash": ""
   },
   "scripts/webull_quote.py": {
-    "mtime": 1791194686.251558,
-    "seen": 1791194935.042609,
-    "ast_hash": "f16cb0b6af7193f31117731218d1ad05",
+    "mtime": 1791198454.4306896,
+    "seen": 1791198505.1206706,
+    "ast_hash": "12d6970ef6d3b1d011cd032bc88919b7",
     "semantic_hash": ""
   },
   "api/webull/token.ts": {
-    "mtime": 1791196328.2390015,
-    "seen": 1791196537.2655356,
-    "ast_hash": "af3ec4884b0f970d03b5a470c7802d55",
+    "mtime": 1791198433.6231754,
+    "seen": 1791198505.120667,
+    "ast_hash": "ea0cc7e4ffce3cb98ebeddc11f87139d",
     "semantic_hash": ""
   },
   "scripts/webull_token.py": {
-    "mtime": 1791196303.534869,
-    "seen": 1791196537.2655425,
-    "ast_hash": "e7030d2c5cc0d58668a17d70128d6a9e",
+    "mtime": 1791198468.7796345,
+    "seen": 1791198505.120672,
+    "ast_hash": "1b93a195a5706992cb6ceeda22efeaf5",
     "semantic_hash": ""
   },
   "src/components/WebullTokenBadge.tsx": {
-    "mtime": 1791196483.1883874,
-    "seen": 1791196537.2655559,
-    "ast_hash": "ce52ffbd136ff3582dbe93f2d5c13fdf",
+    "mtime": 1791197101.6500893,
+    "seen": 1791197117.180644,
+    "ast_hash": "10a777b4ab28a7fe336a4ab714838abf",
     "semantic_hash": ""
   },
   "src/components/WebullTokenModal.tsx": {

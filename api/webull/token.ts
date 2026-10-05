@@ -4,9 +4,9 @@
  * รองรับการอัปเดตไฟล์ .env.local และ conf/token.txt บนเครื่องอัตโนมัติ
  */
 
-import { execFile } from 'child_process';
 import path from 'path';
 import fs from 'fs';
+import { executeWebullRequest, getWebullCredentials } from './webullClient';
 
 export interface WebullTokenStatusResponse {
   success: boolean;
@@ -23,7 +23,7 @@ export interface WebullTokenStatusResponse {
 }
 
 /**
- * บันทึก Token ใหม่ลงในไฟล์ .env.local และ conf/token.txt
+ * บันทึก Token ใหม่ลงในไฟล์ .env.local และ conf/token.txt (เมื่อรันบนเครื่อง Localhost)
  * 
  * @param newToken - ค่า Token ใหม่ที่ต้องการบันทึก
  */
@@ -56,40 +56,133 @@ function persistNewToken(newToken: string): void {
 }
 
 /**
- * เรียกใช้ Python Bridge เพื่อจัดการ Token
+ * ดำเนินการจัดการ Token ผ่าน Webull OpenAPI โดยตรงด้วย Node.js
  * 
- * @param action - การกระทำ ('status' | 'refresh' | 'create' | 'verify')
+ * @param action - คำสั่ง ('status' | 'refresh' | 'create' | 'verify')
  * @param paramToken - Token ที่ต้องการตรวจสอบ (สำหรับ verify)
- * @returns Promise<WebullTokenStatusResponse> ผลลัพธ์จาก Webull SDK
+ * @returns ผลลัพธ์สถานะ Token
  */
-async function callTokenBridge(action: string, paramToken = ''): Promise<WebullTokenStatusResponse> {
-  return new Promise((resolve) => {
-    const scriptPath = path.resolve(process.cwd(), 'scripts', 'webull_token.py');
-    execFile(
-      'python',
-      [scriptPath, action, paramToken],
-      {
-        env: {
-          ...process.env,
-          WEBULL_APP_KEY: process.env.WEBULL_APP_KEY || '',
-          WEBULL_APP_SECRET: process.env.WEBULL_APP_SECRET || '',
-          WEBULL_ACCESS_TOKEN: process.env.WEBULL_ACCESS_TOKEN || '',
-        },
-        timeout: 10000,
-      },
-      (error, stdout) => {
-        if (error || !stdout) {
-          return resolve({ success: false, message: error?.message || 'Script execution failed' });
-        }
-        try {
-          const parsed = JSON.parse(stdout.trim());
-          return resolve(parsed);
-        } catch {
-          return resolve({ success: false, message: 'Invalid JSON response from bridge' });
-        }
-      }
-    );
-  });
+async function processTokenAction(action: string, paramToken = ''): Promise<WebullTokenStatusResponse> {
+  const creds = getWebullCredentials();
+  const currentToken = paramToken || creds.token;
+
+  if (action === 'status') {
+    const data = await executeWebullRequest<any>({
+      method: 'POST',
+      uri: '/auth/tokens/check',
+      body: { token: currentToken },
+      credentials: { token: currentToken },
+    });
+
+    const expiresAt = data.expires_at || data.expires || 0;
+    const now = Date.now() / 1000;
+    const expSec = expiresAt > 1e11 ? expiresAt / 1000 : expiresAt;
+    const daysLeft = expSec > 0 ? Math.max(0, (expSec - now) / 86400) : 0;
+    const hoursLeft = expSec > 0 ? Math.max(0, (expSec - now) / 3600) : 0;
+
+    let expDateStr = '-';
+    if (expSec > 0) {
+      const d = new Date(expSec * 1000);
+      expDateStr = `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}:${String(d.getSeconds()).padStart(2, '0')}`;
+    }
+
+    const isNormal = data.status === 'NORMAL';
+    const isExpired = expSec > 0 ? now >= expSec : true;
+
+    return {
+      success: true,
+      token: data.token || currentToken,
+      status: data.status || 'UNKNOWN',
+      isNormal: isNormal && !isExpired,
+      isExpired,
+      expiresAt,
+      expiresDate: expDateStr,
+      daysRemaining: Number(daysLeft.toFixed(1)),
+      hoursRemaining: Number(hoursLeft.toFixed(1)),
+    };
+  }
+
+  if (action === 'refresh') {
+    const data = await executeWebullRequest<any>({
+      method: 'POST',
+      uri: '/openapi/auth/token/refresh',
+      body: { token: currentToken },
+      credentials: { token: currentToken },
+    });
+
+    const expiresAt = data.expires_at || data.expires || 0;
+    const now = Date.now() / 1000;
+    const expSec = expiresAt > 1e11 ? expiresAt / 1000 : expiresAt;
+    const daysLeft = expSec > 0 ? Math.max(0, (expSec - now) / 86400) : 0;
+
+    let expDateStr = '-';
+    if (expSec > 0) {
+      const d = new Date(expSec * 1000);
+      expDateStr = `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}:${String(d.getSeconds()).padStart(2, '0')}`;
+    }
+
+    const newToken = data.token || currentToken;
+    if (newToken) {
+      persistNewToken(newToken);
+    }
+
+    return {
+      success: true,
+      token: newToken,
+      status: data.status || 'NORMAL',
+      expiresAt,
+      expiresDate: expDateStr,
+      daysRemaining: Number(daysLeft.toFixed(1)),
+      message: 'ต่ออายุ Token สำเร็จเรียบร้อย',
+    };
+  }
+
+  if (action === 'create') {
+    const data = await executeWebullRequest<any>({
+      method: 'POST',
+      uri: '/auth/tokens/create',
+      body: {},
+      credentials: { token: '' },
+    });
+
+    const candidateToken = data.token || '';
+    const status = data.status || 'NOT_VERIFIED';
+
+    return {
+      success: true,
+      token: candidateToken,
+      status,
+      message: 'ส่งคำขอไปยังแอป Webull เรียบร้อยแล้ว กรุณากดอนุมัติบนมือถือ',
+    };
+  }
+
+  if (action === 'verify') {
+    const tokenToCheck = paramToken || currentToken;
+    const data = await executeWebullRequest<any>({
+      method: 'POST',
+      uri: '/auth/tokens/check',
+      body: { token: tokenToCheck },
+      credentials: { token: tokenToCheck },
+    });
+
+    const isVerified = data.status === 'NORMAL';
+    if (isVerified && tokenToCheck) {
+      persistNewToken(tokenToCheck);
+    }
+
+    return {
+      success: true,
+      token: tokenToCheck,
+      status: data.status,
+      isVerified,
+      message: isVerified ? 'ยืนยันตัวตนสำเร็จแล้ว' : 'กำลังรอการอนุมัติบนแอป Webull...',
+    };
+  }
+
+  return {
+    success: false,
+    message: `Unknown action: ${action}`,
+  };
 }
 
 /**
@@ -111,16 +204,10 @@ export default async function handler(req: any, res: any) {
   const candidateToken = (req.query.token || '').toString();
 
   try {
-    const result = await callTokenBridge(action, candidateToken);
-
-    // หากคำสั่ง refresh หรือ verify สำเร็จและมี token ใหม่ ให้บันทึกลงเครื่องอัตโนมัติ
-    if (result.success && result.token && (action === 'refresh' || (action === 'verify' && result.isVerified))) {
-      persistNewToken(result.token);
-    }
-
+    const result = await processTokenAction(action, candidateToken);
     return res.status(200).json(result);
   } catch (error: any) {
-    return res.status(500).json({
+    return res.status(error.status || 500).json({
       success: false,
       message: error.message || 'เกิดข้อผิดพลาดในการประมวลผล Token',
     });
