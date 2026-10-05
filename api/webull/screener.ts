@@ -4,7 +4,7 @@
  * สะอาด คลีน ไม่มี Mock สัญลักษณ์หุ้นตกค้างในโค้ด
  */
 
-import { executeWebullRequest } from './webullClient';
+import { executeWebullRequest } from '../_webullCore.js';
 
 export interface ScreenerStockItem {
   symbol: string;

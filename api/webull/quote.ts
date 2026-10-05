@@ -3,7 +3,7 @@
  * Proxy สำหรับดึงข้อมูล Snapshot ราคาหุ้น Real-time จาก Webull OpenAPI 100% ผ่าน Python Bridge
  */
 
-import { executeWebullRequest } from './webullClient';
+import { executeWebullRequest } from '../_webullCore.js';
 
 export interface WebullStockQuote {
   symbol: string;
@@ -96,6 +96,7 @@ async function fetchStockQuoteDirect(symbol: string): Promise<WebullStockQuote |
   const sessionLabels: Record<string, string> = {
     PRE: 'ก่อนตลาดเปิด (Pre-Market)',
     REG: 'ตลาดปกติ (Regular)',
+    RTH: 'ตลาดปกติ (Regular)',
     POST: 'หลังตลาดปิด (After-Hours)',
     CLOSED: 'ปิดตลาด (Closed)',
   };

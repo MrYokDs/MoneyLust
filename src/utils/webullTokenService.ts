@@ -26,7 +26,8 @@ export const fetchWebullTokenStatus = async (): Promise<WebullTokenInfo> => {
   try {
     const res = await fetch('/api/webull/token?action=status');
     if (!res.ok) {
-      return { success: false, message: `HTTP Error ${res.status}` };
+      const errData = await res.json().catch(() => null);
+      return { success: false, message: errData?.message || errData?.error || `HTTP Error ${res.status}` };
     }
     return await res.json();
   } catch (error: any) {
@@ -43,7 +44,8 @@ export const refreshWebullToken = async (): Promise<WebullTokenInfo> => {
   try {
     const res = await fetch('/api/webull/token?action=refresh', { method: 'POST' });
     if (!res.ok) {
-      return { success: false, message: `HTTP Error ${res.status}` };
+      const errData = await res.json().catch(() => null);
+      return { success: false, message: errData?.message || errData?.error || `HTTP Error ${res.status}` };
     }
     return await res.json();
   } catch (error: any) {
@@ -60,7 +62,8 @@ export const createWebullToken = async (): Promise<WebullTokenInfo> => {
   try {
     const res = await fetch('/api/webull/token?action=create', { method: 'POST' });
     if (!res.ok) {
-      return { success: false, message: `HTTP Error ${res.status}` };
+      const errData = await res.json().catch(() => null);
+      return { success: false, message: errData?.message || errData?.error || `HTTP Error ${res.status}` };
     }
     return await res.json();
   } catch (error: any) {
@@ -80,7 +83,8 @@ export const verifyWebullToken = async (token: string): Promise<WebullTokenInfo>
       method: 'POST',
     });
     if (!res.ok) {
-      return { success: false, message: `HTTP Error ${res.status}` };
+      const errData = await res.json().catch(() => null);
+      return { success: false, message: errData?.message || errData?.error || `HTTP Error ${res.status}` };
     }
     return await res.json();
   } catch (error: any) {

@@ -1,23 +1,23 @@
 # Graph Report - MoneyLust  (2026-10-05)
 
 ## Corpus Check
-- 110 files · ~58,765 words
+- 113 files · ~59,622 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 4 file(s) not represented in the graph (top: .example 1, (none) 1, .bat 1)
 
 ## Summary
-- 586 nodes · 1403 edges · 29 communities (21 shown, 8 thin omitted)
+- 599 nodes · 1425 edges · 30 communities (21 shown, 9 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 11 edges (avg confidence: 0.94)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `3b48532e`
+- Built from commit: `2924289d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - SavedPlans/SavedPlans.tsx
-- stockMath.ts
+- react
 - stockPlannerSlice.ts
 - TradingNoteHeaderWidget.tsx
 - dependencies
@@ -31,7 +31,7 @@
 - compilerOptions
 - webull_quote.py
 - eslint.config.js
-- webullClient.ts
+- token.ts
 - tsconfig.json
 - vercel.json
 - 2. คำสั่งหลักในการใช้งาน (Core CLI Commands)
@@ -39,8 +39,9 @@
 - Autonomous Workspace Terminal Execution (มาตรฐานการรันคำสั่ง Terminal อัตโนมัติภายใน Workspace)
 - rules/graphify.md
 - workflows/graphify.md
-- react
+- StockPlanner/types.ts
 - scripts
+- _webullCore.d.ts
 - WebullTokenModal.tsx
 
 ## God Nodes (most connected - your core abstractions)
@@ -60,12 +61,12 @@
   .agents/skills/common-skills/SKILL.md → src/store/index.ts
 - `3. Naming Conventions (มาตรฐานการตั้งชื่อ)` --references--> `StockPlannerForm()`  [INFERRED]
   AGENTS.md → src/pages/StockPlanner/sections/StockPlannerForm.tsx
-- `5. มาตรฐานการตั้งชื่อ (Naming Conventions)` --references--> `StockPlannerForm()`  [INFERRED]
-  .agents/skills/common-skills/SKILL.md → src/pages/StockPlanner/sections/StockPlannerForm.tsx
 - `5. มาตรฐานการตั้งชื่อ (Naming Conventions)` --references--> `StockOption`  [INFERRED]
   .agents/skills/common-skills/SKILL.md → src/pages/StockPlanner/types.ts
 - `3. Naming Conventions (มาตรฐานการตั้งชื่อ)` --references--> `CalculationResult`  [INFERRED]
   AGENTS.md → src/types/stock.ts
+- `3. Naming Conventions (มาตรฐานการตั้งชื่อ)` --references--> `calculateStockTranches()`  [INFERRED]
+  AGENTS.md → src/utils/stockMath.ts
 
 ## Import Cycles
 - 2-file cycle: `src/components/trading-note/TradingNoteContent.tsx -> src/components/trading-note/index.ts -> src/components/trading-note/TradingNoteContent.tsx`
@@ -73,19 +74,19 @@
 - 4-file cycle: `src/pages/StockPlanner.tsx -> src/pages/StockPlanner/StockPlanner.tsx -> src/routes/index.ts -> src/routes/AppRoutes.tsx -> src/pages/StockPlanner.tsx`
 - 5-file cycle: `src/pages/Market.tsx -> src/pages/Market/Market.tsx -> src/pages/Market/sections/MarketTable.tsx -> src/routes/index.ts -> src/routes/AppRoutes.tsx -> src/pages/Market.tsx`
 
-## Communities (29 total, 8 thin omitted)
+## Communities (30 total, 9 thin omitted)
 
 ### Community 0 - "SavedPlans/SavedPlans.tsx"
-Cohesion: 0.07
-Nodes (39): notistack, react-dom, react-redux, react-router-dom, @tanstack/react-query, App(), Layout(), LayoutProps (+31 more)
+Cohesion: 0.06
+Nodes (42): notistack, react-dom, react-redux, react-router-dom, @reduxjs/toolkit, @tanstack/react-query, App(), Layout() (+34 more)
 
-### Community 1 - "stockMath.ts"
-Cohesion: 0.12
-Nodes (30): 5. มาตรฐานการตั้งชื่อ (Naming Conventions), GlassCard(), GlassCardProps, AverageCostChart(), AverageCostChartProps, CostReductionSummary(), CostReductionSummaryProps, ExecutionAndProfitSimulator() (+22 more)
+### Community 1 - "react"
+Cohesion: 0.09
+Nodes (48): 5. มาตรฐานการตั้งชื่อ (Naming Conventions), lucide-react, @mui/material, react, CurrencyTextField(), CurrencyTextFieldProps, formatNumberWithCommas(), GlassCard() (+40 more)
 
 ### Community 2 - "stockPlannerSlice.ts"
 Cohesion: 0.09
-Nodes (29): @reduxjs/toolkit, DailyGrowthTableProps, GrowthPlanFormProps, PortfolioBenchmarkCardProps, DAILY_RETURN_PRESETS, DailyReturnPreset, GrowthPlanFormData, PortfolioGrowthPlanCard() (+21 more)
+Nodes (26): DailyGrowthTableProps, GrowthPlanFormProps, PortfolioBenchmarkCardProps, DAILY_RETURN_PRESETS, DailyReturnPreset, GrowthPlanFormData, PortfolioGrowthPlanCard(), PortfolioGrowthPlanCardProps (+18 more)
 
 ### Community 3 - "TradingNoteHeaderWidget.tsx"
 Cohesion: 0.14
@@ -112,8 +113,8 @@ Cohesion: 0.08
 Nodes (23): compilerOptions, allowImportingTsExtensions, baseUrl, composite, isolatedModules, jsx, lib, module (+15 more)
 
 ### Community 9 - "DataBackupModal.tsx"
-Cohesion: 0.21
-Nodes (19): dayjs, DataBackupModal(), GistSyncStartupModal(), BACKUP_KEYS, copyBackupToClipboard(), downloadBackupJson(), getExportPayload(), importBackupFromJson() (+11 more)
+Cohesion: 0.19
+Nodes (20): dayjs, DataBackupModal(), GistSyncStartupModal(), BACKUP_KEYS, copyBackupToClipboard(), downloadBackupJson(), getExportPayload(), importBackupFromJson() (+12 more)
 
 ### Community 10 - "devDependencies"
 Cohesion: 0.15
@@ -131,9 +132,9 @@ Nodes (10): compilerOptions, allowSyntheticDefaultImports, composite, module, mo
 Cohesion: 0.33
 Nodes (5): @eslint/js, eslint-plugin-react-hooks, eslint-plugin-react-refresh, globals, typescript-eslint
 
-### Community 15 - "webullClient.ts"
-Cohesion: 0.11
-Nodes (24): fetchStockQuoteDirect(), formatMarketCap(), handler(), WebullQuoteApiResponse, WebullStockQuote, fetchScreenerDirect(), handler(), PERIOD_TO_RANK_TYPE (+16 more)
+### Community 15 - "token.ts"
+Cohesion: 0.09
+Nodes (30): fetchStockQuoteDirect(), formatMarketCap(), handler(), WebullQuoteApiResponse, WebullStockQuote, fetchScreenerDirect(), handler(), PERIOD_TO_RANK_TYPE (+22 more)
 
 ### Community 19 - "2. คำสั่งหลักในการใช้งาน (Core CLI Commands)"
 Cohesion: 0.20
@@ -147,9 +148,9 @@ Nodes (6): 1. ที่มาและบริบท (Context & Origin), 2. เ
 Cohesion: 0.33
 Nodes (5): 1. บริบทและสิทธิ์ที่ได้รับอนุญาต (Context & Authorization), 2. คำสั่งที่ได้รับอนุญาตให้รันอัตโนมัติ (Pre-Authorized Command Patterns), 3. กฎเหล็กในการรันคำสั่ง (Mandatory Rules), 4. รายการตรวจสอบก่อนรันคำสั่ง (Checklist), Autonomous Workspace Terminal Execution (มาตรฐานการรันคำสั่ง Terminal อัตโนมัติภายใน Workspace)
 
-### Community 24 - "react"
-Cohesion: 0.10
-Nodes (35): lucide-react, @mui/material, react, CurrencyTextField(), CurrencyTextFieldProps, formatNumberWithCommas(), InfoTooltipLabel(), InfoTooltipLabelProps (+27 more)
+### Community 24 - "StockPlanner/types.ts"
+Cohesion: 0.18
+Nodes (17): InfoTooltipLabel(), InfoTooltipLabelProps, CompanyInsightsCard(), CompanyInsightsCardProps, FinancialMetricCard(), FinancialMetricCardProps, StockPlannerFormProps, StockSearchSection() (+9 more)
 
 ### Community 25 - "scripts"
 Cohesion: 0.40
@@ -160,24 +161,24 @@ Cohesion: 0.45
 Nodes (8): WebullTokenBadge(), WebullTokenModal(), WebullTokenModalProps, createWebullToken(), fetchWebullTokenStatus(), refreshWebullToken(), verifyWebullToken(), WebullTokenInfo
 
 ## Knowledge Gaps
-- **198 isolated node(s):** `WebullStockQuote`, `WebullQuoteApiResponse`, `ScreenerStockItem`, `ScreenerResponse`, `PERIOD_TO_RANK_TYPE` (+193 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 236 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **202 isolated node(s):** `WebullCredentials`, `WebullRequestOptions`, `RFC-3986`, `WebullStockQuote`, `WebullQuoteApiResponse` (+197 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 240 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `react` connect `react` to `SavedPlans/SavedPlans.tsx`, `stockMath.ts`, `stockPlannerSlice.ts`, `TradingNoteHeaderWidget.tsx`, `package.json`, `MarketTable.tsx`, `DataBackupModal.tsx`, `WebullTokenModal.tsx`?**
-  _High betweenness centrality (0.155) - this node is a cross-community bridge._
-- **Why does `@mui/material` connect `react` to `SavedPlans/SavedPlans.tsx`, `stockMath.ts`, `stockPlannerSlice.ts`, `TradingNoteHeaderWidget.tsx`, `package.json`, `MarketTable.tsx`, `DataBackupModal.tsx`, `WebullTokenModal.tsx`?**
-  _High betweenness centrality (0.146) - this node is a cross-community bridge._
+- **Why does `react` connect `react` to `SavedPlans/SavedPlans.tsx`, `stockPlannerSlice.ts`, `TradingNoteHeaderWidget.tsx`, `package.json`, `MarketTable.tsx`, `DataBackupModal.tsx`, `StockPlanner/types.ts`, `WebullTokenModal.tsx`?**
+  _High betweenness centrality (0.154) - this node is a cross-community bridge._
+- **Why does `@mui/material` connect `react` to `SavedPlans/SavedPlans.tsx`, `stockPlannerSlice.ts`, `TradingNoteHeaderWidget.tsx`, `package.json`, `MarketTable.tsx`, `DataBackupModal.tsx`, `StockPlanner/types.ts`, `WebullTokenModal.tsx`?**
+  _High betweenness centrality (0.145) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `dependencies` to `package.json`?**
-  _High betweenness centrality (0.097) - this node is a cross-community bridge._
+  _High betweenness centrality (0.095) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `CalculationResult` (e.g. with `3. Naming Conventions (มาตรฐานการตั้งชื่อ)` and `5. มาตรฐานการตั้งชื่อ (Naming Conventions)`) actually correct?**
   _`CalculationResult` has 2 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `WebullStockQuote`, `WebullQuoteApiResponse`, `ScreenerStockItem` to the rest of the system?**
-  _198 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `WebullCredentials`, `WebullRequestOptions`, `RFC-3986` to the rest of the system?**
+  _202 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `SavedPlans/SavedPlans.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.06775268419104036 - nodes in this community are weakly interconnected._
-- **Should `stockMath.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.12159863945578231 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06107594936708861 - nodes in this community are weakly interconnected._
+- **Should `react` be split into smaller, more focused modules?**
+  _Cohesion score 0.09081081081081081 - nodes in this community are weakly interconnected._

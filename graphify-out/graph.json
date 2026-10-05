@@ -14,7 +14,20 @@
       "file_type": "code",
       "norm_label": "layoutprops",
       "source_file": "src/components/Layout.tsx",
-      "source_location": "L45"
+      "source_location": "L46"
+    },
+    {
+      "id": "src_pages_savedplans_sections_savedplansmodals_savedplansmodalsprops",
+      "label": "SavedPlansModalsProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "code",
+      "norm_label": "savedplansmodalsprops",
+      "source_file": "src/pages/SavedPlans/sections/SavedPlansModals.tsx",
+      "source_location": "L22"
     },
     {
       "id": "src_pages_savedplans_sections_timelinefilter_timelinefilterprops",
@@ -28,6 +41,19 @@
       "norm_label": "timelinefilterprops",
       "source_file": "src/pages/SavedPlans/sections/TimelineFilter.tsx",
       "source_location": "L15"
+    },
+    {
+      "id": "src_pages_savedplans_types_plantodelete",
+      "label": "PlanToDelete",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "code",
+      "norm_label": "plantodelete",
+      "source_file": "src/pages/SavedPlans/types.ts",
+      "source_location": "L7"
     },
     {
       "id": "src_store_index_appdispatch",
@@ -56,13 +82,39 @@
       "source_location": "L11"
     },
     {
+      "id": "src_types_portfolio_capitaladjustment",
+      "label": "CapitalAdjustment",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "code",
+      "norm_label": "capitaladjustment",
+      "source_file": "src/types/portfolio.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "src_components_currencytextfield_currencytextfieldprops",
+      "label": "CurrencyTextFieldProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "currencytextfieldprops",
+      "source_file": "src/components/CurrencyTextField.tsx",
+      "source_location": "L11"
+    },
+    {
       "id": "src_components_glasscard_glasscardprops",
       "label": "GlassCardProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "glasscardprops",
       "source_file": "src/components/GlassCard.tsx",
@@ -75,7 +127,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "averagecostchartprops",
       "source_file": "src/components/GridVisualizer/AverageCostChart.tsx",
@@ -88,7 +140,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "costreductionsummaryprops",
       "source_file": "src/components/GridVisualizer/CostReductionSummary.tsx",
@@ -101,7 +153,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "executionandprofitsimulatorprops",
       "source_file": "src/components/GridVisualizer/ExecutionAndProfitSimulator.tsx",
@@ -114,7 +166,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "fundsplitdiagramprops",
       "source_file": "src/components/GridVisualizer/FundSplitDiagram.tsx",
@@ -127,7 +179,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "gridvisualizerprops",
       "source_file": "src/components/GridVisualizer/GridVisualizer.tsx",
@@ -140,7 +192,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "plangridviewprops",
       "source_file": "src/pages/SavedPlans/sections/PlanGridView.tsx",
@@ -153,11 +205,24 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "plantableviewprops",
       "source_file": "src/pages/SavedPlans/sections/PlanTableView.tsx",
       "source_location": "L26"
+    },
+    {
+      "id": "src_pages_savedplans_sections_portfolioheader_portfolioheaderprops",
+      "label": "PortfolioHeaderProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "portfolioheaderprops",
+      "source_file": "src/pages/SavedPlans/sections/PortfolioHeader.tsx",
+      "source_location": "L18"
     },
     {
       "id": "src_pages_savedplans_sections_portfoliosummarycards_portfoliosummarycardsprops",
@@ -166,7 +231,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "portfoliosummarycardsprops",
       "source_file": "src/pages/SavedPlans/sections/PortfolioSummaryCards.tsx",
@@ -179,11 +244,63 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "timelineitem",
       "source_file": "src/pages/SavedPlans/types.ts",
       "source_location": "L3"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_currencyexchangefield_currencyexchangefieldprops",
+      "label": "CurrencyExchangeFieldProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "currencyexchangefieldprops",
+      "source_file": "src/pages/StockPlanner/sections/CurrencyExchangeField.tsx",
+      "source_location": "L19"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_exitstrategysection_exitstrategysectionprops",
+      "label": "ExitStrategySectionProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "exitstrategysectionprops",
+      "source_file": "src/pages/StockPlanner/sections/ExitStrategySection.tsx",
+      "source_location": "L21"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_investmentparamssection_investmentparamssectionprops",
+      "label": "InvestmentParamsSectionProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "investmentparamssectionprops",
+      "source_file": "src/pages/StockPlanner/sections/InvestmentParamsSection.tsx",
+      "source_location": "L29"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_tradingfeesection_tradingfeesectionprops",
+      "label": "TradingFeeSectionProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "tradingfeesectionprops",
+      "source_file": "src/pages/StockPlanner/sections/TradingFeeSection.tsx",
+      "source_location": "L22"
     },
     {
       "id": "src_pages_stockplanner_sections_tranchedetailstable_tranchedetailstableprops",
@@ -192,7 +309,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "tranchedetailstableprops",
       "source_file": "src/pages/StockPlanner/sections/TrancheDetailsTable.tsx",
@@ -205,7 +322,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "portfoliosummary",
       "source_file": "src/types/portfolio.ts",
@@ -218,24 +335,24 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "calculationresult",
       "source_file": "src/types/stock.ts",
       "source_location": "L24"
     },
     {
-      "id": "src_types_stock_tranchedetail",
-      "label": "TrancheDetail",
+      "id": "src_types_stock_feemode",
+      "label": "FeeMode",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
-      "norm_label": "tranchedetail",
+      "norm_label": "feemode",
       "source_file": "src/types/stock.ts",
-      "source_location": "L6"
+      "source_location": "L4"
     },
     {
       "id": "src_utils_stockmath_stoplosslevels",
@@ -244,7 +361,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "stoplosslevels",
       "source_file": "src/utils/stockMath.ts",
@@ -257,7 +374,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "webullquoteapiresponse",
       "source_file": "api/webull/quote.ts",
@@ -270,7 +387,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "webullstockquote",
       "source_file": "api/webull/quote.ts",
@@ -283,7 +400,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "screenerresponse",
       "source_file": "api/webull/screener.ts",
@@ -296,7 +413,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "screenerstockitem",
       "source_file": "api/webull/screener.ts",
@@ -309,7 +426,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "webulltokenstatusresponse",
       "source_file": "api/webull/token.ts",
@@ -322,7 +439,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "webullcredentials",
       "source_file": "api/webull/webullClient.ts",
@@ -335,7 +452,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "webullrequestoptions",
       "source_file": "api/webull/webullClient.ts",
@@ -420,32 +537,6 @@
       "source_location": "L36"
     },
     {
-      "id": "src_pages_savedplans_sections_savedplansmodals_savedplansmodalsprops",
-      "label": "SavedPlansModalsProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "stockPlannerSlice.ts",
-      "file_type": "code",
-      "norm_label": "savedplansmodalsprops",
-      "source_file": "src/pages/SavedPlans/sections/SavedPlansModals.tsx",
-      "source_location": "L22"
-    },
-    {
-      "id": "src_pages_savedplans_types_plantodelete",
-      "label": "PlanToDelete",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "stockPlannerSlice.ts",
-      "file_type": "code",
-      "norm_label": "plantodelete",
-      "source_file": "src/pages/SavedPlans/types.ts",
-      "source_location": "L7"
-    },
-    {
       "id": "src_pages_stockplanner_sections_portfolioselectfield_portfolioselectfieldprops",
       "label": "PortfolioSelectFieldProps",
       "_callable": true,
@@ -524,19 +615,6 @@
       "source_location": "L48"
     },
     {
-      "id": "src_types_portfolio_capitaladjustment",
-      "label": "CapitalAdjustment",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "stockPlannerSlice.ts",
-      "file_type": "code",
-      "norm_label": "capitaladjustment",
-      "source_file": "src/types/portfolio.ts",
-      "source_location": "L3"
-    },
-    {
       "id": "src_types_portfolio_portfolio",
       "label": "Portfolio",
       "_callable": true,
@@ -589,17 +667,17 @@
       "source_location": "L2"
     },
     {
-      "id": "src_components_currencytextfield_currencytextfieldprops",
-      "label": "CurrencyTextFieldProps",
+      "id": "src_types_stock_tranchedetail",
+      "label": "TrancheDetail",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
+      "community": 2,
+      "community_name": "stockPlannerSlice.ts",
       "file_type": "code",
-      "norm_label": "currencytextfieldprops",
-      "source_file": "src/components/CurrencyTextField.tsx",
-      "source_location": "L11"
+      "norm_label": "tranchedetail",
+      "source_file": "src/types/stock.ts",
+      "source_location": "L6"
     },
     {
       "id": "src_components_infotooltiplabel_infotooltiplabelprops",
@@ -608,24 +686,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "infotooltiplabelprops",
       "source_file": "src/components/InfoTooltipLabel.tsx",
       "source_location": "L10"
-    },
-    {
-      "id": "src_pages_savedplans_sections_portfolioheader_portfolioheaderprops",
-      "label": "PortfolioHeaderProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "portfolioheaderprops",
-      "source_file": "src/pages/SavedPlans/sections/PortfolioHeader.tsx",
-      "source_location": "L18"
     },
     {
       "id": "src_pages_stockplanner_sections_companyinsightscard_companyinsightscardprops",
@@ -634,37 +699,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "companyinsightscardprops",
       "source_file": "src/pages/StockPlanner/sections/CompanyInsightsCard.tsx",
       "source_location": "L31"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_currencyexchangefield_currencyexchangefieldprops",
-      "label": "CurrencyExchangeFieldProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "currencyexchangefieldprops",
-      "source_file": "src/pages/StockPlanner/sections/CurrencyExchangeField.tsx",
-      "source_location": "L19"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_exitstrategysection_exitstrategysectionprops",
-      "label": "ExitStrategySectionProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "exitstrategysectionprops",
-      "source_file": "src/pages/StockPlanner/sections/ExitStrategySection.tsx",
-      "source_location": "L21"
     },
     {
       "id": "src_pages_stockplanner_sections_financialmetriccard_financialmetriccardprops",
@@ -673,24 +712,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "financialmetriccardprops",
       "source_file": "src/pages/StockPlanner/sections/FinancialMetricCard.tsx",
       "source_location": "L11"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_investmentparamssection_investmentparamssectionprops",
-      "label": "InvestmentParamsSectionProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "investmentparamssectionprops",
-      "source_file": "src/pages/StockPlanner/sections/InvestmentParamsSection.tsx",
-      "source_location": "L29"
     },
     {
       "id": "src_pages_stockplanner_sections_stockplannerform_stockplannerformprops",
@@ -699,7 +725,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "stockplannerformprops",
       "source_file": "src/pages/StockPlanner/sections/StockPlannerForm.tsx",
@@ -712,24 +738,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "stocksearchsectionprops",
       "source_file": "src/pages/StockPlanner/sections/StockSearchSection.tsx",
       "source_location": "L24"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_tradingfeesection_tradingfeesectionprops",
-      "label": "TradingFeeSectionProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "tradingfeesectionprops",
-      "source_file": "src/pages/StockPlanner/sections/TradingFeeSection.tsx",
-      "source_location": "L22"
     },
     {
       "id": "src_pages_stockplanner_types_financialmetrictrend",
@@ -738,7 +751,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "financialmetrictrend",
       "source_file": "src/pages/StockPlanner/types.ts",
@@ -751,7 +764,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "financialtrendstatus",
       "source_file": "src/pages/StockPlanner/types.ts",
@@ -764,7 +777,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "stockdetail",
       "source_file": "src/pages/StockPlanner/types.ts",
@@ -777,24 +790,37 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "stockoption",
       "source_file": "src/pages/StockPlanner/types.ts",
       "source_location": "L1"
     },
     {
-      "id": "src_types_stock_feemode",
-      "label": "FeeMode",
+      "id": "api_webullcore_d_webullcredentials",
+      "label": "WebullCredentials",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
+      "community": 28,
+      "community_name": "_webullCore.d.ts",
       "file_type": "code",
-      "norm_label": "feemode",
-      "source_file": "src/types/stock.ts",
-      "source_location": "L4"
+      "norm_label": "webullcredentials",
+      "source_file": "api/_webullCore.d.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "api_webullcore_d_webullrequestoptions",
+      "label": "WebullRequestOptions",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "_webullCore.d.ts",
+      "file_type": "code",
+      "norm_label": "webullrequestoptions",
+      "source_file": "api/_webullCore.d.ts",
+      "source_location": "L8"
     },
     {
       "id": "src_components_webulltokenmodal_webulltokenmodalprops",
@@ -1119,7 +1145,7 @@
       "file_type": "code",
       "norm_label": "importresult",
       "source_file": "src/utils/dataBackup.ts",
-      "source_location": "L14"
+      "source_location": "L16"
     },
     {
       "id": "src_utils_databackup_moneylustbackuppayload",
@@ -1132,7 +1158,7 @@
       "file_type": "code",
       "norm_label": "moneylustbackuppayload",
       "source_file": "src/utils/dataBackup.ts",
-      "source_location": "L7"
+      "source_location": "L9"
     },
     {
       "id": "src_utils_githubgistsync_gistdiffresult",
@@ -1182,7 +1208,7 @@
       "file_type": "code",
       "norm_label": "layout()",
       "source_file": "src/components/Layout.tsx",
-      "source_location": "L58"
+      "source_location": "L59"
     },
     {
       "id": "src_pages_investmentplan_investmentplan_investmentplan",
@@ -1267,18 +1293,6 @@
       "norm_label": "emptyplansalert()",
       "source_file": "src/pages/SavedPlans/sections/EmptyPlansAlert.tsx",
       "source_location": "L9"
-    },
-    {
-      "id": "src_pages_savedplans_sections_plantableview_plantableview",
-      "label": "PlanTableView()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "SavedPlans/SavedPlans.tsx",
-      "file_type": "code",
-      "norm_label": "plantableview()",
-      "source_file": "src/pages/SavedPlans/sections/PlanTableView.tsx",
-      "source_location": "L39"
     },
     {
       "id": "src_pages_savedplans_sections_portfolioheader_portfolioheader",
@@ -1473,12 +1487,36 @@
       "source_location": "L408"
     },
     {
+      "id": "src_components_currencytextfield_currencytextfield",
+      "label": "CurrencyTextField()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "currencytextfield()",
+      "source_file": "src/components/CurrencyTextField.tsx",
+      "source_location": "L60"
+    },
+    {
+      "id": "src_components_currencytextfield_formatnumberwithcommas",
+      "label": "formatNumberWithCommas()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "formatnumberwithcommas()",
+      "source_file": "src/components/CurrencyTextField.tsx",
+      "source_location": "L38"
+    },
+    {
       "id": "src_components_glasscard_glasscard",
       "label": "GlassCard()",
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "glasscard()",
       "source_file": "src/components/GlassCard.tsx",
@@ -1490,7 +1528,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "averagecostchart()",
       "source_file": "src/components/GridVisualizer/AverageCostChart.tsx",
@@ -1502,7 +1540,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "costreductionsummary()",
       "source_file": "src/components/GridVisualizer/CostReductionSummary.tsx",
@@ -1514,7 +1552,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "executionandprofitsimulator()",
       "source_file": "src/components/GridVisualizer/ExecutionAndProfitSimulator.tsx",
@@ -1526,7 +1564,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "fundsplitdiagram()",
       "source_file": "src/components/GridVisualizer/FundSplitDiagram.tsx",
@@ -1538,7 +1576,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "gridvisualizer()",
       "source_file": "src/components/GridVisualizer/GridVisualizer.tsx",
@@ -1550,11 +1588,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "plangridview()",
       "source_file": "src/pages/SavedPlans/sections/PlanGridView.tsx",
       "source_location": "L31"
+    },
+    {
+      "id": "src_pages_savedplans_sections_plantableview_plantableview",
+      "label": "PlanTableView()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "plantableview()",
+      "source_file": "src/pages/SavedPlans/sections/PlanTableView.tsx",
+      "source_location": "L39"
     },
     {
       "id": "src_pages_savedplans_sections_portfoliosummarycards_portfoliosummarycards",
@@ -1562,11 +1612,83 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "portfoliosummarycards()",
       "source_file": "src/pages/SavedPlans/sections/PortfolioSummaryCards.tsx",
       "source_location": "L28"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_currencyexchangefield_currencyexchangefield",
+      "label": "CurrencyExchangeField()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "currencyexchangefield()",
+      "source_file": "src/pages/StockPlanner/sections/CurrencyExchangeField.tsx",
+      "source_location": "L34"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_exitstrategysection_exitstrategysection",
+      "label": "ExitStrategySection()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "exitstrategysection()",
+      "source_file": "src/pages/StockPlanner/sections/ExitStrategySection.tsx",
+      "source_location": "L46"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_investmentparamssection_investmentparamssection",
+      "label": "InvestmentParamsSection()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "investmentparamssection()",
+      "source_file": "src/pages/StockPlanner/sections/InvestmentParamsSection.tsx",
+      "source_location": "L56"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_portfolioselectfield_portfolioselectfield",
+      "label": "PortfolioSelectField()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "portfolioselectfield()",
+      "source_file": "src/pages/StockPlanner/sections/PortfolioSelectField.tsx",
+      "source_location": "L18"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_stockplannerform_stockplannerform",
+      "label": "StockPlannerForm()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "stockplannerform()",
+      "source_file": "src/pages/StockPlanner/sections/StockPlannerForm.tsx",
+      "source_location": "L77"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_tradingfeesection_tradingfeesection",
+      "label": "TradingFeeSection()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "tradingfeesection()",
+      "source_file": "src/pages/StockPlanner/sections/TradingFeeSection.tsx",
+      "source_location": "L46"
     },
     {
       "id": "src_pages_stockplanner_sections_tranchedetailstable_tranchedetailstable",
@@ -1574,7 +1696,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "tranchedetailstable()",
       "source_file": "src/pages/StockPlanner/sections/TrancheDetailsTable.tsx",
@@ -1586,7 +1708,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "calculatestoplosslevels()",
       "source_file": "src/utils/stockMath.ts",
@@ -1598,7 +1720,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "formatcurrency()",
       "source_file": "src/utils/stockMath.ts",
@@ -1610,7 +1732,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "formatnumber()",
       "source_file": "src/utils/stockMath.ts",
@@ -1622,7 +1744,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "formatthb()",
       "source_file": "src/utils/stockMath.ts",
@@ -1634,7 +1756,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "formatusd()",
       "source_file": "src/utils/stockMath.ts",
@@ -1694,7 +1816,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "fetchstockquotedirect()",
       "source_file": "api/webull/quote.ts",
@@ -1706,7 +1828,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "formatmarketcap()",
       "source_file": "api/webull/quote.ts",
@@ -1718,11 +1840,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "handler()",
       "source_file": "api/webull/quote.ts",
-      "source_location": "L143"
+      "source_location": "L144"
     },
     {
       "id": "api_webull_screener_fetchscreenerdirect",
@@ -1730,7 +1852,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "fetchscreenerdirect()",
       "source_file": "api/webull/screener.ts",
@@ -1742,7 +1864,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "handler()",
       "source_file": "api/webull/screener.ts",
@@ -1754,7 +1876,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "handler()",
       "source_file": "api/webull/token.ts",
@@ -1766,7 +1888,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "persistnewtoken()",
       "source_file": "api/webull/token.ts",
@@ -1778,7 +1900,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "processtokenaction()",
       "source_file": "api/webull/token.ts",
@@ -1790,7 +1912,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "buildsignedheaders()",
       "source_file": "api/webull/webullClient.ts",
@@ -1802,7 +1924,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "executewebullrequest()",
       "source_file": "api/webull/webullClient.ts",
@@ -1814,11 +1936,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "getwebullcredentials()",
       "source_file": "api/webull/webullClient.ts",
       "source_location": "L43"
+    },
+    {
+      "id": "api_webull_webullclient_handler",
+      "label": "handler()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "handler()",
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L257"
     },
     {
       "id": "api_webull_webullclient_rfc3986quote",
@@ -1826,11 +1960,59 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "rfc3986quote()",
       "source_file": "api/webull/webullClient.ts",
       "source_location": "L33"
+    },
+    {
+      "id": "api_webullcore_buildsignedheaders",
+      "label": "buildSignedHeaders()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "buildsignedheaders()",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L69"
+    },
+    {
+      "id": "api_webullcore_executewebullrequest",
+      "label": "executeWebullRequest()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "executewebullrequest()",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L149"
+    },
+    {
+      "id": "api_webullcore_getwebullcredentials",
+      "label": "getWebullCredentials()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "getwebullcredentials()",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L24"
+    },
+    {
+      "id": "api_webullcore_rfc3986quote",
+      "label": "rfc3986Quote()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "rfc3986quote()",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L16"
     },
     {
       "id": "vite_config_configureserver",
@@ -1838,11 +2020,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "configureserver()",
       "source_file": "vite.config.ts",
-      "source_location": "L14"
+      "source_location": "L20"
     },
     {
       "id": "src_pages_savedplans_sections_portfoliogrowthplancard_portfoliogrowthplancard",
@@ -1941,36 +2123,12 @@
       "source_location": "L151"
     },
     {
-      "id": "src_components_currencytextfield_currencytextfield",
-      "label": "CurrencyTextField()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "currencytextfield()",
-      "source_file": "src/components/CurrencyTextField.tsx",
-      "source_location": "L60"
-    },
-    {
-      "id": "src_components_currencytextfield_formatnumberwithcommas",
-      "label": "formatNumberWithCommas()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "formatnumberwithcommas()",
-      "source_file": "src/components/CurrencyTextField.tsx",
-      "source_location": "L38"
-    },
-    {
       "id": "src_components_infotooltiplabel_infotooltiplabel",
       "label": "InfoTooltipLabel()",
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "infotooltiplabel()",
       "source_file": "src/components/InfoTooltipLabel.tsx",
@@ -1982,35 +2140,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "companyinsightscard()",
       "source_file": "src/pages/StockPlanner/sections/CompanyInsightsCard.tsx",
       "source_location": "L42"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_currencyexchangefield_currencyexchangefield",
-      "label": "CurrencyExchangeField()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "currencyexchangefield()",
-      "source_file": "src/pages/StockPlanner/sections/CurrencyExchangeField.tsx",
-      "source_location": "L34"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_exitstrategysection_exitstrategysection",
-      "label": "ExitStrategySection()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "exitstrategysection()",
-      "source_file": "src/pages/StockPlanner/sections/ExitStrategySection.tsx",
-      "source_location": "L46"
     },
     {
       "id": "src_pages_stockplanner_sections_financialmetriccard_financialmetriccard",
@@ -2018,47 +2152,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "financialmetriccard()",
       "source_file": "src/pages/StockPlanner/sections/FinancialMetricCard.tsx",
       "source_location": "L27"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_investmentparamssection_investmentparamssection",
-      "label": "InvestmentParamsSection()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "investmentparamssection()",
-      "source_file": "src/pages/StockPlanner/sections/InvestmentParamsSection.tsx",
-      "source_location": "L56"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_portfolioselectfield_portfolioselectfield",
-      "label": "PortfolioSelectField()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "portfolioselectfield()",
-      "source_file": "src/pages/StockPlanner/sections/PortfolioSelectField.tsx",
-      "source_location": "L18"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_stockplannerform_stockplannerform",
-      "label": "StockPlannerForm()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "stockplannerform()",
-      "source_file": "src/pages/StockPlanner/sections/StockPlannerForm.tsx",
-      "source_location": "L77"
     },
     {
       "id": "src_pages_stockplanner_sections_stocksearchsection_stocksearchsection",
@@ -2066,23 +2164,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "stocksearchsection()",
       "source_file": "src/pages/StockPlanner/sections/StockSearchSection.tsx",
       "source_location": "L35"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_tradingfeesection_tradingfeesection",
-      "label": "TradingFeeSection()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "tradingfeesection()",
-      "source_file": "src/pages/StockPlanner/sections/TradingFeeSection.tsx",
-      "source_location": "L46"
     },
     {
       "id": "src_utils_stockapi_translatetothai",
@@ -2090,7 +2176,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "translatetothai()",
       "source_file": "src/utils/stockApi.ts",
@@ -2102,7 +2188,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "evaluatefinancialtrend()",
       "source_file": "src/utils/stockFinancials.ts",
@@ -2114,7 +2200,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "formatfinancialchangepercent()",
       "source_file": "src/utils/stockFinancials.ts",
@@ -2126,7 +2212,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "parsefinancialnumber()",
       "source_file": "src/utils/stockFinancials.ts",
@@ -2190,7 +2276,7 @@
       "file_type": "code",
       "norm_label": "createwebulltoken()",
       "source_file": "src/utils/webullTokenService.ts",
-      "source_location": "L59"
+      "source_location": "L61"
     },
     {
       "id": "src_utils_webulltokenservice_fetchwebulltokenstatus",
@@ -2214,7 +2300,7 @@
       "file_type": "code",
       "norm_label": "refreshwebulltoken()",
       "source_file": "src/utils/webullTokenService.ts",
-      "source_location": "L42"
+      "source_location": "L43"
     },
     {
       "id": "src_utils_webulltokenservice_verifywebulltoken",
@@ -2226,7 +2312,7 @@
       "file_type": "code",
       "norm_label": "verifywebulltoken()",
       "source_file": "src/utils/webullTokenService.ts",
-      "source_location": "L77"
+      "source_location": "L80"
     },
     {
       "id": "src_components_trading_note_floatingtradingnotewindow_floatingtradingnotewindow",
@@ -2610,7 +2696,7 @@
       "file_type": "code",
       "norm_label": "emittokenexpiredevent()",
       "source_file": "src/utils/webullTokenService.ts",
-      "source_location": "L96"
+      "source_location": "L100"
     },
     {
       "id": "src_components_databackupmodal_databackupmodal",
@@ -2646,7 +2732,7 @@
       "file_type": "code",
       "norm_label": "copybackuptoclipboard()",
       "source_file": "src/utils/dataBackup.ts",
-      "source_location": "L84"
+      "source_location": "L86"
     },
     {
       "id": "src_utils_databackup_downloadbackupjson",
@@ -2658,7 +2744,7 @@
       "file_type": "code",
       "norm_label": "downloadbackupjson()",
       "source_file": "src/utils/dataBackup.ts",
-      "source_location": "L59"
+      "source_location": "L61"
     },
     {
       "id": "src_utils_databackup_getexportpayload",
@@ -2670,7 +2756,7 @@
       "file_type": "code",
       "norm_label": "getexportpayload()",
       "source_file": "src/utils/dataBackup.ts",
-      "source_location": "L36"
+      "source_location": "L38"
     },
     {
       "id": "src_utils_databackup_importbackupfromjson",
@@ -2682,7 +2768,7 @@
       "file_type": "code",
       "norm_label": "importbackupfromjson()",
       "source_file": "src/utils/dataBackup.ts",
-      "source_location": "L102"
+      "source_location": "L104"
     },
     {
       "id": "src_utils_githubgistsync_applygistbackup",
@@ -2902,6 +2988,17 @@
       "source_location": "L1"
     },
     {
+      "id": "src_pages_savedplans_sections_savedplansmodals",
+      "label": "SavedPlansModals.tsx",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "code",
+      "norm_label": "savedplansmodals.tsx",
+      "source_file": "src/pages/SavedPlans/sections/SavedPlansModals.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_pages_savedplans_sections_timelinefilter",
       "label": "TimelineFilter.tsx",
       "_origin": "ast",
@@ -2910,6 +3007,17 @@
       "file_type": "code",
       "norm_label": "timelinefilter.tsx",
       "source_file": "src/pages/SavedPlans/sections/TimelineFilter.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_savedplans_types",
+      "label": "SavedPlans/types.ts",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "code",
+      "norm_label": "savedplans/types.ts",
+      "source_file": "src/pages/SavedPlans/types.ts",
       "source_location": "L1"
     },
     {
@@ -3100,6 +3208,17 @@
       "source_location": "L44"
     },
     {
+      "id": "ref_reduxjs_toolkit",
+      "label": "@reduxjs/toolkit",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "concept",
+      "norm_label": "@reduxjs/toolkit",
+      "source_file": "package.json",
+      "source_location": "L19"
+    },
+    {
       "id": "ref_tanstack_react_query",
       "label": "@tanstack/react-query",
       "_origin": "ast",
@@ -3111,11 +3230,22 @@
       "source_location": "L20"
     },
     {
+      "id": "src_components_currencytextfield",
+      "label": "CurrencyTextField.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "currencytextfield.tsx",
+      "source_file": "src/components/CurrencyTextField.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_components_glasscard",
       "label": "GlassCard.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "glasscard.tsx",
       "source_file": "src/components/GlassCard.tsx",
@@ -3126,7 +3256,7 @@
       "label": "components/GridVisualizer.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "components/gridvisualizer.tsx",
       "source_file": "src/components/GridVisualizer.tsx",
@@ -3137,7 +3267,7 @@
       "label": "AverageCostChart.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "averagecostchart.tsx",
       "source_file": "src/components/GridVisualizer/AverageCostChart.tsx",
@@ -3148,7 +3278,7 @@
       "label": "CostReductionSummary.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "costreductionsummary.tsx",
       "source_file": "src/components/GridVisualizer/CostReductionSummary.tsx",
@@ -3159,7 +3289,7 @@
       "label": "ExecutionAndProfitSimulator.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "executionandprofitsimulator.tsx",
       "source_file": "src/components/GridVisualizer/ExecutionAndProfitSimulator.tsx",
@@ -3170,7 +3300,7 @@
       "label": "FundSplitDiagram.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "fundsplitdiagram.tsx",
       "source_file": "src/components/GridVisualizer/FundSplitDiagram.tsx",
@@ -3181,7 +3311,7 @@
       "label": "GridVisualizer/GridVisualizer.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "gridvisualizer/gridvisualizer.tsx",
       "source_file": "src/components/GridVisualizer/GridVisualizer.tsx",
@@ -3192,10 +3322,21 @@
       "label": "GridVisualizer/index.ts",
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "gridvisualizer/index.ts",
       "source_file": "src/components/GridVisualizer/index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_investmentplan_sections_growthplanform",
+      "label": "GrowthPlanForm.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "growthplanform.tsx",
+      "source_file": "src/pages/InvestmentPlan/sections/GrowthPlanForm.tsx",
       "source_location": "L1"
     },
     {
@@ -3203,7 +3344,7 @@
       "label": "PlanGridView.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "plangridview.tsx",
       "source_file": "src/pages/SavedPlans/sections/PlanGridView.tsx",
@@ -3214,10 +3355,21 @@
       "label": "PlanTableView.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "plantableview.tsx",
       "source_file": "src/pages/SavedPlans/sections/PlanTableView.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_savedplans_sections_portfolioheader",
+      "label": "PortfolioHeader.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "portfolioheader.tsx",
+      "source_file": "src/pages/SavedPlans/sections/PortfolioHeader.tsx",
       "source_location": "L1"
     },
     {
@@ -3225,10 +3377,65 @@
       "label": "PortfolioSummaryCards.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "portfoliosummarycards.tsx",
       "source_file": "src/pages/SavedPlans/sections/PortfolioSummaryCards.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_currencyexchangefield",
+      "label": "CurrencyExchangeField.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "currencyexchangefield.tsx",
+      "source_file": "src/pages/StockPlanner/sections/CurrencyExchangeField.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_exitstrategysection",
+      "label": "ExitStrategySection.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "exitstrategysection.tsx",
+      "source_file": "src/pages/StockPlanner/sections/ExitStrategySection.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_investmentparamssection",
+      "label": "InvestmentParamsSection.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "investmentparamssection.tsx",
+      "source_file": "src/pages/StockPlanner/sections/InvestmentParamsSection.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_stockplannerform",
+      "label": "StockPlannerForm.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "stockplannerform.tsx",
+      "source_file": "src/pages/StockPlanner/sections/StockPlannerForm.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_tradingfeesection",
+      "label": "TradingFeeSection.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "tradingfeesection.tsx",
+      "source_file": "src/pages/StockPlanner/sections/TradingFeeSection.tsx",
       "source_location": "L1"
     },
     {
@@ -3236,7 +3443,7 @@
       "label": "TrancheDetailsTable.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "tranchedetailstable.tsx",
       "source_file": "src/pages/StockPlanner/sections/TrancheDetailsTable.tsx",
@@ -3247,18 +3454,51 @@
       "label": "stockMath.ts",
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "stockmath.ts",
       "source_file": "src/utils/stockMath.ts",
       "source_location": "L1"
     },
     {
+      "id": "ref_lucide_react",
+      "label": "lucide-react",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "concept",
+      "norm_label": "lucide-react",
+      "source_file": "package.json",
+      "source_location": "L34"
+    },
+    {
+      "id": "ref_mui_material",
+      "label": "@mui/material",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "concept",
+      "norm_label": "@mui/material",
+      "source_file": "package.json",
+      "source_location": "L17"
+    },
+    {
+      "id": "ref_react",
+      "label": "react",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "concept",
+      "norm_label": "react",
+      "source_file": "package.json",
+      "source_location": "L38"
+    },
+    {
       "id": "agents_skills_common_skills_skill_5_\u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19\u0e01\u0e32\u0e23\u0e15_\u0e07\u0e0a_\u0e2d_naming_conventions",
       "label": "5. \u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e0a\u0e37\u0e48\u0e2d (Naming Conventions)",
       "_origin": "ast",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "5. \u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19\u0e01\u0e32\u0e23\u0e15\u0e31\u0e07\u0e0a\u0e37\u0e2d (naming conventions)",
@@ -3846,7 +4086,7 @@
       "label": "quote.ts",
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "quote.ts",
       "source_file": "api/webull/quote.ts",
@@ -3857,7 +4097,7 @@
       "label": "screener.ts",
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "screener.ts",
       "source_file": "api/webull/screener.ts",
@@ -3868,7 +4108,7 @@
       "label": "PERIOD_TO_RANK_TYPE",
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "period_to_rank_type",
       "source_file": "api/webull/screener.ts",
@@ -3879,7 +4119,7 @@
       "label": "token.ts",
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "token.ts",
       "source_file": "api/webull/token.ts",
@@ -3890,10 +4130,21 @@
       "label": "webullClient.ts",
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "webullclient.ts",
       "source_file": "api/webull/webullClient.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "api_webullcore",
+      "label": "_webullCore.js",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "_webullcore.js",
+      "source_file": "api/_webullCore.js",
       "source_location": "L1"
     },
     {
@@ -3901,29 +4152,51 @@
       "label": "vite.config.ts",
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "vite.config.ts",
       "source_file": "vite.config.ts",
       "source_location": "L1"
     },
     {
-      "id": "docref_rfc_3986",
+      "id": "vite_config_packagejson",
+      "label": "packageJson",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "packagejson",
+      "source_file": "vite.config.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "api_webull_webullclient_ts_docref_rfc_3986",
       "label": "RFC-3986",
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "concept",
       "norm_label": "rfc-3986",
       "source_file": "api/webull/webullClient.ts",
       "source_location": "L28"
     },
     {
+      "id": "api_webullcore_js_docref_rfc_3986",
+      "label": "RFC-3986",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "concept",
+      "norm_label": "rfc-3986",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L12"
+    },
+    {
       "id": "ref_vite",
       "label": "vite",
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "concept",
       "norm_label": "vite",
       "source_file": "package.json",
@@ -3934,7 +4207,7 @@
       "label": "@vitejs/plugin-react",
       "_origin": "ast",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "file_type": "concept",
       "norm_label": "@vitejs/plugin-react",
       "source_file": "package.json",
@@ -4153,17 +4426,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_pages_investmentplan_sections_growthplanform",
-      "label": "GrowthPlanForm.tsx",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "stockPlannerSlice.ts",
-      "file_type": "code",
-      "norm_label": "growthplanform.tsx",
-      "source_file": "src/pages/InvestmentPlan/sections/GrowthPlanForm.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_pages_investmentplan_sections_portfoliobenchmarkcard",
       "label": "PortfolioBenchmarkCard.tsx",
       "_origin": "ast",
@@ -4208,25 +4470,14 @@
       "source_location": "L1"
     },
     {
-      "id": "src_pages_savedplans_sections_savedplansmodals",
-      "label": "SavedPlansModals.tsx",
+      "id": "src_pages_stockplanner_sections_portfolioselectfield",
+      "label": "PortfolioSelectField.tsx",
       "_origin": "ast",
       "community": 2,
       "community_name": "stockPlannerSlice.ts",
       "file_type": "code",
-      "norm_label": "savedplansmodals.tsx",
-      "source_file": "src/pages/SavedPlans/sections/SavedPlansModals.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_pages_savedplans_types",
-      "label": "SavedPlans/types.ts",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "stockPlannerSlice.ts",
-      "file_type": "code",
-      "norm_label": "savedplans/types.ts",
-      "source_file": "src/pages/SavedPlans/types.ts",
+      "norm_label": "portfolioselectfield.tsx",
+      "source_file": "src/pages/StockPlanner/sections/PortfolioSelectField.tsx",
       "source_location": "L1"
     },
     {
@@ -4316,17 +4567,6 @@
       "norm_label": "growthplanmath.ts",
       "source_file": "src/utils/growthPlanMath.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "ref_reduxjs_toolkit",
-      "label": "@reduxjs/toolkit",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "stockPlannerSlice.ts",
-      "file_type": "concept",
-      "norm_label": "@reduxjs/toolkit",
-      "source_file": "package.json",
-      "source_location": "L19"
     },
     {
       "id": "agents_skills_autonomous_build_verification_skill",
@@ -4549,36 +4789,14 @@
       "source_location": "L6"
     },
     {
-      "id": "src_components_currencytextfield",
-      "label": "CurrencyTextField.tsx",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "currencytextfield.tsx",
-      "source_file": "src/components/CurrencyTextField.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_components_infotooltiplabel",
       "label": "InfoTooltipLabel.tsx",
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "infotooltiplabel.tsx",
       "source_file": "src/components/InfoTooltipLabel.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_pages_savedplans_sections_portfolioheader",
-      "label": "PortfolioHeader.tsx",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "portfolioheader.tsx",
-      "source_file": "src/pages/SavedPlans/sections/PortfolioHeader.tsx",
       "source_location": "L1"
     },
     {
@@ -4586,32 +4804,10 @@
       "label": "CompanyInsightsCard.tsx",
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "companyinsightscard.tsx",
       "source_file": "src/pages/StockPlanner/sections/CompanyInsightsCard.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_currencyexchangefield",
-      "label": "CurrencyExchangeField.tsx",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "currencyexchangefield.tsx",
-      "source_file": "src/pages/StockPlanner/sections/CurrencyExchangeField.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_exitstrategysection",
-      "label": "ExitStrategySection.tsx",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "exitstrategysection.tsx",
-      "source_file": "src/pages/StockPlanner/sections/ExitStrategySection.tsx",
       "source_location": "L1"
     },
     {
@@ -4619,43 +4815,10 @@
       "label": "FinancialMetricCard.tsx",
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "financialmetriccard.tsx",
       "source_file": "src/pages/StockPlanner/sections/FinancialMetricCard.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_investmentparamssection",
-      "label": "InvestmentParamsSection.tsx",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "investmentparamssection.tsx",
-      "source_file": "src/pages/StockPlanner/sections/InvestmentParamsSection.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_portfolioselectfield",
-      "label": "PortfolioSelectField.tsx",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "portfolioselectfield.tsx",
-      "source_file": "src/pages/StockPlanner/sections/PortfolioSelectField.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_stockplannerform",
-      "label": "StockPlannerForm.tsx",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "stockplannerform.tsx",
-      "source_file": "src/pages/StockPlanner/sections/StockPlannerForm.tsx",
       "source_location": "L1"
     },
     {
@@ -4663,21 +4826,10 @@
       "label": "StockSearchSection.tsx",
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "stocksearchsection.tsx",
       "source_file": "src/pages/StockPlanner/sections/StockSearchSection.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_tradingfeesection",
-      "label": "TradingFeeSection.tsx",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "tradingfeesection.tsx",
-      "source_file": "src/pages/StockPlanner/sections/TradingFeeSection.tsx",
       "source_location": "L1"
     },
     {
@@ -4685,7 +4837,7 @@
       "label": "StockPlanner/types.ts",
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "stockplanner/types.ts",
       "source_file": "src/pages/StockPlanner/types.ts",
@@ -4696,44 +4848,11 @@
       "label": "stockFinancials.ts",
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "stockfinancials.ts",
       "source_file": "src/utils/stockFinancials.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "ref_lucide_react",
-      "label": "lucide-react",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "concept",
-      "norm_label": "lucide-react",
-      "source_file": "package.json",
-      "source_location": "L34"
-    },
-    {
-      "id": "ref_mui_material",
-      "label": "@mui/material",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "concept",
-      "norm_label": "@mui/material",
-      "source_file": "package.json",
-      "source_location": "L17"
-    },
-    {
-      "id": "ref_react",
-      "label": "react",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "concept",
-      "norm_label": "react",
-      "source_file": "package.json",
-      "source_location": "L38"
     },
     {
       "id": "package_scripts",
@@ -4821,6 +4940,17 @@
       "file_type": "code",
       "norm_label": "translate.js",
       "source_file": "api/translate.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "api_webullcore_d",
+      "label": "_webullCore.d.ts",
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "_webullCore.d.ts",
+      "file_type": "code",
+      "norm_label": "_webullcore.d.ts",
+      "source_file": "api/_webullCore.d.ts",
       "source_location": "L1"
     },
     {
@@ -6348,7 +6478,7 @@
       "file_type": "code",
       "norm_label": "backup_keys",
       "source_file": "src/utils/dataBackup.ts",
-      "source_location": "L21"
+      "source_location": "L23"
     },
     {
       "id": "src_utils_githubgistsync",
@@ -6360,6 +6490,28 @@
       "norm_label": "githubgistsync.ts",
       "source_file": "src/utils/githubGistSync.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "src_utils_version",
+      "label": "version.ts",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "DataBackupModal.tsx",
+      "file_type": "code",
+      "norm_label": "version.ts",
+      "source_file": "src/utils/version.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_utils_version_app_version",
+      "label": "APP_VERSION",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "DataBackupModal.tsx",
+      "file_type": "code",
+      "norm_label": "app_version",
+      "source_file": "src/utils/version.ts",
+      "source_location": "L5"
     },
     {
       "id": "ref_dayjs",
@@ -6505,18 +6657,6 @@
       "type": "external"
     },
     {
-      "id": "src_store_stockplannerslice_updatecurrentparams",
-      "label": "src_store_stockplannerslice_updatecurrentparams",
-      "_origin": "semantic",
-      "community": 0,
-      "community_name": "SavedPlans/SavedPlans.tsx",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_store_stockplannerslice_updatecurrentparams",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "src_store_stockplannerslice_updateportfoliocapital",
       "label": "src_store_stockplannerslice_updateportfoliocapital",
       "_origin": "semantic",
@@ -6541,14 +6681,50 @@
       "type": "external"
     },
     {
-      "id": "src_types_index_dropmode",
-      "label": "src_types_index_dropmode",
+      "id": "src_types_index_calculationresult",
+      "label": "src_types_index_calculationresult",
       "_origin": "semantic",
-      "community": 1,
-      "community_name": "stockMath.ts",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
       "external": true,
       "file_type": "concept",
-      "norm_label": "src_types_index_dropmode",
+      "norm_label": "src_types_index_calculationresult",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_types_index_capitaladjustment",
+      "label": "src_types_index_capitaladjustment",
+      "_origin": "semantic",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_types_index_capitaladjustment",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_types_index_feemode",
+      "label": "src_types_index_feemode",
+      "_origin": "semantic",
+      "community": 1,
+      "community_name": "react",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_types_index_feemode",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_types_index_portfolio",
+      "label": "src_types_index_portfolio",
+      "_origin": "semantic",
+      "community": 1,
+      "community_name": "react",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_types_index_portfolio",
       "source_file": "",
       "type": "external"
     },
@@ -6557,22 +6733,10 @@
       "label": "src_types_index_portfoliosummary",
       "_origin": "semantic",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "external": true,
       "file_type": "concept",
       "norm_label": "src_types_index_portfoliosummary",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "src_types_index_roundingmode",
-      "label": "src_types_index_roundingmode",
-      "_origin": "semantic",
-      "community": 1,
-      "community_name": "stockMath.ts",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_types_index_roundingmode",
       "source_file": "",
       "type": "external"
     },
@@ -6581,7 +6745,7 @@
       "label": "src_types_index_tranchedetail",
       "_origin": "semantic",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "external": true,
       "file_type": "concept",
       "norm_label": "src_types_index_tranchedetail",
@@ -6593,7 +6757,7 @@
       "label": "src_utils_stockmath_calculationresult",
       "_origin": "semantic",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "external": true,
       "file_type": "concept",
       "norm_label": "src_utils_stockmath_calculationresult",
@@ -6605,7 +6769,7 @@
       "label": "src_utils_stockmath_portfoliosummary",
       "_origin": "semantic",
       "community": 1,
-      "community_name": "stockMath.ts",
+      "community_name": "react",
       "external": true,
       "file_type": "concept",
       "norm_label": "src_utils_stockmath_portfoliosummary",
@@ -6725,7 +6889,7 @@
       "label": "ref_crypto",
       "_origin": "semantic",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_crypto",
@@ -6737,7 +6901,7 @@
       "label": "ref_fs",
       "_origin": "semantic",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_fs",
@@ -6749,7 +6913,7 @@
       "label": "ref_path",
       "_origin": "semantic",
       "community": 15,
-      "community_name": "webullClient.ts",
+      "community_name": "token.ts",
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_path",
@@ -6757,26 +6921,14 @@
       "type": "external"
     },
     {
-      "id": "src_types_index_calculationresult",
-      "label": "src_types_index_calculationresult",
+      "id": "src_store_stockplannerslice_portfolio",
+      "label": "src_store_stockplannerslice_portfolio",
       "_origin": "semantic",
       "community": 2,
       "community_name": "stockPlannerSlice.ts",
       "external": true,
       "file_type": "concept",
-      "norm_label": "src_types_index_calculationresult",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "src_types_index_capitaladjustment",
-      "label": "src_types_index_capitaladjustment",
-      "_origin": "semantic",
-      "community": 2,
-      "community_name": "stockPlannerSlice.ts",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_types_index_capitaladjustment",
+      "norm_label": "src_store_stockplannerslice_portfolio",
       "source_file": "",
       "type": "external"
     },
@@ -6805,6 +6957,18 @@
       "type": "external"
     },
     {
+      "id": "src_types_index_dropmode",
+      "label": "src_types_index_dropmode",
+      "_origin": "semantic",
+      "community": 2,
+      "community_name": "stockPlannerSlice.ts",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_types_index_dropmode",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "src_types_index_growthplanconfig",
       "label": "src_types_index_growthplanconfig",
       "_origin": "semantic",
@@ -6813,18 +6977,6 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "src_types_index_growthplanconfig",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "src_types_index_portfolio",
-      "label": "src_types_index_portfolio",
-      "_origin": "semantic",
-      "community": 2,
-      "community_name": "stockPlannerSlice.ts",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_types_index_portfolio",
       "source_file": "",
       "type": "external"
     },
@@ -6841,26 +6993,14 @@
       "type": "external"
     },
     {
-      "id": "src_store_stockplannerslice_portfolio",
-      "label": "src_store_stockplannerslice_portfolio",
+      "id": "src_types_index_roundingmode",
+      "label": "src_types_index_roundingmode",
       "_origin": "semantic",
-      "community": 24,
-      "community_name": "react",
+      "community": 2,
+      "community_name": "stockPlannerSlice.ts",
       "external": true,
       "file_type": "concept",
-      "norm_label": "src_store_stockplannerslice_portfolio",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "src_types_index_feemode",
-      "label": "src_types_index_feemode",
-      "_origin": "semantic",
-      "community": 24,
-      "community_name": "react",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_types_index_feemode",
+      "norm_label": "src_types_index_roundingmode",
       "source_file": "",
       "type": "external"
     },
@@ -6887,6 +7027,18 @@
       "norm_label": "src_pages_market_types_screenerstockitem",
       "source_file": "",
       "type": "external"
+    },
+    {
+      "id": "src_store_stockplannerslice_updatecurrentparams",
+      "label": "src_store_stockplannerslice_updatecurrentparams",
+      "_origin": "semantic",
+      "community": 6,
+      "community_name": "MarketTable.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_store_stockplannerslice_updatecurrentparams",
+      "source_file": "",
+      "type": "external"
     }
   ],
   "links": [
@@ -6899,7 +7051,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "api/webull/quote.ts",
-      "source_location": "L123",
+      "source_location": "L124",
       "weight": 1.0
     },
     {
@@ -6911,7 +7063,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "api/webull/quote.ts",
-      "source_location": "L155",
+      "source_location": "L156",
       "weight": 1.0
     },
     {
@@ -6952,7 +7104,7 @@
     },
     {
       "source": "api_webull_token_processtokenaction",
-      "target": "api_webull_webullclient_getwebullcredentials",
+      "target": "api_webullcore_getwebullcredentials",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7008,6 +7160,54 @@
       "context": "call",
       "source_file": "api/webull/webullClient.ts",
       "source_location": "L205",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore_buildsignedheaders",
+      "target": "api_webullcore_rfc3986quote",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L116",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore_buildsignedheaders",
+      "target": "api_webullcore_getwebullcredentials",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore_executewebullrequest",
+      "target": "api_webullcore_getwebullcredentials",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L150",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore_executewebullrequest",
+      "target": "api_webullcore_buildsignedheaders",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L156",
       "weight": 1.0
     },
     {
@@ -7451,7 +7651,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/Layout.tsx",
-      "source_location": "L546",
+      "source_location": "L547",
       "weight": 1.0
     },
     {
@@ -7463,7 +7663,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/Layout.tsx",
-      "source_location": "L547",
+      "source_location": "L548",
       "weight": 1.0
     },
     {
@@ -7475,7 +7675,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/Layout.tsx",
-      "source_location": "L548",
+      "source_location": "L549",
       "weight": 1.0
     },
     {
@@ -7487,7 +7687,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/Layout.tsx",
-      "source_location": "L68",
+      "source_location": "L69",
       "weight": 1.0
     },
     {
@@ -7499,7 +7699,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/Layout.tsx",
-      "source_location": "L69",
+      "source_location": "L70",
       "weight": 1.0
     },
     {
@@ -8747,7 +8947,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/utils/dataBackup.ts",
-      "source_location": "L86",
+      "source_location": "L88",
       "weight": 1.0
     },
     {
@@ -8759,7 +8959,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/utils/dataBackup.ts",
-      "source_location": "L60",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -10200,7 +10400,7 @@
       "context": "import",
       "deferred": true,
       "source_file": "vite.config.ts",
-      "source_location": "L35",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -10213,7 +10413,7 @@
       "context": "import",
       "deferred": true,
       "source_file": "vite.config.ts",
-      "source_location": "L62",
+      "source_location": "L68",
       "weight": 1.0
     },
     {
@@ -10226,12 +10426,12 @@
       "context": "import",
       "deferred": true,
       "source_file": "vite.config.ts",
-      "source_location": "L89",
+      "source_location": "L95",
       "weight": 1.0
     },
     {
       "source": "api_webull_quote",
-      "target": "api_webull_webullclient_executewebullrequest",
+      "target": "api_webullcore_executewebullrequest",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -10243,7 +10443,7 @@
     },
     {
       "source": "api_webull_screener",
-      "target": "api_webull_webullclient_executewebullrequest",
+      "target": "api_webullcore_executewebullrequest",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -10255,7 +10455,7 @@
     },
     {
       "source": "api_webull_token",
-      "target": "api_webull_webullclient_executewebullrequest",
+      "target": "api_webullcore_executewebullrequest",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -10267,7 +10467,7 @@
     },
     {
       "source": "api_webull_token",
-      "target": "api_webull_webullclient_getwebullcredentials",
+      "target": "api_webullcore_getwebullcredentials",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -11655,6 +11855,18 @@
       "context": "import",
       "source_file": "src/components/Layout.tsx",
       "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_layout",
+      "target": "src_utils_version_app_version",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/Layout.tsx",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -14370,6 +14582,18 @@
       "weight": 1.0
     },
     {
+      "source": "src_utils_databackup",
+      "target": "src_utils_version_app_version",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/utils/dataBackup.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
       "source": "src_utils_githubgistsync",
       "target": "src_utils_databackup_getexportpayload",
       "relation": "imports",
@@ -14743,7 +14967,7 @@
     },
     {
       "source": "api_webull_quote",
-      "target": "api_webull_webullclient",
+      "target": "api_webullcore",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14755,7 +14979,7 @@
     },
     {
       "source": "api_webull_screener",
-      "target": "api_webull_webullclient",
+      "target": "api_webullcore",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14791,7 +15015,7 @@
     },
     {
       "source": "api_webull_token",
-      "target": "api_webull_webullclient",
+      "target": "api_webullcore",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14834,6 +15058,42 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "api/webull/webullClient.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore",
+      "target": "ref_crypto",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore",
+      "target": "ref_fs",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore",
+      "target": "ref_path",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "api/_webullCore.js",
       "source_location": "L9",
       "weight": 1.0
     },
@@ -15655,6 +15915,18 @@
     },
     {
       "source": "src_components_layout",
+      "target": "ref_mui_material",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/Layout.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_layout",
       "target": "ref_react_router_dom",
       "relation": "imports_from",
       "_origin": "ast",
@@ -15674,7 +15946,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/Layout.tsx",
-      "source_location": "L28",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -15751,7 +16023,7 @@
     },
     {
       "source": "src_components_layout",
-      "target": "ref_mui_material",
+      "target": "src_utils_version",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -18606,6 +18878,18 @@
       "weight": 1.0
     },
     {
+      "source": "src_utils_databackup",
+      "target": "src_utils_version",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/utils/dataBackup.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
       "source": "src_utils_githubgistsync",
       "target": "src_utils_databackup",
       "relation": "imports_from",
@@ -18735,6 +19019,18 @@
       "context": "import",
       "source_file": "vite.config.ts",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "vite_config",
+      "target": "ref_fs",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "vite.config.ts",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -18919,13 +19215,24 @@
     },
     {
       "source": "api_webull_webullclient",
-      "target": "docref_rfc_3986",
+      "target": "api_webull_webullclient_ts_docref_rfc_3986",
       "relation": "cites",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "api/webull/webullClient.ts",
       "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore",
+      "target": "api_webullcore_js_docref_rfc_3986",
+      "relation": "cites",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/_webullCore.js",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -19530,7 +19837,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "api/webull/quote.ts",
-      "source_location": "L143",
+      "source_location": "L144",
       "weight": 1.0
     },
     {
@@ -19722,6 +20029,17 @@
     },
     {
       "source": "api_webull_webullclient",
+      "target": "api_webull_webullclient_handler",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L257",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_webullclient",
       "target": "api_webull_webullclient_rfc3986quote",
       "relation": "contains",
       "_origin": "ast",
@@ -19740,6 +20058,72 @@
       "confidence_score": 1.0,
       "source_file": "api/webull/webullClient.ts",
       "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore",
+      "target": "api_webullcore_executewebullrequest",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/_webullCore.js",
+      "source_location": "L149",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore",
+      "target": "api_webullcore_rfc3986quote",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/_webullCore.js",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore",
+      "target": "api_webullcore_getwebullcredentials",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/_webullCore.js",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore",
+      "target": "api_webullcore_buildsignedheaders",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/_webullCore.js",
+      "source_location": "L69",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore_d",
+      "target": "api_webullcore_d_webullcredentials",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/_webullCore.d.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore_d",
+      "target": "api_webullcore_d_webullrequestoptions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/_webullCore.d.ts",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -20652,7 +21036,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/Layout.tsx",
-      "source_location": "L45",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -20663,7 +21047,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/Layout.tsx",
-      "source_location": "L58",
+      "source_location": "L59",
       "weight": 1.0
     },
     {
@@ -21906,7 +22290,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/utils/dataBackup.ts",
-      "source_location": "L102",
+      "source_location": "L104",
       "weight": 1.0
     },
     {
@@ -21917,7 +22301,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/utils/dataBackup.ts",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -21928,7 +22312,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/utils/dataBackup.ts",
-      "source_location": "L21",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -21939,7 +22323,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/utils/dataBackup.ts",
-      "source_location": "L36",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -21950,18 +22334,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/utils/dataBackup.ts",
-      "source_location": "L59",
-      "weight": 1.0
-    },
-    {
-      "source": "src_utils_databackup",
-      "target": "src_utils_databackup_moneylustbackuppayload",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/utils/dataBackup.ts",
-      "source_location": "L7",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -21972,7 +22345,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/utils/dataBackup.ts",
-      "source_location": "L84",
+      "source_location": "L86",
+      "weight": 1.0
+    },
+    {
+      "source": "src_utils_databackup",
+      "target": "src_utils_databackup_moneylustbackuppayload",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/utils/dataBackup.ts",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -22581,6 +22965,17 @@
       "weight": 1.0
     },
     {
+      "source": "src_utils_version",
+      "target": "src_utils_version_app_version",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/utils/version.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
       "source": "src_utils_webullservice",
       "target": "src_utils_webullservice_webullquotedata",
       "relation": "contains",
@@ -22637,6 +23032,17 @@
     },
     {
       "source": "src_utils_webulltokenservice",
+      "target": "src_utils_webulltokenservice_emittokenexpiredevent",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/utils/webullTokenService.ts",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "src_utils_webulltokenservice",
       "target": "src_utils_webulltokenservice_fetchwebulltokenstatus",
       "relation": "contains",
       "_origin": "ast",
@@ -22654,18 +23060,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/utils/webullTokenService.ts",
-      "source_location": "L42",
-      "weight": 1.0
-    },
-    {
-      "source": "src_utils_webulltokenservice",
-      "target": "src_utils_webulltokenservice_createwebulltoken",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/utils/webullTokenService.ts",
-      "source_location": "L59",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
@@ -22681,24 +23076,24 @@
     },
     {
       "source": "src_utils_webulltokenservice",
+      "target": "src_utils_webulltokenservice_createwebulltoken",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/utils/webullTokenService.ts",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "src_utils_webulltokenservice",
       "target": "src_utils_webulltokenservice_verifywebulltoken",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/utils/webullTokenService.ts",
-      "source_location": "L77",
-      "weight": 1.0
-    },
-    {
-      "source": "src_utils_webulltokenservice",
-      "target": "src_utils_webulltokenservice_emittokenexpiredevent",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/utils/webullTokenService.ts",
-      "source_location": "L96",
+      "source_location": "L80",
       "weight": 1.0
     },
     {
@@ -23116,7 +23511,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vite.config.ts",
-      "source_location": "L14",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "vite_config",
+      "target": "vite_config_packagejson",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "vite.config.ts",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -23331,5 +23737,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "3b48532e8a340e793e406ba3646736ca92d03c45"
+  "built_at_commit": "2924289d5c6717273007ec55f2ad07b67cd92794"
 }

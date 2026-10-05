@@ -1,69 +1,44 @@
 /**
- * Module: api/webull/webullClient.ts
- * โมดูลเชื่อมต่อ Webull OpenAPI ด้วย Node.js / TypeScript เพียวๆ 100%
- * คำนวณ HMAC-SHA256 Signature ตามมาตรฐานของ Webull โดยใช้โมดูล crypto ของ Node.js
- * รองรับการทำงานทั้งบน Localhost (Vite) และ Vercel Serverless Functions โดยไม่ต้องใช้ Python
+ * Module: api/_webullCore.js
+ * Core Webull OpenAPI helper for Vercel Serverless Functions and Vite Dev Server
+ * Prefixed with underscore (_) so Vercel ignores it as an API route.
  */
 
 import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
 
-export interface WebullCredentials {
-  appKey: string;
-  appSecret: string;
-  token: string;
-  host: string;
-}
-
-export interface WebullRequestOptions {
-  method: 'GET' | 'POST';
-  uri: string;
-  queries?: Record<string, string>;
-  body?: Record<string, any>;
-  credentials?: Partial<WebullCredentials>;
-}
-
 /**
- * เข้ารหัสสตริงตามมาตรฐาน RFC 3986 เพื่อให้ตรงกับฟังก์ชัน quote(..., safe='') ของ Python
- * 
- * @param str - ข้อความที่ต้องการเข้ารหัส
- * @returns ข้อความที่เข้ารหัสตามมาตรฐาน RFC 3986
+ * Encode string following RFC 3986 (matches Python quote(..., safe=''))
+ * @param {string} str
+ * @returns {string}
  */
-export function rfc3986Quote(str: string): string {
+export function rfc3986Quote(str) {
   return encodeURIComponent(str).replace(/[!'()*]/g, (c) => '%' + c.charCodeAt(0).toString(16).toUpperCase());
 }
 
 /**
- * ดึงข้อมูล Credentials สำหรับเชื่อมต่อ Webull OpenAPI
- * รองรับการอ่านจาก process.env (Vercel) และไฟล์คอนฟิกในเครื่อง (.env.local, conf/token.txt)
- * 
- * @returns ออบเจกต์ WebullCredentials ที่พร้อมใช้งาน
+ * Resolve credentials from process.env or local config files
+ * @returns {{ appKey: string, appSecret: string, token: string, host: string }}
  */
-export function getWebullCredentials(): WebullCredentials {
+export function getWebullCredentials() {
   let appKey = process.env.WEBULL_APP_KEY || '';
   let appSecret = process.env.WEBULL_APP_SECRET || '';
   let token = process.env.WEBULL_ACCESS_TOKEN || '';
   let host = process.env.WEBULL_API_HOST || 'https://api.webull.co.th';
 
-  // ลบ https:// หรือ http:// ออกจาก host หากมี
   host = host.replace(/^https?:\/\//, '').replace(/\/.*$/, '').trim();
 
-  // อ่านจาก conf/token.txt หากใน environment ยังไม่มี token
-  if (!token) {
-    try {
+  // Try reading from conf/token.txt or .env.local only if in local development
+  try {
+    if (!token) {
       const tokenPath = path.resolve(process.cwd(), 'conf', 'token.txt');
       if (fs.existsSync(tokenPath)) {
         token = fs.readFileSync(tokenPath, 'utf-8').trim();
       }
-    } catch {
-      // ละเว้นข้อผิดพลาดกรณีไม่มีไฟล์
     }
-  }
 
-  // อ่านจาก .env.local กรณีรันใน Local Dev
-  if (!appKey || !appSecret || !token) {
-    try {
+    if (!appKey || !appSecret || !token) {
       const envPath = path.resolve(process.cwd(), '.env.local');
       if (fs.existsSync(envPath)) {
         const lines = fs.readFileSync(envPath, 'utf-8').split('\n');
@@ -80,35 +55,18 @@ export function getWebullCredentials(): WebullCredentials {
           }
         }
       }
-    } catch {
-      // ละเว้นข้อผิดพลาด
     }
+  } catch {
+    // Read-only filesystem on Vercel or missing files: ignore safely
   }
 
   return { appKey, appSecret, token, host: host || 'api.webull.co.th' };
 }
 
 /**
- * คำนวณ HMAC-SHA256 Signature และประกอบ Headers สำหรับ Webull OpenAPI
- * 
- * @param host - โดเมนของ Webull API เช่น api.webull.co.th
- * @param uri - เส้นทาง API เช่น /market-data/stocks/snapshots/list
- * @param queries - พารามิเตอร์ Query String
- * @param body - ข้อมูล Body สำหรับคำขอ POST
- * @param appKey - รหัส Webull App Key
- * @param appSecret - รหัส Webull App Secret
- * @param token - Webull Access Token
- * @returns ออบเจกต์ Headers ที่ผ่านการลงนามเรียบร้อยแล้ว
+ * Build signed headers for Webull OpenAPI
  */
-export function buildSignedHeaders(
-  host: string,
-  uri: string,
-  queries?: Record<string, string>,
-  body?: Record<string, any>,
-  appKey?: string,
-  appSecret?: string,
-  token?: string
-): Record<string, string> {
+export function buildSignedHeaders(host, uri, queries, body, appKey, appSecret, token) {
   const creds = getWebullCredentials();
   const effectiveAppKey = appKey || creds.appKey;
   const effectiveAppSecret = appSecret || creds.appSecret;
@@ -117,7 +75,7 @@ export function buildSignedHeaders(
   const nowIso = new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
   const nonce = crypto.randomUUID();
 
-  const signParams: Record<string, string> = {
+  const signParams = {
     host: host,
     'x-app-key': effectiveAppKey,
     'x-timestamp': nowIso,
@@ -126,7 +84,6 @@ export function buildSignedHeaders(
     'x-signature-nonce': nonce,
   };
 
-  // รวม query params เข้าใน signParams
   if (queries) {
     for (const [key, value] of Object.entries(queries)) {
       if (value !== undefined && value !== null) {
@@ -135,16 +92,13 @@ export function buildSignedHeaders(
     }
   }
 
-  // คำนวณ Body Hash (SHA-256 Hex Digest) ถ้ามี body
-  let bodyString: string | null = null;
-  let rawBody: string | null = null;
-
+  let bodyString = null;
+  let rawBody = null;
   if (body !== undefined && body !== null) {
     rawBody = JSON.stringify(body);
     bodyString = crypto.createHash('sha256').update(rawBody).digest('hex').toUpperCase();
   }
 
-  // เรียงลำดับคีย์ตามตัวอักษรเพื่อสร้าง String to Sign
   const sortedKeys = Object.keys(signParams).sort();
   const sortedArray = sortedKeys.map((k) => `${k}=${signParams[k]}`);
 
@@ -165,7 +119,7 @@ export function buildSignedHeaders(
     .update(encodedStringToSign)
     .digest('base64');
 
-  const headers: Record<string, string> = {
+  const headers = {
     Host: host,
     'x-version': 'v3',
     'x-app-key': effectiveAppKey,
@@ -190,12 +144,9 @@ export function buildSignedHeaders(
 }
 
 /**
- * ส่งคำขอ HTTP ไปยัง Webull OpenAPI โดยตรง (Pure Node.js)
- * 
- * @param options - ตัวเลือกคำขอ เช่น method, uri, queries, body
- * @returns ผลลัพธ์ข้อมูลที่ตอบกลับมาจาก Webull ในรูปแบบ JSON
+ * Execute HTTP Request to Webull OpenAPI
  */
-export async function executeWebullRequest<T = any>(options: WebullRequestOptions): Promise<T> {
+export async function executeWebullRequest(options) {
   const creds = getWebullCredentials();
   const host = options.credentials?.host || creds.host;
   const appKey = options.credentials?.appKey || creds.appKey;
@@ -223,7 +174,7 @@ export async function executeWebullRequest<T = any>(options: WebullRequestOption
     url += `?${searchParams.toString()}`;
   }
 
-  const fetchOptions: RequestInit = {
+  const fetchOptions = {
     method: options.method,
     headers,
   };
@@ -236,24 +187,17 @@ export async function executeWebullRequest<T = any>(options: WebullRequestOption
 
   if (!response.ok) {
     const errorText = await response.text();
-    let errorJson: any;
+    let errorJson;
     try {
       errorJson = JSON.parse(errorText);
     } catch {
       errorJson = { message: errorText };
     }
     const err = new Error(errorJson.message || `Webull API Error (Status ${response.status})`);
-    (err as any).status = response.status;
-    (err as any).data = errorJson;
+    err.status = response.status;
+    err.data = errorJson;
     throw err;
   }
 
-  return (await response.json()) as T;
-}
-
-/**
- * Default handler สำหรับกรณีที่ Vercel มองไฟล์นี้เป็น route endpoint
- */
-export default function handler(req: any, res: any) {
-  return res.status(200).json({ status: 'ok', service: 'Webull Core Client' });
+  return await response.json();
 }

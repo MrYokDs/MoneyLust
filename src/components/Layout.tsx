@@ -6,6 +6,7 @@ import { reorderPortfolios } from '../store/stockPlannerSlice';
 import { DataBackupModal } from './DataBackupModal';
 import { TradingNoteHeaderWidget } from './TradingNoteHeaderWidget';
 import { WebullTokenBadge } from './WebullTokenBadge';
+import { APP_VERSION } from '../utils/version';
 import {
   Box,
   Drawer,
@@ -482,7 +483,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
             }}
           >
             <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5, fontFamily: 'Prompt' }}>
-              MoneyLust v1.0.0
+              MoneyLust v{APP_VERSION}
             </Typography>
             <Typography variant="caption" color="text.secondary" sx={{ display: 'block', fontFamily: 'Prompt' }}>
               ระบบแบ่งไม้ซื้อถัวเฉลี่ยหุ้น

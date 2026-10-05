@@ -6,7 +6,7 @@
 
 import path from 'path';
 import fs from 'fs';
-import { executeWebullRequest, getWebullCredentials } from './webullClient';
+import { executeWebullRequest, getWebullCredentials } from '../_webullCore.js';
 
 export interface WebullTokenStatusResponse {
   success: boolean;

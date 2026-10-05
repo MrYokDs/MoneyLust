@@ -4,6 +4,8 @@
  * เพื่อใช้ในการย้ายข้อมูลระหว่าง Localhost และเว็บจริง (Vercel) หรือจัดเก็บข้อมูลสำรอง
  */
 
+import { APP_VERSION } from './version';
+
 export interface MoneyLustBackupPayload {
   appName: string;
   version: string;
@@ -45,7 +47,7 @@ export const getExportPayload = (): MoneyLustBackupPayload => {
 
   return {
     appName: 'MoneyLust',
-    version: '1.0.0',
+    version: APP_VERSION,
     exportedAt: new Date().toISOString(),
     data,
   };

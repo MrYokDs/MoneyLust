@@ -4,6 +4,19 @@
   "graph": {},
   "nodes": [
     {
+      "id": "src_components_layout_layoutprops",
+      "label": "LayoutProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "code",
+      "norm_label": "layoutprops",
+      "source_file": "src/components/Layout.tsx",
+      "source_location": "L45"
+    },
+    {
       "id": "src_pages_savedplans_sections_portfolioheader_portfolioheaderprops",
       "label": "PortfolioHeaderProps",
       "_callable": true,
@@ -54,6 +67,45 @@
       "norm_label": "plantodelete",
       "source_file": "src/pages/SavedPlans/types.ts",
       "source_location": "L7"
+    },
+    {
+      "id": "src_store_index_appdispatch",
+      "label": "AppDispatch",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "code",
+      "norm_label": "appdispatch",
+      "source_file": "src/store/index.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "src_store_index_rootstate",
+      "label": "RootState",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "code",
+      "norm_label": "rootstate",
+      "source_file": "src/store/index.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "src_types_portfolio_capitaladjustment",
+      "label": "CapitalAdjustment",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "code",
+      "norm_label": "capitaladjustment",
+      "source_file": "src/types/portfolio.ts",
+      "source_location": "L3"
     },
     {
       "id": "src_components_glasscard_glasscardprops",
@@ -199,19 +251,6 @@
       "source_location": "L20"
     },
     {
-      "id": "src_store_stockplannerslice_stockplannerstate",
-      "label": "StockPlannerState",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "@mui/material",
-      "file_type": "code",
-      "norm_label": "stockplannerstate",
-      "source_file": "src/store/stockPlannerSlice.ts",
-      "source_location": "L16"
-    },
-    {
       "id": "src_types_portfolio_portfoliosummary",
       "label": "PortfolioSummary",
       "_callable": true,
@@ -238,58 +277,6 @@
       "source_location": "L24"
     },
     {
-      "id": "src_types_stock_dropmode",
-      "label": "DropMode",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "@mui/material",
-      "file_type": "code",
-      "norm_label": "dropmode",
-      "source_file": "src/types/stock.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_types_stock_feemode",
-      "label": "FeeMode",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "@mui/material",
-      "file_type": "code",
-      "norm_label": "feemode",
-      "source_file": "src/types/stock.ts",
-      "source_location": "L4"
-    },
-    {
-      "id": "src_types_stock_roundingmode",
-      "label": "RoundingMode",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "@mui/material",
-      "file_type": "code",
-      "norm_label": "roundingmode",
-      "source_file": "src/types/stock.ts",
-      "source_location": "L2"
-    },
-    {
-      "id": "src_types_stock_tranchedetail",
-      "label": "TrancheDetail",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "@mui/material",
-      "file_type": "code",
-      "norm_label": "tranchedetail",
-      "source_file": "src/types/stock.ts",
-      "source_location": "L6"
-    },
-    {
       "id": "src_utils_stockmath_stoplosslevels",
       "label": "StopLossLevels",
       "_callable": true,
@@ -309,11 +296,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "webullquoteapiresponse",
       "source_file": "api/webull/quote.ts",
-      "source_location": "L31"
+      "source_location": "L30"
     },
     {
       "id": "api_webull_quote_webullstockquote",
@@ -322,11 +309,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "webullstockquote",
       "source_file": "api/webull/quote.ts",
-      "source_location": "L9"
+      "source_location": "L8"
     },
     {
       "id": "api_webull_screener_screenerresponse",
@@ -335,11 +322,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "screenerresponse",
       "source_file": "api/webull/screener.ts",
-      "source_location": "L21"
+      "source_location": "L20"
     },
     {
       "id": "api_webull_screener_screenerstockitem",
@@ -348,11 +335,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "screenerstockitem",
       "source_file": "api/webull/screener.ts",
-      "source_location": "L10"
+      "source_location": "L9"
     },
     {
       "id": "api_webull_token_webulltokenstatusresponse",
@@ -361,11 +348,37 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "webulltokenstatusresponse",
       "source_file": "api/webull/token.ts",
       "source_location": "L11"
+    },
+    {
+      "id": "api_webull_webullclient_webullcredentials",
+      "label": "WebullCredentials",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "webullcredentials",
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "api_webull_webullclient_webullrequestoptions",
+      "label": "WebullRequestOptions",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "webullrequestoptions",
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L19"
     },
     {
       "id": "src_pages_investmentplan_sections_dailygrowthtable_dailygrowthtableprops",
@@ -379,6 +392,19 @@
       "norm_label": "dailygrowthtableprops",
       "source_file": "src/pages/InvestmentPlan/sections/DailyGrowthTable.tsx",
       "source_location": "L26"
+    },
+    {
+      "id": "src_pages_investmentplan_sections_growthplanform_growthplanformprops",
+      "label": "GrowthPlanFormProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "stockPlannerSlice.ts",
+      "file_type": "code",
+      "norm_label": "growthplanformprops",
+      "source_file": "src/pages/InvestmentPlan/sections/GrowthPlanForm.tsx",
+      "source_location": "L38"
     },
     {
       "id": "src_pages_investmentplan_sections_portfoliobenchmarkcard_portfoliobenchmarkcardprops",
@@ -420,6 +446,32 @@
       "source_location": "L6"
     },
     {
+      "id": "src_pages_savedplans_sections_portfoliogrowthplancard_portfoliogrowthplancardprops",
+      "label": "PortfolioGrowthPlanCardProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "stockPlannerSlice.ts",
+      "file_type": "code",
+      "norm_label": "portfoliogrowthplancardprops",
+      "source_file": "src/pages/SavedPlans/sections/PortfolioGrowthPlanCard.tsx",
+      "source_location": "L36"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_portfolioselectfield_portfolioselectfieldprops",
+      "label": "PortfolioSelectFieldProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "stockPlannerSlice.ts",
+      "file_type": "code",
+      "norm_label": "portfolioselectfieldprops",
+      "source_file": "src/pages/StockPlanner/sections/PortfolioSelectField.tsx",
+      "source_location": "L10"
+    },
+    {
       "id": "src_pages_stockplanner_sections_tradingfeesection_tradingfeesectionprops",
       "label": "TradingFeeSectionProps",
       "_callable": true,
@@ -431,6 +483,19 @@
       "norm_label": "tradingfeesectionprops",
       "source_file": "src/pages/StockPlanner/sections/TradingFeeSection.tsx",
       "source_location": "L22"
+    },
+    {
+      "id": "src_store_stockplannerslice_stockplannerstate",
+      "label": "StockPlannerState",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "stockPlannerSlice.ts",
+      "file_type": "code",
+      "norm_label": "stockplannerstate",
+      "source_file": "src/store/stockPlannerSlice.ts",
+      "source_location": "L16"
     },
     {
       "id": "src_types_growthplan_dailygrowthitem",
@@ -485,17 +550,17 @@
       "source_location": "L48"
     },
     {
-      "id": "src_types_portfolio_capitaladjustment",
-      "label": "CapitalAdjustment",
+      "id": "src_types_portfolio_portfolio",
+      "label": "Portfolio",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 2,
       "community_name": "stockPlannerSlice.ts",
       "file_type": "code",
-      "norm_label": "capitaladjustment",
+      "norm_label": "portfolio",
       "source_file": "src/types/portfolio.ts",
-      "source_location": "L3"
+      "source_location": "L9"
     },
     {
       "id": "src_types_stock_currencymode",
@@ -509,6 +574,58 @@
       "norm_label": "currencymode",
       "source_file": "src/types/stock.ts",
       "source_location": "L3"
+    },
+    {
+      "id": "src_types_stock_dropmode",
+      "label": "DropMode",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "stockPlannerSlice.ts",
+      "file_type": "code",
+      "norm_label": "dropmode",
+      "source_file": "src/types/stock.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_types_stock_feemode",
+      "label": "FeeMode",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "stockPlannerSlice.ts",
+      "file_type": "code",
+      "norm_label": "feemode",
+      "source_file": "src/types/stock.ts",
+      "source_location": "L4"
+    },
+    {
+      "id": "src_types_stock_roundingmode",
+      "label": "RoundingMode",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "stockPlannerSlice.ts",
+      "file_type": "code",
+      "norm_label": "roundingmode",
+      "source_file": "src/types/stock.ts",
+      "source_location": "L2"
+    },
+    {
+      "id": "src_types_stock_tranchedetail",
+      "label": "TrancheDetail",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "stockPlannerSlice.ts",
+      "file_type": "code",
+      "norm_label": "tranchedetail",
+      "source_file": "src/types/stock.ts",
+      "source_location": "L6"
     },
     {
       "id": "src_components_currencytextfield_currencytextfieldprops",
@@ -535,32 +652,6 @@
       "norm_label": "infotooltiplabelprops",
       "source_file": "src/components/InfoTooltipLabel.tsx",
       "source_location": "L10"
-    },
-    {
-      "id": "src_pages_investmentplan_sections_growthplanform_growthplanformprops",
-      "label": "GrowthPlanFormProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "growthplanformprops",
-      "source_file": "src/pages/InvestmentPlan/sections/GrowthPlanForm.tsx",
-      "source_location": "L38"
-    },
-    {
-      "id": "src_pages_savedplans_sections_portfoliogrowthplancard_portfoliogrowthplancardprops",
-      "label": "PortfolioGrowthPlanCardProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "portfoliogrowthplancardprops",
-      "source_file": "src/pages/SavedPlans/sections/PortfolioGrowthPlanCard.tsx",
-      "source_location": "L36"
     },
     {
       "id": "src_pages_stockplanner_sections_companyinsightscard_companyinsightscardprops",
@@ -626,19 +717,6 @@
       "norm_label": "investmentparamssectionprops",
       "source_file": "src/pages/StockPlanner/sections/InvestmentParamsSection.tsx",
       "source_location": "L29"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_portfolioselectfield_portfolioselectfieldprops",
-      "label": "PortfolioSelectFieldProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "portfolioselectfieldprops",
-      "source_file": "src/pages/StockPlanner/sections/PortfolioSelectField.tsx",
-      "source_location": "L10"
     },
     {
       "id": "src_pages_stockplanner_sections_stockplannerform_stockplannerformprops",
@@ -719,43 +797,30 @@
       "source_location": "L1"
     },
     {
-      "id": "src_types_portfolio_portfolio",
-      "label": "Portfolio",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "portfolio",
-      "source_file": "src/types/portfolio.ts",
-      "source_location": "L9"
-    },
-    {
-      "id": "src_store_index_appdispatch",
-      "label": "AppDispatch",
+      "id": "api_webullcore_d_webullcredentials",
+      "label": "WebullCredentials",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 28,
-      "community_name": "store/index.ts",
+      "community_name": "_webullCore.d.ts",
       "file_type": "code",
-      "norm_label": "appdispatch",
-      "source_file": "src/store/index.ts",
-      "source_location": "L12"
+      "norm_label": "webullcredentials",
+      "source_file": "api/_webullCore.d.ts",
+      "source_location": "L1"
     },
     {
-      "id": "src_store_index_rootstate",
-      "label": "RootState",
+      "id": "api_webullcore_d_webullrequestoptions",
+      "label": "WebullRequestOptions",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 28,
-      "community_name": "store/index.ts",
+      "community_name": "_webullCore.d.ts",
       "file_type": "code",
-      "norm_label": "rootstate",
-      "source_file": "src/store/index.ts",
-      "source_location": "L11"
+      "norm_label": "webullrequestoptions",
+      "source_file": "api/_webullCore.d.ts",
+      "source_location": "L8"
     },
     {
       "id": "src_components_webulltokenmodal_webulltokenmodalprops",
@@ -1070,26 +1135,13 @@
       "source_location": "L10"
     },
     {
-      "id": "src_components_layout_layoutprops",
-      "label": "LayoutProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "Layout.tsx",
-      "file_type": "code",
-      "norm_label": "layoutprops",
-      "source_file": "src/components/Layout.tsx",
-      "source_location": "L45"
-    },
-    {
       "id": "src_utils_databackup_importresult",
       "label": "ImportResult",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "importresult",
       "source_file": "src/utils/dataBackup.ts",
@@ -1102,7 +1154,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "moneylustbackuppayload",
       "source_file": "src/utils/dataBackup.ts",
@@ -1115,7 +1167,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "gistdiffresult",
       "source_file": "src/utils/githubGistSync.ts",
@@ -1128,7 +1180,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "gistsyncstatus",
       "source_file": "src/utils/githubGistSync.ts",
@@ -1193,6 +1245,18 @@
       "norm_label": "dailygrowthtable()",
       "source_file": "src/pages/InvestmentPlan/sections/DailyGrowthTable.tsx",
       "source_location": "L39"
+    },
+    {
+      "id": "src_pages_investmentplan_sections_growthplanform_growthplanform",
+      "label": "GrowthPlanForm()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "code",
+      "norm_label": "growthplanform()",
+      "source_file": "src/pages/InvestmentPlan/sections/GrowthPlanForm.tsx",
+      "source_location": "L57"
     },
     {
       "id": "src_pages_investmentplan_sections_portfoliobenchmarkcard_portfoliobenchmarkcard",
@@ -1651,16 +1715,28 @@
       "source_location": "L19"
     },
     {
-      "id": "api_webull_quote_fetchstockquotefromsdk",
-      "label": "fetchStockQuoteFromSdk()",
+      "id": "api_webull_quote_fetchstockquotedirect",
+      "label": "fetchStockQuoteDirect()",
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "file_type": "code",
-      "norm_label": "fetchstockquotefromsdk()",
+      "norm_label": "fetchstockquotedirect()",
       "source_file": "api/webull/quote.ts",
-      "source_location": "L43"
+      "source_location": "L56"
+    },
+    {
+      "id": "api_webull_quote_formatmarketcap",
+      "label": "formatMarketCap()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "formatmarketcap()",
+      "source_file": "api/webull/quote.ts",
+      "source_location": "L42"
     },
     {
       "id": "api_webull_quote_handler",
@@ -1668,23 +1744,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "handler()",
       "source_file": "api/webull/quote.ts",
-      "source_location": "L82"
+      "source_location": "L144"
     },
     {
-      "id": "api_webull_screener_fetchfromwebullsdk",
-      "label": "fetchFromWebullSdk()",
+      "id": "api_webull_screener_fetchscreenerdirect",
+      "label": "fetchScreenerDirect()",
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "file_type": "code",
-      "norm_label": "fetchfromwebullsdk()",
+      "norm_label": "fetchscreenerdirect()",
       "source_file": "api/webull/screener.ts",
-      "source_location": "L50"
+      "source_location": "L49"
     },
     {
       "id": "api_webull_screener_handler",
@@ -1692,23 +1768,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "handler()",
       "source_file": "api/webull/screener.ts",
-      "source_location": "L89"
-    },
-    {
-      "id": "api_webull_token_calltokenbridge",
-      "label": "callTokenBridge()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "screener.ts",
-      "file_type": "code",
-      "norm_label": "calltokenbridge()",
-      "source_file": "api/webull/token.ts",
-      "source_location": "L65"
+      "source_location": "L97"
     },
     {
       "id": "api_webull_token_handler",
@@ -1716,11 +1780,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "handler()",
       "source_file": "api/webull/token.ts",
-      "source_location": "L101"
+      "source_location": "L194"
     },
     {
       "id": "api_webull_token_persistnewtoken",
@@ -1728,11 +1792,131 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "persistnewtoken()",
       "source_file": "api/webull/token.ts",
       "source_location": "L30"
+    },
+    {
+      "id": "api_webull_token_processtokenaction",
+      "label": "processTokenAction()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "processtokenaction()",
+      "source_file": "api/webull/token.ts",
+      "source_location": "L65"
+    },
+    {
+      "id": "api_webull_webullclient_buildsignedheaders",
+      "label": "buildSignedHeaders()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "buildsignedheaders()",
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L103"
+    },
+    {
+      "id": "api_webull_webullclient_executewebullrequest",
+      "label": "executeWebullRequest()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "executewebullrequest()",
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L198"
+    },
+    {
+      "id": "api_webull_webullclient_getwebullcredentials",
+      "label": "getWebullCredentials()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "getwebullcredentials()",
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L43"
+    },
+    {
+      "id": "api_webull_webullclient_handler",
+      "label": "handler()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "handler()",
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L257"
+    },
+    {
+      "id": "api_webull_webullclient_rfc3986quote",
+      "label": "rfc3986Quote()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "rfc3986quote()",
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L33"
+    },
+    {
+      "id": "api_webullcore_buildsignedheaders",
+      "label": "buildSignedHeaders()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "buildsignedheaders()",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L69"
+    },
+    {
+      "id": "api_webullcore_executewebullrequest",
+      "label": "executeWebullRequest()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "executewebullrequest()",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L149"
+    },
+    {
+      "id": "api_webullcore_getwebullcredentials",
+      "label": "getWebullCredentials()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "getwebullcredentials()",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L24"
+    },
+    {
+      "id": "api_webullcore_rfc3986quote",
+      "label": "rfc3986Quote()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "rfc3986quote()",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L16"
     },
     {
       "id": "vite_config_configureserver",
@@ -1740,7 +1924,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "configureserver()",
       "source_file": "vite.config.ts",
@@ -1877,18 +2061,6 @@
       "norm_label": "infotooltiplabel()",
       "source_file": "src/components/InfoTooltipLabel.tsx",
       "source_location": "L30"
-    },
-    {
-      "id": "src_pages_investmentplan_sections_growthplanform_growthplanform",
-      "label": "GrowthPlanForm()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "growthplanform()",
-      "source_file": "src/pages/InvestmentPlan/sections/GrowthPlanForm.tsx",
-      "source_location": "L57"
     },
     {
       "id": "src_pages_stockplanner_sections_companyinsightscard_companyinsightscard",
@@ -2104,7 +2276,7 @@
       "file_type": "code",
       "norm_label": "createwebulltoken()",
       "source_file": "src/utils/webullTokenService.ts",
-      "source_location": "L59"
+      "source_location": "L61"
     },
     {
       "id": "src_utils_webulltokenservice_fetchwebulltokenstatus",
@@ -2128,7 +2300,7 @@
       "file_type": "code",
       "norm_label": "refreshwebulltoken()",
       "source_file": "src/utils/webullTokenService.ts",
-      "source_location": "L42"
+      "source_location": "L43"
     },
     {
       "id": "src_utils_webulltokenservice_verifywebulltoken",
@@ -2140,7 +2312,7 @@
       "file_type": "code",
       "norm_label": "verifywebulltoken()",
       "source_file": "src/utils/webullTokenService.ts",
-      "source_location": "L77"
+      "source_location": "L80"
     },
     {
       "id": "src_components_trading_note_floatingtradingnotewindow_floatingtradingnotewindow",
@@ -2524,7 +2696,7 @@
       "file_type": "code",
       "norm_label": "emittokenexpiredevent()",
       "source_file": "src/utils/webullTokenService.ts",
-      "source_location": "L96"
+      "source_location": "L100"
     },
     {
       "id": "src_components_databackupmodal_databackupmodal",
@@ -2532,7 +2704,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "databackupmodal()",
       "source_file": "src/components/DataBackupModal.tsx",
@@ -2544,7 +2716,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "gistsyncstartupmodal()",
       "source_file": "src/components/GistSyncStartupModal.tsx",
@@ -2556,7 +2728,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "copybackuptoclipboard()",
       "source_file": "src/utils/dataBackup.ts",
@@ -2568,7 +2740,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "downloadbackupjson()",
       "source_file": "src/utils/dataBackup.ts",
@@ -2580,7 +2752,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "getexportpayload()",
       "source_file": "src/utils/dataBackup.ts",
@@ -2592,7 +2764,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "importbackupfromjson()",
       "source_file": "src/utils/dataBackup.ts",
@@ -2604,7 +2776,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "applygistbackup()",
       "source_file": "src/utils/githubGistSync.ts",
@@ -2616,7 +2788,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "checkgistdifference()",
       "source_file": "src/utils/githubGistSync.ts",
@@ -2628,7 +2800,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "disconnectgist()",
       "source_file": "src/utils/githubGistSync.ts",
@@ -2640,7 +2812,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "downloaddatafromgist()",
       "source_file": "src/utils/githubGistSync.ts",
@@ -2652,7 +2824,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "getgistsyncstatus()",
       "source_file": "src/utils/githubGistSync.ts",
@@ -2664,7 +2836,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "initializeorlinkgist()",
       "source_file": "src/utils/githubGistSync.ts",
@@ -2676,7 +2848,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "savegithubtoken()",
       "source_file": "src/utils/githubGistSync.ts",
@@ -2688,7 +2860,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "uploaddatatogist()",
       "source_file": "src/utils/githubGistSync.ts",
@@ -2704,6 +2876,39 @@
       "norm_label": "app.tsx",
       "source_file": "src/App.tsx",
       "source_location": "L1"
+    },
+    {
+      "id": "src_components_layout",
+      "label": "Layout.tsx",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "code",
+      "norm_label": "layout.tsx",
+      "source_file": "src/components/Layout.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_main",
+      "label": "main.tsx",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "code",
+      "norm_label": "main.tsx",
+      "source_file": "src/main.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_main_queryclient",
+      "label": "queryClient",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "code",
+      "norm_label": "queryclient",
+      "source_file": "src/main.tsx",
+      "source_location": "L11"
     },
     {
       "id": "src_pages_investmentplan",
@@ -2747,6 +2952,17 @@
       "file_type": "code",
       "norm_label": "pages/savedplans.tsx",
       "source_file": "src/pages/SavedPlans.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_savedplans_index",
+      "label": "SavedPlans/index.ts",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "code",
+      "norm_label": "savedplans/index.ts",
+      "source_file": "src/pages/SavedPlans/index.ts",
       "source_location": "L1"
     },
     {
@@ -2802,6 +3018,17 @@
       "file_type": "code",
       "norm_label": "timelinefilter.tsx",
       "source_file": "src/pages/SavedPlans/sections/TimelineFilter.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_savedplans_types",
+      "label": "SavedPlans/types.ts",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "code",
+      "norm_label": "savedplans/types.ts",
+      "source_file": "src/pages/SavedPlans/types.ts",
       "source_location": "L1"
     },
     {
@@ -2893,6 +3120,28 @@
       "source_location": "L5"
     },
     {
+      "id": "src_store_index",
+      "label": "store/index.ts",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "code",
+      "norm_label": "store/index.ts",
+      "source_file": "src/store/index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_store_index_store",
+      "label": "store",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "code",
+      "norm_label": "store",
+      "source_file": "src/store/index.ts",
+      "source_location": "L5"
+    },
+    {
       "id": "src_store_index_useappselector",
       "label": "useAppSelector",
       "_origin": "ast",
@@ -2937,6 +3186,28 @@
       "source_location": "L37"
     },
     {
+      "id": "ref_react_dom",
+      "label": "react-dom",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "concept",
+      "norm_label": "react-dom",
+      "source_file": "package.json",
+      "source_location": "L39"
+    },
+    {
+      "id": "ref_react_redux",
+      "label": "react-redux",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "concept",
+      "norm_label": "react-redux",
+      "source_file": "package.json",
+      "source_location": "L42"
+    },
+    {
       "id": "ref_react_router_dom",
       "label": "react-router-dom",
       "_origin": "ast",
@@ -2946,6 +3217,28 @@
       "norm_label": "react-router-dom",
       "source_file": "package.json",
       "source_location": "L44"
+    },
+    {
+      "id": "ref_reduxjs_toolkit",
+      "label": "@reduxjs/toolkit",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "concept",
+      "norm_label": "@reduxjs/toolkit",
+      "source_file": "package.json",
+      "source_location": "L19"
+    },
+    {
+      "id": "ref_tanstack_react_query",
+      "label": "@tanstack/react-query",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "concept",
+      "norm_label": "@tanstack/react-query",
+      "source_file": "package.json",
+      "source_location": "L20"
     },
     {
       "id": "src_components_glasscard",
@@ -3080,17 +3373,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_types_stock",
-      "label": "stock.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "@mui/material",
-      "file_type": "code",
-      "norm_label": "stock.ts",
-      "source_file": "src/types/stock.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "src_utils_stockmath",
       "label": "stockMath.ts",
       "_origin": "ast",
@@ -3100,17 +3382,6 @@
       "norm_label": "stockmath.ts",
       "source_file": "src/utils/stockMath.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "ref_lucide_react",
-      "label": "lucide-react",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "@mui/material",
-      "file_type": "concept",
-      "norm_label": "lucide-react",
-      "source_file": "package.json",
-      "source_location": "L34"
     },
     {
       "id": "ref_mui_material",
@@ -3704,7 +3975,7 @@
       "label": "quote.ts",
       "_origin": "ast",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "quote.ts",
       "source_file": "api/webull/quote.ts",
@@ -3715,7 +3986,7 @@
       "label": "screener.ts",
       "_origin": "ast",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "screener.ts",
       "source_file": "api/webull/screener.ts",
@@ -3726,21 +3997,43 @@
       "label": "PERIOD_TO_RANK_TYPE",
       "_origin": "ast",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "period_to_rank_type",
       "source_file": "api/webull/screener.ts",
-      "source_location": "L31"
+      "source_location": "L30"
     },
     {
       "id": "api_webull_token",
       "label": "token.ts",
       "_origin": "ast",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "token.ts",
       "source_file": "api/webull/token.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "api_webull_webullclient",
+      "label": "webullClient.ts",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "webullclient.ts",
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "api_webullcore",
+      "label": "_webullCore.js",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "code",
+      "norm_label": "_webullcore.js",
+      "source_file": "api/_webullCore.js",
       "source_location": "L1"
     },
     {
@@ -3748,18 +4041,40 @@
       "label": "vite.config.ts",
       "_origin": "ast",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "file_type": "code",
       "norm_label": "vite.config.ts",
       "source_file": "vite.config.ts",
       "source_location": "L1"
     },
     {
+      "id": "api_webull_webullclient_ts_docref_rfc_3986",
+      "label": "RFC-3986",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "concept",
+      "norm_label": "rfc-3986",
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L28"
+    },
+    {
+      "id": "api_webullcore_js_docref_rfc_3986",
+      "label": "RFC-3986",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "token.ts",
+      "file_type": "concept",
+      "norm_label": "rfc-3986",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L12"
+    },
+    {
       "id": "ref_vite",
       "label": "vite",
       "_origin": "ast",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "file_type": "concept",
       "norm_label": "vite",
       "source_file": "package.json",
@@ -3770,7 +4085,7 @@
       "label": "@vitejs/plugin-react",
       "_origin": "ast",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "file_type": "concept",
       "norm_label": "@vitejs/plugin-react",
       "source_file": "package.json",
@@ -3989,6 +4304,17 @@
       "source_location": "L1"
     },
     {
+      "id": "src_pages_investmentplan_sections_growthplanform",
+      "label": "GrowthPlanForm.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "stockPlannerSlice.ts",
+      "file_type": "code",
+      "norm_label": "growthplanform.tsx",
+      "source_file": "src/pages/InvestmentPlan/sections/GrowthPlanForm.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_pages_investmentplan_sections_portfoliobenchmarkcard",
       "label": "PortfolioBenchmarkCard.tsx",
       "_origin": "ast",
@@ -4011,15 +4337,15 @@
       "source_location": "L1"
     },
     {
-      "id": "src_pages_savedplans_index",
-      "label": "SavedPlans/index.ts",
+      "id": "src_pages_investmentplan_types_daily_return_presets",
+      "label": "DAILY_RETURN_PRESETS",
       "_origin": "ast",
       "community": 2,
       "community_name": "stockPlannerSlice.ts",
       "file_type": "code",
-      "norm_label": "savedplans/index.ts",
-      "source_file": "src/pages/SavedPlans/index.ts",
-      "source_location": "L1"
+      "norm_label": "daily_return_presets",
+      "source_file": "src/pages/InvestmentPlan/types.ts",
+      "source_location": "L29"
     },
     {
       "id": "src_pages_savedplans_sections_portfoliogrowthplancard",
@@ -4033,14 +4359,14 @@
       "source_location": "L1"
     },
     {
-      "id": "src_pages_savedplans_types",
-      "label": "SavedPlans/types.ts",
+      "id": "src_pages_stockplanner_sections_portfolioselectfield",
+      "label": "PortfolioSelectField.tsx",
       "_origin": "ast",
       "community": 2,
       "community_name": "stockPlannerSlice.ts",
       "file_type": "code",
-      "norm_label": "savedplans/types.ts",
-      "source_file": "src/pages/SavedPlans/types.ts",
+      "norm_label": "portfolioselectfield.tsx",
+      "source_file": "src/pages/StockPlanner/sections/PortfolioSelectField.tsx",
       "source_location": "L1"
     },
     {
@@ -4118,6 +4444,17 @@
       "file_type": "code",
       "norm_label": "portfolio.ts",
       "source_file": "src/types/portfolio.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_types_stock",
+      "label": "stock.ts",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "stockPlannerSlice.ts",
+      "file_type": "code",
+      "norm_label": "stock.ts",
+      "source_file": "src/types/stock.ts",
       "source_location": "L1"
     },
     {
@@ -4374,28 +4711,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_pages_investmentplan_sections_growthplanform",
-      "label": "GrowthPlanForm.tsx",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "growthplanform.tsx",
-      "source_file": "src/pages/InvestmentPlan/sections/GrowthPlanForm.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_pages_investmentplan_types_daily_return_presets",
-      "label": "DAILY_RETURN_PRESETS",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "daily_return_presets",
-      "source_file": "src/pages/InvestmentPlan/types.ts",
-      "source_location": "L29"
-    },
-    {
       "id": "src_pages_stockplanner_sections_companyinsightscard",
       "label": "CompanyInsightsCard.tsx",
       "_origin": "ast",
@@ -4451,17 +4766,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_pages_stockplanner_sections_portfolioselectfield",
-      "label": "PortfolioSelectField.tsx",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "portfolioselectfield.tsx",
-      "source_file": "src/pages/StockPlanner/sections/PortfolioSelectField.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_pages_stockplanner_sections_stockplannerform",
       "label": "StockPlannerForm.tsx",
       "_origin": "ast",
@@ -4504,6 +4808,17 @@
       "norm_label": "stockfinancials.ts",
       "source_file": "src/utils/stockFinancials.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "ref_lucide_react",
+      "label": "lucide-react",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "react",
+      "file_type": "concept",
+      "norm_label": "lucide-react",
+      "source_file": "package.json",
+      "source_location": "L34"
     },
     {
       "id": "ref_react",
@@ -4617,92 +4932,15 @@
       "source_location": "L1"
     },
     {
-      "id": "src_main",
-      "label": "main.tsx",
+      "id": "api_webullcore_d",
+      "label": "_webullCore.d.ts",
       "_origin": "ast",
       "community": 28,
-      "community_name": "store/index.ts",
+      "community_name": "_webullCore.d.ts",
       "file_type": "code",
-      "norm_label": "main.tsx",
-      "source_file": "src/main.tsx",
+      "norm_label": "_webullcore.d.ts",
+      "source_file": "api/_webullCore.d.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "src_main_queryclient",
-      "label": "queryClient",
-      "_origin": "ast",
-      "community": 28,
-      "community_name": "store/index.ts",
-      "file_type": "code",
-      "norm_label": "queryclient",
-      "source_file": "src/main.tsx",
-      "source_location": "L11"
-    },
-    {
-      "id": "src_store_index",
-      "label": "store/index.ts",
-      "_origin": "ast",
-      "community": 28,
-      "community_name": "store/index.ts",
-      "file_type": "code",
-      "norm_label": "store/index.ts",
-      "source_file": "src/store/index.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_store_index_store",
-      "label": "store",
-      "_origin": "ast",
-      "community": 28,
-      "community_name": "store/index.ts",
-      "file_type": "code",
-      "norm_label": "store",
-      "source_file": "src/store/index.ts",
-      "source_location": "L5"
-    },
-    {
-      "id": "ref_react_dom",
-      "label": "react-dom",
-      "_origin": "ast",
-      "community": 28,
-      "community_name": "store/index.ts",
-      "file_type": "concept",
-      "norm_label": "react-dom",
-      "source_file": "package.json",
-      "source_location": "L39"
-    },
-    {
-      "id": "ref_react_redux",
-      "label": "react-redux",
-      "_origin": "ast",
-      "community": 28,
-      "community_name": "store/index.ts",
-      "file_type": "concept",
-      "norm_label": "react-redux",
-      "source_file": "package.json",
-      "source_location": "L42"
-    },
-    {
-      "id": "ref_reduxjs_toolkit",
-      "label": "@reduxjs/toolkit",
-      "_origin": "ast",
-      "community": 28,
-      "community_name": "store/index.ts",
-      "file_type": "concept",
-      "norm_label": "@reduxjs/toolkit",
-      "source_file": "package.json",
-      "source_location": "L19"
-    },
-    {
-      "id": "ref_tanstack_react_query",
-      "label": "@tanstack/react-query",
-      "_origin": "ast",
-      "community": 28,
-      "community_name": "store/index.ts",
-      "file_type": "concept",
-      "norm_label": "@tanstack/react-query",
-      "source_file": "package.json",
-      "source_location": "L20"
     },
     {
       "id": "src_components_webulltokenbadge",
@@ -6192,7 +6430,7 @@
       "label": "DataBackupModal.tsx",
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "databackupmodal.tsx",
       "source_file": "src/components/DataBackupModal.tsx",
@@ -6203,21 +6441,10 @@
       "label": "GistSyncStartupModal.tsx",
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "gistsyncstartupmodal.tsx",
       "source_file": "src/components/GistSyncStartupModal.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_layout",
-      "label": "Layout.tsx",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "Layout.tsx",
-      "file_type": "code",
-      "norm_label": "layout.tsx",
-      "source_file": "src/components/Layout.tsx",
       "source_location": "L1"
     },
     {
@@ -6225,7 +6452,7 @@
       "label": "dataBackup.ts",
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "databackup.ts",
       "source_file": "src/utils/dataBackup.ts",
@@ -6236,7 +6463,7 @@
       "label": "BACKUP_KEYS",
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "backup_keys",
       "source_file": "src/utils/dataBackup.ts",
@@ -6247,7 +6474,7 @@
       "label": "githubGistSync.ts",
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "code",
       "norm_label": "githubgistsync.ts",
       "source_file": "src/utils/githubGistSync.ts",
@@ -6258,11 +6485,35 @@
       "label": "dayjs",
       "_origin": "ast",
       "community": 9,
-      "community_name": "Layout.tsx",
+      "community_name": "DataBackupModal.tsx",
       "file_type": "concept",
       "norm_label": "dayjs",
       "source_file": "package.json",
       "source_location": "L30"
+    },
+    {
+      "id": "src_index",
+      "label": "src_index",
+      "_origin": "semantic",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_index",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_routes_index_paths",
+      "label": "src_routes_index_paths",
+      "_origin": "semantic",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_routes_index_paths",
+      "source_file": "",
+      "type": "external"
     },
     {
       "id": "src_store_stockplannerslice_addportfolio",
@@ -6325,6 +6576,18 @@
       "type": "external"
     },
     {
+      "id": "src_store_stockplannerslice_reorderportfolios",
+      "label": "src_store_stockplannerslice_reorderportfolios",
+      "_origin": "semantic",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_store_stockplannerslice_reorderportfolios",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "src_store_stockplannerslice_saveplan",
       "label": "src_store_stockplannerslice_saveplan",
       "_origin": "semantic",
@@ -6361,18 +6624,6 @@
       "type": "external"
     },
     {
-      "id": "src_store_stockplannerslice_updatecurrentparams",
-      "label": "src_store_stockplannerslice_updatecurrentparams",
-      "_origin": "semantic",
-      "community": 0,
-      "community_name": "SavedPlans/SavedPlans.tsx",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_store_stockplannerslice_updatecurrentparams",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "src_store_stockplannerslice_updateportfoliocapital",
       "label": "src_store_stockplannerslice_updateportfoliocapital",
       "_origin": "semantic",
@@ -6393,6 +6644,30 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "src_store_stockplannerslice_updateportfoliofirsttradedate",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_types_index_calculationresult",
+      "label": "src_types_index_calculationresult",
+      "_origin": "semantic",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_types_index_calculationresult",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_types_index_capitaladjustment",
+      "label": "src_types_index_capitaladjustment",
+      "_origin": "semantic",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_types_index_capitaladjustment",
       "source_file": "",
       "type": "external"
     },
@@ -6553,14 +6828,14 @@
       "type": "external"
     },
     {
-      "id": "ref_child_process",
-      "label": "ref_child_process",
+      "id": "ref_crypto",
+      "label": "ref_crypto",
       "_origin": "semantic",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "external": true,
       "file_type": "concept",
-      "norm_label": "ref_child_process",
+      "norm_label": "ref_crypto",
       "source_file": "",
       "type": "external"
     },
@@ -6569,7 +6844,7 @@
       "label": "ref_fs",
       "_origin": "semantic",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_fs",
@@ -6581,7 +6856,7 @@
       "label": "ref_path",
       "_origin": "semantic",
       "community": 15,
-      "community_name": "screener.ts",
+      "community_name": "token.ts",
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_path",
@@ -6589,26 +6864,14 @@
       "type": "external"
     },
     {
-      "id": "src_types_index_calculationresult",
-      "label": "src_types_index_calculationresult",
+      "id": "src_store_stockplannerslice_portfolio",
+      "label": "src_store_stockplannerslice_portfolio",
       "_origin": "semantic",
       "community": 2,
       "community_name": "stockPlannerSlice.ts",
       "external": true,
       "file_type": "concept",
-      "norm_label": "src_types_index_calculationresult",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "src_types_index_capitaladjustment",
-      "label": "src_types_index_capitaladjustment",
-      "_origin": "semantic",
-      "community": 2,
-      "community_name": "stockPlannerSlice.ts",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_types_index_capitaladjustment",
+      "norm_label": "src_store_stockplannerslice_portfolio",
       "source_file": "",
       "type": "external"
     },
@@ -6709,38 +6972,14 @@
       "type": "external"
     },
     {
-      "id": "src_store_stockplannerslice_portfolio",
-      "label": "src_store_stockplannerslice_portfolio",
-      "_origin": "semantic",
-      "community": 24,
-      "community_name": "react",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_store_stockplannerslice_portfolio",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "ref_crypto",
-      "label": "ref_crypto",
+      "id": "ref_child_process",
+      "label": "ref_child_process",
       "_origin": "semantic",
       "community": 27,
-      "community_name": "ref_crypto",
+      "community_name": "ref_child_process",
       "external": true,
       "file_type": "concept",
-      "norm_label": "ref_crypto",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "src_index",
-      "label": "src_index",
-      "_origin": "semantic",
-      "community": 28,
-      "community_name": "store/index.ts",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_index",
+      "norm_label": "ref_child_process",
       "source_file": "",
       "type": "external"
     },
@@ -6757,69 +6996,69 @@
       "type": "external"
     },
     {
-      "id": "src_routes_index_paths",
-      "label": "src_routes_index_paths",
+      "id": "src_store_stockplannerslice_updatecurrentparams",
+      "label": "src_store_stockplannerslice_updatecurrentparams",
       "_origin": "semantic",
       "community": 6,
       "community_name": "MarketTable.tsx",
       "external": true,
       "file_type": "concept",
-      "norm_label": "src_routes_index_paths",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "src_store_stockplannerslice_reorderportfolios",
-      "label": "src_store_stockplannerslice_reorderportfolios",
-      "_origin": "semantic",
-      "community": 9,
-      "community_name": "Layout.tsx",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_store_stockplannerslice_reorderportfolios",
+      "norm_label": "src_store_stockplannerslice_updatecurrentparams",
       "source_file": "",
       "type": "external"
     }
   ],
   "links": [
     {
-      "source": "api_webull_quote_handler",
-      "target": "api_webull_quote_fetchstockquotefromsdk",
+      "source": "api_webull_quote_fetchstockquotedirect",
+      "target": "api_webull_quote_formatmarketcap",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "api/webull/quote.ts",
-      "source_location": "L94",
+      "source_location": "L124",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_quote_handler",
+      "target": "api_webull_quote_fetchstockquotedirect",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "api/webull/quote.ts",
+      "source_location": "L156",
       "weight": 1.0
     },
     {
       "source": "api_webull_screener_handler",
-      "target": "api_webull_screener_fetchfromwebullsdk",
+      "target": "api_webull_screener_fetchscreenerdirect",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "api/webull/screener.ts",
-      "source_location": "L103",
+      "source_location": "L112",
       "weight": 1.0
     },
     {
       "source": "api_webull_token_handler",
-      "target": "api_webull_token_calltokenbridge",
+      "target": "api_webull_token_processtokenaction",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "api/webull/token.ts",
-      "source_location": "L114",
+      "source_location": "L207",
       "weight": 1.0
     },
     {
-      "source": "api_webull_token_handler",
+      "source": "api_webull_token_processtokenaction",
       "target": "api_webull_token_persistnewtoken",
       "relation": "calls",
       "_origin": "ast",
@@ -6827,7 +7066,115 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "api/webull/token.ts",
-      "source_location": "L118",
+      "source_location": "L126",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_token_processtokenaction",
+      "target": "api_webullcore_getwebullcredentials",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "api/webull/token.ts",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_webullclient_buildsignedheaders",
+      "target": "api_webull_webullclient_getwebullcredentials",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L112",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_webullclient_buildsignedheaders",
+      "target": "api_webull_webullclient_rfc3986quote",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L162",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_webullclient_executewebullrequest",
+      "target": "api_webull_webullclient_getwebullcredentials",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L199",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_webullclient_executewebullrequest",
+      "target": "api_webull_webullclient_buildsignedheaders",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L205",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore_buildsignedheaders",
+      "target": "api_webullcore_rfc3986quote",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L116",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore_buildsignedheaders",
+      "target": "api_webullcore_getwebullcredentials",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore_executewebullrequest",
+      "target": "api_webullcore_getwebullcredentials",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L150",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore_executewebullrequest",
+      "target": "api_webullcore_buildsignedheaders",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L156",
       "weight": 1.0
     },
     {
@@ -6839,7 +7186,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/webull_quote.py",
-      "source_location": "L87",
+      "source_location": "L109",
       "weight": 1.0
     },
     {
@@ -10020,7 +10367,7 @@
       "context": "import",
       "deferred": true,
       "source_file": "vite.config.ts",
-      "source_location": "L34",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -10033,7 +10380,7 @@
       "context": "import",
       "deferred": true,
       "source_file": "vite.config.ts",
-      "source_location": "L60",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -10046,7 +10393,55 @@
       "context": "import",
       "deferred": true,
       "source_file": "vite.config.ts",
-      "source_location": "L86",
+      "source_location": "L89",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_quote",
+      "target": "api_webullcore_executewebullrequest",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "api/webull/quote.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_screener",
+      "target": "api_webullcore_executewebullrequest",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "api/webull/screener.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_token",
+      "target": "api_webullcore_executewebullrequest",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "api/webull/token.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_token",
+      "target": "api_webullcore_getwebullcredentials",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "api/webull/token.ts",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -14515,7 +14910,7 @@
     },
     {
       "source": "api_webull_quote",
-      "target": "ref_child_process",
+      "target": "api_webullcore",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14526,50 +14921,14 @@
       "weight": 1.0
     },
     {
-      "source": "api_webull_quote",
-      "target": "ref_path",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "api/webull/quote.ts",
-      "source_location": "L7",
-      "weight": 1.0
-    },
-    {
       "source": "api_webull_screener",
-      "target": "ref_child_process",
+      "target": "api_webullcore",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "api/webull/screener.ts",
-      "source_location": "L7",
-      "weight": 1.0
-    },
-    {
-      "source": "api_webull_screener",
-      "target": "ref_path",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "api/webull/screener.ts",
-      "source_location": "L8",
-      "weight": 1.0
-    },
-    {
-      "source": "api_webull_token",
-      "target": "ref_child_process",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "api/webull/token.ts",
       "source_location": "L7",
       "weight": 1.0
     },
@@ -14582,7 +14941,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "api/webull/token.ts",
-      "source_location": "L8",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -14594,6 +14953,90 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "api/webull/token.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_token",
+      "target": "api_webullcore",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "api/webull/token.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_webullclient",
+      "target": "ref_path",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_webullclient",
+      "target": "ref_crypto",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_webullclient",
+      "target": "ref_fs",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore",
+      "target": "ref_crypto",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore",
+      "target": "ref_fs",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "api/_webullCore.js",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore",
+      "target": "ref_path",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "api/_webullCore.js",
       "source_location": "L9",
       "weight": 1.0
     },
@@ -18678,6 +19121,28 @@
       "weight": 1.0
     },
     {
+      "source": "api_webull_webullclient",
+      "target": "api_webull_webullclient_ts_docref_rfc_3986",
+      "relation": "cites",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore",
+      "target": "api_webullcore_js_docref_rfc_3986",
+      "relation": "cites",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/_webullCore.js",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
       "source": "agents",
       "target": "agents_moneylust_project_guidelines_standards",
       "relation": "contains",
@@ -19273,35 +19738,46 @@
     },
     {
       "source": "api_webull_quote",
-      "target": "api_webull_quote_webullquoteapiresponse",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "api/webull/quote.ts",
-      "source_location": "L31",
-      "weight": 1.0
-    },
-    {
-      "source": "api_webull_quote",
-      "target": "api_webull_quote_fetchstockquotefromsdk",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "api/webull/quote.ts",
-      "source_location": "L43",
-      "weight": 1.0
-    },
-    {
-      "source": "api_webull_quote",
       "target": "api_webull_quote_handler",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "api/webull/quote.ts",
-      "source_location": "L82",
+      "source_location": "L144",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_quote",
+      "target": "api_webull_quote_webullquoteapiresponse",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/webull/quote.ts",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_quote",
+      "target": "api_webull_quote_formatmarketcap",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/webull/quote.ts",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_quote",
+      "target": "api_webull_quote_fetchstockquotedirect",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/webull/quote.ts",
+      "source_location": "L56",
       "weight": 1.0
     },
     {
@@ -19312,18 +19788,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "api/webull/quote.ts",
-      "source_location": "L9",
-      "weight": 1.0
-    },
-    {
-      "source": "api_webull_screener",
-      "target": "api_webull_screener_screenerstockitem",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "api/webull/screener.ts",
-      "source_location": "L10",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -19334,7 +19799,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "api/webull/screener.ts",
-      "source_location": "L21",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -19345,18 +19810,29 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "api/webull/screener.ts",
-      "source_location": "L31",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
       "source": "api_webull_screener",
-      "target": "api_webull_screener_fetchfromwebullsdk",
+      "target": "api_webull_screener_fetchscreenerdirect",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "api/webull/screener.ts",
-      "source_location": "L50",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_screener",
+      "target": "api_webull_screener_screenerstockitem",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/webull/screener.ts",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -19367,18 +19843,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "api/webull/screener.ts",
-      "source_location": "L89",
-      "weight": 1.0
-    },
-    {
-      "source": "api_webull_token",
-      "target": "api_webull_token_handler",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "api/webull/token.ts",
-      "source_location": "L101",
+      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -19394,6 +19859,17 @@
     },
     {
       "source": "api_webull_token",
+      "target": "api_webull_token_handler",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/webull/token.ts",
+      "source_location": "L194",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_token",
       "target": "api_webull_token_persistnewtoken",
       "relation": "contains",
       "_origin": "ast",
@@ -19405,13 +19881,156 @@
     },
     {
       "source": "api_webull_token",
-      "target": "api_webull_token_calltokenbridge",
+      "target": "api_webull_token_processtokenaction",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "api/webull/token.ts",
       "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_webullclient",
+      "target": "api_webull_webullclient_buildsignedheaders",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L103",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_webullclient",
+      "target": "api_webull_webullclient_webullcredentials",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_webullclient",
+      "target": "api_webull_webullclient_webullrequestoptions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_webullclient",
+      "target": "api_webull_webullclient_executewebullrequest",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L198",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_webullclient",
+      "target": "api_webull_webullclient_handler",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L257",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_webullclient",
+      "target": "api_webull_webullclient_rfc3986quote",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webull_webullclient",
+      "target": "api_webull_webullclient_getwebullcredentials",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/webull/webullClient.ts",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore",
+      "target": "api_webullcore_executewebullrequest",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/_webullCore.js",
+      "source_location": "L149",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore",
+      "target": "api_webullcore_rfc3986quote",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/_webullCore.js",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore",
+      "target": "api_webullcore_getwebullcredentials",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/_webullCore.js",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore",
+      "target": "api_webullcore_buildsignedheaders",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/_webullCore.js",
+      "source_location": "L69",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore_d",
+      "target": "api_webullcore_d_webullcredentials",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/_webullCore.d.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "api_webullcore_d",
+      "target": "api_webullcore_d_webullrequestoptions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/_webullCore.d.ts",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -22309,6 +22928,17 @@
     },
     {
       "source": "src_utils_webulltokenservice",
+      "target": "src_utils_webulltokenservice_emittokenexpiredevent",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/utils/webullTokenService.ts",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "src_utils_webulltokenservice",
       "target": "src_utils_webulltokenservice_fetchwebulltokenstatus",
       "relation": "contains",
       "_origin": "ast",
@@ -22326,18 +22956,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/utils/webullTokenService.ts",
-      "source_location": "L42",
-      "weight": 1.0
-    },
-    {
-      "source": "src_utils_webulltokenservice",
-      "target": "src_utils_webulltokenservice_createwebulltoken",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/utils/webullTokenService.ts",
-      "source_location": "L59",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
@@ -22353,24 +22972,24 @@
     },
     {
       "source": "src_utils_webulltokenservice",
+      "target": "src_utils_webulltokenservice_createwebulltoken",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/utils/webullTokenService.ts",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "src_utils_webulltokenservice",
       "target": "src_utils_webulltokenservice_verifywebulltoken",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/utils/webullTokenService.ts",
-      "source_location": "L77",
-      "weight": 1.0
-    },
-    {
-      "source": "src_utils_webulltokenservice",
-      "target": "src_utils_webulltokenservice_emittokenexpiredevent",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/utils/webullTokenService.ts",
-      "source_location": "L96",
+      "source_location": "L80",
       "weight": 1.0
     },
     {
@@ -23003,5 +23622,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "640a7e54bba20ddb011e856522b6bb65eff45d96"
+  "built_at_commit": "2924289d5c6717273007ec55f2ad07b67cd92794"
 }
