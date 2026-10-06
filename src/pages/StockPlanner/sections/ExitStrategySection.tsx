@@ -68,7 +68,7 @@ export const ExitStrategySection: React.FC<ExitStrategySectionProps> = ({
       <TextField
         label="เปอร์เซ็นต์กำไรที่ต้องการ (%)"
         type="number"
-        placeholder="เช่น 10 หรือ 15"
+        placeholder="เช่น 15"
         value={targetProfitPercent}
         onChange={(e) => onChange('targetProfitPercent', e.target.value)}
         fullWidth

@@ -124,7 +124,7 @@ const initialState: StockPlannerState = {
     roundingMode: 'integer',
     currency: 'USD',
     exchangeRate: getCachedExchangeRate().toFixed(2),
-    targetProfitPercent: '10',
+    targetProfitPercent: '15',
     feePercent: '0.10', // Webull (0.10%)
     feeMode: 'percent',
     feePerShare: '0.005',
