@@ -27,9 +27,10 @@ export interface DailyReturnPreset {
 }
 
 export const DAILY_RETURN_PRESETS: DailyReturnPreset[] = [
-  { label: '0.5% / วัน (เน้นมั่นคง)', value: '0.5' },
-  { label: '1.0% / วัน (เป้าหมายมาตรฐาน)', value: '1.0' },
-  { label: '1.5% / วัน (สายเทรดคล่องตัว)', value: '1.5' },
-  { label: '2.0% / วัน (สาย Aggressive)', value: '2.0' },
-  { label: '3.0% / วัน (สายซิ่ง)', value: '3.0' },
+  { label: '10% / วัน', value: '10' },
+  { label: '15% / วัน', value: '15' },
+  { label: '20% / วัน', value: '20' },
+  { label: '25% / วัน', value: '25' },
+  { label: '30% / วัน', value: '30' },
+  { label: '35% / วัน', value: '35' },
 ];

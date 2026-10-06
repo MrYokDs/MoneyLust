@@ -6,9 +6,9 @@
     "semantic_hash": "efbdf41bb2a42fe9f4b2a38d829b4aae"
   },
   "package.json": {
-    "mtime": 1791208108.762566,
-    "seen": 1791208126.6216598,
-    "ast_hash": "ea2ffd63c13f4f8a234892740bada083",
+    "mtime": 1791270770.2827284,
+    "seen": 1791271386.4954345,
+    "ast_hash": "8ada5a3419fcb8d44e0ba8efa7237745",
     "semantic_hash": ""
   },
   "src/App.tsx": {
@@ -24,9 +24,9 @@
     "semantic_hash": "6c5308a87a2b216bdb9ec5ceca0a078b"
   },
   "src/components/DataBackupModal.tsx": {
-    "mtime": 1791269871.0705688,
-    "seen": 1791269896.5239575,
-    "ast_hash": "947962160a9b4ee9bf6ad8bcedaa44dc",
+    "mtime": 1791270770.2827284,
+    "seen": 1791271386.4954407,
+    "ast_hash": "49a8d6d50560d35d464063d4d356f70e",
     "semantic_hash": ""
   },
   "src/components/DraggableTradingNote.tsx": {
@@ -60,9 +60,9 @@
     "semantic_hash": "33d7b989c6a04ad580983a352e528bb7"
   },
   "src/components/GridVisualizer/ExecutionAndProfitSimulator.tsx": {
-    "mtime": 1791269359.7997196,
-    "seen": 1791269896.523964,
-    "ast_hash": "083014760cba22ff249adad30ba73d95",
+    "mtime": 1791270770.284233,
+    "seen": 1791271386.4954472,
+    "ast_hash": "bda2d4b6c95e94910327b534a72966d5",
     "semantic_hash": ""
   },
   "src/components/GridVisualizer/FundSplitDiagram.tsx": {
@@ -90,8 +90,8 @@
     "semantic_hash": "02e38db1c7621d3388c43f751458707c"
   },
   "src/components/Layout.tsx": {
-    "mtime": 1791269043.1480684,
-    "seen": 1791269896.5239677,
+    "mtime": 1791270770.284233,
+    "seen": 1791271386.4954507,
     "ast_hash": "b3c602ae4b2ad5d868bc98742a5834c2",
     "semantic_hash": ""
   },
@@ -144,10 +144,10 @@
     "semantic_hash": "55b6fa91be9f244251fd31bc603b4815"
   },
   "src/pages/InvestmentPlan/InvestmentPlan.tsx": {
-    "mtime": 1790805054.224391,
-    "seen": 1790805532.8378565,
-    "ast_hash": "232f255ecc835b2a41db8356944b3717",
-    "semantic_hash": "232f255ecc835b2a41db8356944b3717"
+    "mtime": 1791271600.5071986,
+    "seen": 1791271620.2983942,
+    "ast_hash": "7cf8dcc548d1251e7633c8cfaec55bf3",
+    "semantic_hash": ""
   },
   "src/pages/InvestmentPlan/index.ts": {
     "mtime": 1789878679.5976217,
@@ -156,15 +156,15 @@
     "semantic_hash": "a7cbd4be02989342babca07651795bc0"
   },
   "src/pages/InvestmentPlan/sections/DailyGrowthTable.tsx": {
-    "mtime": 1791269621.9635706,
-    "seen": 1791269896.523978,
-    "ast_hash": "40dd7a1f0e68decbdd939bb1476c3a26",
+    "mtime": 1791270770.2852378,
+    "seen": 1791271386.4954603,
+    "ast_hash": "bdc740055446b3c8b781f38d31a6d119",
     "semantic_hash": ""
   },
   "src/pages/InvestmentPlan/sections/GrowthPlanForm.tsx": {
-    "mtime": 1791269539.3044648,
-    "seen": 1791269896.5239787,
-    "ast_hash": "2ca3d31eb8acb56fe68e12612b9922e1",
+    "mtime": 1791271576.6108432,
+    "seen": 1791271620.2983966,
+    "ast_hash": "f90fbe60462fa262edfc0d9c28667542",
     "semantic_hash": ""
   },
   "src/pages/InvestmentPlan/sections/PortfolioBenchmarkCard.tsx": {
@@ -174,10 +174,10 @@
     "semantic_hash": "2a3a23225693ad63cde14a68d70ba15d"
   },
   "src/pages/InvestmentPlan/types.ts": {
-    "mtime": 1789880729.5207472,
-    "seen": 1790805532.8378594,
-    "ast_hash": "e05edfb1d84b31221131bb3240e4523d",
-    "semantic_hash": "e05edfb1d84b31221131bb3240e4523d"
+    "mtime": 1791271554.9831085,
+    "seen": 1791271620.2983987,
+    "ast_hash": "109d27522b329c491621bfa811cfd5d8",
+    "semantic_hash": ""
   },
   "src/pages/SavedPlans.tsx": {
     "mtime": 1789734266.221593,
@@ -210,21 +210,21 @@
     "semantic_hash": "ce3388ca53dd3b3d281939c3d5610141"
   },
   "src/pages/SavedPlans/sections/PlanTableView.tsx": {
-    "mtime": 1791269820.696513,
-    "seen": 1791269896.5239906,
-    "ast_hash": "926d6e19127f671b5889417d1a2b3c45",
+    "mtime": 1791270770.287838,
+    "seen": 1791271386.4954722,
+    "ast_hash": "f13042b412fa563bb678d0881e4f0a2d",
     "semantic_hash": ""
   },
   "src/pages/SavedPlans/sections/PortfolioGrowthPlanCard.tsx": {
-    "mtime": 1791269706.2437627,
-    "seen": 1791269896.523991,
-    "ast_hash": "957b5dc2f0b6a79c9347379171924acb",
+    "mtime": 1791270770.287838,
+    "seen": 1791271386.4954727,
+    "ast_hash": "fb28b1e7c7896560950fdf2e6d1ceb0f",
     "semantic_hash": ""
   },
   "src/pages/SavedPlans/sections/PortfolioHeader.tsx": {
-    "mtime": 1791269665.4057314,
-    "seen": 1791269896.5239918,
-    "ast_hash": "b1f430ad5333aea18625f77358ebee07",
+    "mtime": 1791271355.3175802,
+    "seen": 1791271386.4954734,
+    "ast_hash": "ae9aed6a90a7369b50854420d9c57247",
     "semantic_hash": ""
   },
   "src/pages/SavedPlans/sections/PortfolioSummaryCards.tsx": {
@@ -258,9 +258,9 @@
     "semantic_hash": "53f3b4c17f03df2e819de50c73353275"
   },
   "src/pages/StockPlanner/StockPlanner.tsx": {
-    "mtime": 1791268361.4341156,
-    "seen": 1791268415.0798974,
-    "ast_hash": "afa10b5fabb98de1e68d968155dff9fd",
+    "mtime": 1791270770.2890935,
+    "seen": 1791271386.4954774,
+    "ast_hash": "4fd35317d69f47a301fdc081ef71ca30",
     "semantic_hash": ""
   },
   "src/pages/StockPlanner/index.ts": {
@@ -270,15 +270,15 @@
     "semantic_hash": "75b72ba35b655586de58c4676790cf0a"
   },
   "src/pages/StockPlanner/sections/CompanyInsightsCard.tsx": {
-    "mtime": 1791269197.0513113,
-    "seen": 1791269896.5239985,
-    "ast_hash": "ff0b6f308cb94a4b1bfe367b17ff1f20",
+    "mtime": 1791270770.2904756,
+    "seen": 1791271386.4954793,
+    "ast_hash": "2e38a77025e7bcfa59ebb8012c300bf4",
     "semantic_hash": ""
   },
   "src/pages/StockPlanner/sections/CurrencyExchangeField.tsx": {
-    "mtime": 1791269210.8498077,
-    "seen": 1791269896.523999,
-    "ast_hash": "cae4c97a5f86dbf60aa4d502bca03b3d",
+    "mtime": 1791270770.2904756,
+    "seen": 1791271386.4954798,
+    "ast_hash": "8698d1f95654734b2bfbc717397a5cd4",
     "semantic_hash": ""
   },
   "src/pages/StockPlanner/sections/EmptyPlannerAlert.tsx": {
@@ -300,9 +300,9 @@
     "semantic_hash": "278d15a87d4ff6859fb5af4ad2abc34c"
   },
   "src/pages/StockPlanner/sections/InvestmentParamsSection.tsx": {
-    "mtime": 1791269404.592501,
-    "seen": 1791269896.5240018,
-    "ast_hash": "151578db3d3c05d38b5458bed1bce1f2",
+    "mtime": 1791270770.2904756,
+    "seen": 1791271386.4954827,
+    "ast_hash": "b8793a36eebeba32eed479efe1a7cbb3",
     "semantic_hash": ""
   },
   "src/pages/StockPlanner/sections/PortfolioSelectField.tsx": {
@@ -324,9 +324,9 @@
     "semantic_hash": ""
   },
   "src/pages/StockPlanner/sections/TradingFeeSection.tsx": {
-    "mtime": 1791269232.3395698,
-    "seen": 1791269896.5240047,
-    "ast_hash": "9ddc2c63e1bab43535a886f4786aa11c",
+    "mtime": 1791270770.2914813,
+    "seen": 1791271386.4954855,
+    "ast_hash": "e3cbde11509c188af9cd90a7e1bff27b",
     "semantic_hash": ""
   },
   "src/pages/StockPlanner/sections/TrancheDetailsTable.tsx": {
@@ -594,9 +594,9 @@
     "semantic_hash": ""
   },
   "src/pages/Market/sections/MarketHeader.tsx": {
-    "mtime": 1791269133.5399556,
-    "seen": 1791269896.523983,
-    "ast_hash": "697b787c06a316c9be9983ce8127ed0a",
+    "mtime": 1791270770.2852378,
+    "seen": 1791271386.4954655,
+    "ast_hash": "150688be943a97729f6095840e8d37d7",
     "semantic_hash": ""
   },
   "src/pages/Market/sections/MarketSparkline.tsx": {
@@ -606,9 +606,9 @@
     "semantic_hash": ""
   },
   "src/pages/Market/sections/MarketTable.tsx": {
-    "mtime": 1791269174.912567,
-    "seen": 1791269896.5239847,
-    "ast_hash": "1767280eb661e6201445c04fd7cdc669",
+    "mtime": 1791270770.2867422,
+    "seen": 1791271386.4954667,
+    "ast_hash": "db607f57cc13a22c9969ed98b8de2744",
     "semantic_hash": ""
   },
   "src/pages/Market/types.ts": {
@@ -684,74 +684,74 @@
     "semantic_hash": ""
   },
   "bug/UI_Bug_Mb/S__42827789_0.jpg": {
-    "mtime": 1791267511.074126,
-    "seen": 1791268415.0799325,
+    "mtime": 1791270770.255291,
+    "seen": 1791271386.4955137,
     "ast_hash": "7d6e90bdf60f963675b24ccc637744e4",
     "semantic_hash": ""
   },
   "bug/UI_Bug_Mb/S__42827790_0.jpg": {
-    "mtime": 1791267511.2139778,
-    "seen": 1791268415.0799332,
+    "mtime": 1791270770.2563438,
+    "seen": 1791271386.4955144,
     "ast_hash": "9910bf4ebc0e7f4d72d62cccbe3e66b7",
     "semantic_hash": ""
   },
   "bug/UI_Bug_Mb/S__42827791_0.jpg": {
-    "mtime": 1791267511.172632,
-    "seen": 1791268415.0799336,
+    "mtime": 1791270770.2579055,
+    "seen": 1791271386.4955149,
     "ast_hash": "64a5100c391abc2406bb13443b9c9c54",
     "semantic_hash": ""
   },
   "bug/UI_Bug_Mb/S__42827792_0.jpg": {
-    "mtime": 1791267511.3205507,
-    "seen": 1791268415.0799341,
+    "mtime": 1791270770.258947,
+    "seen": 1791271386.4955156,
     "ast_hash": "a0be465f07ce8cecfbd9b7c7febb067b",
     "semantic_hash": ""
   },
   "bug/UI_Bug_Mb/S__42827793_0.jpg": {
-    "mtime": 1791267511.1774497,
-    "seen": 1791268415.0799348,
+    "mtime": 1791270770.2605073,
+    "seen": 1791271386.4955163,
     "ast_hash": "e8e3e4b10d04bf8e62f02b7239ba6802",
     "semantic_hash": ""
   },
   "bug/UI_Bug_Mb/S__42827794_0.jpg": {
-    "mtime": 1791267511.3041418,
-    "seen": 1791268415.0799353,
+    "mtime": 1791270770.2625892,
+    "seen": 1791271386.495517,
     "ast_hash": "3dc6ce1078f959da3a5bca156f131694",
     "semantic_hash": ""
   },
   "bug/UI_Bug_Mb/S__42827795_0.jpg": {
-    "mtime": 1791267511.3547106,
-    "seen": 1791268415.079936,
+    "mtime": 1791270770.2631023,
+    "seen": 1791271386.4955177,
     "ast_hash": "abbb5b60be7a9d5c95585663804ec57d",
     "semantic_hash": ""
   },
   "bug/UI_Bug_Mb/S__42827796_0.jpg": {
-    "mtime": 1791267511.455634,
-    "seen": 1791268415.0799365,
+    "mtime": 1791270770.2646086,
+    "seen": 1791271386.4955184,
     "ast_hash": "91c3a7cc517c6d6bdf069ec7e28d5aaa",
     "semantic_hash": ""
   },
   "bug/UI_Bug_Mb/S__42827797_0.jpg": {
-    "mtime": 1791267511.4211073,
-    "seen": 1791268415.079937,
+    "mtime": 1791270770.2662528,
+    "seen": 1791271386.495519,
     "ast_hash": "bf51501063a2867d1a068841f5a834c0",
     "semantic_hash": ""
   },
   "bug/UI_Bug_Mb/S__42827798_0.jpg": {
-    "mtime": 1791267511.5133982,
-    "seen": 1791268415.0799372,
+    "mtime": 1791270770.2677727,
+    "seen": 1791271386.4955194,
     "ast_hash": "9ae2c1d84aee51593a47acf11c723897",
     "semantic_hash": ""
   },
   "bug/UI_Bug_Mb/S__42827800_0.jpg": {
-    "mtime": 1791267515.0367327,
-    "seen": 1791268415.079938,
+    "mtime": 1791270770.2683325,
+    "seen": 1791271386.4955204,
     "ast_hash": "aafd332b87789248c756724ad53cdf71",
     "semantic_hash": ""
   },
   "bug/UI_Bug_Mb/S__42827801_0.jpg": {
-    "mtime": 1791267515.1724243,
-    "seen": 1791268415.0799387,
+    "mtime": 1791270770.270146,
+    "seen": 1791271386.495521,
     "ast_hash": "d9b844a1001134af1787c6a77b400506",
     "semantic_hash": ""
   }

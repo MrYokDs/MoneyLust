@@ -45,7 +45,7 @@ const loadSavedConfig = (): GrowthPlanFormData => {
 
   return {
     initialCapital: '100000',
-    dailyReturnPercent: '1.0',
+    dailyReturnPercent: '10',
     targetAmount: '1000000',
     portfolioId: 'none',
     currency: 'THB',
@@ -193,7 +193,7 @@ export const InvestmentPlan: React.FC = () => {
   const handleReset = (): void => {
     setFormData({
       initialCapital: '100000',
-      dailyReturnPercent: '1.0',
+      dailyReturnPercent: '10',
       targetAmount: '1000000',
       portfolioId: 'none',
       currency: 'THB',

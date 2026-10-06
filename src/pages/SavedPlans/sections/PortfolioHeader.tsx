@@ -74,17 +74,20 @@ export const PortfolioHeader: React.FC<PortfolioHeaderProps> = ({
           color="primary"
           size="small"
           onClick={onAddNewPlan}
-          startIcon={<TrendingUp size={16} />}
+          startIcon={<TrendingUp size={15} />}
           sx={{
             borderRadius: '12px',
             fontFamily: 'Prompt',
             fontWeight: 'bold',
-            fontSize: { xs: '0.85rem', sm: '0.875rem' },
+            fontSize: { xs: '0.85rem', sm: '0.85rem' },
             width: { xs: '100%', sm: 'auto' },
+            minWidth: { sm: 120 },
             py: { xs: 0.9, sm: 0.6 },
+            px: { xs: 2, sm: 1.5 },
+            whiteSpace: 'nowrap',
           }}
         >
-          สร้างแผนการเทรดใหม่
+          สร้างแผนใหม่
         </Button>
 
         {/* 2. ปุ่มล้างแผนทั้งหมด (โทนส้มแอมเบอร์สไตล์เดียวกับปุ่มหลัก) */}
@@ -101,6 +104,9 @@ export const PortfolioHeader: React.FC<PortfolioHeaderProps> = ({
               fontFamily: 'Prompt',
               fontWeight: 'bold',
               fontSize: { xs: '0.78rem', sm: '0.85rem' },
+              minWidth: { sm: 120 },
+              py: { xs: 0.9, sm: 0.6 },
+              px: { xs: 2, sm: 1.5 },
               color: '#ffffff',
               background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
               boxShadow: 'none',
@@ -129,6 +135,9 @@ export const PortfolioHeader: React.FC<PortfolioHeaderProps> = ({
               fontFamily: 'Prompt',
               fontWeight: 'bold',
               fontSize: { xs: '0.78rem', sm: '0.85rem' },
+              minWidth: { sm: 120 },
+              py: { xs: 0.9, sm: 0.6 },
+              px: { xs: 2, sm: 1.5 },
               color: '#ffffff',
               background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
               boxShadow: 'none',

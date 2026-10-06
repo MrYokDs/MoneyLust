@@ -328,7 +328,7 @@ export const GrowthPlanForm: React.FC<GrowthPlanFormProps> = ({
             type="number"
             value={formData.dailyReturnPercent}
             onChange={(e) => onFieldChange('dailyReturnPercent', e.target.value)}
-            placeholder="เช่น 1.0"
+            placeholder="เช่น 10"
             slotProps={{
               input: {
                 startAdornment: (
@@ -348,19 +348,24 @@ export const GrowthPlanForm: React.FC<GrowthPlanFormProps> = ({
           />
 
           {/* Preset Buttons */}
-          <Stack direction="row" spacing={0.8} flexWrap="wrap" sx={{ gap: 0.8, pt: 0.5 }}>
-            {DAILY_RETURN_PRESETS.map((preset) => (
-              <Chip
-                key={preset.value}
-                label={preset.label}
-                size="small"
-                variant={formData.dailyReturnPercent === preset.value ? 'filled' : 'outlined'}
-                color={formData.dailyReturnPercent === preset.value ? 'primary' : 'default'}
-                onClick={() => onFieldChange('dailyReturnPercent', preset.value)}
-                sx={{ fontFamily: 'Prompt', fontSize: '0.75rem', cursor: 'pointer' }}
-              />
-            ))}
-          </Stack>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.8, pt: 0.5 }}>
+            {DAILY_RETURN_PRESETS.map((preset) => {
+              const isSelected =
+                formData.dailyReturnPercent === preset.value ||
+                parseFloat(formData.dailyReturnPercent) === parseFloat(preset.value);
+              return (
+                <Chip
+                  key={preset.value}
+                  label={preset.label}
+                  size="small"
+                  variant={isSelected ? 'filled' : 'outlined'}
+                  color={isSelected ? 'primary' : 'default'}
+                  onClick={() => onFieldChange('dailyReturnPercent', preset.value)}
+                  sx={{ fontFamily: 'Prompt', fontSize: '0.75rem', cursor: 'pointer' }}
+                />
+              );
+            })}
+          </Box>
         </Stack>
 
         {/* 4. มูลค่าเป้าหมายของพอร์ต */}
