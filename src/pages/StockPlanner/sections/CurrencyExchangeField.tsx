@@ -94,7 +94,9 @@ export const CurrencyExchangeField: React.FC<CurrencyExchangeFieldProps> = ({
             sx={{
               mt: 1,
               fontFamily: 'Prompt',
-              fontSize: '0.78rem',
+              fontSize: { xs: '0.72rem', sm: '0.78rem' },
+              py: { xs: 0.5, sm: 0.75 },
+              lineHeight: 1.3,
               fontWeight: '600',
               borderRadius: 2,
               textTransform: 'none',

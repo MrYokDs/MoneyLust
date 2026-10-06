@@ -62,8 +62,28 @@ export const StockPlanner: React.FC = () => {
     }
   }, [currentParams.portfolioId, portfolios]);
 
-  // ติดตามสัญลักษณ์หุ้นล่าสุดเพื่อกำหนดราคาเริ่มต้นเป็นราคาปิดวันก่อนหน้าเมื่อเปลี่ยนหรือดูหุ้นตัวใหม่
-  const lastStockSymbolRef = useRef<string>('');
+  // ตรวจสอบว่ากำลังดูหรือแก้ไขแผนการลงทุนที่เคยบันทึกไว้หรือไม่ (เพื่อป้องกันการดึงราคาใหม่มาทับราคาเดิมที่บันทึกไว้)
+  const isEditingSavedPlan = useMemo(() => {
+    return Boolean(
+      activePlanId &&
+      savedPlans.some(
+        (p) =>
+          p.id === activePlanId &&
+          p.stockSymbol.toUpperCase() === (currentParams.stockSymbol || '').toUpperCase()
+      )
+    );
+  }, [activePlanId, savedPlans, currentParams.stockSymbol]);
+
+  // ติดตามสัญลักษณ์หุ้นล่าสุดเพื่อกำหนดราคาเริ่มต้นเป็นราคาปิดวันก่อนหน้าเฉพาะเมื่อผู้ใช้เลือกดูหุ้นตัวใหม่
+  // เริ่มต้นด้วย currentParams.stockSymbol เพื่อไม่ให้ถือว่าหุ้นเดิมที่โหลดมาตอนเปิดหน้านี้เป็นหุ้นใหม่
+  const lastStockSymbolRef = useRef<string>(currentParams.stockSymbol || '');
+
+  // เมื่อมีการเปลี่ยนหรือโหลด activePlanId เข้ามา ให้ sync lastStockSymbolRef ทันทีเพื่อป้องกันการ overwrite ราคา
+  useEffect(() => {
+    if (activePlanId) {
+      lastStockSymbolRef.current = currentParams.stockSymbol || '';
+    }
+  }, [activePlanId, currentParams.stockSymbol]);
 
   // Fetch full company name and live market cap from Webull / Nasdaq summary API via local Vite proxy
   useEffect(() => {
@@ -82,8 +102,9 @@ export const StockPlanner: React.FC = () => {
         const detail = await fetchCompleteStockDetail(currentParams.stockSymbol);
         setStockDetail(detail);
 
-        // กำหนดค่าเริ่มต้นของช่องราคาปัจจุบันเป็นราคาปิดวันก่อนหน้าของหุ้นตัวนั้นๆ อัตโนมัติเมื่อเลือกดูหุ้น
-        if (detail && isNewStock) {
+        // กำหนดค่าเริ่มต้นของช่องราคาปัจจุบันเป็นราคาปิดวันก่อนหน้าของหุ้นตัวนั้นๆ อัตโนมัติเมื่อเลือกดูหุ้นใหม่
+        // เงื่อนไข: ต้องไม่ใช่การดู/แก้ไขแผนที่เคยบันทึกไว้ (isEditingSavedPlan) และต้องเป็นการเลือกหุ้นตัวใหม่จริง (isNewStock)
+        if (detail && isNewStock && !isEditingSavedPlan) {
           const defaultClosePrice = detail.realTimeQuote?.preClose
             ? detail.realTimeQuote.preClose.toString()
             : detail.previousClose.replace(/[^0-9.]/g, '');
@@ -102,7 +123,7 @@ export const StockPlanner: React.FC = () => {
 
     const timeoutId = setTimeout(fetchDetail, 400);
     return () => clearTimeout(timeoutId);
-  }, [currentParams.stockSymbol]);
+  }, [currentParams.stockSymbol, isEditingSavedPlan]);
 
   // ดึงข้อมูลราคา Real-Time Snapshot จาก Webull OpenAPI ทุกๆ 2.5 วินาที สำหรับหุ้นที่กำลังเลือกเปิดดูอยู่
   useEffect(() => {
@@ -550,6 +571,7 @@ export const StockPlanner: React.FC = () => {
    */
   const handleReset = (): void => {
     dispatch(setActivePlanId(null));
+    lastStockSymbolRef.current = '';
     dispatch(
       updateCurrentParams({
         stockSymbol: '', currentPrice: '', totalBudget: '1000', tranchesCount: '2',

@@ -133,10 +133,11 @@ export const MarketTable: React.FC<MarketTableProps> = ({
         border: '1px solid',
         borderColor: isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.08)',
         boxShadow: isLight ? '0 2px 10px rgba(0,0,0,0.04)' : '0 8px 32px rgba(0,0,0,0.3)',
-        overflow: 'hidden',
+        overflowX: 'auto',
+        WebkitOverflowScrolling: 'touch',
       }}
     >
-      <Table sx={{ minWidth: 750 }}>
+      <Table sx={{ minWidth: 700 }}>
         <TableHead
           sx={{
             bgcolor: isLight ? 'rgba(0,0,0,0.03)' : 'rgba(255,255,255,0.03)',
@@ -144,7 +145,7 @@ export const MarketTable: React.FC<MarketTableProps> = ({
             borderColor: isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.08)',
           }}
         >
-          <TableRow>
+          <TableRow sx={{ '& th': { whiteSpace: 'nowrap' } }}>
             <TableCell sx={{ fontWeight: 700, fontSize: '0.82rem', color: 'text.secondary', width: 48, py: 1.5 }}>
               #
             </TableCell>

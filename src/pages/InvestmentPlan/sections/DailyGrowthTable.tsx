@@ -93,7 +93,7 @@ export const DailyGrowthTable: React.FC<DailyGrowthTableProps> = ({
   const paginatedItems = items.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
   return (
-    <GlassCard sx={{ p: 3 }}>
+    <GlassCard sx={{ p: { xs: 1.5, sm: 3 } }}>
       <Stack spacing={2.5}>
         {/* หัวข้อตารางและการจัดการ Pagination */}
         <Stack
@@ -116,7 +116,7 @@ export const DailyGrowthTable: React.FC<DailyGrowthTableProps> = ({
               <Calendar size={18} />
             </Box>
             <Box>
-              <Typography variant="h6" fontWeight="bold" fontFamily="Prompt">
+              <Typography variant="h6" fontWeight="bold" fontFamily="Prompt" sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}>
                 ตารางแผนการเติบโตรายวัน (Daily Compound Matrix)
               </Typography>
               <Typography variant="caption" color="text.secondary" fontFamily="Prompt">
@@ -155,10 +155,22 @@ export const DailyGrowthTable: React.FC<DailyGrowthTableProps> = ({
         </Stack>
 
         {/* ตารางแสดงผล */}
-        <TableContainer sx={{ borderRadius: 2, border: (theme) => theme.palette.mode === 'light' ? '1px solid rgba(0,0,0,0.06)' : '1px solid rgba(255,255,255,0.06)' }}>
-          <Table size="small">
+        <TableContainer
+          sx={{
+            borderRadius: 2,
+            border: (theme) => theme.palette.mode === 'light' ? '1px solid rgba(0,0,0,0.06)' : '1px solid rgba(255,255,255,0.06)',
+            overflowX: 'auto',
+            WebkitOverflowScrolling: 'touch',
+          }}
+        >
+          <Table size="small" sx={{ minWidth: 640 }}>
             <TableHead>
-              <TableRow sx={{ bgcolor: (theme) => theme.palette.mode === 'light' ? 'rgba(0,0,0,0.03)' : 'rgba(255,255,255,0.03)' }}>
+              <TableRow
+                sx={{
+                  bgcolor: (theme) => theme.palette.mode === 'light' ? 'rgba(0,0,0,0.03)' : 'rgba(255,255,255,0.03)',
+                  '& th': { whiteSpace: 'nowrap' },
+                }}
+              >
                 <TableCell sx={{ fontWeight: 'bold', fontFamily: 'Prompt', width: '130px' }}>วันที่</TableCell>
                 <TableCell align="right" sx={{ fontWeight: 'bold', fontFamily: 'Prompt' }}>เงินต้นต้นวัน</TableCell>
                 <TableCell align="right" sx={{ fontWeight: 'bold', fontFamily: 'Prompt' }}>กำไรประจำวัน</TableCell>
@@ -329,9 +341,15 @@ export const DailyGrowthTable: React.FC<DailyGrowthTableProps> = ({
           sx={{
             fontFamily: 'Prompt',
             borderTop: 'none',
+            '& .MuiTablePagination-toolbar': {
+              flexWrap: 'wrap',
+              px: { xs: 0, sm: 2 },
+              justifyContent: { xs: 'center', sm: 'flex-end' },
+              gap: { xs: 0.5, sm: 1 },
+            },
             '& .MuiTablePagination-selectLabel, & .MuiTablePagination-displayedRows': {
               fontFamily: 'Prompt',
-              fontSize: '0.85rem',
+              fontSize: { xs: '0.75rem', sm: '0.85rem' },
             },
           }}
         />

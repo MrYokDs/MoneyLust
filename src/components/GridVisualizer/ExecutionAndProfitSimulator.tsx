@@ -325,7 +325,7 @@ export const ExecutionAndProfitSimulator: React.FC<ExecutionAndProfitSimulatorPr
                   <Stack direction="row" alignItems="center" justifyContent="space-between" mb={1.2}>
                     <Stack direction="row" spacing={1} alignItems="center">
                       <ShieldAlert size={18} color="#ef4444" />
-                      <Typography variant="subtitle2" fontWeight="bold" color="error.light">
+                      <Typography variant="subtitle2" fontWeight="bold" color="error.light" sx={{ fontSize: { xs: '0.82rem', sm: '0.875rem' } }}>
                         คำแนะนำจุดตัดขาดทุน (Stop Loss Guide)
                       </Typography>
                     </Stack>
@@ -350,16 +350,16 @@ export const ExecutionAndProfitSimulator: React.FC<ExecutionAndProfitSimulatorPr
                         border: '1px solid rgba(245, 158, 11, 0.25)',
                       }}
                     >
-                      <Stack direction="row" justifyContent="space-between" alignItems="center">
-                        <Box>
-                          <Typography variant="caption" fontWeight="bold" color="warning.main" display="block">
+                      <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={1}>
+                        <Box sx={{ flex: 1, minWidth: 0 }}>
+                          <Typography variant="caption" fontWeight="bold" color="warning.main" display="block" sx={{ fontSize: { xs: '0.74rem', sm: '0.75rem' }, lineHeight: 1.3 }}>
                             🛡️ จุดคุมเสี่ยงแนะนำ (รักษาผลตอบแทน 50%)
                           </Typography>
-                          <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.72rem' }}>
+                          <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.72rem', lineHeight: 1.3, display: 'block' }}>
                             ขาดทุนไม่เกิน {stopLoss.conservativeLossPercent}% (ภาพรวม 2 วันยังเหลือกำไร +{(targetProfit / 2).toFixed(1)}%)
                           </Typography>
                         </Box>
-                        <Typography variant="body1" fontWeight="bold" color="warning.light">
+                        <Typography variant="body1" fontWeight="bold" color="warning.light" sx={{ flexShrink: 0, fontSize: { xs: '0.9rem', sm: '1rem' } }}>
                           {formatCurrency(stopLoss.conservativeStopPrice, currency, false, exchangeRate)}
                         </Typography>
                       </Stack>
@@ -374,16 +374,16 @@ export const ExecutionAndProfitSimulator: React.FC<ExecutionAndProfitSimulatorPr
                         border: '1px solid rgba(239, 68, 68, 0.25)',
                       }}
                     >
-                      <Stack direction="row" justifyContent="space-between" alignItems="center">
-                        <Box>
-                          <Typography variant="caption" fontWeight="bold" color="error.main" display="block">
+                      <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={1}>
+                        <Box sx={{ flex: 1, minWidth: 0 }}>
+                          <Typography variant="caption" fontWeight="bold" color="error.main" display="block" sx={{ fontSize: { xs: '0.74rem', sm: '0.75rem' }, lineHeight: 1.3 }}>
                             🛑 จุดตัดขาดทุนวิกฤต (Breakeven กันเงินต้น)
                           </Typography>
-                          <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.72rem' }}>
+                          <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.72rem', lineHeight: 1.3, display: 'block' }}>
                             ห้ามขาดทุนเกิน {stopLoss.breakevenLossPercent}% (เพื่อไม่ให้กินเงินต้นเดิมของวันก่อนหน้า)
                           </Typography>
                         </Box>
-                        <Typography variant="body1" fontWeight="bold" color="error.light">
+                        <Typography variant="body1" fontWeight="bold" color="error.light" sx={{ flexShrink: 0, fontSize: { xs: '0.9rem', sm: '1rem' } }}>
                           {formatCurrency(stopLoss.breakevenStopPrice, currency, false, exchangeRate)}
                         </Typography>
                       </Stack>
@@ -422,8 +422,8 @@ export const ExecutionAndProfitSimulator: React.FC<ExecutionAndProfitSimulatorPr
                   }}
                   spacing={1}
                 >
-                  <Stack direction="row" justifyContent="space-between" alignItems="center">
-                    <Typography variant="body2" fontWeight="bold" color="success.main">
+                  <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={1}>
+                    <Typography variant="body2" fontWeight="bold" color="success.main" sx={{ fontSize: { xs: '0.8rem', sm: '0.875rem' }, lineHeight: 1.3 }}>
                       กำไร/ขาดทุน จากยอดซื้อจริง ({result.actualTranchesCount} ไม้)
                     </Typography>
                     <Stack alignItems="end">

@@ -517,21 +517,32 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
           }),
         }}
       >
-        <Toolbar sx={{ justifyContent: 'space-between', px: 3 }}>
-          <Stack direction="row" alignItems="center" spacing={1}>
+        <Toolbar sx={{ justifyContent: 'space-between', px: { xs: 1.25, sm: 3 }, minHeight: { xs: 56, sm: 64 } }}>
+          <Stack direction="row" alignItems="center" spacing={0.5} sx={{ minWidth: 0, flex: 1, mr: { xs: 0.75, sm: 2 } }}>
             {isMobile && (
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ mr: 1 }}
+                sx={{ mr: { xs: 0.25, sm: 1 }, p: { xs: 0.5, sm: 1 } }}
               >
-                <MenuIcon size={22} />
+                <MenuIcon size={20} />
               </IconButton>
             )}
 
-            <Typography variant="h6" fontWeight="bold" sx={{ fontFamily: 'Prompt', fontSize: { xs: '1rem', md: '1.25rem' } }}>
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+              sx={{
+                fontFamily: 'Prompt',
+                fontSize: { xs: '0.88rem', sm: '1.12rem', md: '1.25rem' },
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                display: 'block',
+              }}
+            >
               {location.pathname === PATHS.MARKET
                 ? 'ภาพรวมตลาดหุ้นสหรัฐฯ'
                 : location.pathname === PATHS.PLANNER
@@ -543,25 +554,29 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
           </Stack>
 
           {/* Webull Token Status, Backup, Trading Note, Theme & Profile */}
-          <Stack direction="row" alignItems="center" spacing={1.5}>
+          <Stack direction="row" alignItems="center" spacing={{ xs: 0.25, sm: 1.5 }} sx={{ flexShrink: 0 }}>
             <WebullTokenBadge />
             <TradingNoteHeaderWidget />
             <DataBackupModal />
 
-            <IconButton onClick={() => setDarkMode(!darkMode)} color="inherit">
-              {darkMode ? <Sun size={20} color="#f59e0b" /> : <Moon size={20} color="#6366f1" />}
+            <IconButton
+              onClick={() => setDarkMode(!darkMode)}
+              color="inherit"
+              sx={{ p: { xs: 0.5, sm: 1 } }}
+            >
+              {darkMode ? <Sun size={18} color="#f59e0b" /> : <Moon size={18} color="#6366f1" />}
             </IconButton>
 
-            <Divider orientation="vertical" flexItem sx={{ opacity: 0.1, my: 1.5 }} />
+            <Divider orientation="vertical" flexItem sx={{ opacity: 0.1, my: 1.5, display: { xs: 'none', sm: 'block' } }} />
 
             <Stack direction="row" alignItems="center" spacing={1.5}>
               <Avatar
                 sx={{
-                  width: 36,
-                  height: 36,
+                  width: { xs: 28, sm: 36 },
+                  height: { xs: 28, sm: 36 },
                   background: 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)',
                   fontWeight: 'bold',
-                  fontSize: '0.9rem'
+                  fontSize: { xs: '0.75rem', sm: '0.9rem' },
                 }}
               >
                 MM
@@ -631,10 +646,10 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
         component="main"
         sx={{
           flexGrow: 1,
-          p: { xs: 2.5, md: 4 },
+          p: { xs: 1.25, sm: 2.5, md: 4 },
           width: { xs: '100%', md: `calc(100% - ${currentDrawerWidth}px)` },
-          mt: '64px',
-          minHeight: 'calc(100vh - 64px)',
+          mt: { xs: '56px', sm: '64px' },
+          minHeight: { xs: 'calc(100vh - 56px)', sm: 'calc(100vh - 64px)' },
           display: 'flex',
           flexDirection: 'column',
           transition: theme.transitions.create('margin', {

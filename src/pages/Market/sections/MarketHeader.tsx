@@ -17,6 +17,7 @@ import {
   CircularProgress,
   Chip,
   useTheme,
+  useMediaQuery,
 } from '@mui/material';
 import {
   TrendingUp,
@@ -61,6 +62,7 @@ export const MarketHeader: React.FC<MarketHeaderProps> = ({
 }) => {
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const openMenu = Boolean(anchorEl);
@@ -83,7 +85,7 @@ export const MarketHeader: React.FC<MarketHeaderProps> = ({
   return (
     <Box
       sx={{
-        p: 2,
+        p: { xs: 1.5, sm: 2 },
         borderRadius: '12px',
         bgcolor: isLight ? '#ffffff' : 'rgba(17, 24, 39, 0.7)',
         border: '1px solid',
@@ -95,17 +97,19 @@ export const MarketHeader: React.FC<MarketHeaderProps> = ({
     >
       <Stack
         direction={{ xs: 'column', md: 'row' }}
-        spacing={2}
+        spacing={1.5}
         alignItems={{ xs: 'stretch', md: 'center' }}
         justifyContent="space-between"
       >
         {/* Left Side: Tabs */}
-        <Stack direction="row" spacing={2} alignItems="center">
+        <Stack direction="row" spacing={1.5} alignItems="center" sx={{ width: { xs: '100%', md: 'auto' } }}>
           <Tabs
             value={direction}
             onChange={(_e, val) => onDirectionChange(val)}
+            variant={isMobile ? 'fullWidth' : 'standard'}
             sx={{
-              minHeight: 44,
+              minHeight: 40,
+              width: { xs: '100%', md: 'auto' },
               '& .MuiTabs-indicator': {
                 height: 3,
                 borderRadius: '3px 3px 0 0',
@@ -115,29 +119,29 @@ export const MarketHeader: React.FC<MarketHeaderProps> = ({
           >
             <Tab
               value="gainers"
-              icon={<TrendingUp size={18} color={direction === 'gainers' ? '#10b981' : undefined} />}
+              icon={<TrendingUp size={16} color={direction === 'gainers' ? '#10b981' : undefined} />}
               iconPosition="start"
-              label="Top Gainers (ขึ้นสูงสุด)"
+              label={isMobile ? 'Top Gainers (ขึ้น)' : 'Top Gainers (ขึ้นสูงสุด)'}
               sx={{
                 textTransform: 'none',
                 fontWeight: 700,
-                fontSize: '0.95rem',
-                minHeight: 44,
-                px: 2,
+                fontSize: { xs: '0.82rem', sm: '0.95rem' },
+                minHeight: 40,
+                px: { xs: 1, sm: 2 },
                 color: direction === 'gainers' ? '#10b981 !important' : 'text.secondary',
               }}
             />
             <Tab
               value="losers"
-              icon={<TrendingDown size={18} color={direction === 'losers' ? '#ef4444' : undefined} />}
+              icon={<TrendingDown size={16} color={direction === 'losers' ? '#ef4444' : undefined} />}
               iconPosition="start"
-              label="Top Losers (ลงต่ำสุด)"
+              label={isMobile ? 'Top Losers (ลง)' : 'Top Losers (ลงต่ำสุด)'}
               sx={{
                 textTransform: 'none',
                 fontWeight: 700,
-                fontSize: '0.95rem',
-                minHeight: 44,
-                px: 2,
+                fontSize: { xs: '0.82rem', sm: '0.95rem' },
+                minHeight: 40,
+                px: { xs: 1, sm: 2 },
                 color: direction === 'losers' ? '#ef4444 !important' : 'text.secondary',
               }}
             />
@@ -146,7 +150,7 @@ export const MarketHeader: React.FC<MarketHeaderProps> = ({
           <Chip
             size="small"
             icon={<Radio size={12} color="#10b981" />}
-            label="Real-Time Webull Data"
+            label="Real-Time"
             sx={{
               fontWeight: 600,
               fontSize: '0.72rem',
@@ -158,7 +162,13 @@ export const MarketHeader: React.FC<MarketHeaderProps> = ({
         </Stack>
 
         {/* Right Side: Period Dropdown + Refresh Button */}
-        <Stack direction="row" spacing={1.5} alignItems="center" justifyContent={{ xs: 'space-between', md: 'flex-end' }}>
+        <Stack
+          direction="row"
+          spacing={1}
+          alignItems="center"
+          justifyContent="space-between"
+          sx={{ width: { xs: '100%', md: 'auto' } }}
+        >
           {/* Period Selector Dropdown Button */}
           <Button
             variant="outlined"
@@ -167,10 +177,12 @@ export const MarketHeader: React.FC<MarketHeaderProps> = ({
             sx={{
               borderRadius: 2,
               textTransform: 'none',
-              px: 2,
-              py: 0.8,
+              px: { xs: 1.2, sm: 2 },
+              py: { xs: 0.6, sm: 0.8 },
               fontWeight: 600,
-              fontSize: '0.88rem',
+              fontSize: { xs: '0.82rem', sm: '0.88rem' },
+              flex: { xs: 1, md: 'initial' },
+              whiteSpace: 'nowrap',
               borderColor: isLight ? 'rgba(0,0,0,0.18)' : 'rgba(255,255,255,0.15)',
               color: isLight ? 'text.primary' : '#f3f4f6',
               bgcolor: isLight ? 'rgba(0,0,0,0.02)' : 'rgba(255,255,255,0.04)',

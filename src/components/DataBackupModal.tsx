@@ -326,7 +326,7 @@ export const DataBackupModal: React.FC = () => {
           },
         }}
       >
-        <DialogTitle sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', pb: 1 }}>
+        <DialogTitle sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', pb: 1, px: { xs: 2, sm: 3 } }}>
           <Stack direction="row" alignItems="center" spacing={1}>
             <Box
               sx={{
@@ -336,12 +336,13 @@ export const DataBackupModal: React.FC = () => {
                 color: '#fff',
                 display: 'flex',
                 alignItems: 'center',
+                flexShrink: 0,
               }}
             >
               <Database size={18} />
             </Box>
-            <Typography variant="h6" fontWeight="bold" sx={{ fontFamily: 'Prompt', fontSize: '1.05rem' }}>
-              จัดการข้อมูลและซิงค์คลาวด์ (Cloud Sync & Backup)
+            <Typography variant="h6" fontWeight="bold" sx={{ fontFamily: 'Prompt', fontSize: { xs: '0.92rem', sm: '1.05rem' } }}>
+              จัดการข้อมูลและซิงค์คลาวด์
             </Typography>
           </Stack>
           <IconButton size="small" onClick={handleClose} sx={{ opacity: 0.7 }}>
@@ -350,21 +351,23 @@ export const DataBackupModal: React.FC = () => {
         </DialogTitle>
 
         {/* แถบเลือกโหมด: Cloud Sync กับ File Backup */}
-        <Box sx={{ borderBottom: 1, borderColor: isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.08)', px: 3 }}>
+        <Box sx={{ borderBottom: 1, borderColor: isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.08)', px: { xs: 1, sm: 3 } }}>
           <Tabs
             value={activeTab}
             onChange={handleTabChange}
+            variant="fullWidth"
             sx={{
               minHeight: 42,
               '& .MuiTab-root': {
                 minHeight: 42,
-                fontSize: '0.85rem',
+                fontSize: { xs: '0.78rem', sm: '0.85rem' },
                 textTransform: 'none',
                 fontWeight: 600,
+                px: { xs: 1, sm: 2 },
               },
             }}
           >
-            <Tab icon={<Cloud size={16} />} iconPosition="start" label="Cloud Sync (GitHub Gist)" />
+            <Tab icon={<Cloud size={16} />} iconPosition="start" label="Cloud Sync" />
             <Tab icon={<FileJson size={16} />} iconPosition="start" label="ไฟล์สำรอง (JSON)" />
           </Tabs>
         </Box>

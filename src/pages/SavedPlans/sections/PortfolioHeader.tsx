@@ -41,15 +41,33 @@ export const PortfolioHeader: React.FC<PortfolioHeaderProps> = ({
   const theme = useTheme();
 
   return (
-    <Stack direction="row" justifyContent="space-between" alignItems="center" mb={4} flexWrap="wrap" gap={2}>
+    <Stack
+      direction={{ xs: 'column', sm: 'row' }}
+      justifyContent="space-between"
+      alignItems={{ xs: 'stretch', sm: 'center' }}
+      mb={{ xs: 2.5, sm: 4 }}
+      gap={1.5}
+    >
       <Stack direction="row" alignItems="center" spacing={1.5}>
         <FolderHeart size={26} color="#10b981" />
-        <Typography variant="h5" fontWeight="bold" fontFamily="Prompt">
+        <Typography
+          variant="h5"
+          fontWeight="bold"
+          fontFamily="Prompt"
+          sx={{ fontSize: { xs: '1.2rem', sm: '1.5rem' } }}
+        >
           {portfolioName} ({plansCount})
         </Typography>
       </Stack>
 
-      <Stack direction="row" spacing={1.5} alignItems="center" flexWrap="wrap">
+      <Stack
+        direction="row"
+        spacing={{ xs: 1, sm: 1.5 }}
+        alignItems="center"
+        flexWrap="wrap"
+        useFlexGap
+        sx={{ width: { xs: '100%', sm: 'auto' } }}
+      >
         {/* 1. ปุ่มสร้างแผนการเทรดใหม่ (Action หลัก) */}
         <Button
           variant="contained"
@@ -57,7 +75,14 @@ export const PortfolioHeader: React.FC<PortfolioHeaderProps> = ({
           size="small"
           onClick={onAddNewPlan}
           startIcon={<TrendingUp size={16} />}
-          sx={{ borderRadius: '12px', fontFamily: 'Prompt', fontWeight: 'bold' }}
+          sx={{
+            borderRadius: '12px',
+            fontFamily: 'Prompt',
+            fontWeight: 'bold',
+            fontSize: { xs: '0.85rem', sm: '0.875rem' },
+            width: { xs: '100%', sm: 'auto' },
+            py: { xs: 0.9, sm: 0.6 },
+          }}
         >
           สร้างแผนการเทรดใหม่
         </Button>
@@ -68,11 +93,14 @@ export const PortfolioHeader: React.FC<PortfolioHeaderProps> = ({
             variant="contained"
             size="small"
             onClick={onClearAll}
-            startIcon={<Trash2 size={16} />}
+            startIcon={<Trash2 size={15} />}
             sx={{
+              flex: { xs: '1 1 calc(50% - 8px)', sm: 'initial' },
+              whiteSpace: 'nowrap',
               borderRadius: '12px',
               fontFamily: 'Prompt',
               fontWeight: 'bold',
+              fontSize: { xs: '0.78rem', sm: '0.85rem' },
               color: '#ffffff',
               background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
               boxShadow: 'none',
@@ -93,11 +121,14 @@ export const PortfolioHeader: React.FC<PortfolioHeaderProps> = ({
             variant="contained"
             size="small"
             onClick={onDeletePortfolio}
-            startIcon={<FolderX size={16} />}
+            startIcon={<FolderX size={15} />}
             sx={{
+              flex: { xs: '1 1 calc(50% - 8px)', sm: 'initial' },
+              whiteSpace: 'nowrap',
               borderRadius: '12px',
               fontFamily: 'Prompt',
               fontWeight: 'bold',
+              fontSize: { xs: '0.78rem', sm: '0.85rem' },
               color: '#ffffff',
               background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
               boxShadow: 'none',
@@ -119,6 +150,7 @@ export const PortfolioHeader: React.FC<PortfolioHeaderProps> = ({
               orientation="vertical"
               flexItem
               sx={{
+                display: { xs: 'none', sm: 'block' },
                 mx: 0.5,
                 height: 24,
                 alignSelf: 'center',
@@ -135,7 +167,10 @@ export const PortfolioHeader: React.FC<PortfolioHeaderProps> = ({
               onChange={(_, val) => val && onViewModeChange(val)}
               size="small"
               sx={{
+                flex: { xs: '1 1 100%', sm: 'initial' },
+                justifyContent: { xs: 'stretch', sm: 'flex-start' },
                 '& .MuiToggleButton-root': {
+                  flex: { xs: 1, sm: 'initial' },
                   px: 1.5,
                   py: 0.5,
                   borderRadius: '10px',

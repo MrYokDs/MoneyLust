@@ -203,7 +203,7 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
   return (
     <GlassCard
       sx={{
-        p: 3,
+        p: { xs: 2, sm: 3 },
         mb: 4,
         background: (theme) =>
           theme.palette.mode === 'light'
@@ -217,7 +217,7 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
         <Stack
           direction={{ xs: 'column', sm: 'row' }}
           justifyContent="space-between"
-          alignItems={{ xs: 'flex-start', sm: 'center' }}
+          alignItems={{ xs: 'stretch', sm: 'center' }}
           spacing={1.5}
         >
           <Stack direction="row" alignItems="center" spacing={1.5}>
@@ -229,13 +229,14 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
                 color: '#fff',
                 display: 'flex',
                 alignItems: 'center',
+                flexShrink: 0,
               }}
             >
               <Target size={20} />
             </Box>
             <Box>
               <Stack direction="row" alignItems="center" spacing={1} flexWrap="wrap" useFlexGap>
-                <Typography variant="h6" fontWeight="bold" fontFamily="Prompt">
+                <Typography variant="h6" fontWeight="bold" fontFamily="Prompt" sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}>
                   แผนการเติบโตของพอร์ต (Linked Growth Plan)
                 </Typography>
                 {renderStatusBadge(benchmark)}
@@ -246,14 +247,24 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
             </Box>
           </Stack>
 
-          <Stack direction="row" spacing={1}>
+          <Stack
+            direction={{ xs: 'column-reverse', sm: 'row' }}
+            spacing={1}
+            sx={{ width: { xs: '100%', sm: 'auto' } }}
+          >
             <Button
               variant="outlined"
               color="error"
               size="small"
               startIcon={<Trash2 size={13} />}
               onClick={onDeletePlan}
-              sx={{ fontFamily: 'Prompt', fontSize: '0.75rem', borderRadius: 2 }}
+              sx={{
+                fontFamily: 'Prompt',
+                fontSize: '0.75rem',
+                borderRadius: 2,
+                whiteSpace: 'nowrap',
+                width: { xs: '100%', sm: 'auto' },
+              }}
             >
               ยกเลิกแผนนี้
             </Button>
@@ -266,9 +277,11 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
               onClick={onOpenPlan}
               sx={{
                 fontFamily: 'Prompt',
-                fontSize: '0.8rem',
+                fontSize: { xs: '0.8rem', sm: '0.8rem' },
                 borderRadius: 2,
                 px: 2,
+                whiteSpace: 'nowrap',
+                width: { xs: '100%', sm: 'auto' },
                 boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)',
               }}
             >

@@ -205,12 +205,21 @@ export const GrowthPlanForm: React.FC<GrowthPlanFormProps> = ({
               value={formData.currency}
               exclusive
               onChange={(_, val) => val && onFieldChange('currency', val)}
-              sx={{ height: 28 }}
+              sx={{
+                '& .MuiToggleButton-root': {
+                  px: 1.5,
+                  py: 0.5,
+                  fontSize: '0.75rem',
+                  fontWeight: 'bold',
+                  fontFamily: 'Prompt',
+                  whiteSpace: 'nowrap',
+                },
+              }}
             >
-              <ToggleButton value="THB" sx={{ px: 1.5, fontSize: '0.75rem', fontWeight: 'bold' }}>
+              <ToggleButton value="THB">
                 THB (฿)
               </ToggleButton>
-              <ToggleButton value="USD" sx={{ px: 1.5, fontSize: '0.75rem', fontWeight: 'bold' }}>
+              <ToggleButton value="USD">
                 USD ($)
               </ToggleButton>
             </ToggleButtonGroup>
@@ -378,23 +387,27 @@ export const GrowthPlanForm: React.FC<GrowthPlanFormProps> = ({
           />
 
           {/* Quick Multipliers */}
-          <Stack direction="row" spacing={1} alignItems="center" sx={{ pt: 0.5 }}>
-            <Sparkles size={14} color="#f59e0b" />
-            <Typography variant="caption" color="text.secondary" fontFamily="Prompt">
-              ตั้งเป้าหมายด่วน:
-            </Typography>
-            {[2, 3, 5, 10].map((m) => (
-              <Chip
-                key={m}
-                label={`${m}x เงินต้น`}
-                size="small"
-                variant="outlined"
-                onClick={() => handleApplyMultiplier(m)}
-                disabled={capitalNum <= 0}
-                sx={{ fontFamily: 'Prompt', fontSize: '0.75rem', cursor: 'pointer' }}
-              />
-            ))}
-          </Stack>
+          <Box sx={{ pt: 0.5 }}>
+            <Stack direction="row" spacing={0.6} alignItems="center" sx={{ mb: 0.6 }}>
+              <Sparkles size={14} color="#f59e0b" />
+              <Typography variant="caption" color="text.secondary" fontFamily="Prompt" sx={{ fontWeight: 600 }}>
+                ตั้งเป้าหมายด่วน:
+              </Typography>
+            </Stack>
+            <Stack direction="row" spacing={0.75} flexWrap="wrap" useFlexGap>
+              {[2, 3, 5, 10].map((m) => (
+                <Chip
+                  key={m}
+                  label={`${m}x เงินต้น`}
+                  size="small"
+                  variant="outlined"
+                  onClick={() => handleApplyMultiplier(m)}
+                  disabled={capitalNum <= 0}
+                  sx={{ fontFamily: 'Prompt', fontSize: '0.75rem', cursor: 'pointer' }}
+                />
+              ))}
+            </Stack>
+          </Box>
         </Stack>
 
         {/* ปุ่มบันทึกแผนการลงทุน */}

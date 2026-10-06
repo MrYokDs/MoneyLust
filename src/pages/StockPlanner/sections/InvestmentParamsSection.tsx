@@ -468,17 +468,19 @@ export const InvestmentParamsSection: React.FC<InvestmentParamsSectionProps> = (
           size="small"
           sx={{
             display: 'grid',
-            gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr 1fr' },
-            gap: 1,
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: { xs: 0.75, sm: 1 },
             '& .MuiToggleButtonGroup-grouped': {
               border: '1px solid rgba(255, 255, 255, 0.12) !important',
-              borderRadius: '10px !important',
+              borderRadius: '8px !important',
               mx: 0,
             },
             '& .MuiToggleButton-root': {
               fontFamily: 'Prompt',
-              fontSize: '0.78rem',
-              py: 1,
+              fontSize: { xs: '0.7rem', sm: '0.78rem' },
+              py: { xs: 0.6, sm: 1 },
+              px: { xs: 0.5, sm: 1 },
+              lineHeight: 1.2,
               textTransform: 'none',
               '&.Mui-selected': {
                 backgroundColor: 'rgba(16, 185, 129, 0.15)',
@@ -493,10 +495,10 @@ export const InvestmentParamsSection: React.FC<InvestmentParamsSectionProps> = (
             เต็มหน่วย 1 หุ้น
           </ToggleButton>
           <ToggleButton value="fractional">
-            ⚡ เศษหุ้น (Fractional)
+            ⚡ เศษหุ้น (US)
           </ToggleButton>
           <ToggleButton value="boardlot">
-            บอร์ดล็อต 100 หุ้น (SET)
+            บอร์ดล็อต (SET)
           </ToggleButton>
         </ToggleButtonGroup>
       </FormControl>

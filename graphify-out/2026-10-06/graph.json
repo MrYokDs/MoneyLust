@@ -1002,7 +1002,7 @@
       "file_type": "code",
       "norm_label": "marketheaderprops",
       "source_file": "src/pages/Market/sections/MarketHeader.tsx",
-      "source_location": "L36"
+      "source_location": "L35"
     },
     {
       "id": "src_pages_market_sections_marketsparkline_marketsparklineprops",
@@ -2540,7 +2540,7 @@
       "file_type": "code",
       "norm_label": "marketheader()",
       "source_file": "src/pages/Market/sections/MarketHeader.tsx",
-      "source_location": "L53"
+      "source_location": "L52"
     },
     {
       "id": "src_pages_market_sections_marketsparkline_marketsparkline",
@@ -7651,7 +7651,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/Layout.tsx",
-      "source_location": "L558",
+      "source_location": "L547",
       "weight": 1.0
     },
     {
@@ -7663,7 +7663,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/Layout.tsx",
-      "source_location": "L559",
+      "source_location": "L548",
       "weight": 1.0
     },
     {
@@ -7675,7 +7675,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/Layout.tsx",
-      "source_location": "L560",
+      "source_location": "L549",
       "weight": 1.0
     },
     {
@@ -8059,7 +8059,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/InvestmentPlan/sections/GrowthPlanForm.tsx",
-      "source_location": "L301",
+      "source_location": "L292",
       "weight": 1.0
     },
     {
@@ -8131,7 +8131,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/Market/sections/MarketTable.tsx",
-      "source_location": "L223",
+      "source_location": "L222",
       "weight": 1.0
     },
     {
@@ -8143,7 +8143,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/Market/sections/MarketTable.tsx",
-      "source_location": "L299",
+      "source_location": "L298",
       "weight": 1.0
     },
     {
@@ -8155,7 +8155,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/Market/sections/MarketTable.tsx",
-      "source_location": "L331",
+      "source_location": "L330",
       "weight": 1.0
     },
     {
@@ -8167,7 +8167,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/Market/sections/MarketTable.tsx",
-      "source_location": "L336",
+      "source_location": "L335",
       "weight": 1.0
     },
     {
@@ -8383,7 +8383,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/sections/PlanTableView.tsx",
-      "source_location": "L146",
+      "source_location": "L142",
       "weight": 1.0
     },
     {
@@ -10015,7 +10015,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "src/pages/Market/sections/MarketHeader.tsx",
-      "source_location": "L37",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -10027,7 +10027,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "src/pages/Market/sections/MarketHeader.tsx",
-      "source_location": "L39",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -12754,7 +12754,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/Market/sections/MarketHeader.tsx",
-      "source_location": "L30",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -12766,7 +12766,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/Market/sections/MarketHeader.tsx",
-      "source_location": "L30",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -12778,7 +12778,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/Market/sections/MarketHeader.tsx",
-      "source_location": "L30",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -17002,7 +17002,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/Market/sections/MarketHeader.tsx",
-      "source_location": "L22",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -17014,7 +17014,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/Market/sections/MarketHeader.tsx",
-      "source_location": "L30",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -21355,7 +21355,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/Market/sections/MarketHeader.tsx",
-      "source_location": "L36",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -21366,7 +21366,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/Market/sections/MarketHeader.tsx",
-      "source_location": "L53",
+      "source_location": "L52",
       "weight": 1.0
     },
     {

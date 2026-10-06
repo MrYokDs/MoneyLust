@@ -55,8 +55,9 @@ export const PlanTableView: React.FC<PlanTableViewProps> = ({
       <TableContainer
         component={Paper}
         sx={{
-          borderRadius: 0,
-          overflow: 'hidden',
+          borderRadius: 2,
+          overflowX: 'auto',
+          WebkitOverflowScrolling: 'touch',
           background:
             theme.palette.mode === 'light'
               ? 'rgba(255, 255, 255, 0.7)'
@@ -69,13 +70,16 @@ export const PlanTableView: React.FC<PlanTableViewProps> = ({
           boxShadow: 'none',
         }}
       >
-        <Table>
+        <Table sx={{ minWidth: 900, '& td': { whiteSpace: 'nowrap' } }}>
           <TableHead
             sx={{
               backgroundColor:
                 theme.palette.mode === 'light'
                   ? 'rgba(0, 0, 0, 0.02)'
                   : 'rgba(255, 255, 255, 0.02)',
+              '& th': {
+                whiteSpace: 'nowrap',
+              },
             }}
           >
             <TableRow>
@@ -293,8 +297,15 @@ export const PlanTableView: React.FC<PlanTableViewProps> = ({
         sx={{
           mt: 2,
           borderTop: 'none',
+          '& .MuiTablePagination-toolbar': {
+            flexWrap: 'wrap',
+            px: { xs: 0, sm: 2 },
+            justifyContent: { xs: 'center', sm: 'flex-end' },
+            gap: { xs: 0.5, sm: 1 },
+          },
           '& .MuiTablePagination-selectLabel, & .MuiTablePagination-displayedRows': {
             fontFamily: 'Prompt',
+            fontSize: { xs: '0.75rem', sm: '0.85rem' },
           },
           '& .MuiTablePagination-select': {
             fontFamily: 'Prompt',

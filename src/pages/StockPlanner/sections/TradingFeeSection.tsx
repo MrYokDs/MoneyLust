@@ -103,11 +103,11 @@ export const TradingFeeSection: React.FC<TradingFeeSectionProps> = ({
           size="small"
           fullWidth
         >
-          <ToggleButton value="percent" sx={{ fontFamily: 'Prompt', fontSize: '0.82rem' }}>
+          <ToggleButton value="percent" sx={{ fontFamily: 'Prompt', fontSize: { xs: '0.74rem', sm: '0.82rem' }, py: 0.75, lineHeight: 1.2 }}>
             คิดตามมูลค่า (%)
           </ToggleButton>
-          <ToggleButton value="per_share" sx={{ fontFamily: 'Prompt', fontSize: '0.82rem' }}>
-            ต่อหุ้น ($/Share) Penny Stock
+          <ToggleButton value="per_share" sx={{ fontFamily: 'Prompt', fontSize: { xs: '0.72rem', sm: '0.82rem' }, py: 0.75, lineHeight: 1.2 }}>
+            ต่อหุ้น ($/หุ้น Penny)
           </ToggleButton>
         </ToggleButtonGroup>
       </Box>

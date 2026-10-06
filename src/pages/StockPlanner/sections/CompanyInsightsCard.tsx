@@ -147,8 +147,8 @@ export const CompanyInsightsCard: React.FC<CompanyInsightsCardProps> = ({ stockD
           )}
         </Stack>
 
-        <Stack direction="row" alignItems="center" spacing={0.5}>
-          <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: '0.72rem' }}>
+        <Stack direction="row" alignItems="center" spacing={0.5} sx={{ flexShrink: 0, ml: 1 }}>
+          <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: '0.72rem', whiteSpace: 'nowrap' }}>
             {expanded ? 'ย่อข้อมูล' : 'ดูรายละเอียด'}
           </Typography>
           {expanded ? <ChevronUp size={16} color="#10b981" /> : <ChevronDown size={16} color="#10b981" />}
