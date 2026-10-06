@@ -124,7 +124,7 @@ export const SavedPlans: React.FC = () => {
         exchangeRate: (plan.exchangeRate || 36.5).toString(),
         targetProfitPercent: (plan.targetProfitPercent !== undefined
           ? plan.targetProfitPercent
-          : 15
+          : 16
         ).toString(),
         feePercent: (plan.feePercent !== undefined ? plan.feePercent : 0.10).toString(),
         feeMode: plan.feeMode || 'percent',
@@ -221,7 +221,7 @@ export const SavedPlans: React.FC = () => {
    */
   const handleAddNewPlan = (): void => {
     dispatch(setActivePlanId(null));
-    const newParams: any = { portfolioId, targetProfitPercent: '15' };
+    const newParams: any = { portfolioId, targetProfitPercent: '16' };
     if (summary.availableCash > 0) {
       newParams.totalBudget = summary.availableCash.toString();
     }

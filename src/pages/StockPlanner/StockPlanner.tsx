@@ -576,7 +576,7 @@ export const StockPlanner: React.FC = () => {
       updateCurrentParams({
         stockSymbol: '', currentPrice: '', totalBudget: '1000', tranchesCount: '2',
         dropPercentage: '15', dropMode: 'progressive', roundingMode: 'fractional',
-        currency: 'USD', targetProfitPercent: '15', feePercent: '0.10', feeMode: 'percent',
+        currency: 'USD', targetProfitPercent: '16', feePercent: '0.10', feeMode: 'percent',
         feePerShare: '0.005', minFeePerTranche: '0', actualSellPrice: '',
         actualTranchesCount: '', currentPriceIsFirstTranche: false, portfolioId: 'unassigned',
       })
