@@ -580,23 +580,22 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
 
           {/* ฝั่งขวาของ Header: บน Desktop แสดง 4 ไอคอนครบถ้วน, บน Mobile รวมไว้ในดรอปดาวน์เมื่อกด Avatar MM */}
           <Stack direction="row" alignItems="center" spacing={{ xs: 0.25, sm: 1.5 }} sx={{ flexShrink: 0 }}>
-            {/* กล่อง 4 เครื่องมือ (แสดงเฉพาะ Desktop ตั้งแต่ md ขึ้นไป) */}
-            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1 }}>
-              <WebullTokenBadge />
-              <TradingNoteHeaderWidget />
-              <DataBackupModal />
+            {/* กล่อง 4 เครื่องมือ: Desktop แสดงปกติ, Mobile ซ่อนใน DOM เพื่อรับ Event (Mount เพียง Instance เดียว) */}
+            {!isMobile ? (
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <WebullTokenBadge />
+                <TradingNoteHeaderWidget />
+                <DataBackupModal />
 
-              <IconButton
-                onClick={() => setDarkMode(!darkMode)}
-                color="inherit"
-                sx={{ p: 1 }}
-              >
-                {darkMode ? <Sun size={18} color="#f59e0b" /> : <Moon size={18} color="#6366f1" />}
-              </IconButton>
-            </Box>
-
-            {/* สำหรับ Mobile: ให้คง Component ไว้ใน DOM แบบซ่อน เพื่อให้ Modal และ Drawer ของแต่ละระบบยังคงรับ Event ได้สมบูรณ์ */}
-            {isMobile && (
+                <IconButton
+                  onClick={() => setDarkMode(!darkMode)}
+                  color="inherit"
+                  sx={{ p: 1 }}
+                >
+                  {darkMode ? <Sun size={18} color="#f59e0b" /> : <Moon size={18} color="#6366f1" />}
+                </IconButton>
+              </Box>
+            ) : (
               <Box sx={{ display: 'none' }}>
                 <WebullTokenBadge />
                 <TradingNoteHeaderWidget />
@@ -606,19 +605,26 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
 
             <Divider orientation="vertical" flexItem sx={{ opacity: 0.1, my: 1.5, display: { xs: 'none', sm: 'block' } }} />
 
-            {/* ส่วนโปรไฟล์ผู้ใช้ / Avatar MM (บน Mobile กดแล้วเปิดดรอปดาวน์ 4 เมนู) */}
+            {/* ส่วนโปรไฟล์ผู้ใช้ (บน Mobile แสดงทั้ง Avatar MM + Money Master / Investor Pro กดแล้วเปิดดรอปดาวน์) */}
             {isMobile ? (
               <>
                 <ButtonBase
                   onClick={handleOpenLogoMenu}
-                  aria-label="เปิดเมนูเครื่องมือและการตั้งค่า"
+                  aria-label="เปิดเมนูเครื่องมือและการตั้งค่า Money Master"
                   sx={{
-                    borderRadius: '50%',
-                    p: 0.25,
-                    border: '2px solid rgba(16, 185, 129, 0.4)',
-                    boxShadow: '0 0 10px rgba(16, 185, 129, 0.25)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 1,
+                    py: 0.5,
+                    px: { xs: 0.75, sm: 1.25 },
+                    borderRadius: '24px',
+                    background: theme.palette.mode === 'light' ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.06)',
+                    border: theme.palette.mode === 'light' ? '1px solid rgba(0,0,0,0.08)' : '1px solid rgba(255,255,255,0.1)',
                     transition: 'all 0.2s',
-                    '&:active': { transform: 'scale(0.92)' },
+                    '&:hover': {
+                      background: theme.palette.mode === 'light' ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.1)',
+                    },
+                    '&:active': { transform: 'scale(0.97)' },
                   }}
                 >
                   <Avatar
@@ -628,13 +634,41 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
                       background: 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)',
                       fontWeight: 'bold',
                       fontSize: '0.8rem',
+                      boxShadow: '0 0 8px rgba(16, 185, 129, 0.35)',
                     }}
                   >
                     MM
                   </Avatar>
+                  <Stack sx={{ textAlign: 'left', minWidth: 0 }}>
+                    <Typography
+                      variant="subtitle2"
+                      fontWeight="bold"
+                      sx={{
+                        fontFamily: 'Prompt',
+                        fontSize: '0.82rem',
+                        lineHeight: 1.15,
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      Money Master
+                    </Typography>
+                    <Typography
+                      variant="caption"
+                      color="text.secondary"
+                      sx={{
+                        fontFamily: 'Prompt',
+                        fontSize: '0.68rem',
+                        lineHeight: 1.1,
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      Investor Pro
+                    </Typography>
+                  </Stack>
+                  <ChevronDown size={14} style={{ opacity: 0.6, marginLeft: 2 }} />
                 </ButtonBase>
 
-                {/* เมนูดรอปดาวน์สำหรับมือถือเมื่อกดที่ Avatar MM ฝั่งขวา */}
+                {/* เมนูดรอปดาวน์สำหรับมือถือ (เริ่มที่หัวข้อเมนูเครื่องมือลัดทันที) */}
                 <Menu
                   anchorEl={logoMenuAnchor}
                   open={Boolean(logoMenuAnchor)}
@@ -643,7 +677,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
                   anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                   PaperProps={{
                     sx: {
-                      mt: 1.5,
+                      mt: 1,
                       width: 290,
                       borderRadius: '16px',
                       background: theme.palette.mode === 'light'
@@ -660,33 +694,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
                     },
                   }}
                 >
-                  {/* หัวเมนูข้อมูลโปรไฟล์ Money Master */}
-                  <Stack direction="row" spacing={1.5} alignItems="center" sx={{ px: 1.5, py: 1, mb: 0.5 }}>
-                    <Avatar
-                      sx={{
-                        width: 38,
-                        height: 38,
-                        background: 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)',
-                        fontWeight: 'bold',
-                        fontSize: '0.9rem',
-                        boxShadow: '0 0 10px rgba(16, 185, 129, 0.4)',
-                      }}
-                    >
-                      MM
-                    </Avatar>
-                    <Box>
-                      <Typography variant="subtitle2" fontWeight="bold" sx={{ fontFamily: 'Prompt', lineHeight: 1.2 }}>
-                        Money Master
-                      </Typography>
-                      <Typography variant="caption" color="text.secondary" sx={{ fontFamily: 'Prompt', fontSize: '0.72rem' }}>
-                        Investor Pro
-                      </Typography>
-                    </Box>
-                  </Stack>
-
-                  <Divider sx={{ my: 0.5, opacity: 0.1 }} />
-
-                  <Box sx={{ px: 1.5, py: 0.5, mb: 0.25 }}>
+                  <Box sx={{ px: 1.5, py: 0.6, mb: 0.25 }}>
                     <Typography
                       variant="caption"
                       sx={{
@@ -694,7 +702,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
                         color: 'text.secondary',
                         textTransform: 'uppercase',
                         letterSpacing: '0.5px',
-                        fontSize: '0.7rem',
+                        fontSize: '0.72rem',
+                        fontFamily: 'Prompt',
                       }}
                     >
                       เมนูเครื่องมือลัด

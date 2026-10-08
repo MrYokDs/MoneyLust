@@ -17,6 +17,7 @@ import {
   useTheme,
   Drawer,
   useMediaQuery,
+  Button,
 } from '@mui/material';
 import {
   ExternalLink,
@@ -68,14 +69,29 @@ export const TradingNoteHeaderWidget: React.FC = () => {
 
   const isMobileScreen = useMediaQuery(theme.breakpoints.down('md'));
 
-  // ดักฟังสัญญาณเปิดหน้าต่างโน้ตเตือนสติจากเมนูดรอปดาวน์บนมือถือ
+  /**
+   * ปิดหน้าต่างโน้ตเตือนสติ
+   */
+  const handleCloseNote = useCallback(() => {
+    setAnchorEl(null);
+  }, []);
+
+  // ดักฟังสัญญาณเปิดและปิดหน้าต่างโน้ตเตือนสติจากเมนูดรอปดาวน์บนมือถือ
   useEffect(() => {
     const handleOpenNote = () => {
       setMode('docked');
       setAnchorEl(document.body);
     };
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+
     window.addEventListener('open-trading-note-modal', handleOpenNote);
-    return () => window.removeEventListener('open-trading-note-modal', handleOpenNote);
+    window.addEventListener('close-trading-note-modal', handleClose);
+    return () => {
+      window.removeEventListener('open-trading-note-modal', handleOpenNote);
+      window.removeEventListener('close-trading-note-modal', handleClose);
+    };
   }, []);
 
   // แท็บปัจจุบัน: 'windows' (ตารางเวลาเข้าซื้อ) หรือ 'holidays' (ปฏิทินวันหยุด)
@@ -367,7 +383,10 @@ export const TradingNoteHeaderWidget: React.FC = () => {
         <Drawer
           anchor="top"
           open={mode === 'docked' && isDropdownOpen}
-          onClose={() => setAnchorEl(null)}
+          onClose={handleCloseNote}
+          ModalProps={{
+            keepMounted: false,
+          }}
           PaperProps={{
             sx: {
               height: '100dvh',
@@ -383,6 +402,7 @@ export const TradingNoteHeaderWidget: React.FC = () => {
                 ? '0 12px 32px rgba(217, 119, 6, 0.15)'
                 : '0 16px 40px rgba(0, 0, 0, 0.7)',
               overflow: 'hidden',
+              pt: 'env(safe-area-inset-top, 0px)',
             },
           }}
         >
@@ -399,6 +419,7 @@ export const TradingNoteHeaderWidget: React.FC = () => {
                 : 'linear-gradient(90deg, rgba(245, 158, 11, 0.2) 0%, rgba(16, 185, 129, 0.12) 100%)',
               borderBottom: isLight ? '1px solid rgba(245, 158, 11, 0.2)' : '1px solid rgba(255, 255, 255, 0.08)',
               flexShrink: 0,
+              zIndex: 10,
             }}
           >
             <Stack direction="row" alignItems="center" spacing={1}>
@@ -418,18 +439,29 @@ export const TradingNoteHeaderWidget: React.FC = () => {
               </Typography>
             </Stack>
 
-            <IconButton
-              size="medium"
-              onClick={() => setAnchorEl(null)}
+            <Button
+              size="small"
+              variant="outlined"
+              onClick={handleCloseNote}
+              startIcon={<X size={16} />}
               sx={{
-                p: 0.75,
+                px: 1.5,
+                py: 0.5,
+                borderRadius: '10px',
+                fontFamily: 'Prompt',
+                fontWeight: 600,
+                fontSize: '0.8rem',
                 color: isLight ? '#78350f' : '#fef3c7',
+                borderColor: isLight ? 'rgba(120, 53, 15, 0.35)' : 'rgba(254, 243, 199, 0.35)',
                 backgroundColor: isLight ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.08)',
-                '&:hover': { backgroundColor: isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.15)' },
+                '&:hover': {
+                  borderColor: isLight ? '#78350f' : '#fef3c7',
+                  backgroundColor: isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.15)',
+                },
               }}
             >
-              <X size={20} />
-            </IconButton>
+              ปิด
+            </Button>
           </Box>
 
           {/* เนื้อหาใน Drawer บนมือถือ ให้ Scroll ได้อย่างราบรื่น */}
@@ -446,6 +478,43 @@ export const TradingNoteHeaderWidget: React.FC = () => {
               isLoadingHolidays={isLoadingHolidays}
               onRefreshHolidays={loadHolidays}
             />
+          </Box>
+
+          {/* แถบปุ่มปิดด้านล่าง Drawer เพื่อให้แตะปิดได้ง่าย */}
+          <Box
+            sx={{
+              p: 1.5,
+              pb: 'max(14px, env(safe-area-inset-bottom, 14px))',
+              borderTop: isLight ? '1px solid rgba(245, 158, 11, 0.2)' : '1px solid rgba(255, 255, 255, 0.08)',
+              background: isLight ? 'rgba(255, 253, 240, 0.96)' : 'rgba(15, 23, 42, 0.96)',
+              flexShrink: 0,
+            }}
+          >
+            <Button
+              fullWidth
+              variant="contained"
+              onClick={handleCloseNote}
+              startIcon={<X size={18} />}
+              sx={{
+                py: 1.1,
+                borderRadius: '12px',
+                fontFamily: 'Prompt',
+                fontWeight: 600,
+                fontSize: '0.88rem',
+                background: isLight
+                  ? 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)'
+                  : 'linear-gradient(135deg, #d97706 0%, #b45309 100%)',
+                color: '#ffffff',
+                boxShadow: '0 4px 12px rgba(217, 119, 6, 0.3)',
+                '&:hover': {
+                  background: isLight
+                    ? 'linear-gradient(135deg, #d97706 0%, #b45309 100%)'
+                    : 'linear-gradient(135deg, #b45309 0%, #92400e 100%)',
+                },
+              }}
+            >
+              ปิดหน้าต่างโน้ตเตือนสติ
+            </Button>
           </Box>
         </Drawer>
       ) : (

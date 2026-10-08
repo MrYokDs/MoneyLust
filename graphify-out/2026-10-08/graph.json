@@ -7787,7 +7787,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/Layout.tsx",
-      "source_location": "L757",
+      "source_location": "L585",
       "weight": 1.0
     },
     {
@@ -7799,7 +7799,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/Layout.tsx",
-      "source_location": "L758",
+      "source_location": "L586",
       "weight": 1.0
     },
     {
@@ -7811,7 +7811,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/Layout.tsx",
-      "source_location": "L759",
+      "source_location": "L587",
       "weight": 1.0
     },
     {
@@ -24031,5 +24031,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "83913f187becf8d515636b8e133363bb66d485ce"
+  "built_at_commit": "32cd98bd3f1847bcc7e58db9d08c340be2865da7"
 }

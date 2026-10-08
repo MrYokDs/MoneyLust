@@ -937,7 +937,7 @@
       "file_type": "code",
       "norm_label": "noteposition",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L37"
+      "source_location": "L38"
     },
     {
       "id": "src_utils_finnhubmarketholidays_marketholidayitem",
@@ -2384,7 +2384,7 @@
       "file_type": "code",
       "norm_label": "tradingnoteheaderwidget()",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L51"
+      "source_location": "L52"
     },
     {
       "id": "src_utils_finnhubmarketholidays_calculategoodfriday",
@@ -7787,7 +7787,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/Layout.tsx",
-      "source_location": "L585",
+      "source_location": "L586",
       "weight": 1.0
     },
     {
@@ -7799,7 +7799,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/Layout.tsx",
-      "source_location": "L586",
+      "source_location": "L587",
       "weight": 1.0
     },
     {
@@ -7811,7 +7811,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/Layout.tsx",
-      "source_location": "L587",
+      "source_location": "L588",
       "weight": 1.0
     },
     {
@@ -7895,7 +7895,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L129",
+      "source_location": "L145",
       "weight": 1.0
     },
     {
@@ -7907,7 +7907,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L144",
+      "source_location": "L160",
       "weight": 1.0
     },
     {
@@ -7919,7 +7919,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L151",
+      "source_location": "L167",
       "weight": 1.0
     },
     {
@@ -7931,7 +7931,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L156",
+      "source_location": "L172",
       "weight": 1.0
     },
     {
@@ -7943,7 +7943,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L437",
+      "source_location": "L469",
       "weight": 1.0
     },
     {
@@ -7955,7 +7955,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L565",
+      "source_location": "L634",
       "weight": 1.0
     },
     {
@@ -12170,7 +12170,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L25",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -12182,7 +12182,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L25",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -12194,7 +12194,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L29",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -12206,7 +12206,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L29",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -12218,7 +12218,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L29",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -12230,7 +12230,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L29",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -12242,7 +12242,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -12254,7 +12254,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -16454,7 +16454,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -16466,7 +16466,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L25",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -16478,7 +16478,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L29",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -16490,7 +16490,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -21440,7 +21440,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L37",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -21451,7 +21451,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/TradingNoteHeaderWidget.tsx",
-      "source_location": "L51",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -24031,5 +24031,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "32cd98bd3f1847bcc7e58db9d08c340be2865da7"
+  "built_at_commit": "792564902d698871a97e0f53cd4c5ad51dc87f81"
 }
