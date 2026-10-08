@@ -6,9 +6,9 @@
     "semantic_hash": "efbdf41bb2a42fe9f4b2a38d829b4aae"
   },
   "package.json": {
-    "mtime": 1791462347.94928,
-    "seen": 1791462376.9898176,
-    "ast_hash": "a9f8d337ff96a70a65d135408a443225",
+    "mtime": 1791463199.02972,
+    "seen": 1791463238.57643,
+    "ast_hash": "8a6a3f597cd1fb1a446d0967748e3db7",
     "semantic_hash": ""
   },
   "src/App.tsx": {
@@ -144,9 +144,9 @@
     "semantic_hash": "55b6fa91be9f244251fd31bc603b4815"
   },
   "src/pages/InvestmentPlan/InvestmentPlan.tsx": {
-    "mtime": 1791455761.550738,
-    "seen": 1791455978.0220757,
-    "ast_hash": "bd2926b7e562bc8324a0c29aac231cfa",
+    "mtime": 1791462881.3324442,
+    "seen": 1791463033.3575506,
+    "ast_hash": "98260deb3df13bf31a7f04613c54b49e",
     "semantic_hash": ""
   },
   "src/pages/InvestmentPlan/index.ts": {
@@ -216,9 +216,9 @@
     "semantic_hash": ""
   },
   "src/pages/SavedPlans/sections/PortfolioGrowthPlanCard.tsx": {
-    "mtime": 1791455806.981336,
-    "seen": 1791455978.0220919,
-    "ast_hash": "298ca38343b244ebc49d38c98ccdc469",
+    "mtime": 1791462868.4253452,
+    "seen": 1791463033.3575656,
+    "ast_hash": "2291e90ca754471e15fc50b1c922dc61",
     "semantic_hash": ""
   },
   "src/pages/SavedPlans/sections/PortfolioHeader.tsx": {
@@ -426,9 +426,9 @@
     "semantic_hash": ""
   },
   "src/utils/growthPlanMath.ts": {
-    "mtime": 1791456923.5871222,
-    "seen": 1791456948.9299164,
-    "ast_hash": "f0328e7d365ff61235a7f6fbe63c4df7",
+    "mtime": 1791462857.945728,
+    "seen": 1791463033.3575923,
+    "ast_hash": "4df57ac97487e81366172bc620892774",
     "semantic_hash": ""
   },
   "src/utils/stockApi.ts": {
@@ -582,9 +582,9 @@
     "semantic_hash": ""
   },
   "src/pages/Market/Market.tsx": {
-    "mtime": 1791193822.5055945,
-    "seen": 1791193906.0492826,
-    "ast_hash": "da22da2d057be272dd09d4b67adf7770",
+    "mtime": 1791462989.5799935,
+    "seen": 1791463033.3575566,
+    "ast_hash": "c516f37ad3439c204054335e82109fea",
     "semantic_hash": ""
   },
   "src/pages/Market/index.ts": {
@@ -606,15 +606,15 @@
     "semantic_hash": ""
   },
   "src/pages/Market/sections/MarketTable.tsx": {
-    "mtime": 1791270770.2867422,
-    "seen": 1791271386.4954667,
-    "ast_hash": "db607f57cc13a22c9969ed98b8de2744",
+    "mtime": 1791462947.9302478,
+    "seen": 1791463033.3575592,
+    "ast_hash": "566a60693861b7763ed223ac88d8c5f4",
     "semantic_hash": ""
   },
   "src/pages/Market/types.ts": {
-    "mtime": 1791189721.236477,
-    "seen": 1791189876.7211492,
-    "ast_hash": "d0f1603d56c291188a5b8a1332fa34b2",
+    "mtime": 1791463186.1978483,
+    "seen": 1791463238.5764642,
+    "ast_hash": "e5535116b1175189086c1518124eda04",
     "semantic_hash": ""
   },
   "scripts/webull_screener.py": {
@@ -678,9 +678,9 @@
     "semantic_hash": ""
   },
   "src/utils/version.ts": {
-    "mtime": 1791462359.8939655,
-    "seen": 1791462376.9898906,
-    "ast_hash": "c9c07a6ae6c324f8c8c6a9c99c15e239",
+    "mtime": 1791463211.1908052,
+    "seen": 1791463238.5764987,
+    "ast_hash": "dc2b43920bdb6083f09cc45cf83de462",
     "semantic_hash": ""
   },
   "bug/UI_Bug_Mb/S__42827789_0.jpg": {

@@ -15,6 +15,8 @@ import {
   Stack,
   Popover,
   useTheme,
+  Drawer,
+  useMediaQuery,
 } from '@mui/material';
 import {
   ExternalLink,
@@ -63,6 +65,18 @@ export const TradingNoteHeaderWidget: React.FC = () => {
   // สถานะเปิด/ปิด Dropdown ในโหมด Docked
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const isDropdownOpen = Boolean(anchorEl);
+
+  const isMobileScreen = useMediaQuery(theme.breakpoints.down('md'));
+
+  // ดักฟังสัญญาณเปิดหน้าต่างโน้ตเตือนสติจากเมนูดรอปดาวน์บนมือถือ
+  useEffect(() => {
+    const handleOpenNote = () => {
+      setMode('docked');
+      setAnchorEl(document.body);
+    };
+    window.addEventListener('open-trading-note-modal', handleOpenNote);
+    return () => window.removeEventListener('open-trading-note-modal', handleOpenNote);
+  }, []);
 
   // แท็บปัจจุบัน: 'windows' (ตารางเวลาเข้าซื้อ) หรือ 'holidays' (ปฏิทินวันหยุด)
   const [activeTab, setActiveTab] = useState<'windows' | 'holidays'>('windows');
@@ -348,116 +362,203 @@ export const TradingNoteHeaderWidget: React.FC = () => {
         </IconButton>
       </Tooltip>
 
-      {/* 2. หน้าต่าง Dropdown ในโหมด Docked (เปิดชิดขวาจอ) */}
-      <Popover
-        open={mode === 'docked' && isDropdownOpen}
-        anchorEl={anchorEl}
-        onClose={() => setAnchorEl(null)}
-        anchorReference="anchorPosition"
-        anchorPosition={{
-          top: typeof window !== 'undefined' && window.innerWidth < 600 ? 64 : 72,
-          left: typeof window !== 'undefined'
-            ? window.innerWidth - (window.innerWidth < 600 ? 12 : 20)
-            : 1000,
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-        PaperProps={{
-          sx: {
-            width: { xs: 340, sm: 390 },
-            maxWidth: 'calc(100vw - 24px)',
-            borderRadius: '16px',
-            background: isLight
-              ? 'linear-gradient(135deg, rgba(255, 253, 240, 0.95) 0%, rgba(254, 249, 215, 0.92) 100%)'
-              : 'linear-gradient(135deg, rgba(24, 24, 27, 0.95) 0%, rgba(15, 23, 42, 0.96) 100%)',
-            backdropFilter: 'blur(16px)',
-            border: isLight ? '1px solid rgba(245, 158, 11, 0.35)' : '1px solid rgba(245, 158, 11, 0.25)',
-            boxShadow: isLight
-              ? '0 12px 32px rgba(217, 119, 6, 0.15), 0 4px 12px rgba(0,0,0,0.06)'
-              : '0 16px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 158, 11, 0.12)',
-            overflow: 'hidden',
-          },
-        }}
-      >
-        {/* แถบหัว Dropdown */}
-        <Box
-          sx={{
-            px: 1.5,
-            py: 1,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            background: isLight
-              ? 'linear-gradient(90deg, rgba(245, 158, 11, 0.15) 0%, rgba(217, 119, 6, 0.08) 100%)'
-              : 'linear-gradient(90deg, rgba(245, 158, 11, 0.2) 0%, rgba(16, 185, 129, 0.12) 100%)',
-            borderBottom: isLight ? '1px solid rgba(245, 158, 11, 0.2)' : '1px solid rgba(255, 255, 255, 0.08)',
+      {/* 2. หน้าต่าง Dropdown ในโหมด Docked (บน Mobile เลื่อนลงมาจากด้านบนเต็มจอ 100dvh, บน Desktop แสดง Popover ชิดขวา) */}
+      {isMobileScreen ? (
+        <Drawer
+          anchor="top"
+          open={mode === 'docked' && isDropdownOpen}
+          onClose={() => setAnchorEl(null)}
+          PaperProps={{
+            sx: {
+              height: '100dvh',
+              maxHeight: '100dvh',
+              display: 'flex',
+              flexDirection: 'column',
+              background: isLight
+                ? 'linear-gradient(135deg, rgba(255, 253, 240, 0.98) 0%, rgba(254, 249, 215, 0.96) 100%)'
+                : 'linear-gradient(135deg, rgba(24, 24, 27, 0.98) 0%, rgba(15, 23, 42, 0.98) 100%)',
+              backdropFilter: 'blur(20px)',
+              borderBottom: isLight ? '1px solid rgba(245, 158, 11, 0.35)' : '1px solid rgba(245, 158, 11, 0.25)',
+              boxShadow: isLight
+                ? '0 12px 32px rgba(217, 119, 6, 0.15)'
+                : '0 16px 40px rgba(0, 0, 0, 0.7)',
+              overflow: 'hidden',
+            },
           }}
         >
-          <Stack direction="row" alignItems="center" spacing={0.75}>
-            <Typography component="span" sx={{ fontSize: '1.05rem', lineHeight: 1, transform: 'rotate(-5deg)' }}>
-              📌
-            </Typography>
-            <Typography
-              variant="caption"
-              fontWeight="bold"
+          {/* แถบหัว Drawer บนมือถือ */}
+          <Box
+            sx={{
+              px: 2,
+              py: 1.5,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              background: isLight
+                ? 'linear-gradient(90deg, rgba(245, 158, 11, 0.15) 0%, rgba(217, 119, 6, 0.08) 100%)'
+                : 'linear-gradient(90deg, rgba(245, 158, 11, 0.2) 0%, rgba(16, 185, 129, 0.12) 100%)',
+              borderBottom: isLight ? '1px solid rgba(245, 158, 11, 0.2)' : '1px solid rgba(255, 255, 255, 0.08)',
+              flexShrink: 0,
+            }}
+          >
+            <Stack direction="row" alignItems="center" spacing={1}>
+              <Typography component="span" sx={{ fontSize: '1.2rem', lineHeight: 1, transform: 'rotate(-5deg)' }}>
+                📌
+              </Typography>
+              <Typography
+                variant="subtitle2"
+                fontWeight="bold"
+                sx={{
+                  fontFamily: 'Prompt',
+                  fontSize: '0.95rem',
+                  color: isLight ? '#92400e' : '#fef08a',
+                }}
+              >
+                โน้ตเตือนสติตารางเวลาเข้าซื้อ
+              </Typography>
+            </Stack>
+
+            <IconButton
+              size="medium"
+              onClick={() => setAnchorEl(null)}
               sx={{
-                fontFamily: 'Prompt',
-                fontSize: '0.82rem',
-                color: isLight ? '#92400e' : '#fef08a',
+                p: 0.75,
+                color: isLight ? '#78350f' : '#fef3c7',
+                backgroundColor: isLight ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.08)',
+                '&:hover': { backgroundColor: isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.15)' },
               }}
             >
-              โน้ตเตือนสติตารางเวลาเข้าซื้อ
-            </Typography>
-          </Stack>
+              <X size={20} />
+            </IconButton>
+          </Box>
 
-          <Stack direction="row" alignItems="center" spacing={0.5}>
-            {/* ปุ่มแยกหน้าต่างลอย (Pop-out / Float) */}
-            <Tooltip title="แยกออกเป็นหน้าต่างลอยบนจอ (สามารถลากไปมาได้)" arrow placement="top">
+          {/* เนื้อหาใน Drawer บนมือถือ ให้ Scroll ได้อย่างราบรื่น */}
+          <Box sx={{ flexGrow: 1, overflowY: 'auto', p: 0.5 }}>
+            <TradingNoteContent
+              closureCheck={closureCheck}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              seasonInfo={seasonInfo}
+              activeWindow={activeWindow}
+              formattedTimeStr={formattedTimeStr}
+              holidays={holidays}
+              holidaySource={holidaySource}
+              isLoadingHolidays={isLoadingHolidays}
+              onRefreshHolidays={loadHolidays}
+            />
+          </Box>
+        </Drawer>
+      ) : (
+        <Popover
+          open={mode === 'docked' && isDropdownOpen}
+          anchorEl={anchorEl}
+          onClose={() => setAnchorEl(null)}
+          anchorReference="anchorPosition"
+          anchorPosition={{
+            top: typeof window !== 'undefined' && window.innerWidth < 600 ? 64 : 72,
+            left: typeof window !== 'undefined'
+              ? window.innerWidth - (window.innerWidth < 600 ? 12 : 20)
+              : 1000,
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          PaperProps={{
+            sx: {
+              width: { xs: 340, sm: 390 },
+              maxWidth: 'calc(100vw - 24px)',
+              borderRadius: '16px',
+              background: isLight
+                ? 'linear-gradient(135deg, rgba(255, 253, 240, 0.95) 0%, rgba(254, 249, 215, 0.92) 100%)'
+                : 'linear-gradient(135deg, rgba(24, 24, 27, 0.95) 0%, rgba(15, 23, 42, 0.96) 100%)',
+              backdropFilter: 'blur(16px)',
+              border: isLight ? '1px solid rgba(245, 158, 11, 0.35)' : '1px solid rgba(245, 158, 11, 0.25)',
+              boxShadow: isLight
+                ? '0 12px 32px rgba(217, 119, 6, 0.15), 0 4px 12px rgba(0,0,0,0.06)'
+                : '0 16px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 158, 11, 0.12)',
+              overflow: 'hidden',
+            },
+          }}
+        >
+          {/* แถบหัว Dropdown */}
+          <Box
+            sx={{
+              px: 1.5,
+              py: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              background: isLight
+                ? 'linear-gradient(90deg, rgba(245, 158, 11, 0.15) 0%, rgba(217, 119, 6, 0.08) 100%)'
+                : 'linear-gradient(90deg, rgba(245, 158, 11, 0.2) 0%, rgba(16, 185, 129, 0.12) 100%)',
+              borderBottom: isLight ? '1px solid rgba(245, 158, 11, 0.2)' : '1px solid rgba(255, 255, 255, 0.08)',
+            }}
+          >
+            <Stack direction="row" alignItems="center" spacing={0.75}>
+              <Typography component="span" sx={{ fontSize: '1.05rem', lineHeight: 1, transform: 'rotate(-5deg)' }}>
+                📌
+              </Typography>
+              <Typography
+                variant="caption"
+                fontWeight="bold"
+                sx={{
+                  fontFamily: 'Prompt',
+                  fontSize: '0.82rem',
+                  color: isLight ? '#92400e' : '#fef08a',
+                }}
+              >
+                โน้ตเตือนสติตารางเวลาเข้าซื้อ
+              </Typography>
+            </Stack>
+
+            <Stack direction="row" alignItems="center" spacing={0.5}>
+              {/* ปุ่มแยกหน้าต่างลอย (Pop-out / Float) */}
+              <Tooltip title="แยกออกเป็นหน้าต่างลอยบนจอ (สามารถลากไปมาได้)" arrow placement="top">
+                <IconButton
+                  size="small"
+                  onClick={handlePopOut}
+                  sx={{
+                    p: 0.5,
+                    color: isLight ? '#78350f' : '#fef3c7',
+                    '&:hover': { backgroundColor: 'rgba(255,255,255,0.15)' },
+                  }}
+                >
+                  <ExternalLink size={14} />
+                </IconButton>
+              </Tooltip>
+
+              {/* ปุ่มปิด */}
               <IconButton
                 size="small"
-                onClick={handlePopOut}
+                onClick={() => setAnchorEl(null)}
                 sx={{
                   p: 0.5,
                   color: isLight ? '#78350f' : '#fef3c7',
-                  '&:hover': { backgroundColor: 'rgba(255,255,255,0.15)' },
+                  opacity: 0.7,
+                  '&:hover': { opacity: 1 },
                 }}
               >
-                <ExternalLink size={14} />
+                <X size={15} />
               </IconButton>
-            </Tooltip>
+            </Stack>
+          </Box>
 
-            {/* ปุ่มปิด */}
-            <IconButton
-              size="small"
-              onClick={() => setAnchorEl(null)}
-              sx={{
-                p: 0.5,
-                color: isLight ? '#78350f' : '#fef3c7',
-                opacity: 0.7,
-                '&:hover': { opacity: 1 },
-              }}
-            >
-              <X size={15} />
-            </IconButton>
-          </Stack>
-        </Box>
-
-        {/* เนื้อหาใน Dropdown */}
-        <TradingNoteContent
-          closureCheck={closureCheck}
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          seasonInfo={seasonInfo}
-          activeWindow={activeWindow}
-          formattedTimeStr={formattedTimeStr}
-          holidays={holidays}
-          holidaySource={holidaySource}
-          isLoadingHolidays={isLoadingHolidays}
-          onRefreshHolidays={loadHolidays}
-        />
-      </Popover>
+          {/* เนื้อหาใน Dropdown */}
+          <TradingNoteContent
+            closureCheck={closureCheck}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            seasonInfo={seasonInfo}
+            activeWindow={activeWindow}
+            formattedTimeStr={formattedTimeStr}
+            holidays={holidays}
+            holidaySource={holidaySource}
+            isLoadingHolidays={isLoadingHolidays}
+            onRefreshHolidays={loadHolidays}
+          />
+        </Popover>
+      )}
 
       {/* 3. หน้าต่างลอยบนจอในโหมด Floating */}
       {mode === 'floating' && (

@@ -49,6 +49,17 @@ export const WebullTokenBadge: React.FC = () => {
     return () => window.removeEventListener('webull-token-expired', handleTokenExpired);
   }, [loadStatus]);
 
+  // ดักฟังสัญญาณเปิดหน้าต่างจัดการ Token จากเมนูดรอปดาวน์บนมือถือ
+  useEffect(() => {
+    const handleOpenModal = () => {
+      setModalOpen(true);
+      loadStatus();
+    };
+
+    window.addEventListener('open-webull-token-modal', handleOpenModal);
+    return () => window.removeEventListener('open-webull-token-modal', handleOpenModal);
+  }, [loadStatus]);
+
   const isNormal = tokenInfo?.isNormal && !tokenInfo?.isExpired;
   const daysLeft = tokenInfo?.daysRemaining ?? 15;
   const isExpiringSoon = isNormal && daysLeft <= 2;

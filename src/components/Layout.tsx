@@ -24,7 +24,10 @@ import {
   useMediaQuery,
   Avatar,
   Stack,
-  Collapse
+  Collapse,
+  Menu,
+  MenuItem,
+  ButtonBase
 } from '@mui/material';
 import {
   Menu as MenuIcon,
@@ -39,6 +42,9 @@ import {
   GripVertical,
   Target,
   BarChart3,
+  Activity,
+  Database,
+  Pin
 } from 'lucide-react';
 
 const drawerWidth = 260;
@@ -65,6 +71,25 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [portfoliosOpen, setPortfoliosOpen] = useState(true);
   const [draggedPortfolioId, setDraggedPortfolioId] = useState<string | null>(null);
+
+  // สมอและสถานะเมนูดรอปดาวน์โลโก้บนจอมือถือ
+  const [logoMenuAnchor, setLogoMenuAnchor] = useState<null | HTMLElement>(null);
+
+  /**
+   * เปิดดรอปดาวน์เมนูจากโลโก้ MoneyLust บนมือถือ
+   * 
+   * @param event - React MouseEvent จากการกดปุ่มโลโก้
+   */
+  const handleOpenLogoMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setLogoMenuAnchor(event.currentTarget);
+  };
+
+  /**
+   * ปิดดรอปดาวน์เมนูโลโก้บนมือถือ
+   */
+  const handleCloseLogoMenu = () => {
+    setLogoMenuAnchor(null);
+  };
 
   const dispatch = useAppDispatch();
   const portfolios = useAppSelector(state => state.stockPlanner.portfolios);
@@ -518,54 +543,238 @@ export const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode 
         }}
       >
         <Toolbar sx={{ justifyContent: 'space-between', px: { xs: 1.25, sm: 3 }, minHeight: { xs: 56, sm: 64 } }}>
-          <Stack direction="row" alignItems="center" spacing={0.5} sx={{ minWidth: 0, flex: 1, mr: { xs: 0.75, sm: 2 } }}>
+          <Stack direction="row" alignItems="center" spacing={0.75} sx={{ minWidth: 0, flex: 1, mr: { xs: 0.75, sm: 2 } }}>
             {isMobile && (
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ mr: { xs: 0.25, sm: 1 }, p: { xs: 0.5, sm: 1 } }}
+                sx={{ mr: { xs: 0.25, sm: 0.5 }, p: { xs: 0.5, sm: 1 } }}
               >
                 <MenuIcon size={20} />
               </IconButton>
             )}
 
-            <Typography
-              variant="h6"
-              fontWeight="bold"
-              sx={{
-                fontFamily: 'Prompt',
-                fontSize: { xs: '0.88rem', sm: '1.12rem', md: '1.25rem' },
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                display: 'block',
-              }}
-            >
-              {location.pathname === PATHS.MARKET
-                ? 'ภาพรวมตลาดหุ้นสหรัฐฯ'
-                : location.pathname === PATHS.PLANNER
-                ? 'เครื่องมือคำนวณแบ่งไม้ถัวหุ้น'
-                : location.pathname === PATHS.INVESTMENT_PLAN
-                ? 'สร้างแผนการลงทุนทบต้น'
-                : 'การจัดการพอร์ต'}
-            </Typography>
+            {/* ส่วนหัวฝั่งซ้าย: บนมือถือเป็นปุ่มโลโก้เปิดดรอปดาวน์ 4 เมนู, บนจอใหญ่เป็นชื่อหน้าปัจจุบัน */}
+            {isMobile ? (
+              <>
+                <ButtonBase
+                  onClick={handleOpenLogoMenu}
+                  aria-label="เมนูเครื่องมือลัด MoneyLust"
+                  sx={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 0.75,
+                    px: 1.1,
+                    py: 0.5,
+                    borderRadius: '12px',
+                    background: theme.palette.mode === 'light' ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.06)',
+                    border: theme.palette.mode === 'light' ? '1px solid rgba(0,0,0,0.08)' : '1px solid rgba(255,255,255,0.1)',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                    '&:hover': {
+                      background: theme.palette.mode === 'light' ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.1)',
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      p: 0.45,
+                      borderRadius: 1.5,
+                      background: 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      boxShadow: '0 0 8px rgba(16, 185, 129, 0.4)',
+                    }}
+                  >
+                    <TrendingUp size={15} color="#fff" />
+                  </Box>
+                  <Typography
+                    variant="subtitle2"
+                    fontWeight="900"
+                    sx={{
+                      background: 'linear-gradient(90deg, #10b981, #06b6d4)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      fontFamily: 'Prompt',
+                      fontSize: '0.92rem',
+                      lineHeight: 1,
+                    }}
+                  >
+                    MoneyLust
+                  </Typography>
+                  <ChevronDown size={14} style={{ opacity: 0.7 }} />
+                </ButtonBase>
+
+                {/* เมนูดรอปดาวน์สำหรับมือถือ (รวม 4 รายการ: Webull Token, โน้ตเตือนสติ, สำรองข้อมูล, สลับธีม) */}
+                <Menu
+                  anchorEl={logoMenuAnchor}
+                  open={Boolean(logoMenuAnchor)}
+                  onClose={handleCloseLogoMenu}
+                  PaperProps={{
+                    sx: {
+                      mt: 1.5,
+                      width: 290,
+                      borderRadius: '16px',
+                      background: theme.palette.mode === 'light'
+                        ? 'rgba(255, 253, 240, 0.98)'
+                        : 'rgba(15, 23, 42, 0.96)',
+                      backdropFilter: 'blur(20px)',
+                      border: theme.palette.mode === 'light'
+                        ? '1px solid rgba(0,0,0,0.08)'
+                        : '1px solid rgba(255,255,255,0.12)',
+                      boxShadow: theme.palette.mode === 'light'
+                        ? '0 12px 32px rgba(0,0,0,0.12)'
+                        : '0 16px 40px rgba(0,0,0,0.6)',
+                      p: 0.75,
+                    },
+                  }}
+                >
+                  <Box sx={{ px: 1.5, py: 0.75, mb: 0.25 }}>
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        fontWeight: 700,
+                        color: 'text.secondary',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.5px',
+                        fontSize: '0.7rem',
+                      }}
+                    >
+                      เมนูเครื่องมือลัด
+                    </Typography>
+                  </Box>
+
+                  {/* 1. Webull OpenAPI & Token */}
+                  <MenuItem
+                    onClick={() => {
+                      handleCloseLogoMenu();
+                      window.dispatchEvent(new CustomEvent('open-webull-token-modal'));
+                    }}
+                    sx={{ borderRadius: '10px', py: 1, mb: 0.5 }}
+                  >
+                    <ListItemIcon sx={{ minWidth: 36, color: '#10b981' }}>
+                      <Activity size={18} />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary="สถานะ Webull OpenAPI"
+                      secondary="ตรวจสอบ & ต่ออายุ Token"
+                      primaryTypographyProps={{ fontSize: '0.86rem', fontWeight: 600, fontFamily: 'Prompt' }}
+                      secondaryTypographyProps={{ fontSize: '0.72rem', fontFamily: 'Prompt' }}
+                    />
+                  </MenuItem>
+
+                  {/* 2. โน้ตเตือนสติตลาดหุ้น (เลื่อนลงมาเต็มจอ 100dvh) */}
+                  <MenuItem
+                    onClick={() => {
+                      handleCloseLogoMenu();
+                      window.dispatchEvent(new CustomEvent('open-trading-note-modal'));
+                    }}
+                    sx={{ borderRadius: '10px', py: 1, mb: 0.5 }}
+                  >
+                    <ListItemIcon sx={{ minWidth: 36, color: '#f59e0b' }}>
+                      <Pin size={18} />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary="โน้ตเตือนสติตลาดหุ้น"
+                      secondary="ช่วงเวลาเข้าซื้อ & ปฏิทินวันหยุด (เต็มจอ)"
+                      primaryTypographyProps={{ fontSize: '0.86rem', fontWeight: 600, fontFamily: 'Prompt' }}
+                      secondaryTypographyProps={{ fontSize: '0.72rem', fontFamily: 'Prompt' }}
+                    />
+                  </MenuItem>
+
+                  {/* 3. สำรอง & ซิงค์ข้อมูลคลาวด์ */}
+                  <MenuItem
+                    onClick={() => {
+                      handleCloseLogoMenu();
+                      window.dispatchEvent(new CustomEvent('open-data-backup-modal'));
+                    }}
+                    sx={{ borderRadius: '10px', py: 1, mb: 0.5 }}
+                  >
+                    <ListItemIcon sx={{ minWidth: 36, color: '#06b6d4' }}>
+                      <Database size={18} />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary="สำรอง & ซิงค์ข้อมูล"
+                      secondary="GitHub Gist & สำรองไฟล์ JSON"
+                      primaryTypographyProps={{ fontSize: '0.86rem', fontWeight: 600, fontFamily: 'Prompt' }}
+                      secondaryTypographyProps={{ fontSize: '0.72rem', fontFamily: 'Prompt' }}
+                    />
+                  </MenuItem>
+
+                  <Divider sx={{ my: 0.75, opacity: 0.1 }} />
+
+                  {/* 4. สลับโหมดแสง / มืด */}
+                  <MenuItem
+                    onClick={() => {
+                      handleCloseLogoMenu();
+                      setDarkMode(!darkMode);
+                    }}
+                    sx={{ borderRadius: '10px', py: 1 }}
+                  >
+                    <ListItemIcon sx={{ minWidth: 36, color: darkMode ? '#f59e0b' : '#6366f1' }}>
+                      {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={darkMode ? 'เปลี่ยนเป็นธีมสว่าง (Light)' : 'เปลี่ยนเป็นธีมมืด (Dark)'}
+                      secondary={darkMode ? 'โหมดพื้นหลังสีสว่าง' : 'โหมดพื้นหลังสีเข้มสบายตา'}
+                      primaryTypographyProps={{ fontSize: '0.86rem', fontWeight: 600, fontFamily: 'Prompt' }}
+                      secondaryTypographyProps={{ fontSize: '0.72rem', fontFamily: 'Prompt' }}
+                    />
+                  </MenuItem>
+                </Menu>
+              </>
+            ) : (
+              <Typography
+                variant="h6"
+                fontWeight="bold"
+                sx={{
+                  fontFamily: 'Prompt',
+                  fontSize: { xs: '0.88rem', sm: '1.12rem', md: '1.25rem' },
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  display: 'block',
+                }}
+              >
+                {location.pathname === PATHS.MARKET
+                  ? 'ภาพรวมตลาดหุ้นสหรัฐฯ'
+                  : location.pathname === PATHS.PLANNER
+                  ? 'เครื่องมือคำนวณแบ่งไม้ถัวหุ้น'
+                  : location.pathname === PATHS.INVESTMENT_PLAN
+                  ? 'สร้างแผนการลงทุนทบต้น'
+                  : 'การจัดการพอร์ต'}
+              </Typography>
+            )}
           </Stack>
 
-          {/* Webull Token Status, Backup, Trading Note, Theme & Profile */}
+          {/* ฝั่งขวาของ Header: บน Desktop แสดง 4 ไอคอนครบถ้วน, บน Mobile ซ่อนปุ่มและคง Lifecycle ไว้ให้ CustomEvent ทำงาน */}
           <Stack direction="row" alignItems="center" spacing={{ xs: 0.25, sm: 1.5 }} sx={{ flexShrink: 0 }}>
-            <WebullTokenBadge />
-            <TradingNoteHeaderWidget />
-            <DataBackupModal />
+            {/* กล่อง 4 เครื่องมือ (แสดงเฉพาะ Desktop ตั้งแต่ md ขึ้นไป) */}
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1 }}>
+              <WebullTokenBadge />
+              <TradingNoteHeaderWidget />
+              <DataBackupModal />
 
-            <IconButton
-              onClick={() => setDarkMode(!darkMode)}
-              color="inherit"
-              sx={{ p: { xs: 0.5, sm: 1 } }}
-            >
-              {darkMode ? <Sun size={18} color="#f59e0b" /> : <Moon size={18} color="#6366f1" />}
-            </IconButton>
+              <IconButton
+                onClick={() => setDarkMode(!darkMode)}
+                color="inherit"
+                sx={{ p: 1 }}
+              >
+                {darkMode ? <Sun size={18} color="#f59e0b" /> : <Moon size={18} color="#6366f1" />}
+              </IconButton>
+            </Box>
+
+            {/* สำหรับ Mobile: ให้คง Component ไว้ใน DOM แบบซ่อน เพื่อให้ Modal และ Drawer ของแต่ละระบบยังคงรับ Event ได้สมบูรณ์ */}
+            {isMobile && (
+              <Box sx={{ display: 'none' }}>
+                <WebullTokenBadge />
+                <TradingNoteHeaderWidget />
+                <DataBackupModal />
+              </Box>
+            )}
 
             <Divider orientation="vertical" flexItem sx={{ opacity: 0.1, my: 1.5, display: { xs: 'none', sm: 'block' } }} />
 

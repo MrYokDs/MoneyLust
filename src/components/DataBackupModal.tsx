@@ -111,6 +111,13 @@ export const DataBackupModal: React.FC = () => {
     setOpen(true);
   };
 
+  // ดักฟังสัญญาณเปิดหน้าต่างสำรองข้อมูลจากเมนูดรอปดาวน์บนมือถือ
+  useEffect(() => {
+    const handleOpenModal = () => handleOpen();
+    window.addEventListener('open-data-backup-modal', handleOpenModal);
+    return () => window.removeEventListener('open-data-backup-modal', handleOpenModal);
+  }, []);
+
   /**
    * ปิดหน้าต่าง Modal
    */
