@@ -156,9 +156,9 @@
     "semantic_hash": "a7cbd4be02989342babca07651795bc0"
   },
   "src/pages/InvestmentPlan/sections/DailyGrowthTable.tsx": {
-    "mtime": 1791455889.593708,
-    "seen": 1791455978.0220778,
-    "ast_hash": "7147149b2f6b5bfdd261bb0aa9d9e854",
+    "mtime": 1791461866.3380368,
+    "seen": 1791461892.1620812,
+    "ast_hash": "89fec536e12899ae5a43a6383438587b",
     "semantic_hash": ""
   },
   "src/pages/InvestmentPlan/sections/GrowthPlanForm.tsx": {

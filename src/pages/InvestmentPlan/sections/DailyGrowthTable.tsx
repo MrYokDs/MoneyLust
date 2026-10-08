@@ -182,7 +182,7 @@ export const DailyGrowthTable: React.FC<DailyGrowthTableProps> = ({
                   '& th': { whiteSpace: 'nowrap' },
                 }}
               >
-                <TableCell sx={{ fontWeight: 'bold', fontFamily: 'Prompt', width: '130px' }}>วันที่</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', fontFamily: 'Prompt', minWidth: 160 }}>วันที่</TableCell>
                 <TableCell align="right" sx={{ fontWeight: 'bold', fontFamily: 'Prompt' }}>เงินต้นต้นวัน</TableCell>
                 <TableCell align="right" sx={{ fontWeight: 'bold', fontFamily: 'Prompt' }}>กำไรประจำวัน</TableCell>
                 <TableCell align="right" sx={{ fontWeight: 'bold', fontFamily: 'Prompt' }}>ยอดสิ้นวัน</TableCell>
@@ -253,46 +253,54 @@ export const DailyGrowthTable: React.FC<DailyGrowthTableProps> = ({
                     }}
                   >
                     {/* วันที่ */}
-                    <TableCell sx={{ fontFamily: 'Prompt', fontWeight: (isCurrentPosition || isExpectedPosition || item.isRecovery) ? 'bold' : 'normal' }}>
-                      <Stack direction="row" alignItems="center" spacing={0.8} flexWrap="wrap">
-                        <span style={item.isRecovery ? { color: '#d97706', fontWeight: 600 } : undefined}>
+                    <TableCell
+                      sx={{
+                        fontFamily: 'Prompt',
+                        fontWeight: (isCurrentPosition || isExpectedPosition || item.isRecovery) ? 'bold' : 'normal',
+                        minWidth: 160,
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      <Stack direction="row" alignItems="center" spacing={1}>
+                        <Typography
+                          component="span"
+                          fontFamily="Prompt"
+                          fontWeight={isCurrentPosition || isExpectedPosition || item.isRecovery ? 700 : 500}
+                          sx={{
+                            color: item.isRecovery ? '#f59e0b' : 'inherit',
+                            fontSize: '0.85rem',
+                            lineHeight: 1,
+                          }}
+                        >
                           {item.displayDayLabel || `Day ${item.day}`}
-                        </span>
-                        {item.isRecovery && (
-                          <Chip
-                            label="ช่วงฟื้นทุน"
-                            size="small"
-                            color="warning"
-                            variant="filled"
-                            sx={{ height: 19, fontSize: '0.62rem', fontWeight: 'bold', fontFamily: 'Prompt' }}
-                          />
-                        )}
+                        </Typography>
+
                         {isBothSame ? (
                           <Chip
-                            icon={<MapPin size={12} />}
+                            icon={<MapPin size={11} />}
                             label="พอร์ตคุณ (ตรงตามแผน)"
                             size="small"
                             color="success"
-                            sx={{ height: 20, fontSize: '0.65rem', fontWeight: 'bold', fontFamily: 'Prompt' }}
+                            sx={{ height: 22, fontSize: '0.68rem', fontWeight: 'bold', fontFamily: 'Prompt' }}
                           />
                         ) : (
                           <>
                             {isCurrentPosition && (
                               <Chip
-                                icon={<MapPin size={12} />}
-                                label="พอร์ตคุณ (ปัจจุบัน)"
+                                icon={<MapPin size={11} />}
+                                label="พอร์ตคุณ"
                                 size="small"
                                 color={item.isRecovery ? "warning" : "success"}
-                                sx={{ height: 20, fontSize: '0.65rem', fontWeight: 'bold', fontFamily: 'Prompt' }}
+                                sx={{ height: 22, fontSize: '0.68rem', fontWeight: 'bold', fontFamily: 'Prompt' }}
                               />
                             )}
                             {isExpectedPosition && (
                               <Chip
-                                icon={<Target size={12} />}
+                                icon={<Target size={11} />}
                                 label="ตามแผนวันนี้"
                                 size="small"
                                 color="warning"
-                                sx={{ height: 20, fontSize: '0.65rem', fontWeight: 'bold', fontFamily: 'Prompt' }}
+                                sx={{ height: 22, fontSize: '0.68rem', fontWeight: 'bold', fontFamily: 'Prompt' }}
                               />
                             )}
                           </>
