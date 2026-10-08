@@ -1,23 +1,23 @@
 # Graph Report - MoneyLust  (2026-10-08)
 
 ## Corpus Check
-- 114 files · ~131,845 words
+- 114 files · ~132,030 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 4 file(s) not represented in the graph (top: .example 1, (none) 1, .bat 1)
 
 ## Summary
-- 607 nodes · 1432 edges · 31 communities (22 shown, 9 thin omitted)
+- 609 nodes · 1434 edges · 32 communities (23 shown, 9 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 11 edges (avg confidence: 0.94)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4026ab86`
+- Built from commit: `e51b215a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - SavedPlans/SavedPlans.tsx
-- react
+- @mui/material
 - stockPlannerSlice.ts
 - TradingNoteHeaderWidget.tsx
 - dependencies
@@ -39,11 +39,12 @@
 - Autonomous Workspace Terminal Execution (มาตรฐานการรันคำสั่ง Terminal อัตโนมัติภายใน Workspace)
 - rules/graphify.md
 - workflows/graphify.md
-- @mui/material
+- react
 - scripts
 - _webullCore.d.ts
 - WebullTokenModal.tsx
 - Autonomous Git Commit & Push Standard (การทำ Git Commit & Push อัตโนมัติหลังทำงานเสร็จ)
+- store/index.ts
 
 ## God Nodes (most connected - your core abstractions)
 1. `react` - 51 edges
@@ -75,19 +76,19 @@
 - 4-file cycle: `src/pages/StockPlanner.tsx -> src/pages/StockPlanner/StockPlanner.tsx -> src/routes/index.ts -> src/routes/AppRoutes.tsx -> src/pages/StockPlanner.tsx`
 - 5-file cycle: `src/pages/Market.tsx -> src/pages/Market/Market.tsx -> src/pages/Market/sections/MarketTable.tsx -> src/routes/index.ts -> src/routes/AppRoutes.tsx -> src/pages/Market.tsx`
 
-## Communities (31 total, 9 thin omitted)
+## Communities (32 total, 9 thin omitted)
 
 ### Community 0 - "SavedPlans/SavedPlans.tsx"
-Cohesion: 0.06
-Nodes (39): notistack, react-dom, react-redux, react-router-dom, @reduxjs/toolkit, @tanstack/react-query, App(), Layout() (+31 more)
+Cohesion: 0.09
+Nodes (24): InvestmentPlan(), loadSavedConfig(), DailyGrowthTable(), PortfolioBenchmarkCard(), SavedPlans(), EmptyPlansAlert(), PortfolioGrowthPlanCard(), PortfolioHeader() (+16 more)
 
-### Community 1 - "react"
-Cohesion: 0.12
-Nodes (35): lucide-react, react, CurrencyTextField(), CurrencyTextFieldProps, formatNumberWithCommas(), GlassCard(), GlassCardProps, AverageCostChart() (+27 more)
+### Community 1 - "@mui/material"
+Cohesion: 0.11
+Nodes (39): lucide-react, @mui/material, CurrencyTextField(), CurrencyTextFieldProps, formatNumberWithCommas(), GlassCard(), GlassCardProps, AverageCostChart() (+31 more)
 
 ### Community 2 - "stockPlannerSlice.ts"
-Cohesion: 0.09
-Nodes (26): DailyGrowthTableProps, GrowthPlanFormProps, PortfolioBenchmarkCardProps, DAILY_RETURN_PRESETS, DailyReturnPreset, GrowthPlanFormData, PortfolioGrowthPlanCard(), PortfolioGrowthPlanCardProps (+18 more)
+Cohesion: 0.08
+Nodes (29): DailyGrowthTableProps, GrowthPlanFormProps, PortfolioBenchmarkCardProps, DAILY_RETURN_PRESETS, DailyReturnPreset, GrowthPlanFormData, PortfolioGrowthPlanCardProps, CurrencyExchangeField() (+21 more)
 
 ### Community 3 - "TradingNoteHeaderWidget.tsx"
 Cohesion: 0.14
@@ -102,8 +103,8 @@ Cohesion: 0.06
 Nodes (34): name, private, type, version, async-mutex, axios, @emotion/react, @emotion/styled (+26 more)
 
 ### Community 6 - "MarketTable.tsx"
-Cohesion: 0.12
-Nodes (27): Market(), MarketHeader(), MarketHeaderProps, MarketSparkline(), MarketSparklineProps, formatVolume(), MarketTable(), MarketTableProps (+19 more)
+Cohesion: 0.10
+Nodes (27): react-router-dom, App(), Layout(), LayoutProps, Market(), MarketHeader(), MarketHeaderProps, MarketSparkline() (+19 more)
 
 ### Community 7 - "React Page & Code Architecture Standards"
 Cohesion: 0.12
@@ -114,16 +115,16 @@ Cohesion: 0.08
 Nodes (23): compilerOptions, allowImportingTsExtensions, baseUrl, composite, isolatedModules, jsx, lib, module (+15 more)
 
 ### Community 9 - "DataBackupModal.tsx"
-Cohesion: 0.19
-Nodes (20): dayjs, DataBackupModal(), GistSyncStartupModal(), BACKUP_KEYS, copyBackupToClipboard(), downloadBackupJson(), getExportPayload(), importBackupFromJson() (+12 more)
+Cohesion: 0.21
+Nodes (19): dayjs, DataBackupModal(), GistSyncStartupModal(), BACKUP_KEYS, copyBackupToClipboard(), downloadBackupJson(), getExportPayload(), importBackupFromJson() (+11 more)
 
 ### Community 10 - "devDependencies"
 Cohesion: 0.15
 Nodes (13): devDependencies, eslint, @eslint/js, eslint-plugin-react-hooks, eslint-plugin-react-refresh, globals, @types/node, @types/react (+5 more)
 
 ### Community 11 - "MoneyLust Project Guidelines & Standards"
-Cohesion: 0.13
-Nodes (14): 10. Thai Language Standard for Planning Artifacts (การเขียน Implementation Plan เป็นภาษาไทย), 11. Centralized Routing & Route Comment Standard (การจัดการโฟลเดอร์ Routes และการเขียน Comment ระบุ Route Path ด้านบนสุดของไฟล์ UI), 12. Autonomous Workspace Terminal Execution (สิทธิ์การรัน Terminal อัตโนมัติภายใน Workspace), 13. Codebase Knowledge Graph & Graphify Maintenance (การอัปเดต Knowledge Graph ทุกครั้งหลังแก้โค้ด), 14. Autonomous Git Commit & Push Standard (การทำ Auto Git Commit & Push ทุกครั้งหลังทำงานเสร็จ), 1. Check Before Create (ตรวจสอบก่อนสร้างใหม่เสมอ), 2. File Length Limit (จำกัดความยาวไฟล์ไม่เกิน 500-600 บรรทัด), 4. Base64 Handling (ห้ามใช้ btoa / atob โดยเด็ดขาด) (+6 more)
+Cohesion: 0.12
+Nodes (15): 10. Thai Language Standard for Planning Artifacts (การเขียน Implementation Plan เป็นภาษาไทย), 11. Centralized Routing & Route Comment Standard (การจัดการโฟลเดอร์ Routes และการเขียน Comment ระบุ Route Path ด้านบนสุดของไฟล์ UI), 12. Autonomous Workspace Terminal Execution (สิทธิ์การรัน Terminal อัตโนมัติภายใน Workspace), 13. Codebase Knowledge Graph & Graphify Maintenance (การอัปเดต Knowledge Graph ทุกครั้งหลังแก้โค้ด), 14. Autonomous Git Commit & Push Standard (การทำ Auto Git Commit & Push ทุกครั้งหลังทำงานเสร็จ), 15. Semantic Versioning Before Push Standard (การปรับเลขเวอร์ชันของแอปก่อน Push ทุกครั้ง), 1. Check Before Create (ตรวจสอบก่อนสร้างใหม่เสมอ), 2. File Length Limit (จำกัดความยาวไฟล์ไม่เกิน 500-600 บรรทัด) (+7 more)
 
 ### Community 12 - "compilerOptions"
 Cohesion: 0.18
@@ -149,9 +150,9 @@ Nodes (6): 1. ที่มาและบริบท (Context & Origin), 2. เ
 Cohesion: 0.33
 Nodes (5): 1. บริบทและสิทธิ์ที่ได้รับอนุญาต (Context & Authorization), 2. คำสั่งที่ได้รับอนุญาตให้รันอัตโนมัติ (Pre-Authorized Command Patterns), 3. กฎเหล็กในการรันคำสั่ง (Mandatory Rules), 4. รายการตรวจสอบก่อนรันคำสั่ง (Checklist), Autonomous Workspace Terminal Execution (มาตรฐานการรันคำสั่ง Terminal อัตโนมัติภายใน Workspace)
 
-### Community 24 - "@mui/material"
-Cohesion: 0.09
-Nodes (34): 3. Naming Conventions (มาตรฐานการตั้งชื่อ), 5. มาตรฐานการตั้งชื่อ (Naming Conventions), @mui/material, InfoTooltipLabel(), InfoTooltipLabelProps, CompanyInsightsCard(), CompanyInsightsCardProps, CurrencyExchangeField() (+26 more)
+### Community 24 - "react"
+Cohesion: 0.10
+Nodes (34): 3. Naming Conventions (มาตรฐานการตั้งชื่อ), 5. มาตรฐานการตั้งชื่อ (Naming Conventions), react, InfoTooltipLabel(), InfoTooltipLabelProps, CompanyInsightsCard(), CompanyInsightsCardProps, EmptyPlannerAlert() (+26 more)
 
 ### Community 25 - "scripts"
 Cohesion: 0.40
@@ -162,28 +163,32 @@ Cohesion: 0.45
 Nodes (8): WebullTokenBadge(), WebullTokenModal(), WebullTokenModalProps, createWebullToken(), fetchWebullTokenStatus(), refreshWebullToken(), verifyWebullToken(), WebullTokenInfo
 
 ### Community 30 - "Autonomous Git Commit & Push Standard (การทำ Git Commit & Push อัตโนมัติหลังทำงานเสร็จ)"
-Cohesion: 0.29
-Nodes (6): 1. ที่มาและบริบท (Context & Origin), 2. เหตุผลและความสำคัญ (Rationale), 3. ระเบียบปฏิบัติมาตรฐาน (Standard Procedure), 4. รายการตรวจสอบ (Checklist), Autonomous Git Commit & Push Standard (การทำ Git Commit & Push อัตโนมัติหลังทำงานเสร็จ), ลำดับขั้นตอนการทำงาน (Workflow Sequence):
+Cohesion: 0.25
+Nodes (7): 1. ที่มาและบริบท (Context & Origin), 2. เหตุผลและความสำคัญ (Rationale), 3. ระเบียบปฏิบัติมาตรฐาน (Standard Procedure), 4. รายการตรวจสอบ (Checklist), Autonomous Git Commit & Push Standard (การทำ Git Commit & Push อัตโนมัติหลังทำงานเสร็จ), ลำดับขั้นตอนการทำงาน (Workflow Sequence):, โครงสร้างเลขเวอร์ชัน 3 ตำแหน่ง (MAJOR.MINOR.PATCH):
+
+### Community 31 - "store/index.ts"
+Cohesion: 0.20
+Nodes (9): notistack, react-dom, react-redux, @reduxjs/toolkit, @tanstack/react-query, queryClient, AppDispatch, RootState (+1 more)
 
 ## Knowledge Gaps
-- **207 isolated node(s):** `WebullCredentials`, `WebullRequestOptions`, `RFC-3986`, `WebullStockQuote`, `WebullQuoteApiResponse` (+202 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 246 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **209 isolated node(s):** `WebullCredentials`, `WebullRequestOptions`, `RFC-3986`, `WebullStockQuote`, `WebullQuoteApiResponse` (+204 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 248 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `react` connect `react` to `SavedPlans/SavedPlans.tsx`, `stockPlannerSlice.ts`, `TradingNoteHeaderWidget.tsx`, `package.json`, `MarketTable.tsx`, `DataBackupModal.tsx`, `@mui/material`, `WebullTokenModal.tsx`?**
+- **Why does `react` connect `react` to `SavedPlans/SavedPlans.tsx`, `@mui/material`, `stockPlannerSlice.ts`, `TradingNoteHeaderWidget.tsx`, `package.json`, `MarketTable.tsx`, `DataBackupModal.tsx`, `WebullTokenModal.tsx`, `store/index.ts`?**
   _High betweenness centrality (0.150) - this node is a cross-community bridge._
-- **Why does `@mui/material` connect `@mui/material` to `SavedPlans/SavedPlans.tsx`, `react`, `stockPlannerSlice.ts`, `TradingNoteHeaderWidget.tsx`, `package.json`, `MarketTable.tsx`, `DataBackupModal.tsx`, `WebullTokenModal.tsx`?**
-  _High betweenness centrality (0.142) - this node is a cross-community bridge._
+- **Why does `@mui/material` connect `@mui/material` to `SavedPlans/SavedPlans.tsx`, `stockPlannerSlice.ts`, `TradingNoteHeaderWidget.tsx`, `package.json`, `MarketTable.tsx`, `DataBackupModal.tsx`, `react`, `WebullTokenModal.tsx`?**
+  _High betweenness centrality (0.141) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `dependencies` to `package.json`?**
   _High betweenness centrality (0.092) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `CalculationResult` (e.g. with `3. Naming Conventions (มาตรฐานการตั้งชื่อ)` and `5. มาตรฐานการตั้งชื่อ (Naming Conventions)`) actually correct?**
   _`CalculationResult` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `WebullCredentials`, `WebullRequestOptions`, `RFC-3986` to the rest of the system?**
-  _207 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _209 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `SavedPlans/SavedPlans.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.061815336463223784 - nodes in this community are weakly interconnected._
-- **Should `react` be split into smaller, more focused modules?**
-  _Cohesion score 0.11949685534591195 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09158186864014801 - nodes in this community are weakly interconnected._
+- **Should `@mui/material` be split into smaller, more focused modules?**
+  _Cohesion score 0.10734463276836158 - nodes in this community are weakly interconnected._

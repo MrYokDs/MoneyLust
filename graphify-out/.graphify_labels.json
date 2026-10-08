@@ -1,6 +1,6 @@
 {
   "0": "SavedPlans/SavedPlans.tsx",
-  "1": "react",
+  "1": "@mui/material",
   "2": "stockPlannerSlice.ts",
   "3": "TradingNoteHeaderWidget.tsx",
   "4": "dependencies",
@@ -23,11 +23,12 @@
   "21": "Autonomous Workspace Terminal Execution (มาตรฐานการรันคำสั่ง Terminal อัตโนมัติภายใน Workspace)",
   "22": "rules/graphify.md",
   "23": "workflows/graphify.md",
-  "24": "@mui/material",
+  "24": "react",
   "25": "scripts",
   "26": "stock-search.js",
   "27": "ref_child_process",
   "28": "_webullCore.d.ts",
   "29": "WebullTokenModal.tsx",
-  "30": "Autonomous Git Commit & Push Standard (การทำ Git Commit & Push อัตโนมัติหลังทำงานเสร็จ)"
+  "30": "Autonomous Git Commit & Push Standard (การทำ Git Commit & Push อัตโนมัติหลังทำงานเสร็จ)",
+  "31": "store/index.ts"
 }

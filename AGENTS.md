@@ -90,3 +90,10 @@ Whenever the user uses phrases like **"คราวหลัง..."** หรื�
 - **Pre-authorized Execution**: ได้รับอนุญาตจากผู้ใช้ล่วงหน้าให้รันคำสั่ง `cmd /c "git add ."`, `cmd /c "git commit -m \"...\""` และ `cmd /c "git push"` ได้อัตโนมัติทันทีโดยไม่ต้องขออนุญาต
 - ดูมาตรฐานและรายละเอียดเพิ่มเติมได้ที่:
   - [autonomous-git-commit SKILL.md](file:///f:/All_Works/Programming/React_Programming/MoneyLust/.agents/skills/autonomous-git-commit/SKILL.md)
+
+## 15. Semantic Versioning Before Push Standard (การปรับเลขเวอร์ชันของแอปก่อน Push ทุกครั้ง)
+- **ปรับเลขเวอร์ชันใน `package.json` ก่อน Push เสมอ**: ทุกครั้งก่อนทำ Git Commit & Push จะต้องอัปเดตเลขเวอร์ชันใน `package.json` ให้สอดคล้องกับลักษณะของงานตามระบบ 3 ตำแหน่ง (MAJOR.MINOR.PATCH):
+  - **ตำแหน่งที่ 1 (MAJOR)**: อัปเดตใหญ่ (Major Update / สถาปัตยกรรมระบบเปลี่ยนใหญ่ / Breaking Changes)
+  - **ตำแหน่งที่ 2 (MINOR)**: เพิ่มฟีเจอร์ใหม่ หรือการต่อเติมฟังก์ชันการใช้งาน (Minor Feature / New Capabilities)
+  - **ตำแหน่งที่ 3 (PATCH)**: แก้ไขบั๊ก, ปรับแต่ง UI เล็กน้อย, ปรับคำ หรือ Refactor ย่อย (Bug Fix / UI Polish / Maintenance)
+- **Pre-authorized Execution**: ได้รับอนุญาตจากผู้ใช้ล่วงหน้าให้อัปเดตเลขเวอร์ชันตามความเหมาะสมได้ทันทีโดยไม่ต้องขออนุญาต
