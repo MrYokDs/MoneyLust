@@ -20,6 +20,12 @@ export interface DailyGrowthItem {
   cumulativeReturnPercent: number;
   /** % ความคืบหน้าสู่เป้าหมายปลายทาง */
   progressPercent: number;
+  /** บ่งชี้ว่าเป็นช่วงเวลาฟื้นทุน (Recovery Phase) หรือไม่ (กรณีพอร์ตขาดทุนต่ำกว่าทุนเริ่มต้น) */
+  isRecovery?: boolean;
+  /** ลำดับวันที่ในช่วงฟื้นทุน (1, 2, ... N) */
+  recoveryDay?: number;
+  /** ข้อความแสดงผลวันที่ เช่น "ฟื้นทุน Day 1" หรือ "Day 1" */
+  displayDayLabel?: string;
 }
 
 /**
@@ -76,6 +82,14 @@ export interface PortfolioBenchmark {
   progressBehindPercent: number;
   /** ข้อความสรุปสถานะการเปรียบเทียบเป็นภาษาไทย */
   summaryText: string;
+  /** อยู่ในช่วงฟื้นทุนกลับสู่ทุนเดิมหรือไม่ (กรณีมูลค่าพอร์ตปัจจุบันน้อยกว่าเงินต้นเริ่มต้น) */
+  isInRecovery?: boolean;
+  /** จำนวนวันที่ต้องใช้ในช่วงฟื้นตัวกลับสู่ทุนเดิม */
+  recoveryDays?: number;
+  /** จำนวนวันตามแผนปกติเดิม (ไม่รวมวันฟื้นทุน) */
+  normalPlanDays?: number;
+  /** จำนวนวันรวมทั้งหมดของแผน (แผนปกติ + วันฟื้นทุน) */
+  totalPlanDays?: number;
 }
 
 /**

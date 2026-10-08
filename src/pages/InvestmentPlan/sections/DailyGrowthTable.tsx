@@ -119,9 +119,20 @@ export const DailyGrowthTable: React.FC<DailyGrowthTableProps> = ({
               <Typography variant="h6" fontWeight="bold" fontFamily="Prompt" sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}>
                 ตารางแผนการเติบโตรายวัน (Daily Compound Matrix)
               </Typography>
-              <Typography variant="caption" color="text.secondary" fontFamily="Prompt">
-                รวมทั้งหมด {items.length} วัน เพื่อบรรลุเป้าหมาย
-              </Typography>
+              <Stack direction="row" alignItems="center" spacing={1} flexWrap="wrap">
+                <Typography variant="caption" color="text.secondary" fontFamily="Prompt">
+                  รวมทั้งหมด {items.length} วัน เพื่อบรรลุเป้าหมาย
+                </Typography>
+                {items.some((it) => it.isRecovery) && (
+                  <Chip
+                    size="small"
+                    label={`ช่วงฟื้นทุน ${items.filter((it) => it.isRecovery).length} วัน + แผนเดิม ${items.filter((it) => !it.isRecovery).length} วัน`}
+                    color="warning"
+                    variant="outlined"
+                    sx={{ height: 20, fontSize: '0.65rem', fontWeight: 600, fontFamily: 'Prompt' }}
+                  />
+                )}
+              </Stack>
             </Box>
           </Stack>
 
@@ -130,12 +141,12 @@ export const DailyGrowthTable: React.FC<DailyGrowthTableProps> = ({
               <Button
                 size="small"
                 variant="outlined"
-                color="success"
+                color={benchmark?.isInRecovery ? "warning" : "success"}
                 startIcon={<MapPin size={14} />}
                 onClick={handleJumpToMatchedDay}
                 sx={{ fontFamily: 'Prompt', fontSize: '0.78rem', borderRadius: 2 }}
               >
-                พอร์ตคุณ (Day {matchedDay})
+                {benchmark?.isInRecovery ? `พอร์ตคุณ (ช่วงฟื้นทุน Day ${matchedDay})` : `พอร์ตคุณ (Day ${matchedDay})`}
               </Button>
             )}
 
@@ -189,7 +200,21 @@ export const DailyGrowthTable: React.FC<DailyGrowthTableProps> = ({
                 let rowBgColor: any = undefined;
                 let rowBorderLeft: any = undefined;
 
-                if (isBothSame) {
+                if (item.isRecovery) {
+                  if (isCurrentPosition) {
+                    rowBgColor = (theme: any) =>
+                      theme.palette.mode === 'light'
+                        ? 'rgba(245, 158, 11, 0.22)'
+                        : 'rgba(245, 158, 11, 0.30)';
+                    rowBorderLeft = '4px solid #f59e0b';
+                  } else {
+                    rowBgColor = (theme: any) =>
+                      theme.palette.mode === 'light'
+                        ? 'rgba(245, 158, 11, 0.08)'
+                        : 'rgba(245, 158, 11, 0.14)';
+                    rowBorderLeft = '3px solid rgba(245, 158, 11, 0.4)';
+                  }
+                } else if (isBothSame) {
                   rowBgColor = (theme: any) =>
                     theme.palette.mode === 'light'
                       ? 'rgba(16, 185, 129, 0.18)'
@@ -228,9 +253,20 @@ export const DailyGrowthTable: React.FC<DailyGrowthTableProps> = ({
                     }}
                   >
                     {/* วันที่ */}
-                    <TableCell sx={{ fontFamily: 'Prompt', fontWeight: (isCurrentPosition || isExpectedPosition) ? 'bold' : 'normal' }}>
+                    <TableCell sx={{ fontFamily: 'Prompt', fontWeight: (isCurrentPosition || isExpectedPosition || item.isRecovery) ? 'bold' : 'normal' }}>
                       <Stack direction="row" alignItems="center" spacing={0.8} flexWrap="wrap">
-                        <span>Day {item.day}</span>
+                        <span style={item.isRecovery ? { color: '#d97706', fontWeight: 600 } : undefined}>
+                          {item.displayDayLabel || `Day ${item.day}`}
+                        </span>
+                        {item.isRecovery && (
+                          <Chip
+                            label="ช่วงฟื้นทุน"
+                            size="small"
+                            color="warning"
+                            variant="filled"
+                            sx={{ height: 19, fontSize: '0.62rem', fontWeight: 'bold', fontFamily: 'Prompt' }}
+                          />
+                        )}
                         {isBothSame ? (
                           <Chip
                             icon={<MapPin size={12} />}
@@ -244,9 +280,9 @@ export const DailyGrowthTable: React.FC<DailyGrowthTableProps> = ({
                             {isCurrentPosition && (
                               <Chip
                                 icon={<MapPin size={12} />}
-                                label="พอร์ตคุณ"
+                                label="พอร์ตคุณ (ปัจจุบัน)"
                                 size="small"
-                                color="success"
+                                color={item.isRecovery ? "warning" : "success"}
                                 sx={{ height: 20, fontSize: '0.65rem', fontWeight: 'bold', fontFamily: 'Prompt' }}
                               />
                             )}

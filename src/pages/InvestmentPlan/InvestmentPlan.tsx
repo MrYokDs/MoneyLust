@@ -285,16 +285,27 @@ export const InvestmentPlan: React.FC = () => {
   const dailyReturnPercent = parseFloat(formData.dailyReturnPercent) || 0;
   const targetAmount = parseFloat(formData.targetAmount) || 0;
 
-  // คำนวณตารางรายวันแบบทบต้น
+  // คำนวณตารางรายวันแบบทบต้น (รองรับช่วงฟื้นทุนอัตโนมัติหากเชื่อมโยงพอร์ตและพอร์ตติดลบต่ำกว่าทุน)
   const dailyItems = useMemo(() => {
-    return calculateDailyGrowthPlan({
-      initialCapital,
-      dailyReturnPercent,
-      targetAmount,
-      portfolioId: formData.portfolioId,
-      currency: formData.currency,
-    });
-  }, [initialCapital, dailyReturnPercent, targetAmount, formData.portfolioId, formData.currency]);
+    return calculateDailyGrowthPlan(
+      {
+        initialCapital,
+        dailyReturnPercent,
+        targetAmount,
+        portfolioId: formData.portfolioId,
+        currency: formData.currency,
+      },
+      1000,
+      formData.portfolioId !== 'none' ? portfolioCurrentValue : undefined
+    );
+  }, [
+    initialCapital,
+    dailyReturnPercent,
+    targetAmount,
+    formData.portfolioId,
+    formData.currency,
+    portfolioCurrentValue,
+  ]);
 
   // ค้นหาวันที่เริ่มเทรดวันแรกของพอร์ตที่เลือก (เพื่อเริ่มนับจำนวนวันตามแผน)
   const firstTradeDate = useMemo(() => {

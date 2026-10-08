@@ -12,9 +12,20 @@ import {
  * @param maxDays - จำนวนวันสูงสุดที่อนุญาตให้คำนวณ (ค่าเริ่มต้น 1000 วัน เพื่อป้องกัน infinite loop)
  * @returns รายการแจกแจงผลตอบแทนรายวัน (DailyGrowthItem[])
  */
+/**
+ * คำนวณตารางจำลองการเติบโตแบบดอกเบี้ยทบต้นรายวัน (Daily Compound Growth)
+ * จากเงินต้น อัตราผลตอบแทนต่อวัน และมูลค่าเป้าหมาย
+ * รองรับการคำนวณช่วงเวลาฟื้นทุน (Recovery Phase) อัตโนมัติในกรณีที่มูลค่าพอร์ตปัจจุบันติดลบต่ำกว่าเงินต้นเริ่มต้น
+ * 
+ * @param config - การตั้งค่าแผนการลงทุน (เงินต้น, % กำไรต่อวัน, เป้าหมายพอร์ต)
+ * @param maxDays - จำนวนวันสูงสุดที่อนุญาตให้คำนวณ (ค่าเริ่มต้น 1000 วัน เพื่อป้องกัน infinite loop)
+ * @param currentPortfolioValue - มูลค่าพอร์ตการลงทุนจริงปัจจุบัน (ถ้ามีและน้อยกว่า initialCapital จะคำนวณช่วงฟื้นทุนเพิ่มเข้ามาในตาราง)
+ * @returns รายการแจกแจงผลตอบแทนรายวัน (DailyGrowthItem[])
+ */
 export const calculateDailyGrowthPlan = (
   config: GrowthPlanConfig,
-  maxDays: number = 1000
+  maxDays: number = 1000,
+  currentPortfolioValue?: number
 ): DailyGrowthItem[] => {
   const { initialCapital, dailyReturnPercent, targetAmount } = config;
 
@@ -23,10 +34,53 @@ export const calculateDailyGrowthPlan = (
   }
 
   const items: DailyGrowthItem[] = [];
-  let currentBalance = initialCapital;
   const targetGrowthRange = targetAmount - initialCapital;
 
-  for (let day = 1; day <= maxDays; day++) {
+  // 1. ตรวจสอบว่าพอร์ตอยู่ในช่วงขาดทุนต่ำกว่าทุนเริ่มต้นหรือไม่ (Recovery Phase)
+  const isLoss =
+    currentPortfolioValue !== undefined &&
+    currentPortfolioValue > 0 &&
+    currentPortfolioValue < initialCapital;
+
+  let overallDayIndex = 1;
+
+  if (isLoss) {
+    let recoveryBalance = currentPortfolioValue;
+    let recDay = 1;
+
+    // วนลูปคำนวณช่วงฟื้นทุนจนกระทั่งยอดเงินกลับมาแตะ initialCapital
+    while (recoveryBalance < initialCapital && overallDayIndex <= maxDays) {
+      const startingBalance = recoveryBalance;
+      const dailyProfit = startingBalance * (dailyReturnPercent / 100);
+      const endingBalance = startingBalance + dailyProfit;
+      const cumulativeProfit = endingBalance - currentPortfolioValue;
+      const cumulativeReturnPercent = (cumulativeProfit / currentPortfolioValue) * 100;
+
+      items.push({
+        day: overallDayIndex,
+        startingBalance,
+        dailyProfit,
+        dailyReturnPercent,
+        endingBalance,
+        cumulativeProfit,
+        cumulativeReturnPercent,
+        progressPercent: 0,
+        isRecovery: true,
+        recoveryDay: recDay,
+        displayDayLabel: `ฟื้นทุน Day ${recDay}`,
+      });
+
+      recDay++;
+      overallDayIndex++;
+      recoveryBalance = endingBalance;
+    }
+  }
+
+  // 2. คำนวณช่วงเติบโตตามแผนปกติ (Growth Phase) จาก initialCapital ไปจนถึง targetAmount
+  let currentBalance = initialCapital;
+  let normalDay = 1;
+
+  while (overallDayIndex <= maxDays) {
     const startingBalance = currentBalance;
     const dailyProfit = startingBalance * (dailyReturnPercent / 100);
     const endingBalance = startingBalance + dailyProfit;
@@ -38,7 +92,7 @@ export const calculateDailyGrowthPlan = (
     );
 
     items.push({
-      day,
+      day: overallDayIndex,
       startingBalance,
       dailyProfit,
       dailyReturnPercent,
@@ -46,11 +100,14 @@ export const calculateDailyGrowthPlan = (
       cumulativeProfit,
       cumulativeReturnPercent,
       progressPercent,
+      isRecovery: false,
+      displayDayLabel: `Day ${normalDay}`,
     });
 
+    normalDay++;
+    overallDayIndex++;
     currentBalance = endingBalance;
 
-    // หากถึงหรือเกินเป้าหมายแล้ว ให้หยุดการคำนวณ
     if (endingBalance >= targetAmount) {
       break;
     }
@@ -206,14 +263,26 @@ export const findPortfolioBenchmarkPosition = (
     };
   }
 
-  // 4. กรณีมูลค่าพอร์ตยังน้อยกว่าหรือเท่ากับเงินต้นเริ่มต้น (ยังไม่เริ่มมีกำไร)
+  // 4. กรณีมูลค่าพอร์ตยังน้อยกว่าหรือเท่ากับเงินต้นเริ่มต้น (ยังไม่เริ่มมีกำไร หรืออยู่ในช่วงฟื้นทุน)
   if (currentPortfolioValue <= initialCapital) {
+    const recoveryItems = items.filter((item) => item.isRecovery);
+    const recoveryCount = recoveryItems.length;
+    const normalCount = items.length - recoveryCount;
+    const isInRecovery = recoveryCount > 0;
+
     const matchedDay = 1;
-    const daysBehind = Math.max(0, expectedDay - matchedDay);
+    const daysBehind = recoveryCount + Math.max(0, expectedDay - matchedDay);
     const progressBehindPercent = Number((expectedProgressPercent - 0).toFixed(2));
+    const differenceAmount = currentPortfolioValue - initialCapital;
 
     let summaryText = '';
-    if (daysBehind > 0) {
+    if (isInRecovery) {
+      const diffFormatted = Math.abs(differenceAmount).toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      });
+      summaryText = `ช่วงฟื้นตัวกลับสู่ทุนเดิม (ฟื้นทุน Day 1) ขาดทุน ฿${diffFormatted} ต้องใช้เวลาฟื้นทุนอีก ${recoveryCount} วัน (เวลารวมสู่เป้าหมายขยายเป็น ${items.length} วัน)`;
+    } else if (daysBehind > 0) {
       summaryText = `ช้ากว่าแผน ${daysBehind} วัน (ความคืบหน้าช้าไป ${progressBehindPercent.toFixed(1)}%)`;
     } else {
       summaryText = `ตรงตามวัน (Day 1) แต่ความคืบหน้าช้าไป ${progressBehindPercent.toFixed(1)}%`;
@@ -221,9 +290,9 @@ export const findPortfolioBenchmarkPosition = (
 
     return {
       currentPortfolioValue,
-      matchedDay: 0,
-      planBalanceAtMatchedDay: initialCapital,
-      differenceAmount: currentPortfolioValue - initialCapital,
+      matchedDay: 1,
+      planBalanceAtMatchedDay: items[0] ? items[0].endingBalance : initialCapital,
+      differenceAmount,
       progressPercent: 0,
       remainingDays: items.length,
       status: 'behind',
@@ -235,6 +304,10 @@ export const findPortfolioBenchmarkPosition = (
       daysBehind,
       progressBehindPercent,
       summaryText,
+      isInRecovery,
+      recoveryDays: recoveryCount,
+      normalPlanDays: normalCount,
+      totalPlanDays: items.length,
     };
   }
 
@@ -304,5 +377,9 @@ export const findPortfolioBenchmarkPosition = (
     daysBehind,
     progressBehindPercent,
     summaryText,
+    isInRecovery: false,
+    recoveryDays: 0,
+    normalPlanDays: items.length,
+    totalPlanDays: items.length,
   };
 };

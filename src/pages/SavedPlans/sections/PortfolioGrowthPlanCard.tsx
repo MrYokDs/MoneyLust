@@ -126,8 +126,8 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
     );
   }
 
-  // คำนวณตารางรายวันและ Benchmark ของแผนที่เชื่อมโยง
-  const dailyItems = calculateDailyGrowthPlan(growthPlan);
+  // คำนวณตารางรายวันและ Benchmark ของแผนที่เชื่อมโยง (รองรับช่วงฟื้นทุนหากมูลค่าพอร์ตจริงต่ำกว่าทุนเริ่มต้น)
+  const dailyItems = calculateDailyGrowthPlan(growthPlan, 1000, currentPortfolioValue);
   const benchmark = findPortfolioBenchmarkPosition(
     currentPortfolioValue,
     growthPlan.initialCapital,
@@ -179,7 +179,7 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
         return (
           <Chip
             icon={<AlertTriangle size={13} />}
-            label="ช้ากว่าแผน"
+            label={bench.isInRecovery ? `ช่วงฟื้นทุน (+${bench.recoveryDays} วัน)` : "ช้ากว่าแผน"}
             color="warning"
             size="small"
             variant="outlined"
@@ -309,8 +309,20 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
                 <Typography variant="caption" color="text.secondary" fontFamily="Prompt">
                   ตำแหน่งปัจจุบัน
                 </Typography>
-                <Typography variant="h6" fontWeight="900" color="info.main" fontFamily="Prompt">
-                  Day {benchmark.matchedDay} <span style={{ fontSize: '0.8rem', color: '#888' }}>/ {totalDays} วัน</span>
+                <Typography variant="h6" fontWeight="900" color={benchmark.isInRecovery ? "warning.main" : "info.main"} fontFamily="Prompt">
+                  {benchmark.isInRecovery ? (
+                    <>
+                      <span>ฟื้นทุน Day 1</span>{' '}
+                      <span style={{ fontSize: '0.75rem', color: '#888' }}>
+                        (ขยายเป็น {totalDays} วัน)
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      Day {benchmark.matchedDay}{' '}
+                      <span style={{ fontSize: '0.8rem', color: '#888' }}>/ {totalDays} วัน</span>
+                    </>
+                  )}
                 </Typography>
                 <Typography
                   variant="caption"
@@ -319,15 +331,17 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
                     mt: 0.5,
                     fontFamily: 'Prompt',
                     fontSize: '0.72rem',
-                    color: benchmark.daysBehind > 0 ? 'warning.main' : benchmark.daysBehind < 0 ? 'success.main' : 'text.secondary',
-                    fontWeight: benchmark.daysBehind !== 0 ? 'bold' : 'normal',
+                    color: benchmark.isInRecovery ? 'warning.main' : (benchmark.daysBehind > 0 ? 'warning.main' : benchmark.daysBehind < 0 ? 'success.main' : 'text.secondary'),
+                    fontWeight: benchmark.isInRecovery || benchmark.daysBehind !== 0 ? 'bold' : 'normal',
                   }}
                 >
-                  {benchmark.daysBehind > 0
+                  {benchmark.isInRecovery
+                    ? `ขาดทุนต่ำกว่าทุน (ต้องฟื้นตัวอีก ${benchmark.recoveryDays} วัน)`
+                    : (benchmark.daysBehind > 0
                     ? `ควรอยู่ Day ${benchmark.expectedDay} (ช้าไป ${benchmark.daysBehind} วัน)`
                     : benchmark.daysBehind < 0
                     ? `ควรอยู่ Day ${benchmark.expectedDay} (เร็วกว่า ${Math.abs(benchmark.daysBehind)} วัน)`
-                    : `ตรงตามวันของแผน (Day ${benchmark.expectedDay})`}
+                    : `ตรงตามวันของแผน (Day ${benchmark.expectedDay})`)}
                 </Typography>
               </Grid>
 

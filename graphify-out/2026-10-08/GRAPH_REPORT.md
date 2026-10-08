@@ -1,7 +1,7 @@
-# Graph Report - MoneyLust  (2026-10-08)
+# Graph Report - MoneyLust  (2026-10-06)
 
 ## Corpus Check
-- 113 files · ~131,456 words
+- 113 files · ~130,825 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 4 file(s) not represented in the graph (top: .example 1, (none) 1, .bat 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `3d70d2a9`
+- Built from commit: `12b7fbe9`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

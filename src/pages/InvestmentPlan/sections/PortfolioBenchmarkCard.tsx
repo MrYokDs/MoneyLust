@@ -114,7 +114,7 @@ export const PortfolioBenchmarkCard: React.FC<PortfolioBenchmarkCardProps> = ({
         return (
           <Chip
             icon={<AlertTriangle size={14} />}
-            label="ช้ากว่าแผน"
+            label={bench.isInRecovery ? `ช่วงฟื้นทุน (+${bench.recoveryDays} วัน)` : "ช้ากว่าแผน"}
             color="warning"
             variant="outlined"
             sx={{ fontWeight: 'bold', fontFamily: 'Prompt' }}
@@ -215,12 +215,21 @@ export const PortfolioBenchmarkCard: React.FC<PortfolioBenchmarkCardProps> = ({
                   ตำแหน่งปัจจุบันเทียบเท่ากับ
                 </Typography>
                 <Stack direction="row" alignItems="baseline" spacing={1}>
-                  <Typography variant="h5" fontWeight="900" color="info.main" fontFamily="Prompt">
-                    Day {benchmark.matchedDay}
+                  <Typography variant="h5" fontWeight="900" color={benchmark.isInRecovery ? "warning.main" : "info.main"} fontFamily="Prompt">
+                    {benchmark.isInRecovery ? (
+                      <>
+                        <span>ฟื้นทุน Day 1</span>{' '}
+                        <span style={{ fontSize: '0.85rem', color: '#888' }}>(ขยายเป็น {totalDays} วัน)</span>
+                      </>
+                    ) : (
+                      <>Day {benchmark.matchedDay}</>
+                    )}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary" fontFamily="Prompt">
-                    / {totalDays} วัน
-                  </Typography>
+                  {!benchmark.isInRecovery && (
+                    <Typography variant="body2" color="text.secondary" fontFamily="Prompt">
+                      / {totalDays} วัน
+                    </Typography>
+                  )}
                 </Stack>
                 <Typography
                   variant="caption"
@@ -229,15 +238,17 @@ export const PortfolioBenchmarkCard: React.FC<PortfolioBenchmarkCardProps> = ({
                     mt: 0.5,
                     fontFamily: 'Prompt',
                     fontSize: '0.75rem',
-                    color: benchmark.daysBehind > 0 ? 'warning.main' : benchmark.daysBehind < 0 ? 'success.main' : 'text.secondary',
-                    fontWeight: benchmark.daysBehind !== 0 ? 'bold' : 'normal',
+                    color: benchmark.isInRecovery ? 'warning.main' : (benchmark.daysBehind > 0 ? 'warning.main' : benchmark.daysBehind < 0 ? 'success.main' : 'text.secondary'),
+                    fontWeight: benchmark.isInRecovery || benchmark.daysBehind !== 0 ? 'bold' : 'normal',
                   }}
                 >
-                  {benchmark.daysBehind > 0
+                  {benchmark.isInRecovery
+                    ? `ขาดทุนต่ำกว่าทุน (ต้องใช้เวลาฟื้นตัว ${benchmark.recoveryDays} วัน)`
+                    : (benchmark.daysBehind > 0
                     ? `ควรอยู่ Day ${benchmark.expectedDay} (ช้ากว่าแผน ${benchmark.daysBehind} วัน)`
                     : benchmark.daysBehind < 0
                     ? `ควรอยู่ Day ${benchmark.expectedDay} (เร็วกว่าแผน ${Math.abs(benchmark.daysBehind)} วัน)`
-                    : `ตรงตามวันของแผน (Day ${benchmark.expectedDay})`}
+                    : `ตรงตามวันของแผน (Day ${benchmark.expectedDay})`)}
                 </Typography>
               </Grid>
 
