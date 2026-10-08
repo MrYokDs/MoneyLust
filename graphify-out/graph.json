@@ -1412,7 +1412,7 @@
       "file_type": "code",
       "norm_label": "getportfoliofirsttradedate()",
       "source_file": "src/utils/growthPlanMath.ts",
-      "source_location": "L131"
+      "source_location": "L123"
     },
     {
       "id": "src_utils_stockmath_calculateportfoliosummary",
@@ -1976,7 +1976,7 @@
       "file_type": "code",
       "norm_label": "calculatedailygrowthplan()",
       "source_file": "src/utils/growthPlanMath.ts",
-      "source_location": "L25"
+      "source_location": "L17"
     },
     {
       "id": "src_utils_growthplanmath_calculateelapsedtradingdays",
@@ -1988,7 +1988,7 @@
       "file_type": "code",
       "norm_label": "calculateelapsedtradingdays()",
       "source_file": "src/utils/growthPlanMath.ts",
-      "source_location": "L164"
+      "source_location": "L156"
     },
     {
       "id": "src_utils_growthplanmath_findportfoliobenchmarkposition",
@@ -2000,7 +2000,7 @@
       "file_type": "code",
       "norm_label": "findportfoliobenchmarkposition()",
       "source_file": "src/utils/growthPlanMath.ts",
-      "source_location": "L208"
+      "source_location": "L200"
     },
     {
       "id": "src_components_infotooltiplabel_infotooltiplabel",
@@ -9251,7 +9251,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/utils/growthPlanMath.ts",
-      "source_location": "L224",
+      "source_location": "L216",
       "weight": 1.0
     },
     {
@@ -22797,7 +22797,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/utils/growthPlanMath.ts",
-      "source_location": "L131",
+      "source_location": "L123",
       "weight": 1.0
     },
     {
@@ -22808,18 +22808,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/utils/growthPlanMath.ts",
-      "source_location": "L164",
-      "weight": 1.0
-    },
-    {
-      "source": "src_utils_growthplanmath",
-      "target": "src_utils_growthplanmath_findportfoliobenchmarkposition",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/utils/growthPlanMath.ts",
-      "source_location": "L208",
+      "source_location": "L156",
       "weight": 1.0
     },
     {
@@ -22830,7 +22819,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/utils/growthPlanMath.ts",
-      "source_location": "L25",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "src_utils_growthplanmath",
+      "target": "src_utils_growthplanmath_findportfoliobenchmarkposition",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/utils/growthPlanMath.ts",
+      "source_location": "L200",
       "weight": 1.0
     },
     {
@@ -23914,5 +23914,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "704b711afbdcef1260de16f343761c20e749855d"
+  "built_at_commit": "2ce16a7d8f2408faf4fb0886f4c59eac48a6a096"
 }
