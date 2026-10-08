@@ -84,9 +84,9 @@ Whenever the user uses phrases like **"คราวหลัง..."** หรื�
 - ดูมาตรฐานและรายละเอียดเพิ่มเติมได้ที่:
   - [graphify SKILL.md](file:///f:/All_Works/Programming/React_Programming/MoneyLust/.agents/skills/graphify/SKILL.md)
 
-## 14. Autonomous Git Commit Standard (การทำ Auto Git Commit ทุกครั้งหลังทำงานเสร็จ)
-- **Auto Commit หลังทำงานเสร็จ**: ทุกครั้งที่มีการแก้ไขโค้ดหรือทำงานใดๆ ให้ผู้ใช้เสร็จสิ้น และผ่านการทดสอบ Build (`cmd /c "yarn build"`) รวมถึงอัปเดต Knowledge Graph (`cmd /c "graphify update ."`) เรียบร้อยแล้ว ให้รันคำสั่งทำ Git Commit อัตโนมัติทันที
+## 14. Autonomous Git Commit & Push Standard (การทำ Auto Git Commit & Push ทุกครั้งหลังทำงานเสร็จ)
+- **Auto Commit & Push หลังทำงานเสร็จ**: ทุกครั้งที่มีการแก้ไขโค้ดหรือทำงานใดๆ ให้ผู้ใช้เสร็จสิ้น และผ่านการทดสอบ Build (`cmd /c "yarn build"`) รวมถึงอัปเดต Knowledge Graph (`cmd /c "graphify update ."`) เรียบร้อยแล้ว ให้รันคำสั่งทำ Git Commit และสั่ง Git Push ขึ้นรีโมทอัตโนมัติทันที
 - **Commit Message เป็นภาษาไทย**: ข้อความ Commit Message ต้องเขียนอธิบายสิ่งที่ทำในงานนั้นๆ เป็น **ภาษาไทย (Thai)** ให้กระชับ สื่อความหมาย และชัดเจน
-- **Pre-authorized Execution**: ได้รับอนุญาตจากผู้ใช้ล่วงหน้าให้รันคำสั่ง `cmd /c "git add ."` และ `cmd /c "git commit -m \"...\""` ได้อัตโนมัติทันทีโดยไม่ต้องขออนุญาต
+- **Pre-authorized Execution**: ได้รับอนุญาตจากผู้ใช้ล่วงหน้าให้รันคำสั่ง `cmd /c "git add ."`, `cmd /c "git commit -m \"...\""` และ `cmd /c "git push"` ได้อัตโนมัติทันทีโดยไม่ต้องขออนุญาต
 - ดูมาตรฐานและรายละเอียดเพิ่มเติมได้ที่:
   - [autonomous-git-commit SKILL.md](file:///f:/All_Works/Programming/React_Programming/MoneyLust/.agents/skills/autonomous-git-commit/SKILL.md)

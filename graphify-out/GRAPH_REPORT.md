@@ -1,7 +1,7 @@
 # Graph Report - MoneyLust  (2026-10-08)
 
 ## Corpus Check
-- 114 files · ~131,775 words
+- 114 files · ~131,845 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 4 file(s) not represented in the graph (top: .example 1, (none) 1, .bat 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `2ce16a7d`
+- Built from commit: `4026ab86`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -43,7 +43,7 @@
 - scripts
 - _webullCore.d.ts
 - WebullTokenModal.tsx
-- Autonomous Git Commit Standard (การทำ Git Commit อัตโนมัติหลังทำงานเสร็จ)
+- Autonomous Git Commit & Push Standard (การทำ Git Commit & Push อัตโนมัติหลังทำงานเสร็จ)
 
 ## God Nodes (most connected - your core abstractions)
 1. `react` - 51 edges
@@ -123,7 +123,7 @@ Nodes (13): devDependencies, eslint, @eslint/js, eslint-plugin-react-hooks, esli
 
 ### Community 11 - "MoneyLust Project Guidelines & Standards"
 Cohesion: 0.13
-Nodes (14): 10. Thai Language Standard for Planning Artifacts (การเขียน Implementation Plan เป็นภาษาไทย), 11. Centralized Routing & Route Comment Standard (การจัดการโฟลเดอร์ Routes และการเขียน Comment ระบุ Route Path ด้านบนสุดของไฟล์ UI), 12. Autonomous Workspace Terminal Execution (สิทธิ์การรัน Terminal อัตโนมัติภายใน Workspace), 13. Codebase Knowledge Graph & Graphify Maintenance (การอัปเดต Knowledge Graph ทุกครั้งหลังแก้โค้ด), 14. Autonomous Git Commit Standard (การทำ Auto Git Commit ทุกครั้งหลังทำงานเสร็จ), 1. Check Before Create (ตรวจสอบก่อนสร้างใหม่เสมอ), 2. File Length Limit (จำกัดความยาวไฟล์ไม่เกิน 500-600 บรรทัด), 4. Base64 Handling (ห้ามใช้ btoa / atob โดยเด็ดขาด) (+6 more)
+Nodes (14): 10. Thai Language Standard for Planning Artifacts (การเขียน Implementation Plan เป็นภาษาไทย), 11. Centralized Routing & Route Comment Standard (การจัดการโฟลเดอร์ Routes และการเขียน Comment ระบุ Route Path ด้านบนสุดของไฟล์ UI), 12. Autonomous Workspace Terminal Execution (สิทธิ์การรัน Terminal อัตโนมัติภายใน Workspace), 13. Codebase Knowledge Graph & Graphify Maintenance (การอัปเดต Knowledge Graph ทุกครั้งหลังแก้โค้ด), 14. Autonomous Git Commit & Push Standard (การทำ Auto Git Commit & Push ทุกครั้งหลังทำงานเสร็จ), 1. Check Before Create (ตรวจสอบก่อนสร้างใหม่เสมอ), 2. File Length Limit (จำกัดความยาวไฟล์ไม่เกิน 500-600 บรรทัด), 4. Base64 Handling (ห้ามใช้ btoa / atob โดยเด็ดขาด) (+6 more)
 
 ### Community 12 - "compilerOptions"
 Cohesion: 0.18
@@ -161,9 +161,9 @@ Nodes (5): scripts, build, dev, lint, preview
 Cohesion: 0.45
 Nodes (8): WebullTokenBadge(), WebullTokenModal(), WebullTokenModalProps, createWebullToken(), fetchWebullTokenStatus(), refreshWebullToken(), verifyWebullToken(), WebullTokenInfo
 
-### Community 30 - "Autonomous Git Commit Standard (การทำ Git Commit อัตโนมัติหลังทำงานเสร็จ)"
+### Community 30 - "Autonomous Git Commit & Push Standard (การทำ Git Commit & Push อัตโนมัติหลังทำงานเสร็จ)"
 Cohesion: 0.29
-Nodes (6): 1. ที่มาและบริบท (Context & Origin), 2. เหตุผลและความสำคัญ (Rationale), 3. ระเบียบปฏิบัติมาตรฐาน (Standard Procedure), 4. รายการตรวจสอบ (Checklist), Autonomous Git Commit Standard (การทำ Git Commit อัตโนมัติหลังทำงานเสร็จ), ลำดับขั้นตอนการทำงาน (Workflow Sequence):
+Nodes (6): 1. ที่มาและบริบท (Context & Origin), 2. เหตุผลและความสำคัญ (Rationale), 3. ระเบียบปฏิบัติมาตรฐาน (Standard Procedure), 4. รายการตรวจสอบ (Checklist), Autonomous Git Commit & Push Standard (การทำ Git Commit & Push อัตโนมัติหลังทำงานเสร็จ), ลำดับขั้นตอนการทำงาน (Workflow Sequence):
 
 ## Knowledge Gaps
 - **207 isolated node(s):** `WebullCredentials`, `WebullRequestOptions`, `RFC-3986`, `WebullStockQuote`, `WebullQuoteApiResponse` (+202 more)

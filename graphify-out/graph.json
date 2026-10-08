@@ -3587,14 +3587,14 @@
       "source_location": "L79"
     },
     {
-      "id": "agents_14_autonomous_git_commit_standard_\u0e01\u0e32\u0e23\u0e17_\u0e32_auto_git_commit_\u0e17_\u0e01\u0e04\u0e23_\u0e07\u0e2b\u0e25_\u0e07\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23_\u0e08",
-      "label": "14. Autonomous Git Commit Standard (\u0e01\u0e32\u0e23\u0e17\u0e33 Auto Git Commit \u0e17\u0e38\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e33\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
+      "id": "agents_14_autonomous_git_commit_push_standard_\u0e01\u0e32\u0e23\u0e17_\u0e32_auto_git_commit_push_\u0e17_\u0e01\u0e04\u0e23_\u0e07\u0e2b\u0e25_\u0e07\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23_\u0e08",
+      "label": "14. Autonomous Git Commit & Push Standard (\u0e01\u0e32\u0e23\u0e17\u0e33 Auto Git Commit & Push \u0e17\u0e38\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e33\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
       "_origin": "ast",
       "community": 11,
       "community_name": "MoneyLust Project Guidelines & Standards",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "14. autonomous git commit standard (\u0e01\u0e32\u0e23\u0e17\u0e4d\u0e32 auto git commit \u0e17\u0e01\u0e04\u0e23\u0e31\u0e07\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e4d\u0e32\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
+      "norm_label": "14. autonomous git commit & push standard (\u0e01\u0e32\u0e23\u0e17\u0e4d\u0e32 auto git commit & push \u0e17\u0e01\u0e04\u0e23\u0e31\u0e07\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e4d\u0e32\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
       "source_file": "AGENTS.md",
       "source_location": "L87"
     },
@@ -5102,11 +5102,11 @@
       "label": "autonomous-git-commit/SKILL.md",
       "_origin": "ast",
       "community": 30,
-      "community_name": "Autonomous Git Commit Standard (\u0e01\u0e32\u0e23\u0e17\u0e33 Git Commit \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e33\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
+      "community_name": "Autonomous Git Commit & Push Standard (\u0e01\u0e32\u0e23\u0e17\u0e33 Git Commit & Push \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e33\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
       "file_type": "document",
       "frontmatter": {
         "name": "autonomous-git-commit",
-        "description": "\u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19\u0e01\u0e32\u0e23\u0e17\u0e33 Auto Commit \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34 (Autonomous Git Commit) \u0e43\u0e19\u0e42\u0e1b\u0e23\u0e40\u0e08\u0e01\u0e15\u0e4c MoneyLust \u0e17\u0e38\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07\u0e17\u0e35\u0e48\u0e41\u0e01\u0e49\u0e44\u0e02\u0e42\u0e04\u0e49\u0e14\u0e2b\u0e23\u0e37\u0e2d\u0e17\u0e33\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08\u0e2a\u0e34\u0e49\u0e19 \u0e42\u0e14\u0e22\u0e40\u0e02\u0e35\u0e22\u0e19 commit message \u0e40\u0e1b\u0e47\u0e19\u0e20\u0e32\u0e29\u0e32\u0e44\u0e17\u0e22\u0e2d\u0e18\u0e34\u0e1a\u0e32\u0e22\u0e2a\u0e34\u0e48\u0e07\u0e17\u0e35\u0e48\u0e17\u0e33"
+        "description": "\u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19\u0e01\u0e32\u0e23\u0e17\u0e33 Auto Commit &amp; Push \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34 (Autonomous Git Commit &amp; Push) \u0e43\u0e19\u0e42\u0e1b\u0e23\u0e40\u0e08\u0e01\u0e15\u0e4c MoneyLust \u0e17\u0e38\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07\u0e17\u0e35\u0e48\u0e41\u0e01\u0e49\u0e44\u0e02\u0e42\u0e04\u0e49\u0e14\u0e2b\u0e23\u0e37\u0e2d\u0e17\u0e33\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08\u0e2a\u0e34\u0e49\u0e19 \u0e42\u0e14\u0e22\u0e40\u0e02\u0e35\u0e22\u0e19 commit message \u0e40\u0e1b\u0e47\u0e19\u0e20\u0e32\u0e29\u0e32\u0e44\u0e17\u0e22\u0e41\u0e25\u0e30\u0e2a\u0e31\u0e48\u0e07 git push \u0e17\u0e31\u0e19\u0e17\u0e35"
       },
       "node_kind": "page",
       "norm_label": "autonomous-git-commit/skill.md",
@@ -5118,7 +5118,7 @@
       "label": "1. \u0e17\u0e35\u0e48\u0e21\u0e32\u0e41\u0e25\u0e30\u0e1a\u0e23\u0e34\u0e1a\u0e17 (Context & Origin)",
       "_origin": "ast",
       "community": 30,
-      "community_name": "Autonomous Git Commit Standard (\u0e01\u0e32\u0e23\u0e17\u0e33 Git Commit \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e33\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
+      "community_name": "Autonomous Git Commit & Push Standard (\u0e01\u0e32\u0e23\u0e17\u0e33 Git Commit & Push \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e33\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "1. \u0e17\u0e35\u0e21\u0e32\u0e41\u0e25\u0e30\u0e1a\u0e23\u0e34\u0e1a\u0e17 (context & origin)",
@@ -5130,46 +5130,46 @@
       "label": "2. \u0e40\u0e2b\u0e15\u0e38\u0e1c\u0e25\u0e41\u0e25\u0e30\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e33\u0e04\u0e31\u0e0d (Rationale)",
       "_origin": "ast",
       "community": 30,
-      "community_name": "Autonomous Git Commit Standard (\u0e01\u0e32\u0e23\u0e17\u0e33 Git Commit \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e33\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
+      "community_name": "Autonomous Git Commit & Push Standard (\u0e01\u0e32\u0e23\u0e17\u0e33 Git Commit & Push \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e33\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "2. \u0e40\u0e2b\u0e15\u0e1c\u0e25\u0e41\u0e25\u0e30\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e4d\u0e32\u0e04\u0e31\u0e0d (rationale)",
       "source_file": ".agents/skills/autonomous-git-commit/SKILL.md",
-      "source_location": "L18"
+      "source_location": "L20"
     },
     {
       "id": "agents_skills_autonomous_git_commit_skill_3_\u0e23\u0e30\u0e40\u0e1a_\u0e22\u0e1a\u0e1b\u0e0f_\u0e1a_\u0e15_\u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19_standard_procedure",
       "label": "3. \u0e23\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e1a\u0e1b\u0e0f\u0e34\u0e1a\u0e31\u0e15\u0e34\u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19 (Standard Procedure)",
       "_origin": "ast",
       "community": 30,
-      "community_name": "Autonomous Git Commit Standard (\u0e01\u0e32\u0e23\u0e17\u0e33 Git Commit \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e33\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
+      "community_name": "Autonomous Git Commit & Push Standard (\u0e01\u0e32\u0e23\u0e17\u0e33 Git Commit & Push \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e33\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "3. \u0e23\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e1a\u0e1b\u0e0f\u0e34\u0e1a\u0e31\u0e15\u0e34\u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19 (standard procedure)",
       "source_file": ".agents/skills/autonomous-git-commit/SKILL.md",
-      "source_location": "L26"
+      "source_location": "L28"
     },
     {
       "id": "agents_skills_autonomous_git_commit_skill_4_\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a_checklist",
       "label": "4. \u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a (Checklist)",
       "_origin": "ast",
       "community": 30,
-      "community_name": "Autonomous Git Commit Standard (\u0e01\u0e32\u0e23\u0e17\u0e33 Git Commit \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e33\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
+      "community_name": "Autonomous Git Commit & Push Standard (\u0e01\u0e32\u0e23\u0e17\u0e33 Git Commit & Push \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e33\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "4. \u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a (checklist)",
       "source_file": ".agents/skills/autonomous-git-commit/SKILL.md",
-      "source_location": "L64"
+      "source_location": "L70"
     },
     {
-      "id": "agents_skills_autonomous_git_commit_skill_autonomous_git_commit_standard_\u0e01\u0e32\u0e23\u0e17_\u0e32_git_commit_\u0e2d_\u0e15\u0e42\u0e19\u0e21_\u0e15_\u0e2b\u0e25_\u0e07\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23_\u0e08",
-      "label": "Autonomous Git Commit Standard (\u0e01\u0e32\u0e23\u0e17\u0e33 Git Commit \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e33\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
+      "id": "agents_skills_autonomous_git_commit_skill_autonomous_git_commit_push_standard_\u0e01\u0e32\u0e23\u0e17_\u0e32_git_commit_push_\u0e2d_\u0e15\u0e42\u0e19\u0e21_\u0e15_\u0e2b\u0e25_\u0e07\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23_\u0e08",
+      "label": "Autonomous Git Commit & Push Standard (\u0e01\u0e32\u0e23\u0e17\u0e33 Git Commit & Push \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e33\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
       "_origin": "ast",
       "community": 30,
-      "community_name": "Autonomous Git Commit Standard (\u0e01\u0e32\u0e23\u0e17\u0e33 Git Commit \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e33\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
+      "community_name": "Autonomous Git Commit & Push Standard (\u0e01\u0e32\u0e23\u0e17\u0e33 Git Commit & Push \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e33\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "autonomous git commit standard (\u0e01\u0e32\u0e23\u0e17\u0e4d\u0e32 git commit \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e4d\u0e32\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
+      "norm_label": "autonomous git commit & push standard (\u0e01\u0e32\u0e23\u0e17\u0e4d\u0e32 git commit & push \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e4d\u0e32\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
       "source_file": ".agents/skills/autonomous-git-commit/SKILL.md",
       "source_location": "L6"
     },
@@ -5178,12 +5178,12 @@
       "label": "\u0e25\u0e33\u0e14\u0e31\u0e1a\u0e02\u0e31\u0e49\u0e19\u0e15\u0e2d\u0e19\u0e01\u0e32\u0e23\u0e17\u0e33\u0e07\u0e32\u0e19 (Workflow Sequence):",
       "_origin": "ast",
       "community": 30,
-      "community_name": "Autonomous Git Commit Standard (\u0e01\u0e32\u0e23\u0e17\u0e33 Git Commit \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e33\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
+      "community_name": "Autonomous Git Commit & Push Standard (\u0e01\u0e32\u0e23\u0e17\u0e33 Git Commit & Push \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\u0e2b\u0e25\u0e31\u0e07\u0e17\u0e33\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08)",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "\u0e25\u0e4d\u0e32\u0e14\u0e31\u0e1a\u0e02\u0e31\u0e19\u0e15\u0e2d\u0e19\u0e01\u0e32\u0e23\u0e17\u0e4d\u0e32\u0e07\u0e32\u0e19 (workflow sequence):",
       "source_file": ".agents/skills/autonomous-git-commit/SKILL.md",
-      "source_location": "L28"
+      "source_location": "L30"
     },
     {
       "id": "package_dependencies",
@@ -19491,7 +19491,7 @@
     },
     {
       "source": "agents_moneylust_project_guidelines_standards",
-      "target": "agents_14_autonomous_git_commit_standard_\u0e01\u0e32\u0e23\u0e17_\u0e32_auto_git_commit_\u0e17_\u0e01\u0e04\u0e23_\u0e07\u0e2b\u0e25_\u0e07\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23_\u0e08",
+      "target": "agents_14_autonomous_git_commit_push_standard_\u0e01\u0e32\u0e23\u0e17_\u0e32_auto_git_commit_push_\u0e17_\u0e01\u0e04\u0e23_\u0e07\u0e2b\u0e25_\u0e07\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23_\u0e08",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -19579,7 +19579,7 @@
     },
     {
       "source": "agents_skills_autonomous_git_commit_skill",
-      "target": "agents_skills_autonomous_git_commit_skill_autonomous_git_commit_standard_\u0e01\u0e32\u0e23\u0e17_\u0e32_git_commit_\u0e2d_\u0e15\u0e42\u0e19\u0e21_\u0e15_\u0e2b\u0e25_\u0e07\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23_\u0e08",
+      "target": "agents_skills_autonomous_git_commit_skill_autonomous_git_commit_push_standard_\u0e01\u0e32\u0e23\u0e17_\u0e32_git_commit_push_\u0e2d_\u0e15\u0e42\u0e19\u0e21_\u0e15_\u0e2b\u0e25_\u0e07\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23_\u0e08",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -19596,11 +19596,11 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".agents/skills/autonomous-git-commit/SKILL.md",
-      "source_location": "L28",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
-      "source": "agents_skills_autonomous_git_commit_skill_autonomous_git_commit_standard_\u0e01\u0e32\u0e23\u0e17_\u0e32_git_commit_\u0e2d_\u0e15\u0e42\u0e19\u0e21_\u0e15_\u0e2b\u0e25_\u0e07\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23_\u0e08",
+      "source": "agents_skills_autonomous_git_commit_skill_autonomous_git_commit_push_standard_\u0e01\u0e32\u0e23\u0e17_\u0e32_git_commit_push_\u0e2d_\u0e15\u0e42\u0e19\u0e21_\u0e15_\u0e2b\u0e25_\u0e07\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23_\u0e08",
       "target": "agents_skills_autonomous_git_commit_skill_1_\u0e17_\u0e21\u0e32\u0e41\u0e25\u0e30\u0e1a\u0e23_\u0e1a\u0e17_context_origin",
       "relation": "contains",
       "_origin": "ast",
@@ -19611,36 +19611,36 @@
       "weight": 1.0
     },
     {
-      "source": "agents_skills_autonomous_git_commit_skill_autonomous_git_commit_standard_\u0e01\u0e32\u0e23\u0e17_\u0e32_git_commit_\u0e2d_\u0e15\u0e42\u0e19\u0e21_\u0e15_\u0e2b\u0e25_\u0e07\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23_\u0e08",
+      "source": "agents_skills_autonomous_git_commit_skill_autonomous_git_commit_push_standard_\u0e01\u0e32\u0e23\u0e17_\u0e32_git_commit_push_\u0e2d_\u0e15\u0e42\u0e19\u0e21_\u0e15_\u0e2b\u0e25_\u0e07\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23_\u0e08",
       "target": "agents_skills_autonomous_git_commit_skill_2_\u0e40\u0e2b\u0e15_\u0e1c\u0e25\u0e41\u0e25\u0e30\u0e04\u0e27\u0e32\u0e21\u0e2a_\u0e32\u0e04_\u0e0d_rationale",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".agents/skills/autonomous-git-commit/SKILL.md",
-      "source_location": "L18",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
-      "source": "agents_skills_autonomous_git_commit_skill_autonomous_git_commit_standard_\u0e01\u0e32\u0e23\u0e17_\u0e32_git_commit_\u0e2d_\u0e15\u0e42\u0e19\u0e21_\u0e15_\u0e2b\u0e25_\u0e07\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23_\u0e08",
+      "source": "agents_skills_autonomous_git_commit_skill_autonomous_git_commit_push_standard_\u0e01\u0e32\u0e23\u0e17_\u0e32_git_commit_push_\u0e2d_\u0e15\u0e42\u0e19\u0e21_\u0e15_\u0e2b\u0e25_\u0e07\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23_\u0e08",
       "target": "agents_skills_autonomous_git_commit_skill_3_\u0e23\u0e30\u0e40\u0e1a_\u0e22\u0e1a\u0e1b\u0e0f_\u0e1a_\u0e15_\u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19_standard_procedure",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".agents/skills/autonomous-git-commit/SKILL.md",
-      "source_location": "L26",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
-      "source": "agents_skills_autonomous_git_commit_skill_autonomous_git_commit_standard_\u0e01\u0e32\u0e23\u0e17_\u0e32_git_commit_\u0e2d_\u0e15\u0e42\u0e19\u0e21_\u0e15_\u0e2b\u0e25_\u0e07\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23_\u0e08",
+      "source": "agents_skills_autonomous_git_commit_skill_autonomous_git_commit_push_standard_\u0e01\u0e32\u0e23\u0e17_\u0e32_git_commit_push_\u0e2d_\u0e15\u0e42\u0e19\u0e21_\u0e15_\u0e2b\u0e25_\u0e07\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e40\u0e2a\u0e23_\u0e08",
       "target": "agents_skills_autonomous_git_commit_skill_4_\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a_checklist",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".agents/skills/autonomous-git-commit/SKILL.md",
-      "source_location": "L64",
+      "source_location": "L70",
       "weight": 1.0
     },
     {
@@ -23914,5 +23914,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "2ce16a7d8f2408faf4fb0886f4c59eac48a6a096"
+  "built_at_commit": "4026ab868090cec73691fbb80e3abf901a02f106"
 }
