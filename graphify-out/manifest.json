@@ -6,9 +6,9 @@
     "semantic_hash": "efbdf41bb2a42fe9f4b2a38d829b4aae"
   },
   "package.json": {
-    "mtime": 1791463006.4207754,
-    "seen": 1791463033.3575253,
-    "ast_hash": "6b22ca0993a0941fdfdab3bdf732a512",
+    "mtime": 1791463199.02972,
+    "seen": 1791463238.57643,
+    "ast_hash": "8a6a3f597cd1fb1a446d0967748e3db7",
     "semantic_hash": ""
   },
   "src/App.tsx": {
@@ -612,9 +612,9 @@
     "semantic_hash": ""
   },
   "src/pages/Market/types.ts": {
-    "mtime": 1791462822.4754584,
-    "seen": 1791463033.3575602,
-    "ast_hash": "085b8128c71a0fe8ac895a2bfa3ee9a9",
+    "mtime": 1791463186.1978483,
+    "seen": 1791463238.5764642,
+    "ast_hash": "e5535116b1175189086c1518124eda04",
     "semantic_hash": ""
   },
   "scripts/webull_screener.py": {
@@ -678,9 +678,9 @@
     "semantic_hash": ""
   },
   "src/utils/version.ts": {
-    "mtime": 1791463014.0265684,
-    "seen": 1791463033.357596,
-    "ast_hash": "63ae5e6332852d7a4095e688ad63ecd4",
+    "mtime": 1791463211.1908052,
+    "seen": 1791463238.5764987,
+    "ast_hash": "dc2b43920bdb6083f09cc45cf83de462",
     "semantic_hash": ""
   },
   "bug/UI_Bug_Mb/S__42827789_0.jpg": {
