@@ -23,10 +23,11 @@
   "21": "Autonomous Workspace Terminal Execution (มาตรฐานการรันคำสั่ง Terminal อัตโนมัติภายใน Workspace)",
   "22": "rules/graphify.md",
   "23": "workflows/graphify.md",
-  "24": "StockPlanner/types.ts",
+  "24": "@mui/material",
   "25": "scripts",
   "26": "stock-search.js",
   "27": "ref_child_process",
   "28": "_webullCore.d.ts",
-  "29": "WebullTokenModal.tsx"
+  "29": "WebullTokenModal.tsx",
+  "30": "Autonomous Git Commit Standard (การทำ Git Commit อัตโนมัติหลังทำงานเสร็จ)"
 }

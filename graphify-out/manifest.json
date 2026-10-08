@@ -6,9 +6,9 @@
     "semantic_hash": "efbdf41bb2a42fe9f4b2a38d829b4aae"
   },
   "package.json": {
-    "mtime": 1791270770.2827284,
-    "seen": 1791271386.4954345,
-    "ast_hash": "8ada5a3419fcb8d44e0ba8efa7237745",
+    "mtime": 1791456159.9684684,
+    "seen": 1791456785.9026961,
+    "ast_hash": "5c2b9addf905cb8322c965f72f39f49e",
     "semantic_hash": ""
   },
   "src/App.tsx": {
@@ -528,9 +528,9 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1790806183.0513246,
-    "seen": 1790806191.6642146,
-    "ast_hash": "e4b169ea6d042bdcfa289f2f68a05df8",
+    "mtime": 1791456754.1902902,
+    "seen": 1791456785.9027712,
+    "ast_hash": "0c2e18cfea5cf263a3e0cf62eb45defb",
     "semantic_hash": ""
   },
   "index.html": {
@@ -753,6 +753,12 @@
     "mtime": 1791270770.270146,
     "seen": 1791271386.495521,
     "ast_hash": "d9b844a1001134af1787c6a77b400506",
+    "semantic_hash": ""
+  },
+  ".agents/skills/autonomous-git-commit/SKILL.md": {
+    "mtime": 1791456742.6306686,
+    "seen": 1791456785.9027677,
+    "ast_hash": "f72b30691d3786032e3db22766df2d64",
     "semantic_hash": ""
   }
 }

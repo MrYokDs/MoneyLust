@@ -586,7 +586,7 @@
       "file_type": "code",
       "norm_label": "growthplanconfig",
       "source_file": "src/types/growthPlan.ts",
-      "source_location": "L28"
+      "source_location": "L34"
     },
     {
       "id": "src_types_growthplan_growthplanresult",
@@ -599,7 +599,7 @@
       "file_type": "code",
       "norm_label": "growthplanresult",
       "source_file": "src/types/growthPlan.ts",
-      "source_location": "L84"
+      "source_location": "L98"
     },
     {
       "id": "src_types_growthplan_portfoliobenchmark",
@@ -612,7 +612,7 @@
       "file_type": "code",
       "norm_label": "portfoliobenchmark",
       "source_file": "src/types/growthPlan.ts",
-      "source_location": "L48"
+      "source_location": "L54"
     },
     {
       "id": "src_types_portfolio_portfolio",
@@ -1436,7 +1436,7 @@
       "file_type": "code",
       "norm_label": "getportfoliofirsttradedate()",
       "source_file": "src/utils/growthPlanMath.ts",
-      "source_location": "L74"
+      "source_location": "L131"
     },
     {
       "id": "src_utils_stockapi_parsemarketcaptonumber",
@@ -2096,7 +2096,7 @@
       "file_type": "code",
       "norm_label": "calculatedailygrowthplan()",
       "source_file": "src/utils/growthPlanMath.ts",
-      "source_location": "L15"
+      "source_location": "L25"
     },
     {
       "id": "src_utils_growthplanmath_calculateelapsedtradingdays",
@@ -2108,7 +2108,7 @@
       "file_type": "code",
       "norm_label": "calculateelapsedtradingdays()",
       "source_file": "src/utils/growthPlanMath.ts",
-      "source_location": "L107"
+      "source_location": "L164"
     },
     {
       "id": "src_utils_growthplanmath_findportfoliobenchmarkposition",
@@ -2120,7 +2120,7 @@
       "file_type": "code",
       "norm_label": "findportfoliobenchmarkposition()",
       "source_file": "src/utils/growthPlanMath.ts",
-      "source_location": "L151"
+      "source_location": "L208"
     },
     {
       "id": "src_components_infotooltiplabel_infotooltiplabel",
@@ -7951,7 +7951,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/InvestmentPlan/InvestmentPlan.tsx",
-      "source_location": "L305",
+      "source_location": "L316",
       "weight": 1.0
     },
     {
@@ -7963,7 +7963,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/InvestmentPlan/InvestmentPlan.tsx",
-      "source_location": "L317",
+      "source_location": "L328",
       "weight": 1.0
     },
     {
@@ -7975,7 +7975,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/InvestmentPlan/InvestmentPlan.tsx",
-      "source_location": "L356",
+      "source_location": "L367",
       "weight": 1.0
     },
     {
@@ -7987,7 +7987,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/InvestmentPlan/InvestmentPlan.tsx",
-      "source_location": "L373",
+      "source_location": "L384",
       "weight": 1.0
     },
     {
@@ -7999,7 +7999,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/InvestmentPlan/InvestmentPlan.tsx",
-      "source_location": "L384",
+      "source_location": "L395",
       "weight": 1.0
     },
     {
@@ -9151,7 +9151,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/utils/growthPlanMath.ts",
-      "source_location": "L167",
+      "source_location": "L224",
       "weight": 1.0
     },
     {
@@ -10363,7 +10363,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "src/types/growthPlan.ts",
-      "source_location": "L38",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -22147,7 +22147,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/types/growthPlan.ts",
-      "source_location": "L28",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -22158,7 +22158,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/types/growthPlan.ts",
-      "source_location": "L48",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -22180,7 +22180,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/types/growthPlan.ts",
-      "source_location": "L84",
+      "source_location": "L98",
       "weight": 1.0
     },
     {
@@ -22614,24 +22614,24 @@
     },
     {
       "source": "src_utils_growthplanmath",
+      "target": "src_utils_growthplanmath_getportfoliofirsttradedate",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/utils/growthPlanMath.ts",
+      "source_location": "L131",
+      "weight": 1.0
+    },
+    {
+      "source": "src_utils_growthplanmath",
       "target": "src_utils_growthplanmath_calculateelapsedtradingdays",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/utils/growthPlanMath.ts",
-      "source_location": "L107",
-      "weight": 1.0
-    },
-    {
-      "source": "src_utils_growthplanmath",
-      "target": "src_utils_growthplanmath_calculatedailygrowthplan",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/utils/growthPlanMath.ts",
-      "source_location": "L15",
+      "source_location": "L164",
       "weight": 1.0
     },
     {
@@ -22642,18 +22642,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/utils/growthPlanMath.ts",
-      "source_location": "L151",
+      "source_location": "L208",
       "weight": 1.0
     },
     {
       "source": "src_utils_growthplanmath",
-      "target": "src_utils_growthplanmath_getportfoliofirsttradedate",
+      "target": "src_utils_growthplanmath_calculatedailygrowthplan",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/utils/growthPlanMath.ts",
-      "source_location": "L74",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -23737,5 +23737,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "12b7fbe9d521edf4455a2e2c1daae7209e650184"
+  "built_at_commit": "3d70d2a985d20745b28a2fc618bb173f92301232"
 }
