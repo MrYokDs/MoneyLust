@@ -2,6 +2,7 @@ import {
   DailyGrowthItem,
   GrowthPlanConfig,
   PortfolioBenchmark,
+  CurrencyMode,
 } from '../types';
 
 /**
@@ -202,12 +203,14 @@ export const findPortfolioBenchmarkPosition = (
   initialCapital: number,
   targetAmount: number,
   items: DailyGrowthItem[],
-  firstTradeDateInput?: string | Date
+  firstTradeDateInput?: string | Date,
+  currency: CurrencyMode = 'THB'
 ): PortfolioBenchmark | undefined => {
   if (items.length === 0 || initialCapital <= 0 || targetAmount <= initialCapital) {
     return undefined;
   }
 
+  const currencySymbol = currency === 'USD' ? '$' : '฿';
   const firstTradeDate = firstTradeDateInput
     ? new Date(firstTradeDateInput).toISOString()
     : new Date().toISOString();
@@ -273,7 +276,7 @@ export const findPortfolioBenchmarkPosition = (
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
       });
-      summaryText = `ช่วงฟื้นตัวกลับสู่ทุนเดิม (ฟื้นทุน Day 1) ขาดทุน ฿${diffFormatted} ต้องใช้เวลาฟื้นทุนอีก ${recoveryCount} วัน (เวลารวมสู่เป้าหมายขยายเป็น ${items.length} วัน)`;
+      summaryText = `ช่วงฟื้นตัวกลับสู่ทุนเดิม (ฟื้นทุน Day 1) ขาดทุน ${currencySymbol}${diffFormatted} ต้องใช้เวลาฟื้นทุนอีก ${recoveryCount} วัน (เวลารวมสู่เป้าหมายขยายเป็น ${items.length} วัน)`;
     } else if (daysBehind > 0) {
       summaryText = `ช้ากว่าแผน ${daysBehind} วัน (ความคืบหน้าช้าไป ${progressBehindPercent.toFixed(1)}%)`;
     } else {

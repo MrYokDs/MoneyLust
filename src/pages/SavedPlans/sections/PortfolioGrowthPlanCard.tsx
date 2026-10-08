@@ -133,7 +133,8 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
     growthPlan.initialCapital,
     growthPlan.targetAmount,
     dailyItems,
-    firstTradeDate
+    firstTradeDate,
+    growthPlan.currency
   );
 
   const currencySymbol = growthPlan.currency === 'USD' ? '$' : '฿';

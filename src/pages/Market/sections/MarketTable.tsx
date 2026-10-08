@@ -22,6 +22,7 @@ import {
   Button,
   Box,
   useTheme,
+  LinearProgress,
 } from '@mui/material';
 import {
   TrendingUp,
@@ -135,8 +136,20 @@ export const MarketTable: React.FC<MarketTableProps> = ({
         boxShadow: isLight ? '0 2px 10px rgba(0,0,0,0.04)' : '0 8px 32px rgba(0,0,0,0.3)',
         overflowX: 'auto',
         WebkitOverflowScrolling: 'touch',
+        position: 'relative',
       }}
     >
+      {isLoading && (
+        <LinearProgress
+          sx={{
+            height: 3,
+            bgcolor: isLight ? 'rgba(16, 185, 129, 0.1)' : 'rgba(16, 185, 129, 0.15)',
+            '& .MuiLinearProgress-bar': {
+              background: 'linear-gradient(90deg, #10b981 0%, #06b6d4 100%)',
+            },
+          }}
+        />
+      )}
       <Table sx={{ minWidth: 700 }}>
         <TableHead
           sx={{
@@ -179,16 +192,23 @@ export const MarketTable: React.FC<MarketTableProps> = ({
         <TableBody>
           {isLoading ? (
             Array.from({ length: 10 }).map((_, idx) => (
-              <TableRow key={`skeleton-${idx}`}>
-                <TableCell><Skeleton width={20} /></TableCell>
-                <TableCell><Skeleton width={60} height={28} /></TableCell>
-                <TableCell><Skeleton width={180} /></TableCell>
-                <TableCell align="right"><Skeleton width={70} /></TableCell>
-                <TableCell align="center"><Skeleton width={80} height={24} /></TableCell>
-                <TableCell align="right"><Skeleton width={70} /></TableCell>
-                <TableCell align="right"><Skeleton width={60} /></TableCell>
-                <TableCell align="right"><Skeleton width={70} /></TableCell>
-                <TableCell align="center"><Skeleton width={40} /></TableCell>
+              <TableRow
+                key={`skeleton-${idx}`}
+                sx={{
+                  bgcolor: idx % 2 === 1
+                    ? (theme) => theme.palette.mode === 'light' ? 'rgba(0,0,0,0.015)' : 'rgba(255,255,255,0.015)'
+                    : 'transparent',
+                }}
+              >
+                <TableCell sx={{ py: 1.8 }}><Skeleton width={20} /></TableCell>
+                <TableCell sx={{ py: 1.8 }}><Skeleton variant="rounded" width={56} height={24} sx={{ borderRadius: 1.5 }} /></TableCell>
+                <TableCell sx={{ py: 1.8 }}><Skeleton width={130 + (idx % 4) * 25} height={18} /></TableCell>
+                <TableCell align="right" sx={{ py: 1.8 }}><Skeleton width={68} height={22} sx={{ ml: 'auto', borderRadius: 1 }} /></TableCell>
+                <TableCell align="center" sx={{ py: 1.8 }}><Skeleton variant="rounded" width={80} height={24} sx={{ mx: 'auto', borderRadius: 1 }} /></TableCell>
+                <TableCell align="right" sx={{ py: 1.8 }}><Skeleton variant="rounded" width={72} height={24} sx={{ ml: 'auto', borderRadius: 1.5 }} /></TableCell>
+                <TableCell align="right" sx={{ py: 1.8 }}><Skeleton width={55} sx={{ ml: 'auto' }} /></TableCell>
+                <TableCell align="right" sx={{ py: 1.8 }}><Skeleton width={65} sx={{ ml: 'auto' }} /></TableCell>
+                <TableCell align="center" sx={{ py: 1.8 }}><Skeleton variant="circular" width={28} height={28} sx={{ mx: 'auto' }} /></TableCell>
               </TableRow>
             ))
           ) : items.length === 0 ? (

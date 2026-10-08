@@ -10,7 +10,12 @@ import { Box, Container } from '@mui/material';
 import dayjs from 'dayjs';
 import { MarketHeader } from './sections/MarketHeader';
 import { MarketTable } from './sections/MarketTable';
-import { MarketDirection, MarketPeriod, ScreenerStockItem } from './types';
+import {
+  MarketDirection,
+  MarketPeriod,
+  ScreenerStockItem,
+  getDefaultMarketPeriodByTime,
+} from './types';
 import { fetchWebullScreener } from '../../utils/webullService';
 
 /**
@@ -20,26 +25,61 @@ import { fetchWebullScreener } from '../../utils/webullService';
  */
 export const Market: React.FC = () => {
   const [direction, setDirection] = useState<MarketDirection>('gainers');
-  const [period, setPeriod] = useState<MarketPeriod>('preMarket');
+  // ตั้งค่าช่วงเวลาเริ่มต้นอัตโนมัติตามเวลาเปิดทำการจริงของตลาดหุ้นสหรัฐฯ (Pre-Market, After-Hours, หรือ 1-Day)
+  const [period, setPeriod] = useState<MarketPeriod>(() => getDefaultMarketPeriodByTime());
   const [items, setItems] = useState<ScreenerStockItem[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<string | null>(null);
   const [source, setSource] = useState<string>('Webull');
 
-  // Guard ป้องกัน Request ทับซ้อนกันระหว่างที่คำขอก่อนหน้ายังโหลดไม่เสร็จ (In-flight fetch guard)
+  // ตัวนับลำดับ Request เพื่อป้องกันข้อมูลจากคำขอเก่ามาทับคำขอล่าสุดเมื่อผู้ใช้สลับหมวดเร็วๆ
+  const reqSequenceRef = useRef<number>(0);
   const isFetchingRef = useRef<boolean>(false);
 
   /**
+   * สลับทิศทาง Top Gainers / Top Losers
+   * เคลียร์ข้อมูลเดิมทันที และเปิดสถานะ Loading เพื่อแสดง Skeleton Animation ทันที
+   * 
+   * @param newDir - ทิศทางการจัดอันดับใหม่
+   */
+  const handleDirectionChange = (newDir: MarketDirection): void => {
+    if (newDir === direction) return;
+    setItems([]);
+    setIsLoading(true);
+    setDirection(newDir);
+  };
+
+  /**
+   * สลับช่วงเวลา (Pre-Market, After-Hours, 1-Day ฯลฯ)
+   * เคลียร์ข้อมูลเดิมทันที และเปิดสถานะ Loading เพื่อแสดง Skeleton Animation ทันที
+   * 
+   * @param newPeriod - ช่วงเวลาใหม่
+   */
+  const handlePeriodChange = (newPeriod: MarketPeriod): void => {
+    if (newPeriod === period) return;
+    setItems([]);
+    setIsLoading(true);
+    setPeriod(newPeriod);
+  };
+
+  /**
    * ดึงข้อมูลการจัดอันดับหุ้นจาก Webull Open API ตามทิศทางและช่วงเวลาที่เลือก
+   * 
+   * @param isSilent - หากเป็น true จะไม่แสดง Skeleton Loading (ใช้สำหรับ Auto-refresh เบื้องหลัง)
    */
   const loadMarketData = useCallback(async (isSilent = false) => {
-    if (isFetchingRef.current) return;
+    if (isSilent && isFetchingRef.current) return;
+
+    const currentReqId = ++reqSequenceRef.current;
     isFetchingRef.current = true;
     if (!isSilent) setIsLoading(true);
 
     try {
       const result = await fetchWebullScreener(direction, period);
+      // หากมีการเปลี่ยนหมวดหมู่ใหม่ระหว่างรอ ให้ตัดผลลัพธ์ของคำขอนี้ทิ้งไป
+      if (currentReqId !== reqSequenceRef.current) return;
+
       if (result.success && Array.isArray(result.data) && result.data.length > 0) {
         setItems(result.data);
         setSource(result.source);
@@ -50,12 +90,15 @@ export const Market: React.FC = () => {
         setErrorMessage(result.message || 'ไม่สามารถเชื่อมต่อ Webull API เพื่อดึงข้อมูลได้ในขณะนี้');
       }
     } catch (error: any) {
+      if (currentReqId !== reqSequenceRef.current) return;
       console.error('Failed to load market data:', error);
       setItems([]);
       setErrorMessage(error.message || 'เกิดข้อผิดพลาดในการเชื่อมต่อเครือข่าย');
     } finally {
-      isFetchingRef.current = false;
-      if (!isSilent) setIsLoading(false);
+      if (currentReqId === reqSequenceRef.current) {
+        isFetchingRef.current = false;
+        if (!isSilent) setIsLoading(false);
+      }
     }
   }, [direction, period]);
 
@@ -127,9 +170,9 @@ export const Market: React.FC = () => {
         {/* Market Header (Tabs, Period Dropdown, Actions) */}
         <MarketHeader
           direction={direction}
-          onDirectionChange={(newDir) => setDirection(newDir)}
+          onDirectionChange={handleDirectionChange}
           period={period}
-          onPeriodChange={(newPeriod) => setPeriod(newPeriod)}
+          onPeriodChange={handlePeriodChange}
           isLoading={isLoading}
           onRefresh={() => loadMarketData()}
           lastUpdated={lastUpdated}

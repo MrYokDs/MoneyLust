@@ -330,9 +330,10 @@ export const InvestmentPlan: React.FC = () => {
       initialCapital,
       targetAmount,
       dailyItems,
-      firstTradeDate
+      firstTradeDate,
+      formData.currency
     );
-  }, [portfolioCurrentValue, formData.portfolioId, initialCapital, targetAmount, dailyItems, firstTradeDate]);
+  }, [portfolioCurrentValue, formData.portfolioId, initialCapital, targetAmount, dailyItems, firstTradeDate, formData.currency]);
 
   return (
     <Box sx={{ pb: 6 }}>
