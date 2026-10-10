@@ -257,6 +257,44 @@ export const stockPlannerSlice = createSlice({
         savePortfoliosToLocalStorage(state.portfolios);
       }
     },
+    /**
+     * อัปเดตจุดต่ำสุดของพอร์ต (recoveryStartCapital) สำหรับช่วงฟื้นทุน
+     * หากมูลค่าพอร์ตปัจจุบันต่ำกว่าจุดต่ำสุดเดิม จะขยายจุดต่ำสุดลงไป
+     * @param state State ของ Redux
+     * @param action Payload ที่มี id พอร์ต และ currentPortfolioValue
+     */
+    updatePortfolioGrowthPlanRecovery: (
+      state,
+      action: PayloadAction<{ id: string; currentPortfolioValue: number }>
+    ) => {
+      const p = state.portfolios.find((port) => port.id === action.payload.id);
+      if (p && p.growthPlan) {
+        const { currentPortfolioValue } = action.payload;
+        const initialCapital = p.growthPlan.initialCapital;
+        if (currentPortfolioValue < initialCapital) {
+          const currentMin = p.growthPlan.recoveryStartCapital;
+          if (currentMin === undefined || currentPortfolioValue < currentMin) {
+            p.growthPlan.recoveryStartCapital = currentPortfolioValue;
+            savePortfoliosToLocalStorage(state.portfolios);
+          }
+        }
+      }
+    },
+    /**
+     * รีเซ็ตประวัติช่วงฟื้นทุนของแผนการเติบโตในพอร์ต (ล้าง recoveryStartCapital)
+     * @param state State ของ Redux
+     * @param action Payload คือ id ของพอร์ต
+     */
+    resetPortfolioGrowthPlanRecovery: (
+      state,
+      action: PayloadAction<string>
+    ) => {
+      const p = state.portfolios.find((port) => port.id === action.payload);
+      if (p && p.growthPlan) {
+        delete p.growthPlan.recoveryStartCapital;
+        savePortfoliosToLocalStorage(state.portfolios);
+      }
+    },
   },
 });
 
@@ -273,6 +311,8 @@ export const {
   clearPortfolioAdjustments,
   savePortfolioGrowthPlan,
   deletePortfolioGrowthPlan,
+  updatePortfolioGrowthPlanRecovery,
+  resetPortfolioGrowthPlanRecovery,
   updatePortfolioFirstTradeDate,
 } = stockPlannerSlice.actions;
 export default stockPlannerSlice.reducer;

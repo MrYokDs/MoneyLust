@@ -146,7 +146,11 @@ export const DailyGrowthTable: React.FC<DailyGrowthTableProps> = ({
                 onClick={handleJumpToMatchedDay}
                 sx={{ fontFamily: 'Prompt', fontSize: '0.78rem', borderRadius: 2 }}
               >
-                {benchmark?.isInRecovery ? `พอร์ตคุณ (ช่วงฟื้นทุน Day ${matchedDay})` : `พอร์ตคุณ (Day ${matchedDay})`}
+                {benchmark?.matchedDayLabel
+                  ? `พอร์ตคุณ (${benchmark.matchedDayLabel})`
+                  : benchmark?.isInRecovery
+                  ? `พอร์ตคุณ (ช่วงฟื้นทุน Day ${matchedDay})`
+                  : `พอร์ตคุณ (Day ${matchedDay})`}
               </Button>
             )}
 

@@ -46,6 +46,8 @@ export interface GrowthPlanConfig {
   exchangeRate?: number;
   /** วันเวลาที่บันทึกแผน */
   updatedAt?: string;
+  /** จุดต่ำสุดของพอร์ตที่บันทึกไว้สำหรับคำนวณช่วงฟื้นทุน (บันทึกข้อผิดพลาด/Drawdown ต่ำสุด ไม่ให้ช่วงฟื้นทุนหายไปเมื่อพอร์ตเริ่มมีกำไร) */
+  recoveryStartCapital?: number;
 }
 
 /**
@@ -54,8 +56,14 @@ export interface GrowthPlanConfig {
 export interface PortfolioBenchmark {
   /** มูลค่าพอร์ตจริงปัจจุบัน */
   currentPortfolioValue: number;
-  /** เทียบเท่ากับแผนในวันที่ (Day) ที่มูลค่าพอร์ตปัจจุบันไปถึง */
+  /** เทียบเท่ากับแผนในวันที่ (Day) ที่มูลค่าพอร์ตปัจจุบันไปถึง (1..totalPlanDays) */
   matchedDay: number;
+  /** ข้อความระบุวันที่แมตช์ เช่น "ฟื้นทุน Day 3" หรือ "Day 2" */
+  matchedDayLabel?: string;
+  /** ลำดับวันที่ในช่วงฟื้นทุนที่แมตช์ (1..recoveryDays) หากอยู่ในช่วงฟื้นทุน */
+  matchedRecoveryDay?: number;
+  /** ลำดับวันที่ในแผนปกติที่แมตช์ (1..normalPlanDays) หากพ้นช่วงฟื้นทุนแล้ว */
+  normalMatchedDay?: number;
   /** ยอดเงินตามแผนในวันที่เทียบเท่า */
   planBalanceAtMatchedDay: number;
   /** ส่วนต่างระหว่างพอร์ตจริงกับยอดตามแผน ณ วันนั้น */
@@ -84,6 +92,8 @@ export interface PortfolioBenchmark {
   summaryText: string;
   /** อยู่ในช่วงฟื้นทุนกลับสู่ทุนเดิมหรือไม่ (กรณีมูลค่าพอร์ตปัจจุบันน้อยกว่าเงินต้นเริ่มต้น) */
   isInRecovery?: boolean;
+  /** มีประวัติช่วงฟื้นทุนบันทึกอยู่ในแผนหรือไม่ */
+  hasRecoveryHistory?: boolean;
   /** จำนวนวันที่ต้องใช้ในช่วงฟื้นตัวกลับสู่ทุนเดิม */
   recoveryDays?: number;
   /** จำนวนวันตามแผนปกติเดิม (ไม่รวมวันฟื้นทุน) */

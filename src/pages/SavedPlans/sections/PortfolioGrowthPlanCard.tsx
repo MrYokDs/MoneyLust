@@ -25,9 +25,15 @@ import {
   Calendar,
   Edit2,
   Trash2,
+  RotateCcw,
 } from 'lucide-react';
 import GlassCard from '../../../components/GlassCard';
 import { Portfolio } from '../../../types';
+import { useAppDispatch } from '../../../store';
+import {
+  updatePortfolioGrowthPlanRecovery,
+  resetPortfolioGrowthPlanRecovery,
+} from '../../../store/stockPlannerSlice';
 import {
   calculateDailyGrowthPlan,
   findPortfolioBenchmarkPosition,
@@ -125,6 +131,29 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
       </GlassCard>
     );
   }
+
+  const dispatch = useAppDispatch();
+
+  // บันทึกจุดต่ำสุดของพอร์ต (Drawdown / บันทึกข้อผิดพลาด) อัตโนมัติเมื่อพอร์ตขาดทุนต่ำกว่าทุน เพื่อคงประวัติช่วงฟื้นทุนไว้
+  React.useEffect(() => {
+    if (
+      portfolio.id &&
+      portfolio.id !== 'unassigned' &&
+      growthPlan &&
+      currentPortfolioValue > 0 &&
+      currentPortfolioValue < growthPlan.initialCapital
+    ) {
+      const currentMin = growthPlan.recoveryStartCapital;
+      if (currentMin === undefined || currentPortfolioValue < currentMin) {
+        dispatch(
+          updatePortfolioGrowthPlanRecovery({
+            id: portfolio.id,
+            currentPortfolioValue,
+          })
+        );
+      }
+    }
+  }, [portfolio.id, growthPlan, currentPortfolioValue, dispatch]);
 
   // คำนวณตารางรายวันและ Benchmark ของแผนที่เชื่อมโยง (รองรับช่วงฟื้นทุนหากมูลค่าพอร์ตจริงต่ำกว่าทุนเริ่มต้น)
   const dailyItems = calculateDailyGrowthPlan(growthPlan, 1000, currentPortfolioValue);
@@ -253,6 +282,27 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
             spacing={1}
             sx={{ width: { xs: '100%', sm: 'auto' } }}
           >
+            {growthPlan.recoveryStartCapital !== undefined && (
+              <Button
+                variant="outlined"
+                color="inherit"
+                size="small"
+                startIcon={<RotateCcw size={13} />}
+                onClick={() => dispatch(resetPortfolioGrowthPlanRecovery(portfolio.id))}
+                sx={{
+                  fontFamily: 'Prompt',
+                  fontSize: '0.75rem',
+                  borderRadius: 2,
+                  whiteSpace: 'nowrap',
+                  width: { xs: '100%', sm: 'auto' },
+                  opacity: 0.75,
+                  '&:hover': { opacity: 1 },
+                }}
+              >
+                รีเซ็ตช่วงฟื้นทุน
+              </Button>
+            )}
+
             <Button
               variant="outlined"
               color="error"
@@ -313,15 +363,20 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
                 <Typography variant="h6" fontWeight="900" color={benchmark.isInRecovery ? "warning.main" : "info.main"} fontFamily="Prompt">
                   {benchmark.isInRecovery ? (
                     <>
-                      <span>ฟื้นทุน Day 1</span>{' '}
+                      <span>{benchmark.matchedDayLabel || `ฟื้นทุน Day ${benchmark.matchedRecoveryDay || 1}`}</span>{' '}
                       <span style={{ fontSize: '0.75rem', color: '#888' }}>
                         (ขยายเป็น {totalDays} วัน)
                       </span>
                     </>
                   ) : (
                     <>
-                      Day {benchmark.matchedDay}{' '}
-                      <span style={{ fontSize: '0.8rem', color: '#888' }}>/ {totalDays} วัน</span>
+                      {benchmark.matchedDayLabel || `Day ${benchmark.normalMatchedDay || benchmark.matchedDay}`}{' '}
+                      {!benchmark.hasRecoveryHistory && (
+                        <span style={{ fontSize: '0.8rem', color: '#888' }}>/ {totalDays} วัน</span>
+                      )}
+                      {benchmark.hasRecoveryHistory && (
+                        <span style={{ fontSize: '0.75rem', color: '#888' }}>(รวมฟื้นทุน {totalDays} วัน)</span>
+                      )}
                     </>
                   )}
                 </Typography>
@@ -337,7 +392,7 @@ export const PortfolioGrowthPlanCard: React.FC<PortfolioGrowthPlanCardProps> = (
                   }}
                 >
                   {benchmark.isInRecovery
-                    ? `ขาดทุนต่ำกว่าทุน (ต้องฟื้นตัวอีก ${benchmark.recoveryDays} วัน)`
+                    ? `ขาดทุนต่ำกว่าทุน (ฟื้นตัวเหลืออีก ${Math.max(0, (benchmark.recoveryDays || 0) - (benchmark.matchedRecoveryDay || 1) + 1)} วัน)`
                     : (benchmark.daysBehind > 0
                     ? `ควรอยู่ Day ${benchmark.expectedDay} (ช้าไป ${benchmark.daysBehind} วัน)`
                     : benchmark.daysBehind < 0

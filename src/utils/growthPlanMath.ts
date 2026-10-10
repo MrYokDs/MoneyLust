@@ -29,16 +29,29 @@ export const calculateDailyGrowthPlan = (
   const items: DailyGrowthItem[] = [];
   const targetGrowthRange = targetAmount - initialCapital;
 
-  // 1. ตรวจสอบว่าพอร์ตอยู่ในช่วงขาดทุนต่ำกว่าทุนเริ่มต้นหรือไม่ (Recovery Phase)
-  const isLoss =
+  // 1. ตรวจสอบว่ามีประวัติช่วงฟื้นทุน (Recovery Phase) หรือไม่
+  // โดยตรวจสอบจาก config.recoveryStartCapital หรือ currentPortfolioValue ที่ต่ำกว่า initialCapital
+  // หากมีทั้งสองตัว จะเลือกจุดที่ต่ำที่สุดเพื่อบันทึกประวัติการขาดทุน (Drawdown) สูงสุด
+  const lowestDrawdown = config.recoveryStartCapital;
+  let effectiveRecoveryStart: number | undefined = undefined;
+
+  if (lowestDrawdown !== undefined && lowestDrawdown > 0 && lowestDrawdown < initialCapital) {
+    effectiveRecoveryStart = lowestDrawdown;
+    if (currentPortfolioValue !== undefined && currentPortfolioValue > 0 && currentPortfolioValue < lowestDrawdown) {
+      effectiveRecoveryStart = currentPortfolioValue;
+    }
+  } else if (
     currentPortfolioValue !== undefined &&
     currentPortfolioValue > 0 &&
-    currentPortfolioValue < initialCapital;
+    currentPortfolioValue < initialCapital
+  ) {
+    effectiveRecoveryStart = currentPortfolioValue;
+  }
 
   let overallDayIndex = 1;
 
-  if (isLoss) {
-    let recoveryBalance = currentPortfolioValue;
+  if (effectiveRecoveryStart !== undefined && effectiveRecoveryStart < initialCapital) {
+    let recoveryBalance = effectiveRecoveryStart;
     let recDay = 1;
 
     // วนลูปคำนวณช่วงฟื้นทุนจนกระทั่งยอดเงินกลับมาแตะ initialCapital
@@ -46,8 +59,8 @@ export const calculateDailyGrowthPlan = (
       const startingBalance = recoveryBalance;
       const dailyProfit = startingBalance * (dailyReturnPercent / 100);
       const endingBalance = startingBalance + dailyProfit;
-      const cumulativeProfit = endingBalance - currentPortfolioValue;
-      const cumulativeReturnPercent = (cumulativeProfit / currentPortfolioValue) * 100;
+      const cumulativeProfit = endingBalance - effectiveRecoveryStart;
+      const cumulativeReturnPercent = (cumulativeProfit / effectiveRecoveryStart) * 100;
 
       items.push({
         day: overallDayIndex,
@@ -232,16 +245,25 @@ export const findPortfolioBenchmarkPosition = (
     Math.max(0, (currentProfit / targetGrowthRange) * 100)
   );
 
+  const recoveryItems = items.filter((item) => item.isRecovery);
+  const recoveryCount = recoveryItems.length;
+  const normalCount = items.length - recoveryCount;
+  const hasRecoveryHistory = recoveryCount > 0;
+
   // 3. กรณีมูลค่าพอร์ตปัจจุบันถึงหรือเกินเป้าหมายแล้ว
   if (currentPortfolioValue >= targetAmount) {
     const lastItem = items[items.length - 1];
     const matchedDay = lastItem.day;
     const daysBehind = expectedDay - matchedDay;
     const progressBehindPercent = 0;
+    const normalMatchedDay = normalCount;
 
     return {
       currentPortfolioValue,
       matchedDay,
+      matchedDayLabel: lastItem.displayDayLabel || `Day ${normalCount}`,
+      normalMatchedDay,
+      hasRecoveryHistory,
       planBalanceAtMatchedDay: lastItem.endingBalance,
       differenceAmount: currentPortfolioValue - targetAmount,
       progressPercent: 100,
@@ -255,66 +277,35 @@ export const findPortfolioBenchmarkPosition = (
       daysBehind,
       progressBehindPercent,
       summaryText: '🏆 บรรลุเป้าหมายพอร์ตแล้ว!',
-    };
-  }
-
-  // 4. กรณีมูลค่าพอร์ตยังน้อยกว่าหรือเท่ากับเงินต้นเริ่มต้น (ยังไม่เริ่มมีกำไร หรืออยู่ในช่วงฟื้นทุน)
-  if (currentPortfolioValue <= initialCapital) {
-    const recoveryItems = items.filter((item) => item.isRecovery);
-    const recoveryCount = recoveryItems.length;
-    const normalCount = items.length - recoveryCount;
-    const isInRecovery = recoveryCount > 0;
-
-    const matchedDay = 1;
-    const daysBehind = recoveryCount + Math.max(0, expectedDay - matchedDay);
-    const progressBehindPercent = Number((expectedProgressPercent - 0).toFixed(2));
-    const differenceAmount = currentPortfolioValue - initialCapital;
-
-    let summaryText = '';
-    if (isInRecovery) {
-      const diffFormatted = Math.abs(differenceAmount).toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-      });
-      summaryText = `ช่วงฟื้นตัวกลับสู่ทุนเดิม (ฟื้นทุน Day 1) ขาดทุน ${currencySymbol}${diffFormatted} ต้องใช้เวลาฟื้นทุนอีก ${recoveryCount} วัน (เวลารวมสู่เป้าหมายขยายเป็น ${items.length} วัน)`;
-    } else if (daysBehind > 0) {
-      summaryText = `ช้ากว่าแผน ${daysBehind} วัน (ความคืบหน้าช้าไป ${progressBehindPercent.toFixed(1)}%)`;
-    } else {
-      summaryText = `ตรงตามวัน (Day 1) แต่ความคืบหน้าช้าไป ${progressBehindPercent.toFixed(1)}%`;
-    }
-
-    return {
-      currentPortfolioValue,
-      matchedDay: 1,
-      planBalanceAtMatchedDay: items[0] ? items[0].endingBalance : initialCapital,
-      differenceAmount,
-      progressPercent: 0,
-      remainingDays: items.length,
-      status: 'behind',
-      firstTradeDate,
-      elapsedTradingDays,
-      expectedDay,
-      expectedBalance,
-      expectedProgressPercent,
-      daysBehind,
-      progressBehindPercent,
-      summaryText,
-      isInRecovery,
+      isInRecovery: false,
       recoveryDays: recoveryCount,
       normalPlanDays: normalCount,
       totalPlanDays: items.length,
     };
   }
 
-  // 5. ค้นหาวันที่ในแผนที่มูลค่าใกล้เคียงกับพอร์ตจริง
+  // 4. ค้นหาวันที่ในแผนที่มูลค่าใกล้เคียงกับพอร์ตจริง
   // หาไอเท็มแรกที่มียอด endingBalance >= currentPortfolioValue
   let matchedIndex = items.findIndex((item) => item.endingBalance >= currentPortfolioValue);
   if (matchedIndex === -1) {
-    matchedIndex = items.length - 1;
+    if (items.length > 0 && currentPortfolioValue < items[0].startingBalance) {
+      matchedIndex = 0;
+    } else {
+      matchedIndex = items.length - 1;
+    }
   }
 
   const matchedItem = items[matchedIndex];
   const matchedDay = matchedItem.day;
+  const isInRecovery = matchedItem.isRecovery ?? (currentPortfolioValue < initialCapital);
+  const matchedRecoveryDay = matchedItem.isRecovery ? matchedItem.recoveryDay : undefined;
+  const normalMatchedDay = !matchedItem.isRecovery ? (matchedDay - recoveryCount) : undefined;
+  const matchedDayLabel =
+    matchedItem.displayDayLabel ||
+    (isInRecovery
+      ? `ฟื้นทุน Day ${matchedRecoveryDay || 1}`
+      : `Day ${normalMatchedDay || 1}`);
+
   const differenceAmount = currentPortfolioValue - matchedItem.endingBalance;
   const remainingDays = Math.max(0, items.length - matchedDay);
 
@@ -334,31 +325,43 @@ export const findPortfolioBenchmarkPosition = (
 
   // สร้างข้อความสรุปภาษาไทย
   let summaryText = '';
-  if (daysBehind > 0) {
-    const pctStr = progressBehindPercent > 0
-      ? ` (ความคืบหน้าช้าไป ${progressBehindPercent.toFixed(1)}%)`
-      : '';
+  if (isInRecovery) {
+    const diffFormatted = Math.abs(currentPortfolioValue - initialCapital).toLocaleString('en-US', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+    const remainingRecDays =
+      recoveryCount > 0 ? Math.max(0, recoveryCount - (matchedRecoveryDay || 1) + 1) : 0;
+    summaryText = `ช่วงฟื้นตัวกลับสู่ทุนเดิม (${matchedDayLabel}) ขาดทุน ${currencySymbol}${diffFormatted} ต้องใช้เวลาฟื้นทุนอีกประมาณ ${remainingRecDays} วัน (จากช่วงฟื้นทุนทั้งหมด ${recoveryCount} วัน)`;
+  } else if (daysBehind > 0) {
+    const pctStr =
+      progressBehindPercent > 0 ? ` (ความคืบหน้าช้าไป ${progressBehindPercent.toFixed(1)}%)` : '';
     summaryText = `ช้ากว่าแผน ${daysBehind} วัน${pctStr}`;
   } else if (daysBehind < 0) {
     const aheadDays = Math.abs(daysBehind);
-    const pctStr = progressBehindPercent < 0
-      ? ` (ความคืบหน้าเร็วกว่าเป้าหมาย ${Math.abs(progressBehindPercent).toFixed(1)}%)`
-      : '';
+    const pctStr =
+      progressBehindPercent < 0
+        ? ` (ความคืบหน้าเร็วกว่าเป้าหมาย ${Math.abs(progressBehindPercent).toFixed(1)}%)`
+        : '';
     summaryText = `เร็วกว่าแผน ${aheadDays} วัน${pctStr}`;
   } else {
     // daysBehind === 0 (จำนวนวันเท่ากัน)
     if (progressBehindPercent > 0.1) {
-      summaryText = `ตรงตามวัน (Day ${matchedDay}) แต่ความคืบหน้าช้าไป ${progressBehindPercent.toFixed(1)}%`;
+      summaryText = `ตรงตามวัน (${matchedDayLabel}) แต่ความคืบหน้าช้าไป ${progressBehindPercent.toFixed(1)}%`;
     } else if (progressBehindPercent < -0.1) {
-      summaryText = `ตรงตามวัน (Day ${matchedDay}) ความคืบหน้าเร็วกว่าเป้าหมาย ${Math.abs(progressBehindPercent).toFixed(1)}%`;
+      summaryText = `ตรงตามวัน (${matchedDayLabel}) ความคืบหน้าเร็วกว่าเป้าหมาย ${Math.abs(progressBehindPercent).toFixed(1)}%`;
     } else {
-      summaryText = `เดินหน้าตรงตามแผนเป๊ะ (Day ${matchedDay})`;
+      summaryText = `เดินหน้าตรงตามแผนเป๊ะ (${matchedDayLabel})`;
     }
   }
 
   return {
     currentPortfolioValue,
     matchedDay,
+    matchedDayLabel,
+    matchedRecoveryDay,
+    normalMatchedDay,
+    hasRecoveryHistory,
     planBalanceAtMatchedDay: matchedItem.endingBalance,
     differenceAmount,
     progressPercent,
@@ -372,9 +375,9 @@ export const findPortfolioBenchmarkPosition = (
     daysBehind,
     progressBehindPercent,
     summaryText,
-    isInRecovery: false,
-    recoveryDays: 0,
-    normalPlanDays: items.length,
+    isInRecovery,
+    recoveryDays: recoveryCount,
+    normalPlanDays: normalCount,
     totalPlanDays: items.length,
   };
 };

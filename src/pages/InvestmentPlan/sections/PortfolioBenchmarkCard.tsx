@@ -218,14 +218,19 @@ export const PortfolioBenchmarkCard: React.FC<PortfolioBenchmarkCardProps> = ({
                   <Typography variant="h5" fontWeight="900" color={benchmark.isInRecovery ? "warning.main" : "info.main"} fontFamily="Prompt">
                     {benchmark.isInRecovery ? (
                       <>
-                        <span>ฟื้นทุน Day 1</span>{' '}
+                        <span>{benchmark.matchedDayLabel || `ฟื้นทุน Day ${benchmark.matchedRecoveryDay || 1}`}</span>{' '}
                         <span style={{ fontSize: '0.85rem', color: '#888' }}>(ขยายเป็น {totalDays} วัน)</span>
                       </>
                     ) : (
-                      <>Day {benchmark.matchedDay}</>
+                      <>
+                        {benchmark.matchedDayLabel || `Day ${benchmark.normalMatchedDay || benchmark.matchedDay}`}
+                        {benchmark.hasRecoveryHistory && (
+                          <span style={{ fontSize: '0.85rem', color: '#888', marginLeft: '6px' }}>(รวมฟื้นทุน {totalDays} วัน)</span>
+                        )}
+                      </>
                     )}
                   </Typography>
-                  {!benchmark.isInRecovery && (
+                  {!benchmark.isInRecovery && !benchmark.hasRecoveryHistory && (
                     <Typography variant="body2" color="text.secondary" fontFamily="Prompt">
                       / {totalDays} วัน
                     </Typography>
@@ -243,7 +248,7 @@ export const PortfolioBenchmarkCard: React.FC<PortfolioBenchmarkCardProps> = ({
                   }}
                 >
                   {benchmark.isInRecovery
-                    ? `ขาดทุนต่ำกว่าทุน (ต้องใช้เวลาฟื้นตัว ${benchmark.recoveryDays} วัน)`
+                    ? `ขาดทุนต่ำกว่าทุน (ฟื้นตัวเหลืออีก ${Math.max(0, (benchmark.recoveryDays || 0) - (benchmark.matchedRecoveryDay || 1) + 1)} วัน)`
                     : (benchmark.daysBehind > 0
                     ? `ควรอยู่ Day ${benchmark.expectedDay} (ช้ากว่าแผน ${benchmark.daysBehind} วัน)`
                     : benchmark.daysBehind < 0

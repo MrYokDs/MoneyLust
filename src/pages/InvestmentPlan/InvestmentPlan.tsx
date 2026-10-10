@@ -9,7 +9,10 @@ import { Box, Grid, Stack, Typography, Alert } from '@mui/material';
 import { Sparkles } from 'lucide-react';
 import { useSnackbar } from 'notistack';
 import { useAppSelector, useAppDispatch } from '../../store';
-import { savePortfolioGrowthPlan } from '../../store/stockPlannerSlice';
+import {
+  savePortfolioGrowthPlan,
+  updatePortfolioGrowthPlanRecovery,
+} from '../../store/stockPlannerSlice';
 import { calculatePortfolioSummary, convertCurrencyAmount } from '../../utils/stockMath';
 import {
   calculateDailyGrowthPlan,
@@ -255,6 +258,18 @@ export const InvestmentPlan: React.FC = () => {
     }
 
     if (formData.portfolioId !== 'none' && selectedPortfolio) {
+      const prevRecovery = selectedPortfolio.growthPlan?.recoveryStartCapital;
+      let effectiveRecovery = prevRecovery;
+      if (
+        portfolioCurrentValue !== undefined &&
+        portfolioCurrentValue > 0 &&
+        portfolioCurrentValue < initialCapital
+      ) {
+        if (effectiveRecovery === undefined || portfolioCurrentValue < effectiveRecovery) {
+          effectiveRecovery = portfolioCurrentValue;
+        }
+      }
+
       dispatch(
         savePortfolioGrowthPlan({
           id: selectedPortfolio.id,
@@ -266,6 +281,7 @@ export const InvestmentPlan: React.FC = () => {
             currency: formData.currency,
             exchangeRate: parseFloat(formData.exchangeRate) || 36.5,
             updatedAt: new Date().toISOString(),
+            recoveryStartCapital: effectiveRecovery,
           },
         })
       );
@@ -285,8 +301,30 @@ export const InvestmentPlan: React.FC = () => {
   const dailyReturnPercent = parseFloat(formData.dailyReturnPercent) || 0;
   const targetAmount = parseFloat(formData.targetAmount) || 0;
 
-  // คำนวณตารางรายวันแบบทบต้น (รองรับช่วงฟื้นทุนอัตโนมัติหากเชื่อมโยงพอร์ตและพอร์ตติดลบต่ำกว่าทุน)
+  // บันทึกจุดต่ำสุดของพอร์ต (Drawdown / บันทึกข้อผิดพลาด) อัตโนมัติเมื่อพอร์ตขาดทุนต่ำกว่าทุน เพื่อคงประวัติช่วงฟื้นทุนไว้
+  useEffect(() => {
+    if (
+      selectedPortfolio &&
+      selectedPortfolio.growthPlan &&
+      portfolioCurrentValue !== undefined &&
+      portfolioCurrentValue > 0 &&
+      portfolioCurrentValue < selectedPortfolio.growthPlan.initialCapital
+    ) {
+      const currentMin = selectedPortfolio.growthPlan.recoveryStartCapital;
+      if (currentMin === undefined || portfolioCurrentValue < currentMin) {
+        dispatch(
+          updatePortfolioGrowthPlanRecovery({
+            id: selectedPortfolio.id,
+            currentPortfolioValue: portfolioCurrentValue,
+          })
+        );
+      }
+    }
+  }, [selectedPortfolio, portfolioCurrentValue, dispatch]);
+
+  // คำนวณตารางรายวันแบบทบต้น (รองรับช่วงฟื้นทุนอัตโนมัติหากเชื่อมโยงพอร์ตและพอร์ตติดลบต่ำกว่าทุน หรือมีบันทึก recoveryStartCapital)
   const dailyItems = useMemo(() => {
+    const recoveryStartCapital = selectedPortfolio?.growthPlan?.recoveryStartCapital;
     return calculateDailyGrowthPlan(
       {
         initialCapital,
@@ -294,6 +332,7 @@ export const InvestmentPlan: React.FC = () => {
         targetAmount,
         portfolioId: formData.portfolioId,
         currency: formData.currency,
+        recoveryStartCapital,
       },
       1000,
       formData.portfolioId !== 'none' ? portfolioCurrentValue : undefined
@@ -305,6 +344,7 @@ export const InvestmentPlan: React.FC = () => {
     formData.portfolioId,
     formData.currency,
     portfolioCurrentValue,
+    selectedPortfolio?.growthPlan?.recoveryStartCapital,
   ]);
 
   // ค้นหาวันที่เริ่มเทรดวันแรกของพอร์ตที่เลือก (เพื่อเริ่มนับจำนวนวันตามแผน)
