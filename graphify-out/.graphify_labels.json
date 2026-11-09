@@ -1,6 +1,6 @@
 {
   "0": "SavedPlans/SavedPlans.tsx",
-  "1": "@mui/material",
+  "1": "react",
   "2": "stockPlannerSlice.ts",
   "3": "TradingNoteHeaderWidget.tsx",
   "4": "dependencies",
@@ -23,7 +23,7 @@
   "21": "Autonomous Workspace Terminal Execution (มาตรฐานการรันคำสั่ง Terminal อัตโนมัติภายใน Workspace)",
   "22": "rules/graphify.md",
   "23": "workflows/graphify.md",
-  "24": "react",
+  "24": "StockPlanner/types.ts",
   "25": "scripts",
   "26": "stock-search.js",
   "27": "ref_child_process",

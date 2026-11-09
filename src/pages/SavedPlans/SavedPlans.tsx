@@ -15,6 +15,10 @@ import {
   setActivePlanId,
   deletePortfolio,
   updatePortfolioCapital,
+  depositPortfolioCapital,
+  withdrawPortfolioCapital,
+  adjustBaseCapital,
+  deletePortfolioAdjustment,
   clearPortfolioAdjustments,
   deletePortfolioGrowthPlan,
   updatePortfolioFirstTradeDate,
@@ -30,6 +34,7 @@ import TimelineFilter from './sections/TimelineFilter';
 import PlanGridView from './sections/PlanGridView';
 import PlanTableView from './sections/PlanTableView';
 import SavedPlansModals from './sections/SavedPlansModals';
+import CapitalManagementModal from './sections/CapitalManagementModal';
 import EmptyPlansAlert from './sections/EmptyPlansAlert';
 
 export const SavedPlans: React.FC = () => {
@@ -60,6 +65,7 @@ export const SavedPlans: React.FC = () => {
   const [planToDelete, setPlanToDelete] = useState<PlanToDelete | null>(null);
   const [openClearAllModal, setOpenClearAllModal] = useState(false);
   const [openEditDateModal, setOpenEditDateModal] = useState(false);
+  const [openCapitalModal, setOpenCapitalModal] = useState(false);
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -178,6 +184,17 @@ export const SavedPlans: React.FC = () => {
   };
 
   /**
+   * ดำเนินการลบรายการปรับปรุงเงินทุน (เติม/ถอนเงิน) รายการเฉพาะออกจากพอร์ต
+   * 
+   * @param adjustmentId - รหัสของรายการที่ต้องการลบ
+   * @returns void
+   */
+  const handleDeleteAdjustment = (adjustmentId: string): void => {
+    dispatch(deletePortfolioAdjustment({ portfolioId, adjustmentId }));
+    enqueueSnackbar('ลบรายการปรับปรุงเงินทุนออกจากไทม์ไลน์แล้ว', { variant: 'info' });
+  };
+
+  /**
    * แปลงข้อความ ISO Date เป็นรูปแบบวันที่ภาษาไทย
    * 
    * @param dateStr - ข้อความวันที่ ISO String
@@ -249,6 +266,7 @@ export const SavedPlans: React.FC = () => {
         summary={summary}
         exchangeRate={exchangeRate}
         portfolioId={portfolioId}
+        onOpenCapitalModal={() => setOpenCapitalModal(true)}
         onUpdateCapital={(capital) => {
           dispatch(updatePortfolioCapital({ id: portfolioId, capital }));
         }}
@@ -285,6 +303,7 @@ export const SavedPlans: React.FC = () => {
             items={paginatedItems}
             onLoadPlan={handleLoadPlan}
             onDeletePlan={(id, symbol) => setPlanToDelete({ id, symbol })}
+            onDeleteAdjustment={handleDeleteAdjustment}
             formatDate={formatDate}
             getRoundingModeName={getRoundingModeName}
           />
@@ -301,6 +320,7 @@ export const SavedPlans: React.FC = () => {
             }}
             onLoadPlan={handleLoadPlan}
             onDeletePlan={(id, symbol) => setPlanToDelete({ id, symbol })}
+            onDeleteAdjustment={handleDeleteAdjustment}
             formatDate={formatDate}
             getRoundingModeName={getRoundingModeName}
           />
@@ -331,6 +351,34 @@ export const SavedPlans: React.FC = () => {
             dateStr ? 'อัปเดตวันเริ่มต้นเทรดเรียบร้อยแล้ว' : 'รีเซ็ตวันเริ่มต้นเทรดเป็นอัตโนมัติแล้ว',
             { variant: 'success' }
           );
+        }}
+      />
+
+      {/* 6. Capital Management Modal */}
+      <CapitalManagementModal
+        open={openCapitalModal}
+        onClose={() => setOpenCapitalModal(false)}
+        portfolioName={portfolio.name}
+        initialCapital={summary.initialCapital}
+        availableCash={summary.availableCash}
+        exchangeRate={exchangeRate}
+        onDeposit={(amount, date, note) => {
+          dispatch(depositPortfolioCapital({ id: portfolioId, amount, date, note }));
+          enqueueSnackbar(`เติมเงินเข้าพอร์ต $${amount.toLocaleString()} สำเร็จ`, { variant: 'success' });
+        }}
+        onWithdraw={(amount, date, note) => {
+          dispatch(withdrawPortfolioCapital({ id: portfolioId, amount, date, note }));
+          enqueueSnackbar(`ถอนเงินออกจากพอร์ต $${amount.toLocaleString()} สำเร็จ`, { variant: 'info' });
+        }}
+        onAdjustBase={(newBase, clearAdjustments) => {
+          dispatch(
+            adjustBaseCapital({
+              id: portfolioId,
+              newBaseCapital: newBase,
+              clearExistingAdjustments: clearAdjustments,
+            })
+          );
+          enqueueSnackbar(`ปรับฐานเงินต้นพอร์ตเป็น $${newBase.toLocaleString()} สำเร็จ`, { variant: 'success' });
         }}
       />
     </Box>

@@ -4,6 +4,7 @@ export interface CapitalAdjustment {
   id: string;
   date: string;
   amountChange: number;
+  note?: string;
 }
 
 export interface Portfolio {

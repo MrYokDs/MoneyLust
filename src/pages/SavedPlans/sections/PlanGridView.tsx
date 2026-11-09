@@ -24,6 +24,7 @@ interface PlanGridViewProps {
   items: TimelineItem[];
   onLoadPlan: (plan: CalculationResult) => void;
   onDeletePlan: (id: string, symbol: string) => void;
+  onDeleteAdjustment?: (id: string) => void;
   formatDate: (dateStr: string) => string;
   getRoundingModeName: (mode: string) => string;
 }
@@ -32,6 +33,7 @@ export const PlanGridView: React.FC<PlanGridViewProps> = ({
   items,
   onLoadPlan,
   onDeletePlan,
+  onDeleteAdjustment,
   formatDate,
   getRoundingModeName,
 }) => {
@@ -50,14 +52,14 @@ export const PlanGridView: React.FC<PlanGridViewProps> = ({
                   p: 2,
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
+                  justifyContent: 'space-between',
                   backgroundColor: isDeposit
                     ? 'rgba(16, 185, 129, 0.05)'
                     : 'rgba(239, 68, 68, 0.05)',
                   borderRadius: 2,
                 }}
               >
-                <Stack direction="row" alignItems="center" spacing={2}>
+                <Stack direction="row" alignItems="center" spacing={2} flexWrap="wrap">
                   <Stack direction="row" spacing={1} alignItems="center">
                     <Calendar size={14} color={isDeposit ? '#10b981' : '#ef4444'} />
                     <Typography variant="body2" color="text.secondary" fontSize="0.85rem">
@@ -72,7 +74,23 @@ export const PlanGridView: React.FC<PlanGridViewProps> = ({
                     {isDeposit ? 'เติมเงินเข้าพอร์ต' : 'ถอนเงินออกจากพอร์ต'} จำนวน{' '}
                     {formatCurrency(Math.abs(adj.amountChange), 'USD', false)}
                   </Typography>
+                  {adj.note && (
+                    <Typography variant="caption" color="text.secondary" sx={{ fontStyle: 'italic', fontFamily: 'Prompt' }}>
+                      ({adj.note})
+                    </Typography>
+                  )}
                 </Stack>
+                {onDeleteAdjustment && (
+                  <IconButton
+                    size="small"
+                    color="error"
+                    onClick={() => onDeleteAdjustment(adj.id)}
+                    sx={{ opacity: 0.6, '&:hover': { opacity: 1 }, ml: 1 }}
+                    title="ลบรายการนี้"
+                  >
+                    <Trash2 size={16} />
+                  </IconButton>
+                )}
               </GlassCard>
             </Grid>
           );

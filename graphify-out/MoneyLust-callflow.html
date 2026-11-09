@@ -60,7 +60,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 <div class="container">
 
 <h1>MoneyLust — Complete Call Flow &amp; Architecture Documentation</h1>
-<p class="subtitle">Generated from graphify knowledge graph: 612 nodes, 1446 edges, 31 communities. Commit: 5a0dc9a</p>
+<p class="subtitle">Generated from graphify knowledge graph: 619 nodes, 1464 edges, 31 communities. Commit: 917d50c</p>
 
 <div class="nav">
     <a href="#overview">Architecture Overview</a>
@@ -68,10 +68,10 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
     <a href="#cli-skills">CLI &amp; Skill Installers</a>
     <a href="#serve-api">Serving API</a>
     <a href="#stockplannerslice-ts">stockPlannerSlice.ts</a>
-    <a href="#mui-material">@mui/material</a>
     <a href="#markettable-tsx">MarketTable.tsx</a>
     <a href="#tradingnoteheaderwidget-tsx">TradingNoteHeaderWidget.tsx</a>
     <a href="#databackupmodal-tsx">DataBackupModal.tsx</a>
+    <a href="#stockplanner-types-ts">StockPlanner/types.ts</a>
     <a href="#webulltokenmodal-tsx">WebullTokenModal.tsx</a>
     <a href="#rules-graphify-md">rules/graphify.md</a>
     <a href="#workflows-graphify-md">workflows/graphify.md</a>
@@ -86,22 +86,22 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    BUILD_GRAPH_321CBB04("Graph Build<br/><small>290 nodes</small>")
+    BUILD_GRAPH_321CBB04("Graph Build<br/><small>324 nodes</small>")
     class BUILD_GRAPH_321CBB04 module;
     CLI_SKILLS_9964CBB8("CLI &amp; Skill Installers<br/><small>59 nodes</small>")
     class CLI_SKILLS_9964CBB8 module;
     SERVE_API_35EC8E86("Serving API<br/><small>48 nodes</small>")
     class SERVE_API_35EC8E86 module;
-    STOCKPLANNERSLICE_TS_D1B7833F("stockPlannerSlice.ts<br/><small>51 nodes</small>")
+    STOCKPLANNERSLICE_TS_D1B7833F("stockPlannerSlice.ts<br/><small>45 nodes</small>")
     class STOCKPLANNERSLICE_TS_D1B7833F module;
-    MUI_MATERIAL_1AD93EE2("@mui/material<br/><small>47 nodes</small>")
-    class MUI_MATERIAL_1AD93EE2 module;
-    MARKETTABLE_TSX_0A21DB8E("MarketTable.tsx<br/><small>38 nodes</small>")
+    MARKETTABLE_TSX_0A21DB8E("MarketTable.tsx<br/><small>40 nodes</small>")
     class MARKETTABLE_TSX_0A21DB8E module;
     TRADINGNOTEHEADERWIDGET_TSX_7B1281C3("TradingNoteHeaderWidget.tsx<br/><small>37 nodes</small>")
     class TRADINGNOTEHEADERWIDGET_TSX_7B1281C3 module;
-    DATABACKUPMODAL_TSX_3256AAB3("DataBackupModal.tsx<br/><small>25 nodes</small>")
+    DATABACKUPMODAL_TSX_3256AAB3("DataBackupModal.tsx<br/><small>26 nodes</small>")
     class DATABACKUPMODAL_TSX_3256AAB3 module;
+    STOCKPLANNER_TYPES_TS_7E5C734F("StockPlanner/types.ts<br/><small>23 nodes</small>")
+    class STOCKPLANNER_TYPES_TS_7E5C734F module;
     WEBULLTOKENMODAL_TSX_997FEA1B("WebullTokenModal.tsx<br/><small>11 nodes</small>")
     class WEBULLTOKENMODAL_TSX_997FEA1B module;
     RULES_GRAPHIFY_MD_3459230E("rules/graphify.md<br/><small>2 nodes</small>")
@@ -112,18 +112,18 @@ flowchart LR
     class VITE_ENV_D_TS_23591423 module;
     REF_CHILD_PROCESS_6197CD3D("ref_child_process<br/><small>1 nodes</small>")
     class REF_CHILD_PROCESS_6197CD3D module;
-    BUILD_GRAPH_321CBB04 -->|imports x60| MUI_MATERIAL_1AD93EE2
-    BUILD_GRAPH_321CBB04 -->|imports x41| STOCKPLANNERSLICE_TS_D1B7833F
-    MUI_MATERIAL_1AD93EE2 -->|imports x32| BUILD_GRAPH_321CBB04
-    STOCKPLANNERSLICE_TS_D1B7833F -->|imports x23| BUILD_GRAPH_321CBB04
-    MARKETTABLE_TSX_0A21DB8E -->|imports x20| BUILD_GRAPH_321CBB04
-    STOCKPLANNERSLICE_TS_D1B7833F -->|imports x16| MUI_MATERIAL_1AD93EE2
-    MUI_MATERIAL_1AD93EE2 -->|imports x15| STOCKPLANNERSLICE_TS_D1B7833F
-    BUILD_GRAPH_321CBB04 -->|imports x12| MARKETTABLE_TSX_0A21DB8E
-    MARKETTABLE_TSX_0A21DB8E -->|imports x10| MUI_MATERIAL_1AD93EE2
-    TRADINGNOTEHEADERWIDGET_TSX_7B1281C3 -->|imports x10| BUILD_GRAPH_321CBB04
-    BUILD_GRAPH_321CBB04 -->|imports x8| DATABACKUPMODAL_TSX_3256AAB3
-    TRADINGNOTEHEADERWIDGET_TSX_7B1281C3 -->|imports x5| MUI_MATERIAL_1AD93EE2
+    BUILD_GRAPH_321CBB04 -->|imports x48| STOCKPLANNERSLICE_TS_D1B7833F
+    STOCKPLANNERSLICE_TS_D1B7833F -->|imports x36| BUILD_GRAPH_321CBB04
+    MARKETTABLE_TSX_0A21DB8E -->|imports x23| BUILD_GRAPH_321CBB04
+    STOCKPLANNER_TYPES_TS_7E5C734F -->|imports x15| BUILD_GRAPH_321CBB04
+    BUILD_GRAPH_321CBB04 -->|imports x15| MARKETTABLE_TSX_0A21DB8E
+    TRADINGNOTEHEADERWIDGET_TSX_7B1281C3 -->|imports x15| BUILD_GRAPH_321CBB04
+    BUILD_GRAPH_321CBB04 -->|imports x12| STOCKPLANNER_TYPES_TS_7E5C734F
+    BUILD_GRAPH_321CBB04 -->|imports x9| DATABACKUPMODAL_TSX_3256AAB3
+    WEBULLTOKENMODAL_TSX_997FEA1B -->|imports x6| BUILD_GRAPH_321CBB04
+    DATABACKUPMODAL_TSX_3256AAB3 -->|imports x6| BUILD_GRAPH_321CBB04
+    MARKETTABLE_TSX_0A21DB8E -->|imports x4| STOCKPLANNER_TYPES_TS_7E5C734F
+    BUILD_GRAPH_321CBB04 -->|calls x3| WEBULLTOKENMODAL_TSX_997FEA1B
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -140,43 +140,43 @@ flowchart LR
     <h4>Architecture Layers</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
-      <tr><td>Graph Build</td><td>290</td><td><code>0, 24, 4, 5, 8, 11, 10, 12, 20, 14, 25, 16, 17</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>59</td><td><code>13, 7, 19, 30, 21</code></td></tr><tr><td>Serving API</td><td>48</td><td><code>15, 26, 28</code></td></tr><tr><td>stockPlannerSlice.ts</td><td>51</td><td><code>2</code></td></tr><tr><td>@mui/material</td><td>47</td><td><code>1</code></td></tr><tr><td>MarketTable.tsx</td><td>38</td><td><code>6</code></td></tr><tr><td>TradingNoteHeaderWidget.tsx</td><td>37</td><td><code>3</code></td></tr><tr><td>DataBackupModal.tsx</td><td>25</td><td><code>9</code></td></tr><tr><td>WebullTokenModal.tsx</td><td>11</td><td><code>29</code></td></tr><tr><td>rules/graphify.md</td><td>2</td><td><code>22</code></td></tr><tr><td>workflows/graphify.md</td><td>2</td><td><code>23</code></td></tr><tr><td>vite-env.d.ts</td><td>1</td><td><code>18</code></td></tr><tr><td>ref_child_process</td><td>1</td><td><code>27</code></td></tr>
+      <tr><td>Graph Build</td><td>324</td><td><code>0, 1, 4, 5, 8, 11, 10, 12, 20, 14, 25, 16, 17</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>59</td><td><code>13, 7, 19, 30, 21</code></td></tr><tr><td>Serving API</td><td>48</td><td><code>15, 26, 28</code></td></tr><tr><td>stockPlannerSlice.ts</td><td>45</td><td><code>2</code></td></tr><tr><td>MarketTable.tsx</td><td>40</td><td><code>6</code></td></tr><tr><td>TradingNoteHeaderWidget.tsx</td><td>37</td><td><code>3</code></td></tr><tr><td>DataBackupModal.tsx</td><td>26</td><td><code>9</code></td></tr><tr><td>StockPlanner/types.ts</td><td>23</td><td><code>24</code></td></tr><tr><td>WebullTokenModal.tsx</td><td>11</td><td><code>29</code></td></tr><tr><td>rules/graphify.md</td><td>2</td><td><code>22</code></td></tr><tr><td>workflows/graphify.md</td><td>2</td><td><code>23</code></td></tr><tr><td>vite-env.d.ts</td><td>1</td><td><code>18</code></td></tr><tr><td>ref_child_process</td><td>1</td><td><code>27</code></td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Core Flow</h4>
-    <div class="arrow-chain">CLI &amp; Skill Installers -&gt; @mui/material -&gt; Graph Build -&gt; stockPlannerSlice.ts -&gt; Serving API -&gt; MarketTable.tsx -&gt; WebullTokenModal.tsx</div>
+    <div class="arrow-chain">CLI &amp; Skill Installers -&gt; Graph Build -&gt; stockPlannerSlice.ts -&gt; Serving API -&gt; MarketTable.tsx -&gt; StockPlanner/types.ts -&gt; TradingNoteHeaderWidget.tsx</div>
   </div>
 </div>
 <div class="grid">
   <div class="card">
     <h4>Graph Report Highlights</h4>
     <ul>
-      <li>612 nodes · 1446 edges · 31 communities (22 shown, 9 thin omitted)</li>
+      <li>619 nodes · 1464 edges · 31 communities (22 shown, 9 thin omitted)</li>
       <li>Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 11 edges (avg confidence: 0.94)</li>
       <li>Token cost: 0 input · 0 output</li>
-      <li>1. `react` - 51 edges</li>
-      <li>2. `@mui/material` - 50 edges</li>
-      <li>3. `lucide-react` - 35 edges</li>
+      <li>1. `react` - 52 edges</li>
+      <li>2. `@mui/material` - 51 edges</li>
+      <li>3. `lucide-react` - 36 edges</li>
     </ul>
   </div>
 </div>
 <hr>
 <!-- ====== 2. Graph Build ====== -->
 <h2 id="build-graph">2. Graph Build</h2>
-<p>Graph Build groups implementation around packagejson, pages, sections, stockplanner, mostly in package.json, tsconfig.app.json, AGENTS.md. This section covers 290 nodes and 509 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Graph Build groups implementation around packagejson, pages, sections, savedplans, mostly in package.json, tsconfig.app.json, AGENTS.md. This section covers 324 nodes and 710 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Graph Build (290 nodes, 509 edges)
+    %% Section: Graph Build (324 nodes, 710 edges)
     subgraph build_graph_pages_InvestmentPlan_InvestmentPlan_e38841ca["pages/InvestmentPlan/InvestmentPlan.tsx"]
         src_pages_investmentplan_investmentplan_26428a99("InvestmentPlan.tsx")
         src_pages_investmentplan_investmentplan_investme_5adb3358("InvestmentPlan()<br/><small>pages/InvestmentPlan/InvestmentPlan.tsx</small>")
     end
-    subgraph build_graph_src_App_tsx_5c96481a["src/App.tsx"]
-        src_app_46efd68e("App.tsx")
-        src_app_app_f316b20d("App()<br/><small>src/App.tsx</small>")
+    subgraph build_graph_pages_SavedPlans_SavedPlans_tsx_bd12a679["pages/SavedPlans/SavedPlans.tsx"]
+        src_pages_savedplans_savedplans_0d66ecba("SavedPlans.tsx")
+        src_pages_savedplans_savedplans_savedplans_f51d9af9("SavedPlans()<br/><small>pages/SavedPlans/SavedPlans.tsx</small>")
     end
     subgraph build_graph_src_store_index_ts_e2c7a7aa["src/store/index.ts"]
         src_store_index_useappdispatch_24a9c1d7("useAppDispatch()<br/><small>src/store/index.ts</small>")
@@ -192,8 +192,8 @@ flowchart LR
     end
     src_pages_stockplanner_sections_stockplannerform_18c73545("StockPlannerForm.tsx")
     package_582681c2("package.json")
-    src_pages_savedplans_savedplans_0d66ecba("SavedPlans.tsx")
     src_pages_stockplanner_stockplanner_4ded7674("StockPlanner.tsx")
+    src_app_app_f316b20d("App()<br/><small>src/App.tsx</small>")
     src_components_layout_layout_9d02fce8("Layout()<br/><small>src/components/Layout.tsx</small>")
     src_routes_approutes_approutes_b57f1c47("AppRoutes()<br/><small>src/routes/AppRoutes.tsx</small>")
     src_theme_gettheme_b69fd646("getTheme()<br/><small>src/theme.ts</small>")
@@ -212,21 +212,21 @@ flowchart LR
     src_pages_investmentplan_investmentplan_investme_5adb3358 -->|calls| src_utils_growthplanmath_getportfoliofirsttraded_6d0c0e7b
     src_pages_investmentplan_investmentplan_investme_5adb3358 -->|calls| src_store_index_useappdispatch_24a9c1d7
     src_pages_investmentplan_investmentplan_investme_5adb3358 -->|calls| src_store_index_useappselector_caada1c4
+    src_pages_savedplans_savedplans_savedplans_f51d9af9 -->|calls| src_store_index_useappdispatch_24a9c1d7
+    src_pages_savedplans_savedplans_savedplans_f51d9af9 -->|calls| src_store_index_useappselector_caada1c4
+    src_pages_savedplans_savedplans_savedplans_f51d9af9 -->|calls| src_utils_exchangerate_fetchliveexchangerate_2602a2c5
+    src_pages_savedplans_savedplans_savedplans_f51d9af9 -->|calls| src_utils_stockmath_calculateportfoliosummary_1b1131c0
+    src_pages_savedplans_savedplans_savedplans_f51d9af9 -->|calls| src_utils_growthplanmath_getportfoliofirsttraded_6d0c0e7b
     src_routes_approutes_approutes_b57f1c47 -->|calls| src_pages_investmentplan_investmentplan_investme_5adb3358
-    src_app_46efd68e -->|imports| src_utils_exchangerate_fetchliveexchangerate_2602a2c5
-    src_app_46efd68e -->|imports| src_theme_gettheme_b69fd646
-    src_app_46efd68e -->|imports| src_components_layout_layout_9d02fce8
-    src_app_46efd68e -->|imports| src_routes_approutes_approutes_b57f1c47
-    src_app_46efd68e -->|imports| src_store_index_useappdispatch_24a9c1d7
+    src_routes_approutes_approutes_b57f1c47 -->|calls| src_pages_savedplans_savedplans_savedplans_f51d9af9
     src_pages_investmentplan_investmentplan_26428a99 -->|imports| src_store_index_useappdispatch_24a9c1d7
     src_pages_investmentplan_investmentplan_26428a99 -->|imports| src_store_index_useappselector_caada1c4
     src_pages_investmentplan_investmentplan_26428a99 -->|imports| src_utils_stockmath_calculateportfoliosummary_1b1131c0
-    src_pages_investmentplan_investmentplan_26428a99 -->|imports| src_utils_stockmath_convertcurrencyamount_23965d92
-    %% Omitted for readability: 272 nodes, 14 edges
+    %% Omitted for readability: 306 nodes, 15 edges
     class src_pages_investmentplan_investmentplan_26428a99 ui;
     class src_pages_investmentplan_investmentplan_investme_5adb3358 ui;
-    class src_app_46efd68e ui;
-    class src_app_app_f316b20d ui;
+    class src_pages_savedplans_savedplans_0d66ecba ui;
+    class src_pages_savedplans_savedplans_savedplans_f51d9af9 ui;
     class src_store_index_useappdispatch_24a9c1d7 ui;
     class src_store_index_useappselector_caada1c4 ui;
     class src_utils_growthplanmath_calculatedailygrowthpla_1ae79d34 function;
@@ -235,8 +235,8 @@ flowchart LR
     class src_utils_stockmath_convertcurrencyamount_23965d92 function;
     class src_pages_stockplanner_sections_stockplannerform_18c73545 ui;
     class package_582681c2 function;
-    class src_pages_savedplans_savedplans_0d66ecba ui;
     class src_pages_stockplanner_stockplanner_4ded7674 ui;
+    class src_app_app_f316b20d ui;
     class src_components_layout_layout_9d02fce8 ui;
     class src_routes_approutes_approutes_b57f1c47 api;
     class src_theme_gettheme_b69fd646 function;
@@ -272,11 +272,11 @@ flowchart LR
 </tr>
 <tr>
   <td>2</td>
-  <td><code>PortfolioHeaderProps</code><br><small style="color:var(--muted)">SavedPlans/sections/PortfolioHeader.tsx</small></td>
+  <td><code>SavedPlansModalsProps</code><br><small style="color:var(--muted)">SavedPlans/sections/SavedPlansModals.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>PortfolioHeaderProps node in SavedPlans/sections/PortfolioHeader.tsx.</td>
+  <td>SavedPlansModalsProps node in SavedPlans/sections/SavedPlansModals.tsx.</td>
 </tr>
 <tr>
   <td>3</td>
@@ -288,6 +288,14 @@ flowchart LR
 </tr>
 <tr>
   <td>4</td>
+  <td><code>PlanToDelete</code><br><small style="color:var(--muted)">pages/SavedPlans/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td><code>SavedPlans.tsx</code><br><small style="color:var(--muted)">pages/SavedPlans/SavedPlans.tsx</small><br><code>SavedPlansModals.tsx</code><br><small style="color:var(--muted)">SavedPlans/sections/SavedPlansModals.tsx</small></td>
+  <td>No direct outbound edge</td>
+  <td>PlanToDelete node in pages/SavedPlans/types.ts.</td>
+</tr>
+<tr>
+  <td>5</td>
   <td><code>AppDispatch</code><br><small style="color:var(--muted)">src/store/index.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -295,7 +303,7 @@ flowchart LR
   <td>AppDispatch node in src/store/index.ts.</td>
 </tr>
 <tr>
-  <td>5</td>
+  <td>6</td>
   <td><code>RootState</code><br><small style="color:var(--muted)">src/store/index.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -303,7 +311,15 @@ flowchart LR
   <td>RootState node in src/store/index.ts.</td>
 </tr>
 <tr>
-  <td>6</td>
+  <td>7</td>
+  <td><code>CapitalAdjustment</code><br><small style="color:var(--muted)">src/types/portfolio.ts</small></td>
+  <td><span class="tag tag-endpoint">API</span></td>
+  <td><code>stockPlannerSlice.ts</code><br><small style="color:var(--muted)">src/store/stockPlannerSlice.ts</small><br><code>types.ts</code><br><small style="color:var(--muted)">pages/SavedPlans/types.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>CapitalAdjustment node in src/types/portfolio.ts.</td>
+</tr>
+<tr>
+  <td>8</td>
   <td><code>App()</code><br><small style="color:var(--muted)">src/App.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>main.tsx</code><br><small style="color:var(--muted)">src/main.tsx</small></td>
@@ -311,7 +327,7 @@ flowchart LR
   <td>App() node in src/App.tsx.</td>
 </tr>
 <tr>
-  <td>7</td>
+  <td>9</td>
   <td><code>Layout()</code><br><small style="color:var(--muted)">src/components/Layout.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>App()</code><br><small style="color:var(--muted)">src/App.tsx</small><br><code>App.tsx</code><br><small style="color:var(--muted)">src/App.tsx</small></td>
@@ -319,7 +335,7 @@ flowchart LR
   <td>Layout() node in src/components/Layout.tsx.</td>
 </tr>
 <tr>
-  <td>8</td>
+  <td>10</td>
   <td><code>InvestmentPlan()</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>AppRoutes()</code><br><small style="color:var(--muted)">src/routes/AppRoutes.tsx</small><br><code>AppRoutes.tsx</code><br><small style="color:var(--muted)">src/routes/AppRoutes.tsx</small></td>
@@ -327,7 +343,7 @@ flowchart LR
   <td>InvestmentPlan() node in pages/InvestmentPlan/InvestmentPlan.tsx.</td>
 </tr>
 <tr>
-  <td>9</td>
+  <td>11</td>
   <td><code>loadSavedConfig()</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>InvestmentPlan()</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small></td>
@@ -335,7 +351,7 @@ flowchart LR
   <td>Reads, resolves, or persists project configuration.</td>
 </tr>
 <tr>
-  <td>10</td>
+  <td>12</td>
   <td><code>DailyGrowthTable()</code><br><small style="color:var(--muted)">InvestmentPlan/sections/DailyGrowthTable.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>InvestmentPlan()</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small><br><code>InvestmentPlan.tsx</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small></td>
@@ -343,15 +359,7 @@ flowchart LR
   <td>DailyGrowthTable() node in InvestmentPlan/sections/DailyGrowthTable.tsx.</td>
 </tr>
 <tr>
-  <td>11</td>
-  <td><code>GrowthPlanForm()</code><br><small style="color:var(--muted)">InvestmentPlan/sections/GrowthPlanForm.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>InvestmentPlan()</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small><br><code>InvestmentPlan.tsx</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small></td>
-  <td><code>CurrencyTextField()</code><br><small style="color:var(--muted)">src/components/CurrencyTextField.tsx</small><br><code>GlassCard()</code><br><small style="color:var(--muted)">src/components/GlassCard.tsx</small></td>
-  <td>GrowthPlanForm() node in InvestmentPlan/sections/GrowthPlanForm.tsx.</td>
-</tr>
-<tr>
-  <td>12</td>
+  <td>13</td>
   <td><code>PortfolioBenchmarkCard()</code><br><small style="color:var(--muted)">InvestmentPlan/sections/PortfolioBenchmarkCard.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>InvestmentPlan()</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small><br><code>InvestmentPlan.tsx</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small></td>
@@ -359,28 +367,20 @@ flowchart LR
   <td>PortfolioBenchmarkCard() node in InvestmentPlan/sections/PortfolioBenchmarkCard.tsx.</td>
 </tr>
 <tr>
-  <td>13</td>
+  <td>14</td>
   <td><code>SavedPlans()</code><br><small style="color:var(--muted)">pages/SavedPlans/SavedPlans.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>AppRoutes()</code><br><small style="color:var(--muted)">src/routes/AppRoutes.tsx</small><br><code>AppRoutes.tsx</code><br><small style="color:var(--muted)">src/routes/AppRoutes.tsx</small></td>
-  <td><code>calculatePortfolioSummary()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small><br><code>EmptyPlansAlert()</code><br><small style="color:var(--muted)">SavedPlans/sections/EmptyPlansAlert.tsx</small><br><code>fetchLiveExchangeRate()</code><br><small style="color:var(--muted)">src/utils/exchangeRate.ts</small><br>+11 more</td>
+  <td><code>calculatePortfolioSummary()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small><br><code>CapitalManagementModal()</code><br><small style="color:var(--muted)">SavedPlans/sections/CapitalManagementModal.tsx</small><br><code>EmptyPlansAlert()</code><br><small style="color:var(--muted)">SavedPlans/sections/EmptyPlansAlert.tsx</small><br>+12 more</td>
   <td>SavedPlans() node in pages/SavedPlans/SavedPlans.tsx.</td>
 </tr>
 <tr>
-  <td>14</td>
+  <td>15</td>
   <td><code>EmptyPlansAlert()</code><br><small style="color:var(--muted)">SavedPlans/sections/EmptyPlansAlert.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>SavedPlans()</code><br><small style="color:var(--muted)">pages/SavedPlans/SavedPlans.tsx</small><br><code>SavedPlans.tsx</code><br><small style="color:var(--muted)">pages/SavedPlans/SavedPlans.tsx</small></td>
   <td>No direct outbound edge</td>
   <td>EmptyPlansAlert() node in SavedPlans/sections/EmptyPlansAlert.tsx.</td>
-</tr>
-<tr>
-  <td>15</td>
-  <td><code>PlanTableView()</code><br><small style="color:var(--muted)">SavedPlans/sections/PlanTableView.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>SavedPlans()</code><br><small style="color:var(--muted)">pages/SavedPlans/SavedPlans.tsx</small><br><code>SavedPlans.tsx</code><br><small style="color:var(--muted)">pages/SavedPlans/SavedPlans.tsx</small></td>
-  <td><code>formatCurrency()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small></td>
-  <td>PlanTableView() node in SavedPlans/sections/PlanTableView.tsx.</td>
 </tr>
 <tr>
   <td>16</td>
@@ -472,14 +472,6 @@ flowchart LR
 </tr>
 <tr>
   <td>27</td>
-  <td><code>saveCachedExchangeRate()</code><br><small style="color:var(--muted)">src/utils/exchangeRate.ts</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>fetchLiveExchangeRate()</code><br><small style="color:var(--muted)">src/utils/exchangeRate.ts</small><br><code>stockPlannerSlice</code><br><small style="color:var(--muted)">src/store/stockPlannerSlice.ts</small><br><code>stockPlannerSlice.ts</code><br><small style="color:var(--muted)">src/store/stockPlannerSlice.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>Caches analysis results or computes cache keys.</td>
-</tr>
-<tr>
-  <td>28</td>
   <td><code>calculateDailyGrowthPlan()</code><br><small style="color:var(--muted)">src/utils/growthPlanMath.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>InvestmentPlan()</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small><br><code>InvestmentPlan.tsx</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small><br><code>PortfolioGrowthPlanCard()</code><br><small style="color:var(--muted)">SavedPlans/sections/PortfolioGrowthPlanCard.tsx</small><br>+1 more</td>
@@ -487,7 +479,7 @@ flowchart LR
   <td>calculateDailyGrowthPlan() node in src/utils/growthPlanMath.ts.</td>
 </tr>
 <tr>
-  <td>29</td>
+  <td>28</td>
   <td><code>findPortfolioBenchmarkPosition()</code><br><small style="color:var(--muted)">src/utils/growthPlanMath.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>InvestmentPlan()</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small><br><code>InvestmentPlan.tsx</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small><br><code>PortfolioGrowthPlanCard()</code><br><small style="color:var(--muted)">SavedPlans/sections/PortfolioGrowthPlanCard.tsx</small><br>+1 more</td>
@@ -495,12 +487,20 @@ flowchart LR
   <td>findPortfolioBenchmarkPosition() node in src/utils/growthPlanMath.ts.</td>
 </tr>
 <tr>
-  <td>30</td>
+  <td>29</td>
   <td><code>getPortfolioFirstTradeDate()</code><br><small style="color:var(--muted)">src/utils/growthPlanMath.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>InvestmentPlan()</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small><br><code>InvestmentPlan.tsx</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small><br><code>SavedPlans()</code><br><small style="color:var(--muted)">pages/SavedPlans/SavedPlans.tsx</small><br>+1 more</td>
   <td>No direct outbound edge</td>
   <td>getPortfolioFirstTradeDate() node in src/utils/growthPlanMath.ts.</td>
+</tr>
+<tr>
+  <td>30</td>
+  <td><code>calculatePortfolioSummary()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>InvestmentPlan()</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small><br><code>InvestmentPlan.tsx</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small><br><code>SavedPlans()</code><br><small style="color:var(--muted)">pages/SavedPlans/SavedPlans.tsx</small><br>+3 more</td>
+  <td>No direct outbound edge</td>
+  <td>calculatePortfolioSummary() node in src/utils/stockMath.ts.</td>
 </tr>
 </table>
 
@@ -513,15 +513,15 @@ flowchart LR
 <tr><td><code>tsconfig.app.json</code></td><td>24 nodes</td></tr>
 <tr><td><code>AGENTS.md</code></td><td>17 nodes</td></tr>
 <tr><td><code>tsconfig.node.json</code></td><td>11 nodes</td></tr>
+<tr><td><code>src/utils/stockMath.ts</code></td><td>10 nodes</td></tr>
 <tr><td><code>skills/autonomous-build-verification/SKILL.md</code></td><td>7 nodes</td></tr>
 <tr><td><code>src/store/index.ts</code></td><td>6 nodes</td></tr>
-<tr><td><code>pages/StockPlanner/types.ts</code></td><td>5 nodes</td></tr>
 <tr><td><code>src/components/CurrencyTextField.tsx</code></td><td>4 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x171, imports x145, imports x102, calls x67. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: imports x205, contains x188, imports x176, calls x98. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -1237,38 +1237,39 @@ flowchart LR
 
 <!-- ====== 5. stockPlannerSlice.ts ====== -->
 <h2 id="stockplannerslice-ts">5. stockPlannerSlice.ts</h2>
-<p>stockPlannerSlice.ts groups implementation around types, pages, investmentplan, sections, mostly in src/store/stockPlannerSlice.ts, src/types/stock.ts, src/types/growthPlan.ts. This section covers 51 nodes and 110 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>stockPlannerSlice.ts groups implementation around types, pages, investmentplan, sections, mostly in src/store/stockPlannerSlice.ts, src/types/growthPlan.ts, src/types/stock.ts. This section covers 45 nodes and 100 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: stockPlannerSlice.ts (51 nodes, 110 edges)
-    subgraph stockplannerslice_ts_External_generated_afa7c242["External / generated"]
-        src_types_index_currencymode_372d10f0("src_types_index_currencymode")
-        src_types_index_dailygrowthitem_a51ee731("types index dailygrowthitem")
-        src_types_index_portfoliobenchmark_7498ef02("types index portfoliobenchmark")
-        src_types_index_portfolio_507792c6("src_types_index_portfolio")
-    end
+    %% Section: stockPlannerSlice.ts (45 nodes, 100 edges)
     subgraph stockplannerslice_ts_src_store_stockPlannerSlice_a0e3631c["src/store/stockPlannerSlice.ts"]
         src_store_stockplannerslice_cde95586("stockPlannerSlice.ts")
         src_store_stockplannerslice_stockplannerslice_b55b3f0a("stockPlannerSlice<br/><small>src/store/stockPlannerSlice.ts</small>")
         src_store_stockplannerslice_saveportfoliostoloca_7bd8159d("savePortfoliosToLocalStorage()<br/><small>src/store/stockPlannerSlice.ts</small>")
         src_store_stockplannerslice_saveplanstolocalstor_d3713d2c("savePlansToLocalStorage()<br/><small>src/store/stockPlannerSlice.ts</small>")
     end
+    subgraph stockplannerslice_ts_External_generated_afa7c242["External / generated"]
+        src_types_index_currencymode_372d10f0("src_types_index_currencymode")
+        src_types_index_dailygrowthitem_a51ee731("types index dailygrowthitem")
+        src_types_index_portfoliobenchmark_7498ef02("types index portfoliobenchmark")
+    end
     subgraph stockplannerslice_ts_src_types_growthPlan_ts_fdc91dd8["src/types/growthPlan.ts"]
         src_types_growthplan_dailygrowthitem_52238f35("DailyGrowthItem<br/><small>src/types/growthPlan.ts</small>")
         src_types_growthplan_portfoliobenchmark_f706039d("PortfolioBenchmark<br/><small>src/types/growthPlan.ts</small>")
     end
     src_pages_investmentplan_sections_dailygrowthtab_864ca9e5("DailyGrowthTable.tsx")
-    src_pages_investmentplan_sections_growthplanform_175409ef("GrowthPlanForm.tsx")
     src_pages_investmentplan_sections_portfoliobench_9550af0a("PortfolioBenchmarkCard.tsx")
-    src_pages_savedplans_types_9b0222c5("types.ts")
+    src_pages_stockplanner_sections_portfolioselectf_a41c2347("PortfolioSelectField.tsx")
+    src_pages_stockplanner_sections_tradingfeesectio_b4fae22a("TradingFeeSection.tsx")
+    src_pages_investmentplan_types_a2c23774("types.ts")
     src_types_index_37516af1("index.ts")
-    src_types_portfolio_portfolio_2f52da1a("Portfolio<br/><small>src/types/portfolio.ts</small>")
     src_types_stock_currencymode_e30cf6ce("CurrencyMode<br/><small>src/types/stock.ts</small>")
+    src_utils_exchangerate_savecachedexchangerate_df9b4c65("saveCachedExchangeRate()<br/><small>src/utils/exchangeRate.ts</small>")
     src_utils_growthplanmath_074826ff("growthPlanMath.ts")
     src_store_stockplannerslice_stockplannerslice_b55b3f0a -->|calls| src_store_stockplannerslice_saveportfoliostoloca_7bd8159d
     src_store_stockplannerslice_stockplannerslice_b55b3f0a -->|calls| src_store_stockplannerslice_saveplanstolocalstor_d3713d2c
+    src_store_stockplannerslice_stockplannerslice_b55b3f0a -->|calls| src_utils_exchangerate_savecachedexchangerate_df9b4c65
     src_pages_investmentplan_sections_dailygrowthtab_864ca9e5 -->|imports| src_types_growthplan_dailygrowthitem_52238f35
     src_pages_investmentplan_sections_dailygrowthtab_864ca9e5 -->|imports| src_types_growthplan_portfoliobenchmark_f706039d
     src_pages_investmentplan_sections_dailygrowthtab_864ca9e5 -->|imports| src_types_index_currencymode_372d10f0
@@ -1276,9 +1277,6 @@ flowchart LR
     src_pages_investmentplan_sections_dailygrowthtab_864ca9e5 -->|imports| src_types_index_portfoliobenchmark_7498ef02
     src_pages_investmentplan_sections_dailygrowthtab_864ca9e5 -->|imports| src_types_stock_currencymode_e30cf6ce
     src_pages_investmentplan_sections_dailygrowthtab_864ca9e5 -->|imports| src_types_index_37516af1
-    src_pages_investmentplan_sections_growthplanform_175409ef -->|imports| src_types_index_portfolio_507792c6
-    src_pages_investmentplan_sections_growthplanform_175409ef -->|imports| src_types_portfolio_portfolio_2f52da1a
-    src_pages_investmentplan_sections_growthplanform_175409ef -->|imports| src_types_index_37516af1
     src_pages_investmentplan_sections_portfoliobench_9550af0a -->|imports| src_types_growthplan_dailygrowthitem_52238f35
     src_pages_investmentplan_sections_portfoliobench_9550af0a -->|imports| src_types_growthplan_portfoliobenchmark_f706039d
     src_pages_investmentplan_sections_portfoliobench_9550af0a -->|imports| src_types_index_currencymode_372d10f0
@@ -1286,29 +1284,31 @@ flowchart LR
     src_pages_investmentplan_sections_portfoliobench_9550af0a -->|imports| src_types_index_portfoliobenchmark_7498ef02
     src_pages_investmentplan_sections_portfoliobench_9550af0a -->|imports| src_types_stock_currencymode_e30cf6ce
     src_pages_investmentplan_sections_portfoliobench_9550af0a -->|imports| src_types_index_37516af1
-    src_pages_savedplans_types_9b0222c5 -->|imports| src_types_index_37516af1
-    src_store_stockplannerslice_cde95586 -->|imports| src_types_index_currencymode_372d10f0
-    src_store_stockplannerslice_cde95586 -->|imports| src_types_index_portfolio_507792c6
-    src_store_stockplannerslice_cde95586 -->|imports| src_types_portfolio_portfolio_2f52da1a
-    src_store_stockplannerslice_cde95586 -->|imports| src_types_stock_currencymode_e30cf6ce
-    %% Omitted for readability: 33 nodes, 7 edges
-    class src_types_index_currencymode_372d10f0 function;
-    class src_types_index_dailygrowthitem_a51ee731 function;
-    class src_types_index_portfoliobenchmark_7498ef02 function;
-    class src_types_index_portfolio_507792c6 function;
+    src_pages_investmentplan_types_a2c23774 -->|imports| src_types_index_currencymode_372d10f0
+    src_pages_investmentplan_types_a2c23774 -->|imports| src_types_stock_currencymode_e30cf6ce
+    src_pages_investmentplan_types_a2c23774 -->|imports| src_types_index_37516af1
+    src_pages_stockplanner_sections_portfolioselectf_a41c2347 -->|imports| src_store_stockplannerslice_cde95586
+    src_pages_stockplanner_sections_tradingfeesectio_b4fae22a -->|imports| src_types_index_currencymode_372d10f0
+    src_pages_stockplanner_sections_tradingfeesectio_b4fae22a -->|imports| src_types_stock_currencymode_e30cf6ce
+    src_pages_stockplanner_sections_tradingfeesectio_b4fae22a -->|imports| src_types_index_37516af1
+    %% Omitted for readability: 27 nodes, 10 edges
     class src_store_stockplannerslice_cde95586 module;
     class src_store_stockplannerslice_stockplannerslice_b55b3f0a function;
     class src_store_stockplannerslice_saveportfoliostoloca_7bd8159d function;
     class src_store_stockplannerslice_saveplanstolocalstor_d3713d2c function;
+    class src_types_index_currencymode_372d10f0 function;
+    class src_types_index_dailygrowthitem_a51ee731 function;
+    class src_types_index_portfoliobenchmark_7498ef02 function;
     class src_types_growthplan_dailygrowthitem_52238f35 klass;
     class src_types_growthplan_portfoliobenchmark_f706039d klass;
     class src_pages_investmentplan_sections_dailygrowthtab_864ca9e5 ui;
-    class src_pages_investmentplan_sections_growthplanform_175409ef ui;
     class src_pages_investmentplan_sections_portfoliobench_9550af0a ui;
-    class src_pages_savedplans_types_9b0222c5 klass;
+    class src_pages_stockplanner_sections_portfolioselectf_a41c2347 ui;
+    class src_pages_stockplanner_sections_tradingfeesectio_b4fae22a ui;
+    class src_pages_investmentplan_types_a2c23774 klass;
     class src_types_index_37516af1 module;
-    class src_types_portfolio_portfolio_2f52da1a klass;
     class src_types_stock_currencymode_e30cf6ce klass;
+    class src_utils_exchangerate_savecachedexchangerate_df9b4c65 function;
     class src_utils_growthplanmath_074826ff module;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
@@ -1381,22 +1381,6 @@ flowchart LR
 </tr>
 <tr>
   <td>7</td>
-  <td><code>SavedPlansModalsProps</code><br><small style="color:var(--muted)">SavedPlans/sections/SavedPlansModals.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>SavedPlansModalsProps node in SavedPlans/sections/SavedPlansModals.tsx.</td>
-</tr>
-<tr>
-  <td>8</td>
-  <td><code>PlanToDelete</code><br><small style="color:var(--muted)">pages/SavedPlans/types.ts</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td><code>SavedPlans.tsx</code><br><small style="color:var(--muted)">pages/SavedPlans/SavedPlans.tsx</small><br><code>SavedPlansModals.tsx</code><br><small style="color:var(--muted)">SavedPlans/sections/SavedPlansModals.tsx</small></td>
-  <td>No direct outbound edge</td>
-  <td>PlanToDelete node in pages/SavedPlans/types.ts.</td>
-</tr>
-<tr>
-  <td>9</td>
   <td><code>PortfolioSelectFieldProps</code><br><small style="color:var(--muted)">StockPlanner/sections/PortfolioSelectField.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -1404,7 +1388,7 @@ flowchart LR
   <td>PortfolioSelectFieldProps node in StockPlanner/sections/PortfolioSelectField.tsx.</td>
 </tr>
 <tr>
-  <td>10</td>
+  <td>8</td>
   <td><code>TradingFeeSectionProps</code><br><small style="color:var(--muted)">StockPlanner/sections/TradingFeeSection.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -1412,7 +1396,7 @@ flowchart LR
   <td>TradingFeeSectionProps node in StockPlanner/sections/TradingFeeSection.tsx.</td>
 </tr>
 <tr>
-  <td>11</td>
+  <td>9</td>
   <td><code>StockPlannerState</code><br><small style="color:var(--muted)">src/store/stockPlannerSlice.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -1420,7 +1404,7 @@ flowchart LR
   <td>StockPlannerState node in src/store/stockPlannerSlice.ts.</td>
 </tr>
 <tr>
-  <td>12</td>
+  <td>10</td>
   <td><code>DailyGrowthItem</code><br><small style="color:var(--muted)">src/types/growthPlan.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td><code>DailyGrowthTable.tsx</code><br><small style="color:var(--muted)">InvestmentPlan/sections/DailyGrowthTable.tsx</small><br><code>growthPlanMath.ts</code><br><small style="color:var(--muted)">src/utils/growthPlanMath.ts</small><br><code>PortfolioBenchmarkCard.tsx</code><br><small style="color:var(--muted)">InvestmentPlan/sections/PortfolioBenchmarkCard.tsx</small></td>
@@ -1428,7 +1412,7 @@ flowchart LR
   <td>DailyGrowthItem node in src/types/growthPlan.ts.</td>
 </tr>
 <tr>
-  <td>13</td>
+  <td>11</td>
   <td><code>GrowthPlanConfig</code><br><small style="color:var(--muted)">src/types/growthPlan.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td><code>growthPlanMath.ts</code><br><small style="color:var(--muted)">src/utils/growthPlanMath.ts</small><br><code>portfolio.ts</code><br><small style="color:var(--muted)">src/types/portfolio.ts</small><br><code>stockPlannerSlice.ts</code><br><small style="color:var(--muted)">src/store/stockPlannerSlice.ts</small></td>
@@ -1436,7 +1420,7 @@ flowchart LR
   <td>Reads, resolves, or persists project configuration.</td>
 </tr>
 <tr>
-  <td>14</td>
+  <td>12</td>
   <td><code>GrowthPlanResult</code><br><small style="color:var(--muted)">src/types/growthPlan.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -1444,7 +1428,7 @@ flowchart LR
   <td>GrowthPlanResult node in src/types/growthPlan.ts.</td>
 </tr>
 <tr>
-  <td>15</td>
+  <td>13</td>
   <td><code>PortfolioBenchmark</code><br><small style="color:var(--muted)">src/types/growthPlan.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td><code>DailyGrowthTable.tsx</code><br><small style="color:var(--muted)">InvestmentPlan/sections/DailyGrowthTable.tsx</small><br><code>growthPlanMath.ts</code><br><small style="color:var(--muted)">src/utils/growthPlanMath.ts</small><br><code>PortfolioBenchmarkCard.tsx</code><br><small style="color:var(--muted)">InvestmentPlan/sections/PortfolioBenchmarkCard.tsx</small></td>
@@ -1452,15 +1436,7 @@ flowchart LR
   <td>PortfolioBenchmark node in src/types/growthPlan.ts.</td>
 </tr>
 <tr>
-  <td>16</td>
-  <td><code>CapitalAdjustment</code><br><small style="color:var(--muted)">src/types/portfolio.ts</small></td>
-  <td><span class="tag tag-endpoint">API</span></td>
-  <td><code>stockPlannerSlice.ts</code><br><small style="color:var(--muted)">src/store/stockPlannerSlice.ts</small><br><code>types.ts</code><br><small style="color:var(--muted)">pages/SavedPlans/types.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>CapitalAdjustment node in src/types/portfolio.ts.</td>
-</tr>
-<tr>
-  <td>17</td>
+  <td>14</td>
   <td><code>Portfolio</code><br><small style="color:var(--muted)">src/types/portfolio.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td><code>GrowthPlanForm.tsx</code><br><small style="color:var(--muted)">InvestmentPlan/sections/GrowthPlanForm.tsx</small><br><code>PortfolioGrowthPlanCard.tsx</code><br><small style="color:var(--muted)">SavedPlans/sections/PortfolioGrowthPlanCard.tsx</small><br><code>PortfolioSelectField.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/PortfolioSelectField.tsx</small><br>+4 more</td>
@@ -1468,7 +1444,7 @@ flowchart LR
   <td>Portfolio node in src/types/portfolio.ts.</td>
 </tr>
 <tr>
-  <td>18</td>
+  <td>15</td>
   <td><code>CurrencyMode</code><br><small style="color:var(--muted)">src/types/stock.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td><code>DailyGrowthTable.tsx</code><br><small style="color:var(--muted)">InvestmentPlan/sections/DailyGrowthTable.tsx</small><br><code>growthPlan.ts</code><br><small style="color:var(--muted)">src/types/growthPlan.ts</small><br><code>growthPlanMath.ts</code><br><small style="color:var(--muted)">src/utils/growthPlanMath.ts</small><br>+5 more</td>
@@ -1476,7 +1452,7 @@ flowchart LR
   <td>CurrencyMode node in src/types/stock.ts.</td>
 </tr>
 <tr>
-  <td>19</td>
+  <td>16</td>
   <td><code>DropMode</code><br><small style="color:var(--muted)">src/types/stock.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td><code>stockMath.ts</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small><br><code>stockPlannerSlice.ts</code><br><small style="color:var(--muted)">src/store/stockPlannerSlice.ts</small></td>
@@ -1484,7 +1460,7 @@ flowchart LR
   <td>DropMode node in src/types/stock.ts.</td>
 </tr>
 <tr>
-  <td>20</td>
+  <td>17</td>
   <td><code>FeeMode</code><br><small style="color:var(--muted)">src/types/stock.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td><code>stockMath.ts</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small><br><code>StockPlannerForm.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/StockPlannerForm.tsx</small><br><code>stockPlannerSlice.ts</code><br><small style="color:var(--muted)">src/store/stockPlannerSlice.ts</small><br>+1 more</td>
@@ -1492,7 +1468,7 @@ flowchart LR
   <td>FeeMode node in src/types/stock.ts.</td>
 </tr>
 <tr>
-  <td>21</td>
+  <td>18</td>
   <td><code>RoundingMode</code><br><small style="color:var(--muted)">src/types/stock.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td><code>stockMath.ts</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small><br><code>stockPlannerSlice.ts</code><br><small style="color:var(--muted)">src/store/stockPlannerSlice.ts</small></td>
@@ -1500,15 +1476,7 @@ flowchart LR
   <td>RoundingMode node in src/types/stock.ts.</td>
 </tr>
 <tr>
-  <td>22</td>
-  <td><code>TrancheDetail</code><br><small style="color:var(--muted)">src/types/stock.ts</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td><code>stockMath.ts</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>TrancheDetail node in src/types/stock.ts.</td>
-</tr>
-<tr>
-  <td>23</td>
+  <td>19</td>
   <td><code>loadPlansFromLocalStorage()</code><br><small style="color:var(--muted)">src/store/stockPlannerSlice.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1516,7 +1484,7 @@ flowchart LR
   <td>Supports retrieval-augmented Q&amp;A or streaming chat.</td>
 </tr>
 <tr>
-  <td>24</td>
+  <td>20</td>
   <td><code>loadPortfoliosFromLocalStorage()</code><br><small style="color:var(--muted)">src/store/stockPlannerSlice.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1524,7 +1492,7 @@ flowchart LR
   <td>Supports retrieval-augmented Q&amp;A or streaming chat.</td>
 </tr>
 <tr>
-  <td>25</td>
+  <td>21</td>
   <td><code>savePlansToLocalStorage()</code><br><small style="color:var(--muted)">src/store/stockPlannerSlice.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>stockPlannerSlice</code><br><small style="color:var(--muted)">src/store/stockPlannerSlice.ts</small></td>
@@ -1532,7 +1500,7 @@ flowchart LR
   <td>Supports retrieval-augmented Q&amp;A or streaming chat.</td>
 </tr>
 <tr>
-  <td>26</td>
+  <td>22</td>
   <td><code>savePortfoliosToLocalStorage()</code><br><small style="color:var(--muted)">src/store/stockPlannerSlice.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>stockPlannerSlice</code><br><small style="color:var(--muted)">src/store/stockPlannerSlice.ts</small></td>
@@ -1540,7 +1508,15 @@ flowchart LR
   <td>Supports retrieval-augmented Q&amp;A or streaming chat.</td>
 </tr>
 <tr>
-  <td>27</td>
+  <td>23</td>
+  <td><code>saveCachedExchangeRate()</code><br><small style="color:var(--muted)">src/utils/exchangeRate.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>fetchLiveExchangeRate()</code><br><small style="color:var(--muted)">src/utils/exchangeRate.ts</small><br><code>stockPlannerSlice</code><br><small style="color:var(--muted)">src/store/stockPlannerSlice.ts</small><br><code>stockPlannerSlice.ts</code><br><small style="color:var(--muted)">src/store/stockPlannerSlice.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>Caches analysis results or computes cache keys.</td>
+</tr>
+<tr>
+  <td>24</td>
   <td><code>calculateElapsedTradingDays()</code><br><small style="color:var(--muted)">src/utils/growthPlanMath.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>findPortfolioBenchmarkPosition()</code><br><small style="color:var(--muted)">src/utils/growthPlanMath.ts</small></td>
@@ -1548,7 +1524,7 @@ flowchart LR
   <td>calculateElapsedTradingDays() node in src/utils/growthPlanMath.ts.</td>
 </tr>
 <tr>
-  <td>28</td>
+  <td>25</td>
   <td><code>DailyGrowthTable.tsx</code><br><small style="color:var(--muted)">InvestmentPlan/sections/DailyGrowthTable.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>InvestmentPlan.tsx</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small></td>
@@ -1556,20 +1532,44 @@ flowchart LR
   <td>Module file in InvestmentPlan/sections/DailyGrowthTable.tsx.</td>
 </tr>
 <tr>
-  <td>29</td>
-  <td><code>GrowthPlanForm.tsx</code><br><small style="color:var(--muted)">InvestmentPlan/sections/GrowthPlanForm.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>InvestmentPlan.tsx</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small></td>
-  <td><code>@mui/material</code><br><small style="color:var(--muted)">package.json</small><br><code>CurrencyTextField()</code><br><small style="color:var(--muted)">src/components/CurrencyTextField.tsx</small><br><code>CurrencyTextField.tsx</code><br><small style="color:var(--muted)">src/components/CurrencyTextField.tsx</small><br>+10 more</td>
-  <td>Module file in InvestmentPlan/sections/GrowthPlanForm.tsx.</td>
-</tr>
-<tr>
-  <td>30</td>
+  <td>26</td>
   <td><code>PortfolioBenchmarkCard.tsx</code><br><small style="color:var(--muted)">InvestmentPlan/sections/PortfolioBenchmarkCard.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>InvestmentPlan.tsx</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small></td>
   <td><code>@mui/material</code><br><small style="color:var(--muted)">package.json</small><br><code>CurrencyMode</code><br><small style="color:var(--muted)">src/types/stock.ts</small><br><code>DailyGrowthItem</code><br><small style="color:var(--muted)">src/types/growthPlan.ts</small><br>+9 more</td>
   <td>Module file in InvestmentPlan/sections/PortfolioBenchmarkCard.tsx.</td>
+</tr>
+<tr>
+  <td>27</td>
+  <td><code>InvestmentPlan/types.ts</code><br><small style="color:var(--muted)">pages/InvestmentPlan/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td><code>GrowthPlanForm.tsx</code><br><small style="color:var(--muted)">InvestmentPlan/sections/GrowthPlanForm.tsx</small><br><code>InvestmentPlan.tsx</code><br><small style="color:var(--muted)">pages/InvestmentPlan/InvestmentPlan.tsx</small></td>
+  <td><code>CurrencyMode</code><br><small style="color:var(--muted)">src/types/stock.ts</small><br><code>index.ts</code><br><small style="color:var(--muted)">src/types/index.ts</small><br><code>src_types_index_currencymode</code></td>
+  <td>Module file in pages/InvestmentPlan/types.ts.</td>
+</tr>
+<tr>
+  <td>28</td>
+  <td><code>DAILY_RETURN_PRESETS</code><br><small style="color:var(--muted)">pages/InvestmentPlan/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td><code>GrowthPlanForm.tsx</code><br><small style="color:var(--muted)">InvestmentPlan/sections/GrowthPlanForm.tsx</small></td>
+  <td>No direct outbound edge</td>
+  <td>DAILY_RETURN_PRESETS node in pages/InvestmentPlan/types.ts.</td>
+</tr>
+<tr>
+  <td>29</td>
+  <td><code>PortfolioSelectField.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/PortfolioSelectField.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>StockPlannerForm.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/StockPlannerForm.tsx</small></td>
+  <td><code>@mui/material</code><br><small style="color:var(--muted)">package.json</small><br><code>Portfolio</code><br><small style="color:var(--muted)">src/types/portfolio.ts</small><br><code>react</code><br><small style="color:var(--muted)">package.json</small><br>+2 more</td>
+  <td>Module file in StockPlanner/sections/PortfolioSelectField.tsx.</td>
+</tr>
+<tr>
+  <td>30</td>
+  <td><code>TradingFeeSection.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/TradingFeeSection.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>StockPlannerForm.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/StockPlannerForm.tsx</small></td>
+  <td><code>@mui/material</code><br><small style="color:var(--muted)">package.json</small><br><code>CurrencyMode</code><br><small style="color:var(--muted)">src/types/stock.ts</small><br><code>FeeMode</code><br><small style="color:var(--muted)">src/types/stock.ts</small><br>+5 more</td>
+  <td>Module file in StockPlanner/sections/TradingFeeSection.tsx.</td>
 </tr>
 </table>
 
@@ -1579,398 +1579,30 @@ flowchart LR
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
       <tr><td><code>src/store/stockPlannerSlice.ts</code></td><td>8 nodes</td></tr>
-<tr><td><code>src/types/stock.ts</code></td><td>6 nodes</td></tr>
 <tr><td><code>src/types/growthPlan.ts</code></td><td>5 nodes</td></tr>
+<tr><td><code>src/types/stock.ts</code></td><td>5 nodes</td></tr>
 <tr><td><code>pages/InvestmentPlan/types.ts</code></td><td>4 nodes</td></tr>
-<tr><td><code>src/types/portfolio.ts</code></td><td>3 nodes</td></tr>
 <tr><td><code>InvestmentPlan/sections/DailyGrowthTable.tsx</code></td><td>2 nodes</td></tr>
-<tr><td><code>InvestmentPlan/sections/GrowthPlanForm.tsx</code></td><td>2 nodes</td></tr>
 <tr><td><code>InvestmentPlan/sections/PortfolioBenchmarkCard.tsx</code></td><td>2 nodes</td></tr>
+<tr><td><code>StockPlanner/sections/PortfolioSelectField.tsx</code></td><td>2 nodes</td></tr>
+<tr><td><code>StockPlanner/sections/TradingFeeSection.tsx</code></td><td>2 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: imports x46, contains x27, references x21, imports x10. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: imports x41, contains x24, references x20, imports x8. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
-<!-- ====== 6. @mui/material ====== -->
-<h2 id="mui-material">6. @mui/material</h2>
-<p>@mui/material groups implementation around components, gridvisualizer, pages, sections, mostly in src/utils/stockMath.ts, src/components/GlassCard.tsx, components/GridVisualizer/AverageCostChart.tsx. This section covers 47 nodes and 150 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<!-- ====== 6. MarketTable.tsx ====== -->
+<h2 id="markettable-tsx">6. MarketTable.tsx</h2>
+<p>MarketTable.tsx groups implementation around market, pages, utils, sections, mostly in src/utils/stockApi.ts, pages/Market/types.ts, src/utils/webullService.ts. This section covers 40 nodes and 85 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: @mui/material (47 nodes, 150 edges)
-    subgraph mui_material_src_utils_stockMath_ts_5bb801bd["src/utils/stockMath.ts"]
-        src_utils_stockmath_formatnumber_6171afe4("formatNumber()<br/><small>src/utils/stockMath.ts</small>")
-        src_utils_stockmath_formatcurrency_428ae72f("formatCurrency()<br/><small>src/utils/stockMath.ts</small>")
-        src_utils_stockmath_calculatestoplosslevels_2efdf00a("calculateStopLossLevels()<br/><small>src/utils/stockMath.ts</small>")
-    end
-    subgraph mui_material_SavedPlans_sections_PlanGridView_ts_eaa3b642["SavedPlans/sections/PlanGridView.tsx"]
-        src_pages_savedplans_sections_plangridview_5dd58038("PlanGridView.tsx")
-        src_pages_savedplans_sections_plangridview_plang_68b34c3c("PlanGridView()<br/><small>SavedPlans/sections/PlanGridView.tsx</small>")
-    end
-    subgraph mui_material_StockPlanner_sections_TrancheDetail_9f5606de["StockPlanner/sections/TrancheDetailsTable.tsx"]
-        src_pages_stockplanner_sections_tranchedetailsta_44c45821("TrancheDetailsTable.tsx")
-        src_pages_stockplanner_sections_tranchedetailsta_b8f207b1("TrancheDetailsTable()<br/><small>StockPlanner/sections/TrancheDetailsTable.tsx</small>")
-    end
-    subgraph mui_material_components_GridVisualizer_CostReduc_1eddba2b["components/GridVisualizer/CostReductionSummary.tsx"]
-        src_components_gridvisualizer_costreductionsumma_cbc87194("CostReductionSummary.tsx")
-        src_components_gridvisualizer_costreductionsumma_6c6d264b("CostReductionSummary()<br/><small>components/GridVisualizer/CostReductionSummary.tsx</small>")
-    end
-    subgraph mui_material_components_GridVisualizer_Execution_9eaf50e0["components/GridVisualizer/ExecutionAndProfitSimulator.tsx"]
-        src_components_gridvisualizer_executionandprofit_f4e6a463("ExecutionAndProfitSimulator.tsx")
-        src_components_gridvisualizer_executionandprofit_8ad91b4e("ExecutionAndProfitSimulator()<br/><small>components/GridVisualizer/ExecutionAndProfitSimulator.tsx</small>")
-    end
-    subgraph mui_material_components_GridVisualizer_FundSplit_74fee5d0["components/GridVisualizer/FundSplitDiagram.tsx"]
-        src_components_gridvisualizer_fundsplitdiagram_22b6f7f1("FundSplitDiagram.tsx")
-        src_components_gridvisualizer_fundsplitdiagram_f_704f3c7b("FundSplitDiagram()<br/><small>components/GridVisualizer/FundSplitDiagram.tsx</small>")
-    end
-    subgraph mui_material_components_GridVisualizer_GridVisua_73bbc8a5["components/GridVisualizer/GridVisualizer.tsx"]
-        src_components_gridvisualizer_gridvisualizer_b15eb736("GridVisualizer.tsx")
-        src_components_gridvisualizer_gridvisualizer_gri_331d8e8f("GridVisualizer()<br/><small>components/GridVisualizer/GridVisualizer.tsx</small>")
-    end
-    src_pages_savedplans_sections_portfoliosummaryca_7061c07c("PortfolioSummaryCards()<br/><small>SavedPlans/sections/PortfolioSummaryCards.tsx</small>")
-    src_components_gridvisualizer_averagecostchart_a_41bb7e2b("AverageCostChart()<br/><small>components/GridVisualizer/AverageCostChart.tsx</small>")
-    src_components_glasscard_glasscard_6fe56a7b("GlassCard()<br/><small>src/components/GlassCard.tsx</small>")
-    src_components_gridvisualizer_averagecostchart_a_41bb7e2b -->|calls| src_components_glasscard_glasscard_6fe56a7b
-    src_components_gridvisualizer_averagecostchart_a_41bb7e2b -->|calls| src_utils_stockmath_formatnumber_6171afe4
-    src_components_gridvisualizer_costreductionsumma_6c6d264b -->|calls| src_utils_stockmath_formatnumber_6171afe4
-    src_components_gridvisualizer_costreductionsumma_6c6d264b -->|calls| src_utils_stockmath_formatcurrency_428ae72f
-    src_components_gridvisualizer_costreductionsumma_6c6d264b -->|calls| src_components_glasscard_glasscard_6fe56a7b
-    src_components_gridvisualizer_executionandprofit_8ad91b4e -->|calls| src_utils_stockmath_formatnumber_6171afe4
-    src_components_gridvisualizer_executionandprofit_8ad91b4e -->|calls| src_utils_stockmath_calculatestoplosslevels_2efdf00a
-    src_components_gridvisualizer_executionandprofit_8ad91b4e -->|calls| src_components_glasscard_glasscard_6fe56a7b
-    src_components_gridvisualizer_executionandprofit_8ad91b4e -->|calls| src_utils_stockmath_formatcurrency_428ae72f
-    src_components_gridvisualizer_fundsplitdiagram_f_704f3c7b -->|calls| src_utils_stockmath_formatcurrency_428ae72f
-    src_components_gridvisualizer_fundsplitdiagram_f_704f3c7b -->|calls| src_utils_stockmath_formatnumber_6171afe4
-    src_components_gridvisualizer_fundsplitdiagram_f_704f3c7b -->|calls| src_components_glasscard_glasscard_6fe56a7b
-    src_components_gridvisualizer_gridvisualizer_gri_331d8e8f -->|calls| src_components_gridvisualizer_fundsplitdiagram_f_704f3c7b
-    src_components_gridvisualizer_gridvisualizer_gri_331d8e8f -->|calls| src_components_gridvisualizer_averagecostchart_a_41bb7e2b
-    src_components_gridvisualizer_gridvisualizer_gri_331d8e8f -->|calls| src_components_gridvisualizer_costreductionsumma_6c6d264b
-    src_components_gridvisualizer_gridvisualizer_gri_331d8e8f -->|calls| src_components_gridvisualizer_executionandprofit_8ad91b4e
-    src_pages_savedplans_sections_plangridview_plang_68b34c3c -->|calls| src_components_glasscard_glasscard_6fe56a7b
-    src_pages_savedplans_sections_plangridview_plang_68b34c3c -->|calls| src_utils_stockmath_formatcurrency_428ae72f
-    src_pages_savedplans_sections_portfoliosummaryca_7061c07c -->|calls| src_components_glasscard_glasscard_6fe56a7b
-    src_pages_savedplans_sections_portfoliosummaryca_7061c07c -->|calls| src_utils_stockmath_formatcurrency_428ae72f
-    src_pages_stockplanner_sections_tranchedetailsta_b8f207b1 -->|calls| src_utils_stockmath_formatcurrency_428ae72f
-    src_pages_stockplanner_sections_tranchedetailsta_b8f207b1 -->|calls| src_utils_stockmath_formatnumber_6171afe4
-    src_pages_stockplanner_sections_tranchedetailsta_b8f207b1 -->|calls| src_components_glasscard_glasscard_6fe56a7b
-    src_components_gridvisualizer_costreductionsumma_cbc87194 -->|imports| src_components_glasscard_glasscard_6fe56a7b
-    %% Omitted for readability: 29 nodes, 21 edges
-    class src_utils_stockmath_formatnumber_6171afe4 function;
-    class src_utils_stockmath_formatcurrency_428ae72f function;
-    class src_utils_stockmath_calculatestoplosslevels_2efdf00a function;
-    class src_pages_savedplans_sections_plangridview_5dd58038 ui;
-    class src_pages_savedplans_sections_plangridview_plang_68b34c3c ui;
-    class src_pages_stockplanner_sections_tranchedetailsta_44c45821 ui;
-    class src_pages_stockplanner_sections_tranchedetailsta_b8f207b1 ui;
-    class src_components_gridvisualizer_costreductionsumma_cbc87194 ui;
-    class src_components_gridvisualizer_costreductionsumma_6c6d264b ui;
-    class src_components_gridvisualizer_executionandprofit_f4e6a463 ui;
-    class src_components_gridvisualizer_executionandprofit_8ad91b4e ui;
-    class src_components_gridvisualizer_fundsplitdiagram_22b6f7f1 ui;
-    class src_components_gridvisualizer_fundsplitdiagram_f_704f3c7b ui;
-    class src_components_gridvisualizer_gridvisualizer_b15eb736 ui;
-    class src_components_gridvisualizer_gridvisualizer_gri_331d8e8f ui;
-    class src_pages_savedplans_sections_portfoliosummaryca_7061c07c ui;
-    class src_components_gridvisualizer_averagecostchart_a_41bb7e2b ui;
-    class src_components_glasscard_glasscard_6fe56a7b ui;
-    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
-    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
-    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
-    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
-    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
-    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
-    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
-    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
-    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
-</div>
-
-<h3>Call Details</h3>
-<table class="call-table">
-<tr>
-  <th style="width:5%">#</th>
-  <th style="width:28%">Node</th>
-  <th style="width:10%">Type</th>
-  <th style="width:17%">Caller</th>
-  <th style="width:20%">Callees</th>
-  <th style="width:20%">Description</th>
-</tr>
-<tr>
-  <td>1</td>
-  <td><code>GlassCardProps</code><br><small style="color:var(--muted)">src/components/GlassCard.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>GlassCardProps node in src/components/GlassCard.tsx.</td>
-</tr>
-<tr>
-  <td>2</td>
-  <td><code>AverageCostChartProps</code><br><small style="color:var(--muted)">components/GridVisualizer/AverageCostChart.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Supports retrieval-augmented Q&amp;A or streaming chat.</td>
-</tr>
-<tr>
-  <td>3</td>
-  <td><code>CostReductionSummaryProps</code><br><small style="color:var(--muted)">components/GridVisualizer/CostReductionSummary.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>CostReductionSummaryProps node in components/GridVisualizer/CostReductionSummary.tsx.</td>
-</tr>
-<tr>
-  <td>4</td>
-  <td><code>ExecutionAndProfitSimulatorProps</code><br><small style="color:var(--muted)">components/GridVisualizer/ExecutionAndProfitSimulator.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>ExecutionAndProfitSimulatorProps node in components/GridVisualizer/ExecutionAndProfitSimulator.tsx.</td>
-</tr>
-<tr>
-  <td>5</td>
-  <td><code>FundSplitDiagramProps</code><br><small style="color:var(--muted)">components/GridVisualizer/FundSplitDiagram.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>FundSplitDiagramProps node in components/GridVisualizer/FundSplitDiagram.tsx.</td>
-</tr>
-<tr>
-  <td>6</td>
-  <td><code>GridVisualizerProps</code><br><small style="color:var(--muted)">components/GridVisualizer/GridVisualizer.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>GridVisualizerProps node in components/GridVisualizer/GridVisualizer.tsx.</td>
-</tr>
-<tr>
-  <td>7</td>
-  <td><code>PlanGridViewProps</code><br><small style="color:var(--muted)">SavedPlans/sections/PlanGridView.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>PlanGridViewProps node in SavedPlans/sections/PlanGridView.tsx.</td>
-</tr>
-<tr>
-  <td>8</td>
-  <td><code>PlanTableViewProps</code><br><small style="color:var(--muted)">SavedPlans/sections/PlanTableView.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>PlanTableViewProps node in SavedPlans/sections/PlanTableView.tsx.</td>
-</tr>
-<tr>
-  <td>9</td>
-  <td><code>PortfolioSummaryCardsProps</code><br><small style="color:var(--muted)">SavedPlans/sections/PortfolioSummaryCards.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>PortfolioSummaryCardsProps node in SavedPlans/sections/PortfolioSummaryCards.tsx.</td>
-</tr>
-<tr>
-  <td>10</td>
-  <td><code>TimelineItem</code><br><small style="color:var(--muted)">pages/SavedPlans/types.ts</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td><code>PlanGridView.tsx</code><br><small style="color:var(--muted)">SavedPlans/sections/PlanGridView.tsx</small><br><code>PlanTableView.tsx</code><br><small style="color:var(--muted)">SavedPlans/sections/PlanTableView.tsx</small><br><code>SavedPlans.tsx</code><br><small style="color:var(--muted)">pages/SavedPlans/SavedPlans.tsx</small></td>
-  <td>No direct outbound edge</td>
-  <td>TimelineItem node in pages/SavedPlans/types.ts.</td>
-</tr>
-<tr>
-  <td>11</td>
-  <td><code>TrancheDetailsTableProps</code><br><small style="color:var(--muted)">StockPlanner/sections/TrancheDetailsTable.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>TrancheDetailsTableProps node in StockPlanner/sections/TrancheDetailsTable.tsx.</td>
-</tr>
-<tr>
-  <td>12</td>
-  <td><code>PortfolioSummary</code><br><small style="color:var(--muted)">src/types/portfolio.ts</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td><code>PortfolioSummaryCards.tsx</code><br><small style="color:var(--muted)">SavedPlans/sections/PortfolioSummaryCards.tsx</small><br><code>stockMath.ts</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>PortfolioSummary node in src/types/portfolio.ts.</td>
-</tr>
-<tr>
-  <td>13</td>
-  <td><code>CalculationResult</code><br><small style="color:var(--muted)">src/types/stock.ts</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td><code>AverageCostChart.tsx</code><br><small style="color:var(--muted)">components/GridVisualizer/AverageCostChart.tsx</small><br><code>CostReductionSummary.tsx</code><br><small style="color:var(--muted)">components/GridVisualizer/CostReductionSummary.tsx</small><br><code>ExecutionAndProfitSimulator.tsx</code><br><small style="color:var(--muted)">components/GridVisualizer/ExecutionAndProfitSimulator.tsx</small><br>+10 more</td>
-  <td>No direct outbound edge</td>
-  <td>CalculationResult node in src/types/stock.ts.</td>
-</tr>
-<tr>
-  <td>14</td>
-  <td><code>StopLossLevels</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>StopLossLevels node in src/utils/stockMath.ts.</td>
-</tr>
-<tr>
-  <td>15</td>
-  <td><code>GlassCard()</code><br><small style="color:var(--muted)">src/components/GlassCard.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>AverageCostChart()</code><br><small style="color:var(--muted)">components/GridVisualizer/AverageCostChart.tsx</small><br><code>AverageCostChart.tsx</code><br><small style="color:var(--muted)">components/GridVisualizer/AverageCostChart.tsx</small><br><code>CostReductionSummary()</code><br><small style="color:var(--muted)">components/GridVisualizer/CostReductionSummary.tsx</small><br>+21 more</td>
-  <td>No direct outbound edge</td>
-  <td>GlassCard() node in src/components/GlassCard.tsx.</td>
-</tr>
-<tr>
-  <td>16</td>
-  <td><code>AverageCostChart()</code><br><small style="color:var(--muted)">components/GridVisualizer/AverageCostChart.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>GridVisualizer()</code><br><small style="color:var(--muted)">components/GridVisualizer/GridVisualizer.tsx</small><br><code>GridVisualizer.tsx</code><br><small style="color:var(--muted)">components/GridVisualizer/GridVisualizer.tsx</small></td>
-  <td><code>formatNumber()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small><br><code>GlassCard()</code><br><small style="color:var(--muted)">src/components/GlassCard.tsx</small></td>
-  <td>Supports retrieval-augmented Q&amp;A or streaming chat.</td>
-</tr>
-<tr>
-  <td>17</td>
-  <td><code>CostReductionSummary()</code><br><small style="color:var(--muted)">components/GridVisualizer/CostReductionSummary.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>GridVisualizer()</code><br><small style="color:var(--muted)">components/GridVisualizer/GridVisualizer.tsx</small><br><code>GridVisualizer.tsx</code><br><small style="color:var(--muted)">components/GridVisualizer/GridVisualizer.tsx</small></td>
-  <td><code>formatCurrency()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small><br><code>formatNumber()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small><br><code>GlassCard()</code><br><small style="color:var(--muted)">src/components/GlassCard.tsx</small></td>
-  <td>CostReductionSummary() node in components/GridVisualizer/CostReductionSummary.tsx.</td>
-</tr>
-<tr>
-  <td>18</td>
-  <td><code>ExecutionAndProfitSimulator()</code><br><small style="color:var(--muted)">components/GridVisualizer/ExecutionAndProfitSimulator.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>GridVisualizer()</code><br><small style="color:var(--muted)">components/GridVisualizer/GridVisualizer.tsx</small><br><code>GridVisualizer.tsx</code><br><small style="color:var(--muted)">components/GridVisualizer/GridVisualizer.tsx</small></td>
-  <td><code>calculateStopLossLevels()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small><br><code>formatCurrency()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small><br><code>formatNumber()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small><br>+1 more</td>
-  <td>ExecutionAndProfitSimulator() node in components/GridVisualizer/ExecutionAndProfitSimulator.tsx.</td>
-</tr>
-<tr>
-  <td>19</td>
-  <td><code>FundSplitDiagram()</code><br><small style="color:var(--muted)">components/GridVisualizer/FundSplitDiagram.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>GridVisualizer()</code><br><small style="color:var(--muted)">components/GridVisualizer/GridVisualizer.tsx</small><br><code>GridVisualizer.tsx</code><br><small style="color:var(--muted)">components/GridVisualizer/GridVisualizer.tsx</small></td>
-  <td><code>formatCurrency()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small><br><code>formatNumber()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small><br><code>GlassCard()</code><br><small style="color:var(--muted)">src/components/GlassCard.tsx</small><br>+1 more</td>
-  <td>FundSplitDiagram() node in components/GridVisualizer/FundSplitDiagram.tsx.</td>
-</tr>
-<tr>
-  <td>20</td>
-  <td><code>GridVisualizer()</code><br><small style="color:var(--muted)">components/GridVisualizer/GridVisualizer.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>StockPlanner()</code><br><small style="color:var(--muted)">pages/StockPlanner/StockPlanner.tsx</small><br><code>StockPlanner.tsx</code><br><small style="color:var(--muted)">pages/StockPlanner/StockPlanner.tsx</small></td>
-  <td><code>AverageCostChart()</code><br><small style="color:var(--muted)">components/GridVisualizer/AverageCostChart.tsx</small><br><code>CostReductionSummary()</code><br><small style="color:var(--muted)">components/GridVisualizer/CostReductionSummary.tsx</small><br><code>ExecutionAndProfitSimulator()</code><br><small style="color:var(--muted)">components/GridVisualizer/ExecutionAndProfitSimulator.tsx</small><br>+1 more</td>
-  <td>GridVisualizer() node in components/GridVisualizer/GridVisualizer.tsx.</td>
-</tr>
-<tr>
-  <td>21</td>
-  <td><code>PlanGridView()</code><br><small style="color:var(--muted)">SavedPlans/sections/PlanGridView.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>SavedPlans()</code><br><small style="color:var(--muted)">pages/SavedPlans/SavedPlans.tsx</small><br><code>SavedPlans.tsx</code><br><small style="color:var(--muted)">pages/SavedPlans/SavedPlans.tsx</small></td>
-  <td><code>formatCurrency()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small><br><code>GlassCard()</code><br><small style="color:var(--muted)">src/components/GlassCard.tsx</small></td>
-  <td>PlanGridView() node in SavedPlans/sections/PlanGridView.tsx.</td>
-</tr>
-<tr>
-  <td>22</td>
-  <td><code>PortfolioSummaryCards()</code><br><small style="color:var(--muted)">SavedPlans/sections/PortfolioSummaryCards.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>SavedPlans()</code><br><small style="color:var(--muted)">pages/SavedPlans/SavedPlans.tsx</small><br><code>SavedPlans.tsx</code><br><small style="color:var(--muted)">pages/SavedPlans/SavedPlans.tsx</small></td>
-  <td><code>CurrencyTextField()</code><br><small style="color:var(--muted)">src/components/CurrencyTextField.tsx</small><br><code>formatCurrency()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small><br><code>GlassCard()</code><br><small style="color:var(--muted)">src/components/GlassCard.tsx</small></td>
-  <td>PortfolioSummaryCards() node in SavedPlans/sections/PortfolioSummaryCards.tsx.</td>
-</tr>
-<tr>
-  <td>23</td>
-  <td><code>TrancheDetailsTable()</code><br><small style="color:var(--muted)">StockPlanner/sections/TrancheDetailsTable.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>StockPlanner()</code><br><small style="color:var(--muted)">pages/StockPlanner/StockPlanner.tsx</small><br><code>StockPlanner.tsx</code><br><small style="color:var(--muted)">pages/StockPlanner/StockPlanner.tsx</small></td>
-  <td><code>formatCurrency()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small><br><code>formatNumber()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small><br><code>GlassCard()</code><br><small style="color:var(--muted)">src/components/GlassCard.tsx</small></td>
-  <td>TrancheDetailsTable() node in StockPlanner/sections/TrancheDetailsTable.tsx.</td>
-</tr>
-<tr>
-  <td>24</td>
-  <td><code>calculateStopLossLevels()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>ExecutionAndProfitSimulator()</code><br><small style="color:var(--muted)">components/GridVisualizer/ExecutionAndProfitSimulator.tsx</small><br><code>ExecutionAndProfitSimulator.tsx</code><br><small style="color:var(--muted)">components/GridVisualizer/ExecutionAndProfitSimulator.tsx</small></td>
-  <td>No direct outbound edge</td>
-  <td>Verifies imports, entry points, or version behavior.</td>
-</tr>
-<tr>
-  <td>25</td>
-  <td><code>formatCurrency()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>CostReductionSummary()</code><br><small style="color:var(--muted)">components/GridVisualizer/CostReductionSummary.tsx</small><br><code>CostReductionSummary.tsx</code><br><small style="color:var(--muted)">components/GridVisualizer/CostReductionSummary.tsx</small><br><code>ExecutionAndProfitSimulator()</code><br><small style="color:var(--muted)">components/GridVisualizer/ExecutionAndProfitSimulator.tsx</small><br>+13 more</td>
-  <td><code>formatTHB()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small><br><code>formatUSD()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small></td>
-  <td>formatCurrency() node in src/utils/stockMath.ts.</td>
-</tr>
-<tr>
-  <td>26</td>
-  <td><code>formatNumber()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>AverageCostChart()</code><br><small style="color:var(--muted)">components/GridVisualizer/AverageCostChart.tsx</small><br><code>AverageCostChart.tsx</code><br><small style="color:var(--muted)">components/GridVisualizer/AverageCostChart.tsx</small><br><code>CostReductionSummary()</code><br><small style="color:var(--muted)">components/GridVisualizer/CostReductionSummary.tsx</small><br>+11 more</td>
-  <td>No direct outbound edge</td>
-  <td>formatNumber() node in src/utils/stockMath.ts.</td>
-</tr>
-<tr>
-  <td>27</td>
-  <td><code>formatTHB()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>formatCurrency()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>formatTHB() node in src/utils/stockMath.ts.</td>
-</tr>
-<tr>
-  <td>28</td>
-  <td><code>formatUSD()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>formatCurrency()</code><br><small style="color:var(--muted)">src/utils/stockMath.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>formatUSD() node in src/utils/stockMath.ts.</td>
-</tr>
-<tr>
-  <td>29</td>
-  <td><code>GlassCard.tsx</code><br><small style="color:var(--muted)">src/components/GlassCard.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>AverageCostChart.tsx</code><br><small style="color:var(--muted)">components/GridVisualizer/AverageCostChart.tsx</small><br><code>CostReductionSummary.tsx</code><br><small style="color:var(--muted)">components/GridVisualizer/CostReductionSummary.tsx</small><br><code>DailyGrowthTable.tsx</code><br><small style="color:var(--muted)">InvestmentPlan/sections/DailyGrowthTable.tsx</small><br>+9 more</td>
-  <td><code>@mui/material</code><br><small style="color:var(--muted)">package.json</small><br><code>react</code><br><small style="color:var(--muted)">package.json</small></td>
-  <td>Module file in src/components/GlassCard.tsx.</td>
-</tr>
-<tr>
-  <td>30</td>
-  <td><code>components/GridVisualizer.tsx</code><br><small style="color:var(--muted)">src/components/GridVisualizer.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>StockPlanner.tsx</code><br><small style="color:var(--muted)">pages/StockPlanner/StockPlanner.tsx</small></td>
-  <td>No direct outbound edge</td>
-  <td>Module file in src/components/GridVisualizer.tsx.</td>
-</tr>
-</table>
-
-<div class="grid">
-  <div class="card">
-    <h4>Key Files</h4>
-    <table style="width:100%;font-size:0.85rem;">
-      <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>src/utils/stockMath.ts</code></td><td>7 nodes</td></tr>
-<tr><td><code>src/components/GlassCard.tsx</code></td><td>3 nodes</td></tr>
-<tr><td><code>components/GridVisualizer/AverageCostChart.tsx</code></td><td>3 nodes</td></tr>
-<tr><td><code>components/GridVisualizer/CostReductionSummary.tsx</code></td><td>3 nodes</td></tr>
-<tr><td><code>components/GridVisualizer/ExecutionAndProfitSimulator.tsx</code></td><td>3 nodes</td></tr>
-<tr><td><code>components/GridVisualizer/FundSplitDiagram.tsx</code></td><td>3 nodes</td></tr>
-<tr><td><code>components/GridVisualizer/GridVisualizer.tsx</code></td><td>3 nodes</td></tr>
-<tr><td><code>SavedPlans/sections/PlanGridView.tsx</code></td><td>3 nodes</td></tr>
-    </table>
-  </div>
-  <div class="card">
-    <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: imports x48, imports x30, calls x25, contains x25. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
-  </div>
-</div>
-<hr>
-
-<!-- ====== 7. MarketTable.tsx ====== -->
-<h2 id="markettable-tsx">7. MarketTable.tsx</h2>
-<p>MarketTable.tsx groups implementation around market, pages, utils, sections, mostly in src/utils/stockApi.ts, pages/Market/types.ts, src/utils/webullService.ts. This section covers 38 nodes and 83 internal edges; the diagram shows only representative relationships to stay readable.</p>
-
-<div class="mermaid">
-%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
-flowchart LR
-    %% Section: MarketTable.tsx (38 nodes, 83 edges)
+    %% Section: MarketTable.tsx (40 nodes, 85 edges)
     subgraph markettable_tsx_src_utils_stockApi_ts_ae49d998["src/utils/stockApi.ts"]
         src_utils_stockapi_fetchcompletestockdetail_4fb580c7("fetchCompleteStockDetail()<br/><small>src/utils/stockApi.ts</small>")
         src_utils_stockapi_687a2e84("stockApi.ts")
@@ -2019,7 +1651,7 @@ flowchart LR
     src_pages_market_sections_markettable_2b5e6b2f -->|imports| src_utils_stockapi_formatmarketcap_aafb0659
     src_pages_market_sections_markettable_2b5e6b2f -->|imports| src_pages_market_sections_marketsparkline_market_1e58e15b
     src_pages_market_sections_markettable_2b5e6b2f -->|imports| src_utils_stockapi_687a2e84
-    %% Omitted for readability: 20 nodes, 0 edges
+    %% Omitted for readability: 22 nodes, 0 edges
     class src_utils_stockapi_fetchcompletestockdetail_4fb580c7 function;
     class src_utils_stockapi_687a2e84 api;
     class src_utils_stockapi_formatmarketcap_aafb0659 function;
@@ -2253,6 +1885,14 @@ flowchart LR
 </tr>
 <tr>
   <td>25</td>
+  <td><code>parseMarketCapToNumber()</code><br><small style="color:var(--muted)">src/utils/stockApi.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>StockPlanner()</code><br><small style="color:var(--muted)">pages/StockPlanner/StockPlanner.tsx</small><br><code>StockPlanner.tsx</code><br><small style="color:var(--muted)">pages/StockPlanner/StockPlanner.tsx</small></td>
+  <td>No direct outbound edge</td>
+  <td>parseMarketCapToNumber() node in src/utils/stockApi.ts.</td>
+</tr>
+<tr>
+  <td>26</td>
   <td><code>fetchWebullScreener()</code><br><small style="color:var(--muted)">src/utils/webullService.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>Market()</code><br><small style="color:var(--muted)">pages/Market/Market.tsx</small><br><code>Market.tsx</code><br><small style="color:var(--muted)">pages/Market/Market.tsx</small></td>
@@ -2260,7 +1900,7 @@ flowchart LR
   <td>fetchWebullScreener() node in src/utils/webullService.ts.</td>
 </tr>
 <tr>
-  <td>26</td>
+  <td>27</td>
   <td><code>fetchWebullStockQuote()</code><br><small style="color:var(--muted)">src/utils/webullService.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>fetchCompleteStockDetail()</code><br><small style="color:var(--muted)">src/utils/stockApi.ts</small><br><code>stockApi.ts</code><br><small style="color:var(--muted)">src/utils/stockApi.ts</small><br><code>StockPlanner()</code><br><small style="color:var(--muted)">pages/StockPlanner/StockPlanner.tsx</small><br>+1 more</td>
@@ -2268,7 +1908,7 @@ flowchart LR
   <td>fetchWebullStockQuote() node in src/utils/webullService.ts.</td>
 </tr>
 <tr>
-  <td>27</td>
+  <td>28</td>
   <td><code>emitTokenExpiredEvent()</code><br><small style="color:var(--muted)">src/utils/webullTokenService.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>fetchWebullScreener()</code><br><small style="color:var(--muted)">src/utils/webullService.ts</small><br><code>fetchWebullStockQuote()</code><br><small style="color:var(--muted)">src/utils/webullService.ts</small><br><code>webullService.ts</code><br><small style="color:var(--muted)">src/utils/webullService.ts</small></td>
@@ -2276,7 +1916,7 @@ flowchart LR
   <td>emitTokenExpiredEvent() node in src/utils/webullTokenService.ts.</td>
 </tr>
 <tr>
-  <td>28</td>
+  <td>29</td>
   <td><code>pages/Market.tsx</code><br><small style="color:var(--muted)">src/pages/Market.tsx</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>AppRoutes.tsx</code><br><small style="color:var(--muted)">src/routes/AppRoutes.tsx</small></td>
@@ -2284,20 +1924,12 @@ flowchart LR
   <td>Module file in src/pages/Market.tsx.</td>
 </tr>
 <tr>
-  <td>29</td>
+  <td>30</td>
   <td><code>Market/index.ts</code><br><small style="color:var(--muted)">pages/Market/index.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
   <td>Module file in pages/Market/index.ts.</td>
-</tr>
-<tr>
-  <td>30</td>
-  <td><code>Market/Market.tsx</code><br><small style="color:var(--muted)">pages/Market/Market.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>@mui/material</code><br><small style="color:var(--muted)">package.json</small><br><code>dayjs</code><br><small style="color:var(--muted)">package.json</small><br><code>fetchWebullScreener()</code><br><small style="color:var(--muted)">src/utils/webullService.ts</small><br>+12 more</td>
-  <td>Module file in pages/Market/Market.tsx.</td>
 </tr>
 </table>
 
@@ -2306,7 +1938,7 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>src/utils/stockApi.ts</code></td><td>8 nodes</td></tr>
+      <tr><td><code>src/utils/stockApi.ts</code></td><td>9 nodes</td></tr>
 <tr><td><code>pages/Market/types.ts</code></td><td>6 nodes</td></tr>
 <tr><td><code>src/utils/webullService.ts</code></td><td>6 nodes</td></tr>
 <tr><td><code>Market/sections/MarketTable.tsx</code></td><td>4 nodes</td></tr>
@@ -2318,13 +1950,13 @@ flowchart LR
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x25, imports x21, calls x16, imports x9. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x26, imports x22, calls x16, imports x9. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
-<!-- ====== 8. TradingNoteHeaderWidget.tsx ====== -->
-<h2 id="tradingnoteheaderwidget-tsx">8. TradingNoteHeaderWidget.tsx</h2>
+<!-- ====== 7. TradingNoteHeaderWidget.tsx ====== -->
+<h2 id="tradingnoteheaderwidget-tsx">7. TradingNoteHeaderWidget.tsx</h2>
 <p>TradingNoteHeaderWidget.tsx groups implementation around utils, components, trading, note, mostly in src/utils/finnhubMarketHolidays.ts, src/utils/usMarketTime.ts, components/trading-note/FloatingTradingNoteWindow.tsx. This section covers 37 nodes and 93 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -2689,14 +2321,14 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 9. DataBackupModal.tsx ====== -->
-<h2 id="databackupmodal-tsx">9. DataBackupModal.tsx</h2>
-<p>DataBackupModal.tsx groups implementation around utils, githubgistsyncts, databackupts, components, mostly in src/utils/githubGistSync.ts, src/utils/dataBackup.ts, src/components/DataBackupModal.tsx. This section covers 25 nodes and 60 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<!-- ====== 8. DataBackupModal.tsx ====== -->
+<h2 id="databackupmodal-tsx">8. DataBackupModal.tsx</h2>
+<p>DataBackupModal.tsx groups implementation around utils, githubgistsyncts, databackupts, components, mostly in src/utils/githubGistSync.ts, src/utils/dataBackup.ts, src/components/DataBackupModal.tsx. This section covers 26 nodes and 61 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: DataBackupModal.tsx (25 nodes, 60 edges)
+    %% Section: DataBackupModal.tsx (26 nodes, 61 edges)
     subgraph databackupmodal_tsx_src_utils_githubGistSync_ts_aa46ac82["src/utils/githubGistSync.ts"]
         src_utils_githubgistsync_67cdb616("githubGistSync.ts")
         src_utils_githubgistsync_initializeorlinkgist_547e955a("initializeOrLinkGist()<br/><small>src/utils/githubGistSync.ts</small>")
@@ -2747,7 +2379,7 @@ flowchart LR
     src_components_databackupmodal_aa0f4530 -->|imports| src_utils_databackup_getexportpayload_19620802
     src_components_databackupmodal_aa0f4530 -->|imports| src_utils_databackup_importbackupfromjson_57feed49
     src_components_databackupmodal_aa0f4530 -->|imports| src_utils_githubgistsync_disconnectgist_5d5ad12f
-    %% Omitted for readability: 7 nodes, 13 edges
+    %% Omitted for readability: 8 nodes, 13 edges
     class src_utils_githubgistsync_67cdb616 module;
     class src_utils_githubgistsync_initializeorlinkgist_547e955a function;
     class src_utils_githubgistsync_uploaddatatogist_66ba4ecb function;
@@ -2987,6 +2619,14 @@ flowchart LR
   <td>No direct outbound edge</td>
   <td>APP_VERSION node in src/utils/version.ts.</td>
 </tr>
+<tr>
+  <td>26</td>
+  <td><code>dayjs</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>GistSyncStartupModal.tsx</code><br><small style="color:var(--muted)">src/components/GistSyncStartupModal.tsx</small><br><code>Market.tsx</code><br><small style="color:var(--muted)">pages/Market/Market.tsx</small><br><code>package.json</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td>No direct outbound edge</td>
+  <td>dayjs node in package.json.</td>
+</tr>
 </table>
 
 <div class="grid">
@@ -2999,11 +2639,320 @@ flowchart LR
 <tr><td><code>src/components/DataBackupModal.tsx</code></td><td>2 nodes</td></tr>
 <tr><td><code>src/components/GistSyncStartupModal.tsx</code></td><td>2 nodes</td></tr>
 <tr><td><code>src/utils/version.ts</code></td><td>2 nodes</td></tr>
+<tr><td><code>package.json</code></td><td>1 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x20, calls x19, imports x16, imports x5. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x20, calls x19, imports x16, imports x6. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 9. StockPlanner/types.ts ====== -->
+<h2 id="stockplanner-types-ts">9. StockPlanner/types.ts</h2>
+<p>StockPlanner/types.ts groups implementation around stockplanner, pages, sections, typests, mostly in pages/StockPlanner/types.ts, src/utils/stockFinancials.ts, src/components/InfoTooltipLabel.tsx. This section covers 23 nodes and 44 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: StockPlanner/types.ts (23 nodes, 44 edges)
+    subgraph stockplanner_types_ts_pages_StockPlanner_types_t_a627301e["pages/StockPlanner/types.ts"]
+        src_pages_stockplanner_types_stockdetail_2d29b674("StockDetail<br/><small>pages/StockPlanner/types.ts</small>")
+        src_pages_stockplanner_types_f3a303e3("types.ts")
+        src_pages_stockplanner_types_stockoption_895d8cec("StockOption<br/><small>pages/StockPlanner/types.ts</small>")
+        src_pages_stockplanner_types_financialmetrictren_0f4b13de("FinancialMetricTrend<br/><small>pages/StockPlanner/types.ts</small>")
+    end
+    subgraph stockplanner_types_ts_src_utils_stockFinancials_febee7d0["src/utils/stockFinancials.ts"]
+        src_utils_stockfinancials_d1dabb89("stockFinancials.ts")
+        src_utils_stockfinancials_evaluatefinancialtrend_a77b63c8("evaluateFinancialTrend()<br/><small>src/utils/stockFinancials.ts</small>")
+        src_utils_stockfinancials_formatfinancialchangep_93509741("formatFinancialChangePercent()<br/><small>src/utils/stockFinancials.ts</small>")
+        src_utils_stockfinancials_parsefinancialnumber_f4b9334d("parseFinancialNumber()<br/><small>src/utils/stockFinancials.ts</small>")
+    end
+    subgraph stockplanner_types_ts_StockPlanner_sections_Comp_c419b606["StockPlanner/sections/CompanyInsightsCard.tsx"]
+        src_pages_stockplanner_sections_companyinsightsc_93d86954("CompanyInsightsCard.tsx")
+        src_pages_stockplanner_sections_companyinsightsc_636189d8("CompanyInsightsCard()<br/><small>StockPlanner/sections/CompanyInsightsCard.tsx</small>")
+        src_pages_stockplanner_sections_companyinsightsc_eab84c7d("CompanyInsightsCardProps<br/><small>StockPlanner/sections/CompanyInsightsCard.tsx</small>")
+    end
+    subgraph stockplanner_types_ts_StockPlanner_sections_Fina_e556e746["StockPlanner/sections/FinancialMetricCard.tsx"]
+        src_pages_stockplanner_sections_financialmetricc_24bb1794("FinancialMetricCard.tsx")
+        src_pages_stockplanner_sections_financialmetricc_3a2260b0("FinancialMetricCard()<br/><small>StockPlanner/sections/FinancialMetricCard.tsx</small>")
+        src_pages_stockplanner_sections_financialmetricc_295618ab("FinancialMetricCardProps<br/><small>StockPlanner/sections/FinancialMetricCard.tsx</small>")
+    end
+    subgraph stockplanner_types_ts_src_components_InfoTooltip_1b7110ad["src/components/InfoTooltipLabel.tsx"]
+        src_components_infotooltiplabel_infotooltiplabel_9773bf2a("InfoTooltipLabel()<br/><small>src/components/InfoTooltipLabel.tsx</small>")
+        src_components_infotooltiplabel_257ad85d("InfoTooltipLabel.tsx")
+    end
+    src_pages_stockplanner_sections_stocksearchsecti_67b354ee("StockSearchSection.tsx")
+    src_utils_stockapi_translatetothai_2b0f250d("translateToThai()<br/><small>src/utils/stockApi.ts</small>")
+    src_pages_stockplanner_sections_companyinsightsc_636189d8 -->|calls| src_pages_stockplanner_sections_financialmetricc_3a2260b0
+    src_pages_stockplanner_sections_companyinsightsc_636189d8 -->|calls| src_utils_stockapi_translatetothai_2b0f250d
+    src_pages_stockplanner_sections_financialmetricc_3a2260b0 -->|calls| src_components_infotooltiplabel_infotooltiplabel_9773bf2a
+    src_pages_stockplanner_sections_financialmetricc_3a2260b0 -->|calls| src_utils_stockfinancials_evaluatefinancialtrend_a77b63c8
+    src_utils_stockfinancials_evaluatefinancialtrend_a77b63c8 -->|calls| src_utils_stockfinancials_formatfinancialchangep_93509741
+    src_utils_stockfinancials_evaluatefinancialtrend_a77b63c8 -->|calls| src_utils_stockfinancials_parsefinancialnumber_f4b9334d
+    src_pages_stockplanner_sections_companyinsightsc_93d86954 -->|imports| src_pages_stockplanner_types_stockdetail_2d29b674
+    src_pages_stockplanner_sections_companyinsightsc_93d86954 -->|imports| src_utils_stockapi_translatetothai_2b0f250d
+    src_pages_stockplanner_sections_companyinsightsc_93d86954 -->|imports| src_pages_stockplanner_sections_financialmetricc_3a2260b0
+    src_pages_stockplanner_sections_companyinsightsc_93d86954 -->|imports| src_pages_stockplanner_types_f3a303e3
+    src_pages_stockplanner_sections_companyinsightsc_93d86954 -->|imports| src_pages_stockplanner_sections_financialmetricc_24bb1794
+    src_pages_stockplanner_sections_financialmetricc_24bb1794 -->|imports| src_components_infotooltiplabel_infotooltiplabel_9773bf2a
+    src_pages_stockplanner_sections_financialmetricc_24bb1794 -->|imports| src_utils_stockfinancials_evaluatefinancialtrend_a77b63c8
+    src_pages_stockplanner_sections_financialmetricc_24bb1794 -->|imports| src_components_infotooltiplabel_257ad85d
+    src_pages_stockplanner_sections_financialmetricc_24bb1794 -->|imports| src_utils_stockfinancials_d1dabb89
+    src_pages_stockplanner_sections_stocksearchsecti_67b354ee -->|imports| src_pages_stockplanner_types_stockdetail_2d29b674
+    src_pages_stockplanner_sections_stocksearchsecti_67b354ee -->|imports| src_pages_stockplanner_types_stockoption_895d8cec
+    src_pages_stockplanner_sections_stocksearchsecti_67b354ee -->|imports| src_pages_stockplanner_sections_companyinsightsc_636189d8
+    src_pages_stockplanner_sections_stocksearchsecti_67b354ee -->|imports| src_components_infotooltiplabel_infotooltiplabel_9773bf2a
+    src_pages_stockplanner_sections_stocksearchsecti_67b354ee -->|imports| src_pages_stockplanner_types_f3a303e3
+    src_pages_stockplanner_sections_stocksearchsecti_67b354ee -->|imports| src_pages_stockplanner_sections_companyinsightsc_93d86954
+    src_pages_stockplanner_sections_stocksearchsecti_67b354ee -->|imports| src_components_infotooltiplabel_257ad85d
+    src_utils_stockfinancials_d1dabb89 -->|imports| src_pages_stockplanner_types_financialmetrictren_0f4b13de
+    src_utils_stockfinancials_d1dabb89 -->|imports| src_pages_stockplanner_types_f3a303e3
+    %% Omitted for readability: 5 nodes, 0 edges
+    class src_pages_stockplanner_types_stockdetail_2d29b674 klass;
+    class src_pages_stockplanner_types_f3a303e3 klass;
+    class src_pages_stockplanner_types_stockoption_895d8cec klass;
+    class src_pages_stockplanner_types_financialmetrictren_0f4b13de klass;
+    class src_utils_stockfinancials_d1dabb89 module;
+    class src_utils_stockfinancials_evaluatefinancialtrend_a77b63c8 function;
+    class src_utils_stockfinancials_formatfinancialchangep_93509741 function;
+    class src_utils_stockfinancials_parsefinancialnumber_f4b9334d function;
+    class src_pages_stockplanner_sections_companyinsightsc_93d86954 ui;
+    class src_pages_stockplanner_sections_companyinsightsc_636189d8 ui;
+    class src_pages_stockplanner_sections_companyinsightsc_eab84c7d ui;
+    class src_pages_stockplanner_sections_financialmetricc_24bb1794 ui;
+    class src_pages_stockplanner_sections_financialmetricc_3a2260b0 ui;
+    class src_pages_stockplanner_sections_financialmetricc_295618ab ui;
+    class src_components_infotooltiplabel_infotooltiplabel_9773bf2a ui;
+    class src_components_infotooltiplabel_257ad85d ui;
+    class src_pages_stockplanner_sections_stocksearchsecti_67b354ee ui;
+    class src_utils_stockapi_translatetothai_2b0f250d function;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>InfoTooltipLabelProps</code><br><small style="color:var(--muted)">src/components/InfoTooltipLabel.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>InfoTooltipLabelProps node in src/components/InfoTooltipLabel.tsx.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>CompanyInsightsCardProps</code><br><small style="color:var(--muted)">StockPlanner/sections/CompanyInsightsCard.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>CompanyInsightsCardProps node in StockPlanner/sections/CompanyInsightsCard.tsx.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>FinancialMetricCardProps</code><br><small style="color:var(--muted)">StockPlanner/sections/FinancialMetricCard.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>FinancialMetricCardProps node in StockPlanner/sections/FinancialMetricCard.tsx.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>StockPlannerFormProps</code><br><small style="color:var(--muted)">StockPlanner/sections/StockPlannerForm.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>StockPlannerFormProps node in StockPlanner/sections/StockPlannerForm.tsx.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>StockSearchSectionProps</code><br><small style="color:var(--muted)">StockPlanner/sections/StockSearchSection.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>StockSearchSectionProps node in StockPlanner/sections/StockSearchSection.tsx.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>FinancialMetricTrend</code><br><small style="color:var(--muted)">pages/StockPlanner/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td><code>stockFinancials.ts</code><br><small style="color:var(--muted)">src/utils/stockFinancials.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>FinancialMetricTrend node in pages/StockPlanner/types.ts.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>FinancialTrendStatus</code><br><small style="color:var(--muted)">pages/StockPlanner/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>FinancialTrendStatus node in pages/StockPlanner/types.ts.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>StockDetail</code><br><small style="color:var(--muted)">pages/StockPlanner/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td><code>CompanyInsightsCard.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/CompanyInsightsCard.tsx</small><br><code>stockApi.ts</code><br><small style="color:var(--muted)">src/utils/stockApi.ts</small><br><code>StockPlanner.tsx</code><br><small style="color:var(--muted)">pages/StockPlanner/StockPlanner.tsx</small><br>+2 more</td>
+  <td>No direct outbound edge</td>
+  <td>StockDetail node in pages/StockPlanner/types.ts.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>StockOption</code><br><small style="color:var(--muted)">pages/StockPlanner/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td><code>StockPlanner.tsx</code><br><small style="color:var(--muted)">pages/StockPlanner/StockPlanner.tsx</small><br><code>StockPlannerForm.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/StockPlannerForm.tsx</small><br><code>StockSearchSection.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/StockSearchSection.tsx</small></td>
+  <td>No direct outbound edge</td>
+  <td>StockOption node in pages/StockPlanner/types.ts.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>InfoTooltipLabel()</code><br><small style="color:var(--muted)">src/components/InfoTooltipLabel.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>FinancialMetricCard()</code><br><small style="color:var(--muted)">StockPlanner/sections/FinancialMetricCard.tsx</small><br><code>FinancialMetricCard.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/FinancialMetricCard.tsx</small><br><code>StockSearchSection()</code><br><small style="color:var(--muted)">StockPlanner/sections/StockSearchSection.tsx</small><br>+1 more</td>
+  <td>No direct outbound edge</td>
+  <td>InfoTooltipLabel() node in src/components/InfoTooltipLabel.tsx.</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>CompanyInsightsCard()</code><br><small style="color:var(--muted)">StockPlanner/sections/CompanyInsightsCard.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>StockSearchSection()</code><br><small style="color:var(--muted)">StockPlanner/sections/StockSearchSection.tsx</small><br><code>StockSearchSection.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/StockSearchSection.tsx</small></td>
+  <td><code>FinancialMetricCard()</code><br><small style="color:var(--muted)">StockPlanner/sections/FinancialMetricCard.tsx</small><br><code>translateToThai()</code><br><small style="color:var(--muted)">src/utils/stockApi.ts</small></td>
+  <td>CompanyInsightsCard() node in StockPlanner/sections/CompanyInsightsCard.tsx.</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><code>FinancialMetricCard()</code><br><small style="color:var(--muted)">StockPlanner/sections/FinancialMetricCard.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>CompanyInsightsCard()</code><br><small style="color:var(--muted)">StockPlanner/sections/CompanyInsightsCard.tsx</small><br><code>CompanyInsightsCard.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/CompanyInsightsCard.tsx</small></td>
+  <td><code>evaluateFinancialTrend()</code><br><small style="color:var(--muted)">src/utils/stockFinancials.ts</small><br><code>InfoTooltipLabel()</code><br><small style="color:var(--muted)">src/components/InfoTooltipLabel.tsx</small></td>
+  <td>FinancialMetricCard() node in StockPlanner/sections/FinancialMetricCard.tsx.</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td><code>translateToThai()</code><br><small style="color:var(--muted)">src/utils/stockApi.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>CompanyInsightsCard()</code><br><small style="color:var(--muted)">StockPlanner/sections/CompanyInsightsCard.tsx</small><br><code>CompanyInsightsCard.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/CompanyInsightsCard.tsx</small></td>
+  <td>No direct outbound edge</td>
+  <td>translateToThai() node in src/utils/stockApi.ts.</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td><code>evaluateFinancialTrend()</code><br><small style="color:var(--muted)">src/utils/stockFinancials.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>FinancialMetricCard()</code><br><small style="color:var(--muted)">StockPlanner/sections/FinancialMetricCard.tsx</small><br><code>FinancialMetricCard.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/FinancialMetricCard.tsx</small></td>
+  <td><code>formatFinancialChangePercent()</code><br><small style="color:var(--muted)">src/utils/stockFinancials.ts</small><br><code>parseFinancialNumber()</code><br><small style="color:var(--muted)">src/utils/stockFinancials.ts</small></td>
+  <td>evaluateFinancialTrend() node in src/utils/stockFinancials.ts.</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td><code>formatFinancialChangePercent()</code><br><small style="color:var(--muted)">src/utils/stockFinancials.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>evaluateFinancialTrend()</code><br><small style="color:var(--muted)">src/utils/stockFinancials.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>formatFinancialChangePercent() node in src/utils/stockFinancials.ts.</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td><code>parseFinancialNumber()</code><br><small style="color:var(--muted)">src/utils/stockFinancials.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>evaluateFinancialTrend()</code><br><small style="color:var(--muted)">src/utils/stockFinancials.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>parseFinancialNumber() node in src/utils/stockFinancials.ts.</td>
+</tr>
+<tr>
+  <td>17</td>
+  <td><code>InfoTooltipLabel.tsx</code><br><small style="color:var(--muted)">src/components/InfoTooltipLabel.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>FinancialMetricCard.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/FinancialMetricCard.tsx</small><br><code>StockSearchSection.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/StockSearchSection.tsx</small></td>
+  <td><code>@mui/material</code><br><small style="color:var(--muted)">package.json</small><br><code>lucide-react</code><br><small style="color:var(--muted)">package.json</small><br><code>react</code><br><small style="color:var(--muted)">package.json</small></td>
+  <td>Module file in src/components/InfoTooltipLabel.tsx.</td>
+</tr>
+<tr>
+  <td>18</td>
+  <td><code>StockPlanner/index.ts</code><br><small style="color:var(--muted)">pages/StockPlanner/index.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Module file in pages/StockPlanner/index.ts.</td>
+</tr>
+<tr>
+  <td>19</td>
+  <td><code>CompanyInsightsCard.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/CompanyInsightsCard.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>StockSearchSection.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/StockSearchSection.tsx</small></td>
+  <td><code>@mui/material</code><br><small style="color:var(--muted)">package.json</small><br><code>FinancialMetricCard()</code><br><small style="color:var(--muted)">StockPlanner/sections/FinancialMetricCard.tsx</small><br><code>FinancialMetricCard.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/FinancialMetricCard.tsx</small><br>+6 more</td>
+  <td>Module file in StockPlanner/sections/CompanyInsightsCard.tsx.</td>
+</tr>
+<tr>
+  <td>20</td>
+  <td><code>FinancialMetricCard.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/FinancialMetricCard.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>CompanyInsightsCard.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/CompanyInsightsCard.tsx</small></td>
+  <td><code>@mui/material</code><br><small style="color:var(--muted)">package.json</small><br><code>evaluateFinancialTrend()</code><br><small style="color:var(--muted)">src/utils/stockFinancials.ts</small><br><code>InfoTooltipLabel()</code><br><small style="color:var(--muted)">src/components/InfoTooltipLabel.tsx</small><br>+3 more</td>
+  <td>Module file in StockPlanner/sections/FinancialMetricCard.tsx.</td>
+</tr>
+<tr>
+  <td>21</td>
+  <td><code>StockSearchSection.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/StockSearchSection.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>StockPlannerForm.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/StockPlannerForm.tsx</small></td>
+  <td><code>@mui/material</code><br><small style="color:var(--muted)">package.json</small><br><code>CompanyInsightsCard()</code><br><small style="color:var(--muted)">StockPlanner/sections/CompanyInsightsCard.tsx</small><br><code>CompanyInsightsCard.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/CompanyInsightsCard.tsx</small><br>+7 more</td>
+  <td>Module file in StockPlanner/sections/StockSearchSection.tsx.</td>
+</tr>
+<tr>
+  <td>22</td>
+  <td><code>StockPlanner/types.ts</code><br><small style="color:var(--muted)">pages/StockPlanner/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td><code>CompanyInsightsCard.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/CompanyInsightsCard.tsx</small><br><code>stockApi.ts</code><br><small style="color:var(--muted)">src/utils/stockApi.ts</small><br><code>stockFinancials.ts</code><br><small style="color:var(--muted)">src/utils/stockFinancials.ts</small><br>+4 more</td>
+  <td>No direct outbound edge</td>
+  <td>Module file in pages/StockPlanner/types.ts.</td>
+</tr>
+<tr>
+  <td>23</td>
+  <td><code>stockFinancials.ts</code><br><small style="color:var(--muted)">src/utils/stockFinancials.ts</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>FinancialMetricCard.tsx</code><br><small style="color:var(--muted)">StockPlanner/sections/FinancialMetricCard.tsx</small></td>
+  <td><code>FinancialMetricTrend</code><br><small style="color:var(--muted)">pages/StockPlanner/types.ts</small><br><code>types.ts</code><br><small style="color:var(--muted)">pages/StockPlanner/types.ts</small></td>
+  <td>Module file in src/utils/stockFinancials.ts.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>pages/StockPlanner/types.ts</code></td><td>5 nodes</td></tr>
+<tr><td><code>src/utils/stockFinancials.ts</code></td><td>4 nodes</td></tr>
+<tr><td><code>src/components/InfoTooltipLabel.tsx</code></td><td>3 nodes</td></tr>
+<tr><td><code>StockPlanner/sections/CompanyInsightsCard.tsx</code></td><td>3 nodes</td></tr>
+<tr><td><code>StockPlanner/sections/FinancialMetricCard.tsx</code></td><td>3 nodes</td></tr>
+<tr><td><code>StockPlanner/sections/StockSearchSection.tsx</code></td><td>2 nodes</td></tr>
+<tr><td><code>pages/StockPlanner/index.ts</code></td><td>1 nodes</td></tr>
+<tr><td><code>StockPlanner/sections/StockPlannerForm.tsx</code></td><td>1 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x14, imports x10, imports x8, calls x6. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -3441,8 +3390,8 @@ flowchart LR
   <div class="card">
     <h4>Graph</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>Nodes</td><td>612</td></tr>
-      <tr><td>Edges</td><td>1446</td></tr>
+      <tr><td>Nodes</td><td>619</td></tr>
+      <tr><td>Edges</td><td>1464</td></tr>
       <tr><td>Hyperedges</td><td>0</td></tr>
       <tr><td>Communities</td><td>31</td></tr>
       <tr><td>Documented Sections</td><td>13</td></tr>
@@ -3451,7 +3400,7 @@ flowchart LR
   <div class="card">
     <h4>Edge Confidence</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>EXTRACTED</td><td>1435</td></tr>
+      <tr><td>EXTRACTED</td><td>1453</td></tr>
       <tr><td>INFERRED</td><td>11</td></tr>
       <tr><td>AMBIGUOUS</td><td>0</td></tr>
     </table>
@@ -3460,7 +3409,7 @@ flowchart LR
 
 <div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
   <p>MoneyLust — Architecture Documentation</p>
-  <p>Generated: 2026-10-10 09:34 UTC · graphify callflow-html</p>
+  <p>Generated: 2026-11-09 12:39 UTC · graphify callflow-html</p>
 </div>
 
 </div><!-- .container -->

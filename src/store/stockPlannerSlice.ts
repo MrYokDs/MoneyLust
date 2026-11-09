@@ -233,6 +233,91 @@ export const stockPlannerSlice = createSlice({
         savePortfoliosToLocalStorage(state.portfolios);
       }
     },
+    /**
+     * เติมเงินสดเพิ่มเข้าพอร์ตการลงทุน พร้อมบันทึกประวัติการเติมเงินในไทม์ไลน์
+     * 
+     * @param state - สถานะปัจจุบันของ Slice
+     * @param action - ข้อมูลรหัสพอร์ต, จำนวนเงินที่เติม (USD), วันที่ทำรายการ และหมายเหตุ
+     * @returns void
+     */
+    depositPortfolioCapital: (
+      state,
+      action: PayloadAction<{ id: string; amount: number; date?: string; note?: string }>
+    ) => {
+      const p = state.portfolios.find(p => p.id === action.payload.id);
+      if (p && action.payload.amount > 0) {
+        p.initialCapital = (p.initialCapital || 0) + action.payload.amount;
+        if (!p.adjustments) p.adjustments = [];
+        p.adjustments.push({
+          id: Date.now().toString(),
+          date: action.payload.date || new Date().toISOString(),
+          amountChange: action.payload.amount,
+          note: action.payload.note,
+        });
+        savePortfoliosToLocalStorage(state.portfolios);
+      }
+    },
+    /**
+     * ถอนเงินสดออกจากพอร์ตการลงทุน พร้อมบันทึกประวัติการถอนเงินในไทม์ไลน์
+     * 
+     * @param state - สถานะปัจจุบันของ Slice
+     * @param action - ข้อมูลรหัสพอร์ต, จำนวนเงินที่ถอน (USD), วันที่ทำรายการ และหมายเหตุ
+     * @returns void
+     */
+    withdrawPortfolioCapital: (
+      state,
+      action: PayloadAction<{ id: string; amount: number; date?: string; note?: string }>
+    ) => {
+      const p = state.portfolios.find(p => p.id === action.payload.id);
+      if (p && action.payload.amount > 0) {
+        p.initialCapital = Math.max(0, (p.initialCapital || 0) - action.payload.amount);
+        if (!p.adjustments) p.adjustments = [];
+        p.adjustments.push({
+          id: Date.now().toString(),
+          date: action.payload.date || new Date().toISOString(),
+          amountChange: -action.payload.amount,
+          note: action.payload.note,
+        });
+        savePortfoliosToLocalStorage(state.portfolios);
+      }
+    },
+    /**
+     * ปรับฐานเงินต้นทุนตั้งต้นของพอร์ตโดยตรง (กรณีเคยกรอกผิด) โดยไม่บันทึกเป็นรายการเติม/ถอนเงินในไทม์ไลน์
+     * 
+     * @param state - สถานะปัจจุบันของ Slice
+     * @param action - ข้อมูลรหัสพอร์ต, จำนวนเงินต้นใหม่ และตัวเลือกล้างประวัติการปรับปรุงเงินเดิม
+     * @returns void
+     */
+    adjustBaseCapital: (
+      state,
+      action: PayloadAction<{ id: string; newBaseCapital: number; clearExistingAdjustments?: boolean }>
+    ) => {
+      const p = state.portfolios.find(p => p.id === action.payload.id);
+      if (p) {
+        p.initialCapital = action.payload.newBaseCapital;
+        if (action.payload.clearExistingAdjustments) {
+          p.adjustments = [];
+        }
+        savePortfoliosToLocalStorage(state.portfolios);
+      }
+    },
+    /**
+     * ลบรายการบันทึกการปรับปรุงเงินทุน (เติม/ถอนเงิน) รายการเฉพาะออกจากพอร์ต
+     * 
+     * @param state - สถานะปัจจุบันของ Slice
+     * @param action - ข้อมูลรหัสพอร์ต และรหัส adjustment ที่ต้องการลบ
+     * @returns void
+     */
+    deletePortfolioAdjustment: (
+      state,
+      action: PayloadAction<{ portfolioId: string; adjustmentId: string }>
+    ) => {
+      const p = state.portfolios.find(p => p.id === action.payload.portfolioId);
+      if (p && p.adjustments) {
+        p.adjustments = p.adjustments.filter(a => a.id !== action.payload.adjustmentId);
+        savePortfoliosToLocalStorage(state.portfolios);
+      }
+    },
     savePortfolioGrowthPlan: (state, action: PayloadAction<{ id: string; growthPlan: GrowthPlanConfig }>) => {
       const p = state.portfolios.find(p => p.id === action.payload.id);
       if (p) {
@@ -309,6 +394,10 @@ export const {
   reorderPortfolios,
   updatePortfolioCapital,
   clearPortfolioAdjustments,
+  depositPortfolioCapital,
+  withdrawPortfolioCapital,
+  adjustBaseCapital,
+  deletePortfolioAdjustment,
   savePortfolioGrowthPlan,
   deletePortfolioGrowthPlan,
   updatePortfolioGrowthPlanRecovery,

@@ -22,13 +22,15 @@ interface PortfolioSummaryCardsProps {
   summary: PortfolioSummary;
   exchangeRate: number;
   portfolioId: string;
-  onUpdateCapital: (capital: number) => void;
+  onOpenCapitalModal?: () => void;
+  onUpdateCapital?: (capital: number) => void;
 }
 
 export const PortfolioSummaryCards: React.FC<PortfolioSummaryCardsProps> = ({
   summary,
   exchangeRate,
   portfolioId,
+  onOpenCapitalModal,
   onUpdateCapital,
 }) => {
   const [isEditingCapital, setIsEditingCapital] = useState(false);
@@ -72,7 +74,9 @@ export const PortfolioSummaryCards: React.FC<PortfolioSummaryCardsProps> = ({
                 size="small"
                 sx={{ minWidth: 0, p: 1, px: 2, fontFamily: 'Prompt' }}
                 onClick={() => {
-                  onUpdateCapital(Number(editedCapital));
+                  if (onUpdateCapital) {
+                    onUpdateCapital(Number(editedCapital));
+                  }
                   setIsEditingCapital(false);
                 }}
               >
@@ -96,10 +100,15 @@ export const PortfolioSummaryCards: React.FC<PortfolioSummaryCardsProps> = ({
               <IconButton
                 size="small"
                 onClick={() => {
-                  setEditedCapital(summary.initialCapital.toString());
-                  setIsEditingCapital(true);
+                  if (onOpenCapitalModal) {
+                    onOpenCapitalModal();
+                  } else {
+                    setEditedCapital(summary.initialCapital.toString());
+                    setIsEditingCapital(true);
+                  }
                 }}
-                sx={{ opacity: 0.6, '&:hover': { opacity: 1 }, mt: -0.5 }}
+                sx={{ opacity: 0.7, '&:hover': { opacity: 1, color: 'primary.main' }, mt: -0.5 }}
+                title="จัดการเงินทุน (เติมเงิน / ถอนเงิน / ปรับฐานเงินต้น)"
               >
                 <Edit2 size={16} />
               </IconButton>

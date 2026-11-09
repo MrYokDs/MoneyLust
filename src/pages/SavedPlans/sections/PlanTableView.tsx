@@ -32,6 +32,7 @@ interface PlanTableViewProps {
   onRowsPerPageChange: (rows: number) => void;
   onLoadPlan: (plan: CalculationResult) => void;
   onDeletePlan: (id: string, symbol: string) => void;
+  onDeleteAdjustment?: (id: string) => void;
   formatDate: (dateStr: string) => string;
   getRoundingModeName: (mode: string) => string;
 }
@@ -45,6 +46,7 @@ export const PlanTableView: React.FC<PlanTableViewProps> = ({
   onRowsPerPageChange,
   onLoadPlan,
   onDeletePlan,
+  onDeleteAdjustment,
   formatDate,
   getRoundingModeName,
 }) => {
@@ -129,8 +131,8 @@ export const PlanTableView: React.FC<PlanTableViewProps> = ({
                         : 'rgba(239, 68, 68, 0.05)',
                     }}
                   >
-                    <TableCell colSpan={9} align="center" sx={{ fontFamily: 'Prompt', py: 1.5 }}>
-                      <Stack direction="row" alignItems="center" justifyContent="center" spacing={2}>
+                    <TableCell colSpan={8} align="center" sx={{ fontFamily: 'Prompt', py: 1.5 }}>
+                      <Stack direction="row" alignItems="center" justifyContent="center" spacing={2} flexWrap="wrap">
                         <Stack direction="row" spacing={1} alignItems="center">
                           <Calendar size={14} color={isDeposit ? '#10b981' : '#ef4444'} />
                           <Typography variant="body2" color="text.secondary" fontSize="0.85rem">
@@ -145,7 +147,26 @@ export const PlanTableView: React.FC<PlanTableViewProps> = ({
                           {isDeposit ? 'เติมเงินเข้าพอร์ต' : 'ถอนเงินออกจากพอร์ต'} จำนวน{' '}
                           {formatCurrency(Math.abs(adj.amountChange), 'USD', false)}
                         </Typography>
+                        {adj.note && (
+                          <Typography variant="caption" color="text.secondary" sx={{ fontStyle: 'italic', fontFamily: 'Prompt' }}>
+                            ({adj.note})
+                          </Typography>
+                        )}
                       </Stack>
+                    </TableCell>
+                    <TableCell align="center" sx={{ py: 1.5 }}>
+                      {onDeleteAdjustment && (
+                        <Tooltip title="ลบรายการนี้ออกจากไทม์ไลน์">
+                          <IconButton
+                            size="small"
+                            color="error"
+                            onClick={() => onDeleteAdjustment(adj.id)}
+                            sx={{ opacity: 0.6, '&:hover': { opacity: 1 } }}
+                          >
+                            <Trash2 size={16} />
+                          </IconButton>
+                        </Tooltip>
+                      )}
                     </TableCell>
                   </TableRow>
                 );

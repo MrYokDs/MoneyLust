@@ -186,9 +186,9 @@
     "semantic_hash": "ba35e6623f42f065be2d6987c276ff21"
   },
   "src/pages/SavedPlans/SavedPlans.tsx": {
-    "mtime": 1791275796.3128898,
-    "seen": 1791275838.2175422,
-    "ast_hash": "a5f57e6c8fb19eed498d921784993f0b",
+    "mtime": 1794227927.681914,
+    "seen": 1794227966.7060022,
+    "ast_hash": "178d4023ab3e4775937cc24b7a8d4a40",
     "semantic_hash": ""
   },
   "src/pages/SavedPlans/index.ts": {
@@ -204,15 +204,15 @@
     "semantic_hash": "d90fc9877f6a07f18bb773df6e4d7f60"
   },
   "src/pages/SavedPlans/sections/PlanGridView.tsx": {
-    "mtime": 1789734179.48673,
-    "seen": 1790805532.8378625,
-    "ast_hash": "ce3388ca53dd3b3d281939c3d5610141",
-    "semantic_hash": "ce3388ca53dd3b3d281939c3d5610141"
+    "mtime": 1794227862.6890042,
+    "seen": 1794227966.7060077,
+    "ast_hash": "d4c33672696eaa27b1b4e5b52adb9ff5",
+    "semantic_hash": ""
   },
   "src/pages/SavedPlans/sections/PlanTableView.tsx": {
-    "mtime": 1791270770.287838,
-    "seen": 1791271386.4954722,
-    "ast_hash": "f13042b412fa563bb678d0881e4f0a2d",
+    "mtime": 1794227840.3794558,
+    "seen": 1794227966.7060087,
+    "ast_hash": "8173fde3ff02ebd445dff0cefcb209c7",
     "semantic_hash": ""
   },
   "src/pages/SavedPlans/sections/PortfolioGrowthPlanCard.tsx": {
@@ -228,10 +228,10 @@
     "semantic_hash": ""
   },
   "src/pages/SavedPlans/sections/PortfolioSummaryCards.tsx": {
-    "mtime": 1790596957.411874,
-    "seen": 1790805532.8378642,
-    "ast_hash": "a8d53bb2c2c65380e86e2440352c11e2",
-    "semantic_hash": "a8d53bb2c2c65380e86e2440352c11e2"
+    "mtime": 1794227798.095299,
+    "seen": 1794227966.7060113,
+    "ast_hash": "c89ceb4671624ca218370a95242e2944",
+    "semantic_hash": ""
   },
   "src/pages/SavedPlans/sections/SavedPlansModals.tsx": {
     "mtime": 1790805080.46587,
@@ -366,9 +366,9 @@
     "semantic_hash": "63573fce8447ccb55574a2109aac3877"
   },
   "src/store/stockPlannerSlice.ts": {
-    "mtime": 1791624833.6067135,
-    "seen": 1791624896.359918,
-    "ast_hash": "8450e85bead3301aa2e1bd55dcc3a1f9",
+    "mtime": 1794227703.0115292,
+    "seen": 1794227966.7060318,
+    "ast_hash": "ab69bc1ee95be585d1ba1e5b880885fe",
     "semantic_hash": ""
   },
   "src/theme.ts": {
@@ -390,10 +390,10 @@
     "semantic_hash": "f97f1c01f100bf88d21d79f603310520"
   },
   "src/types/portfolio.ts": {
-    "mtime": 1790805016.7278187,
-    "seen": 1790805532.837882,
-    "ast_hash": "c85d2f8b98bb95804762873a5e77322a",
-    "semantic_hash": "c85d2f8b98bb95804762873a5e77322a"
+    "mtime": 1794227668.9840643,
+    "seen": 1794227966.7060351,
+    "ast_hash": "72217c23efbde097185cebcb967f21ed",
+    "semantic_hash": ""
   },
   "src/types/stock.ts": {
     "mtime": 1789877930.0832179,
@@ -759,6 +759,12 @@
     "mtime": 1791462336.3234653,
     "seen": 1791462376.9898987,
     "ast_hash": "9c2c3148e1d616df69e3d74c86fa837c",
+    "semantic_hash": ""
+  },
+  "src/pages/SavedPlans/sections/CapitalManagementModal.tsx": {
+    "mtime": 1794227949.3371172,
+    "seen": 1794227966.7060056,
+    "ast_hash": "495693cdf362fe601fd2b691f269565a",
     "semantic_hash": ""
   }
 }

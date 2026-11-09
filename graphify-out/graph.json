@@ -17,17 +17,17 @@
       "source_location": "L52"
     },
     {
-      "id": "src_pages_savedplans_sections_portfolioheader_portfolioheaderprops",
-      "label": "PortfolioHeaderProps",
+      "id": "src_pages_savedplans_sections_savedplansmodals_savedplansmodalsprops",
+      "label": "SavedPlansModalsProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
       "community_name": "SavedPlans/SavedPlans.tsx",
       "file_type": "code",
-      "norm_label": "portfolioheaderprops",
-      "source_file": "src/pages/SavedPlans/sections/PortfolioHeader.tsx",
-      "source_location": "L18"
+      "norm_label": "savedplansmodalsprops",
+      "source_file": "src/pages/SavedPlans/sections/SavedPlansModals.tsx",
+      "source_location": "L22"
     },
     {
       "id": "src_pages_savedplans_sections_timelinefilter_timelinefilterprops",
@@ -41,6 +41,19 @@
       "norm_label": "timelinefilterprops",
       "source_file": "src/pages/SavedPlans/sections/TimelineFilter.tsx",
       "source_location": "L15"
+    },
+    {
+      "id": "src_pages_savedplans_types_plantodelete",
+      "label": "PlanToDelete",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "code",
+      "norm_label": "plantodelete",
+      "source_file": "src/pages/SavedPlans/types.ts",
+      "source_location": "L7"
     },
     {
       "id": "src_store_index_appdispatch",
@@ -69,13 +82,39 @@
       "source_location": "L11"
     },
     {
+      "id": "src_types_portfolio_capitaladjustment",
+      "label": "CapitalAdjustment",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "code",
+      "norm_label": "capitaladjustment",
+      "source_file": "src/types/portfolio.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "src_components_currencytextfield_currencytextfieldprops",
+      "label": "CurrencyTextFieldProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "currencytextfieldprops",
+      "source_file": "src/components/CurrencyTextField.tsx",
+      "source_location": "L11"
+    },
+    {
       "id": "src_components_glasscard_glasscardprops",
       "label": "GlassCardProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "glasscardprops",
       "source_file": "src/components/GlassCard.tsx",
@@ -88,7 +127,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "averagecostchartprops",
       "source_file": "src/components/GridVisualizer/AverageCostChart.tsx",
@@ -101,7 +140,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "costreductionsummaryprops",
       "source_file": "src/components/GridVisualizer/CostReductionSummary.tsx",
@@ -114,7 +153,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "executionandprofitsimulatorprops",
       "source_file": "src/components/GridVisualizer/ExecutionAndProfitSimulator.tsx",
@@ -127,7 +166,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "fundsplitdiagramprops",
       "source_file": "src/components/GridVisualizer/FundSplitDiagram.tsx",
@@ -140,11 +179,24 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "gridvisualizerprops",
       "source_file": "src/components/GridVisualizer/GridVisualizer.tsx",
       "source_location": "L14"
+    },
+    {
+      "id": "src_pages_savedplans_sections_capitalmanagementmodal_capitalmanagementmodalprops",
+      "label": "CapitalManagementModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "capitalmanagementmodalprops",
+      "source_file": "src/pages/SavedPlans/sections/CapitalManagementModal.tsx",
+      "source_location": "L38"
     },
     {
       "id": "src_pages_savedplans_sections_plangridview_plangridviewprops",
@@ -153,7 +205,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "plangridviewprops",
       "source_file": "src/pages/SavedPlans/sections/PlanGridView.tsx",
@@ -166,11 +218,24 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "plantableviewprops",
       "source_file": "src/pages/SavedPlans/sections/PlanTableView.tsx",
       "source_location": "L26"
+    },
+    {
+      "id": "src_pages_savedplans_sections_portfolioheader_portfolioheaderprops",
+      "label": "PortfolioHeaderProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "portfolioheaderprops",
+      "source_file": "src/pages/SavedPlans/sections/PortfolioHeader.tsx",
+      "source_location": "L18"
     },
     {
       "id": "src_pages_savedplans_sections_portfoliosummarycards_portfoliosummarycardsprops",
@@ -179,7 +244,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "portfoliosummarycardsprops",
       "source_file": "src/pages/SavedPlans/sections/PortfolioSummaryCards.tsx",
@@ -192,11 +257,50 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "timelineitem",
       "source_file": "src/pages/SavedPlans/types.ts",
       "source_location": "L3"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_currencyexchangefield_currencyexchangefieldprops",
+      "label": "CurrencyExchangeFieldProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "currencyexchangefieldprops",
+      "source_file": "src/pages/StockPlanner/sections/CurrencyExchangeField.tsx",
+      "source_location": "L19"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_exitstrategysection_exitstrategysectionprops",
+      "label": "ExitStrategySectionProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "exitstrategysectionprops",
+      "source_file": "src/pages/StockPlanner/sections/ExitStrategySection.tsx",
+      "source_location": "L21"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_investmentparamssection_investmentparamssectionprops",
+      "label": "InvestmentParamsSectionProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "investmentparamssectionprops",
+      "source_file": "src/pages/StockPlanner/sections/InvestmentParamsSection.tsx",
+      "source_location": "L29"
     },
     {
       "id": "src_pages_stockplanner_sections_tranchedetailstable_tranchedetailstableprops",
@@ -205,7 +309,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "tranchedetailstableprops",
       "source_file": "src/pages/StockPlanner/sections/TrancheDetailsTable.tsx",
@@ -218,11 +322,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "portfoliosummary",
       "source_file": "src/types/portfolio.ts",
-      "source_location": "L19"
+      "source_location": "L20"
     },
     {
       "id": "src_types_stock_calculationresult",
@@ -231,11 +335,24 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "calculationresult",
       "source_file": "src/types/stock.ts",
       "source_location": "L24"
+    },
+    {
+      "id": "src_types_stock_tranchedetail",
+      "label": "TrancheDetail",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "tranchedetail",
+      "source_file": "src/types/stock.ts",
+      "source_location": "L6"
     },
     {
       "id": "src_utils_stockmath_stoplosslevels",
@@ -244,7 +361,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "stoplosslevels",
       "source_file": "src/utils/stockMath.ts",
@@ -420,32 +537,6 @@
       "source_location": "L42"
     },
     {
-      "id": "src_pages_savedplans_sections_savedplansmodals_savedplansmodalsprops",
-      "label": "SavedPlansModalsProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "stockPlannerSlice.ts",
-      "file_type": "code",
-      "norm_label": "savedplansmodalsprops",
-      "source_file": "src/pages/SavedPlans/sections/SavedPlansModals.tsx",
-      "source_location": "L22"
-    },
-    {
-      "id": "src_pages_savedplans_types_plantodelete",
-      "label": "PlanToDelete",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "stockPlannerSlice.ts",
-      "file_type": "code",
-      "norm_label": "plantodelete",
-      "source_file": "src/pages/SavedPlans/types.ts",
-      "source_location": "L7"
-    },
-    {
       "id": "src_pages_stockplanner_sections_portfolioselectfield_portfolioselectfieldprops",
       "label": "PortfolioSelectFieldProps",
       "_callable": true,
@@ -537,19 +628,6 @@
       "source_location": "L56"
     },
     {
-      "id": "src_types_portfolio_capitaladjustment",
-      "label": "CapitalAdjustment",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "stockPlannerSlice.ts",
-      "file_type": "code",
-      "norm_label": "capitaladjustment",
-      "source_file": "src/types/portfolio.ts",
-      "source_location": "L3"
-    },
-    {
       "id": "src_types_portfolio_portfolio",
       "label": "Portfolio",
       "_callable": true,
@@ -560,7 +638,7 @@
       "file_type": "code",
       "norm_label": "portfolio",
       "source_file": "src/types/portfolio.ts",
-      "source_location": "L9"
+      "source_location": "L10"
     },
     {
       "id": "src_types_stock_currencymode",
@@ -615,39 +693,13 @@
       "source_location": "L2"
     },
     {
-      "id": "src_types_stock_tranchedetail",
-      "label": "TrancheDetail",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "stockPlannerSlice.ts",
-      "file_type": "code",
-      "norm_label": "tranchedetail",
-      "source_file": "src/types/stock.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "src_components_currencytextfield_currencytextfieldprops",
-      "label": "CurrencyTextFieldProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "currencytextfieldprops",
-      "source_file": "src/components/CurrencyTextField.tsx",
-      "source_location": "L11"
-    },
-    {
       "id": "src_components_infotooltiplabel_infotooltiplabelprops",
       "label": "InfoTooltipLabelProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "infotooltiplabelprops",
       "source_file": "src/components/InfoTooltipLabel.tsx",
@@ -660,37 +712,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "companyinsightscardprops",
       "source_file": "src/pages/StockPlanner/sections/CompanyInsightsCard.tsx",
       "source_location": "L31"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_currencyexchangefield_currencyexchangefieldprops",
-      "label": "CurrencyExchangeFieldProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "currencyexchangefieldprops",
-      "source_file": "src/pages/StockPlanner/sections/CurrencyExchangeField.tsx",
-      "source_location": "L19"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_exitstrategysection_exitstrategysectionprops",
-      "label": "ExitStrategySectionProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "exitstrategysectionprops",
-      "source_file": "src/pages/StockPlanner/sections/ExitStrategySection.tsx",
-      "source_location": "L21"
     },
     {
       "id": "src_pages_stockplanner_sections_financialmetriccard_financialmetriccardprops",
@@ -699,24 +725,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "financialmetriccardprops",
       "source_file": "src/pages/StockPlanner/sections/FinancialMetricCard.tsx",
       "source_location": "L11"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_investmentparamssection_investmentparamssectionprops",
-      "label": "InvestmentParamsSectionProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "investmentparamssectionprops",
-      "source_file": "src/pages/StockPlanner/sections/InvestmentParamsSection.tsx",
-      "source_location": "L29"
     },
     {
       "id": "src_pages_stockplanner_sections_stockplannerform_stockplannerformprops",
@@ -725,7 +738,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "stockplannerformprops",
       "source_file": "src/pages/StockPlanner/sections/StockPlannerForm.tsx",
@@ -738,7 +751,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "stocksearchsectionprops",
       "source_file": "src/pages/StockPlanner/sections/StockSearchSection.tsx",
@@ -751,7 +764,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "financialmetrictrend",
       "source_file": "src/pages/StockPlanner/types.ts",
@@ -764,7 +777,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "financialtrendstatus",
       "source_file": "src/pages/StockPlanner/types.ts",
@@ -777,7 +790,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "stockdetail",
       "source_file": "src/pages/StockPlanner/types.ts",
@@ -790,7 +803,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "stockoption",
       "source_file": "src/pages/StockPlanner/types.ts",
@@ -1247,18 +1260,6 @@
       "source_location": "L39"
     },
     {
-      "id": "src_pages_investmentplan_sections_growthplanform_growthplanform",
-      "label": "GrowthPlanForm()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "SavedPlans/SavedPlans.tsx",
-      "file_type": "code",
-      "norm_label": "growthplanform()",
-      "source_file": "src/pages/InvestmentPlan/sections/GrowthPlanForm.tsx",
-      "source_location": "L57"
-    },
-    {
       "id": "src_pages_investmentplan_sections_portfoliobenchmarkcard_portfoliobenchmarkcard",
       "label": "PortfolioBenchmarkCard()",
       "_callable": true,
@@ -1280,7 +1281,7 @@
       "file_type": "code",
       "norm_label": "savedplans()",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L35"
+      "source_location": "L40"
     },
     {
       "id": "src_pages_savedplans_sections_emptyplansalert_emptyplansalert",
@@ -1293,18 +1294,6 @@
       "norm_label": "emptyplansalert()",
       "source_file": "src/pages/SavedPlans/sections/EmptyPlansAlert.tsx",
       "source_location": "L9"
-    },
-    {
-      "id": "src_pages_savedplans_sections_plantableview_plantableview",
-      "label": "PlanTableView()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "SavedPlans/SavedPlans.tsx",
-      "file_type": "code",
-      "norm_label": "plantableview()",
-      "source_file": "src/pages/SavedPlans/sections/PlanTableView.tsx",
-      "source_location": "L39"
     },
     {
       "id": "src_pages_savedplans_sections_portfoliogrowthplancard_portfoliogrowthplancard",
@@ -1439,18 +1428,6 @@
       "source_location": "L16"
     },
     {
-      "id": "src_utils_exchangerate_savecachedexchangerate",
-      "label": "saveCachedExchangeRate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "SavedPlans/SavedPlans.tsx",
-      "file_type": "code",
-      "norm_label": "savecachedexchangerate()",
-      "source_file": "src/utils/exchangeRate.ts",
-      "source_location": "L37"
-    },
-    {
       "id": "src_utils_growthplanmath_calculatedailygrowthplan",
       "label": "calculateDailyGrowthPlan()",
       "_callable": true,
@@ -1487,18 +1464,6 @@
       "source_location": "L137"
     },
     {
-      "id": "src_utils_stockapi_parsemarketcaptonumber",
-      "label": "parseMarketCapToNumber()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "SavedPlans/SavedPlans.tsx",
-      "file_type": "code",
-      "norm_label": "parsemarketcaptonumber()",
-      "source_file": "src/utils/stockApi.ts",
-      "source_location": "L32"
-    },
-    {
       "id": "src_utils_stockmath_calculateportfoliosummary",
       "label": "calculatePortfolioSummary()",
       "_callable": true,
@@ -1509,18 +1474,6 @@
       "norm_label": "calculateportfoliosummary()",
       "source_file": "src/utils/stockMath.ts",
       "source_location": "L433"
-    },
-    {
-      "id": "src_utils_stockmath_calculatestocktranches",
-      "label": "calculateStockTranches()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "SavedPlans/SavedPlans.tsx",
-      "file_type": "code",
-      "norm_label": "calculatestocktranches()",
-      "source_file": "src/utils/stockMath.ts",
-      "source_location": "L46"
     },
     {
       "id": "src_utils_stockmath_convertcurrencyamount",
@@ -1535,12 +1488,36 @@
       "source_location": "L408"
     },
     {
+      "id": "src_components_currencytextfield_currencytextfield",
+      "label": "CurrencyTextField()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "currencytextfield()",
+      "source_file": "src/components/CurrencyTextField.tsx",
+      "source_location": "L60"
+    },
+    {
+      "id": "src_components_currencytextfield_formatnumberwithcommas",
+      "label": "formatNumberWithCommas()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "formatnumberwithcommas()",
+      "source_file": "src/components/CurrencyTextField.tsx",
+      "source_location": "L38"
+    },
+    {
       "id": "src_components_glasscard_glasscard",
       "label": "GlassCard()",
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "glasscard()",
       "source_file": "src/components/GlassCard.tsx",
@@ -1552,7 +1529,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "averagecostchart()",
       "source_file": "src/components/GridVisualizer/AverageCostChart.tsx",
@@ -1564,7 +1541,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "costreductionsummary()",
       "source_file": "src/components/GridVisualizer/CostReductionSummary.tsx",
@@ -1576,7 +1553,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "executionandprofitsimulator()",
       "source_file": "src/components/GridVisualizer/ExecutionAndProfitSimulator.tsx",
@@ -1588,7 +1565,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "fundsplitdiagram()",
       "source_file": "src/components/GridVisualizer/FundSplitDiagram.tsx",
@@ -1600,11 +1577,35 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "gridvisualizer()",
       "source_file": "src/components/GridVisualizer/GridVisualizer.tsx",
       "source_location": "L27"
+    },
+    {
+      "id": "src_pages_investmentplan_sections_growthplanform_growthplanform",
+      "label": "GrowthPlanForm()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "growthplanform()",
+      "source_file": "src/pages/InvestmentPlan/sections/GrowthPlanForm.tsx",
+      "source_location": "L57"
+    },
+    {
+      "id": "src_pages_savedplans_sections_capitalmanagementmodal_capitalmanagementmodal",
+      "label": "CapitalManagementModal()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "capitalmanagementmodal()",
+      "source_file": "src/pages/SavedPlans/sections/CapitalManagementModal.tsx",
+      "source_location": "L65"
     },
     {
       "id": "src_pages_savedplans_sections_plangridview_plangridview",
@@ -1612,11 +1613,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "plangridview()",
       "source_file": "src/pages/SavedPlans/sections/PlanGridView.tsx",
-      "source_location": "L31"
+      "source_location": "L32"
+    },
+    {
+      "id": "src_pages_savedplans_sections_plantableview_plantableview",
+      "label": "PlanTableView()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "plantableview()",
+      "source_file": "src/pages/SavedPlans/sections/PlanTableView.tsx",
+      "source_location": "L40"
     },
     {
       "id": "src_pages_savedplans_sections_portfoliosummarycards_portfoliosummarycards",
@@ -1624,11 +1637,95 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "portfoliosummarycards()",
       "source_file": "src/pages/SavedPlans/sections/PortfolioSummaryCards.tsx",
-      "source_location": "L28"
+      "source_location": "L29"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_currencyexchangefield_currencyexchangefield",
+      "label": "CurrencyExchangeField()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "currencyexchangefield()",
+      "source_file": "src/pages/StockPlanner/sections/CurrencyExchangeField.tsx",
+      "source_location": "L34"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_exitstrategysection_exitstrategysection",
+      "label": "ExitStrategySection()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "exitstrategysection()",
+      "source_file": "src/pages/StockPlanner/sections/ExitStrategySection.tsx",
+      "source_location": "L46"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_investmentparamssection_investmentparamssection",
+      "label": "InvestmentParamsSection()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "investmentparamssection()",
+      "source_file": "src/pages/StockPlanner/sections/InvestmentParamsSection.tsx",
+      "source_location": "L56"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_portfolioselectfield_portfolioselectfield",
+      "label": "PortfolioSelectField()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "portfolioselectfield()",
+      "source_file": "src/pages/StockPlanner/sections/PortfolioSelectField.tsx",
+      "source_location": "L18"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_stockplannerform_stockplannerform",
+      "label": "StockPlannerForm()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "stockplannerform()",
+      "source_file": "src/pages/StockPlanner/sections/StockPlannerForm.tsx",
+      "source_location": "L77"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_stocksearchsection_stocksearchsection",
+      "label": "StockSearchSection()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "stocksearchsection()",
+      "source_file": "src/pages/StockPlanner/sections/StockSearchSection.tsx",
+      "source_location": "L35"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_tradingfeesection_tradingfeesection",
+      "label": "TradingFeeSection()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "tradingfeesection()",
+      "source_file": "src/pages/StockPlanner/sections/TradingFeeSection.tsx",
+      "source_location": "L46"
     },
     {
       "id": "src_pages_stockplanner_sections_tranchedetailstable_tranchedetailstable",
@@ -1636,11 +1733,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "tranchedetailstable()",
       "source_file": "src/pages/StockPlanner/sections/TrancheDetailsTable.tsx",
       "source_location": "L27"
+    },
+    {
+      "id": "src_utils_stockmath_calculatestocktranches",
+      "label": "calculateStockTranches()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "calculatestocktranches()",
+      "source_file": "src/utils/stockMath.ts",
+      "source_location": "L46"
     },
     {
       "id": "src_utils_stockmath_calculatestoplosslevels",
@@ -1648,7 +1757,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "calculatestoplosslevels()",
       "source_file": "src/utils/stockMath.ts",
@@ -1660,7 +1769,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "formatcurrency()",
       "source_file": "src/utils/stockMath.ts",
@@ -1672,7 +1781,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "formatnumber()",
       "source_file": "src/utils/stockMath.ts",
@@ -1684,7 +1793,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "formatthb()",
       "source_file": "src/utils/stockMath.ts",
@@ -1696,7 +1805,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "formatusd()",
       "source_file": "src/utils/stockMath.ts",
@@ -2015,6 +2124,18 @@
       "source_location": "L105"
     },
     {
+      "id": "src_utils_exchangerate_savecachedexchangerate",
+      "label": "saveCachedExchangeRate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "stockPlannerSlice.ts",
+      "file_type": "code",
+      "norm_label": "savecachedexchangerate()",
+      "source_file": "src/utils/exchangeRate.ts",
+      "source_location": "L37"
+    },
+    {
       "id": "src_utils_growthplanmath_calculateelapsedtradingdays",
       "label": "calculateElapsedTradingDays()",
       "_callable": true,
@@ -2027,36 +2148,12 @@
       "source_location": "L170"
     },
     {
-      "id": "src_components_currencytextfield_currencytextfield",
-      "label": "CurrencyTextField()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "currencytextfield()",
-      "source_file": "src/components/CurrencyTextField.tsx",
-      "source_location": "L60"
-    },
-    {
-      "id": "src_components_currencytextfield_formatnumberwithcommas",
-      "label": "formatNumberWithCommas()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "formatnumberwithcommas()",
-      "source_file": "src/components/CurrencyTextField.tsx",
-      "source_location": "L38"
-    },
-    {
       "id": "src_components_infotooltiplabel_infotooltiplabel",
       "label": "InfoTooltipLabel()",
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "infotooltiplabel()",
       "source_file": "src/components/InfoTooltipLabel.tsx",
@@ -2068,35 +2165,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "companyinsightscard()",
       "source_file": "src/pages/StockPlanner/sections/CompanyInsightsCard.tsx",
       "source_location": "L42"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_currencyexchangefield_currencyexchangefield",
-      "label": "CurrencyExchangeField()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "currencyexchangefield()",
-      "source_file": "src/pages/StockPlanner/sections/CurrencyExchangeField.tsx",
-      "source_location": "L34"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_exitstrategysection_exitstrategysection",
-      "label": "ExitStrategySection()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "exitstrategysection()",
-      "source_file": "src/pages/StockPlanner/sections/ExitStrategySection.tsx",
-      "source_location": "L46"
     },
     {
       "id": "src_pages_stockplanner_sections_financialmetriccard_financialmetriccard",
@@ -2104,71 +2177,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "financialmetriccard()",
       "source_file": "src/pages/StockPlanner/sections/FinancialMetricCard.tsx",
       "source_location": "L27"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_investmentparamssection_investmentparamssection",
-      "label": "InvestmentParamsSection()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "investmentparamssection()",
-      "source_file": "src/pages/StockPlanner/sections/InvestmentParamsSection.tsx",
-      "source_location": "L56"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_portfolioselectfield_portfolioselectfield",
-      "label": "PortfolioSelectField()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "portfolioselectfield()",
-      "source_file": "src/pages/StockPlanner/sections/PortfolioSelectField.tsx",
-      "source_location": "L18"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_stockplannerform_stockplannerform",
-      "label": "StockPlannerForm()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "stockplannerform()",
-      "source_file": "src/pages/StockPlanner/sections/StockPlannerForm.tsx",
-      "source_location": "L77"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_stocksearchsection_stocksearchsection",
-      "label": "StockSearchSection()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "stocksearchsection()",
-      "source_file": "src/pages/StockPlanner/sections/StockSearchSection.tsx",
-      "source_location": "L35"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_tradingfeesection_tradingfeesection",
-      "label": "TradingFeeSection()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "tradingfeesection()",
-      "source_file": "src/pages/StockPlanner/sections/TradingFeeSection.tsx",
-      "source_location": "L46"
     },
     {
       "id": "src_utils_stockapi_translatetothai",
@@ -2176,7 +2189,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "translatetothai()",
       "source_file": "src/utils/stockApi.ts",
@@ -2188,7 +2201,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "evaluatefinancialtrend()",
       "source_file": "src/utils/stockFinancials.ts",
@@ -2200,7 +2213,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "formatfinancialchangepercent()",
       "source_file": "src/utils/stockFinancials.ts",
@@ -2212,7 +2225,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "parsefinancialnumber()",
       "source_file": "src/utils/stockFinancials.ts",
@@ -2675,6 +2688,18 @@
       "source_location": "L11"
     },
     {
+      "id": "src_utils_stockapi_parsemarketcaptonumber",
+      "label": "parseMarketCapToNumber()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "MarketTable.tsx",
+      "file_type": "code",
+      "norm_label": "parsemarketcaptonumber()",
+      "source_file": "src/utils/stockApi.ts",
+      "source_location": "L32"
+    },
+    {
       "id": "src_utils_webullservice_fetchwebullscreener",
       "label": "fetchWebullScreener()",
       "_callable": true,
@@ -3011,14 +3036,14 @@
       "source_location": "L1"
     },
     {
-      "id": "src_pages_savedplans_sections_portfolioheader",
-      "label": "PortfolioHeader.tsx",
+      "id": "src_pages_savedplans_sections_savedplansmodals",
+      "label": "SavedPlansModals.tsx",
       "_origin": "ast",
       "community": 0,
       "community_name": "SavedPlans/SavedPlans.tsx",
       "file_type": "code",
-      "norm_label": "portfolioheader.tsx",
-      "source_file": "src/pages/SavedPlans/sections/PortfolioHeader.tsx",
+      "norm_label": "savedplansmodals.tsx",
+      "source_file": "src/pages/SavedPlans/sections/SavedPlansModals.tsx",
       "source_location": "L1"
     },
     {
@@ -3033,6 +3058,17 @@
       "source_location": "L1"
     },
     {
+      "id": "src_pages_savedplans_types",
+      "label": "SavedPlans/types.ts",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "file_type": "code",
+      "norm_label": "savedplans/types.ts",
+      "source_file": "src/pages/SavedPlans/types.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "src_pages_stockplanner",
       "label": "pages/StockPlanner.tsx",
       "_origin": "ast",
@@ -3041,17 +3077,6 @@
       "file_type": "code",
       "norm_label": "pages/stockplanner.tsx",
       "source_file": "src/pages/StockPlanner.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_pages_stockplanner_index",
-      "label": "StockPlanner/index.ts",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "SavedPlans/SavedPlans.tsx",
-      "file_type": "code",
-      "norm_label": "stockplanner/index.ts",
-      "source_file": "src/pages/StockPlanner/index.ts",
       "source_location": "L1"
     },
     {
@@ -3242,11 +3267,22 @@
       "source_location": "L20"
     },
     {
+      "id": "src_components_currencytextfield",
+      "label": "CurrencyTextField.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "currencytextfield.tsx",
+      "source_file": "src/components/CurrencyTextField.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_components_glasscard",
       "label": "GlassCard.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "glasscard.tsx",
       "source_file": "src/components/GlassCard.tsx",
@@ -3257,7 +3293,7 @@
       "label": "components/GridVisualizer.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "components/gridvisualizer.tsx",
       "source_file": "src/components/GridVisualizer.tsx",
@@ -3268,7 +3304,7 @@
       "label": "AverageCostChart.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "averagecostchart.tsx",
       "source_file": "src/components/GridVisualizer/AverageCostChart.tsx",
@@ -3279,7 +3315,7 @@
       "label": "CostReductionSummary.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "costreductionsummary.tsx",
       "source_file": "src/components/GridVisualizer/CostReductionSummary.tsx",
@@ -3290,7 +3326,7 @@
       "label": "ExecutionAndProfitSimulator.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "executionandprofitsimulator.tsx",
       "source_file": "src/components/GridVisualizer/ExecutionAndProfitSimulator.tsx",
@@ -3301,7 +3337,7 @@
       "label": "FundSplitDiagram.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "fundsplitdiagram.tsx",
       "source_file": "src/components/GridVisualizer/FundSplitDiagram.tsx",
@@ -3312,7 +3348,7 @@
       "label": "GridVisualizer/GridVisualizer.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "gridvisualizer/gridvisualizer.tsx",
       "source_file": "src/components/GridVisualizer/GridVisualizer.tsx",
@@ -3323,10 +3359,32 @@
       "label": "GridVisualizer/index.ts",
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "gridvisualizer/index.ts",
       "source_file": "src/components/GridVisualizer/index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_investmentplan_sections_growthplanform",
+      "label": "GrowthPlanForm.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "growthplanform.tsx",
+      "source_file": "src/pages/InvestmentPlan/sections/GrowthPlanForm.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_savedplans_sections_capitalmanagementmodal",
+      "label": "CapitalManagementModal.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "capitalmanagementmodal.tsx",
+      "source_file": "src/pages/SavedPlans/sections/CapitalManagementModal.tsx",
       "source_location": "L1"
     },
     {
@@ -3334,7 +3392,7 @@
       "label": "PlanGridView.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "plangridview.tsx",
       "source_file": "src/pages/SavedPlans/sections/PlanGridView.tsx",
@@ -3345,10 +3403,21 @@
       "label": "PlanTableView.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "plantableview.tsx",
       "source_file": "src/pages/SavedPlans/sections/PlanTableView.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_savedplans_sections_portfolioheader",
+      "label": "PortfolioHeader.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "portfolioheader.tsx",
+      "source_file": "src/pages/SavedPlans/sections/PortfolioHeader.tsx",
       "source_location": "L1"
     },
     {
@@ -3356,10 +3425,54 @@
       "label": "PortfolioSummaryCards.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "portfoliosummarycards.tsx",
       "source_file": "src/pages/SavedPlans/sections/PortfolioSummaryCards.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_currencyexchangefield",
+      "label": "CurrencyExchangeField.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "currencyexchangefield.tsx",
+      "source_file": "src/pages/StockPlanner/sections/CurrencyExchangeField.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_exitstrategysection",
+      "label": "ExitStrategySection.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "exitstrategysection.tsx",
+      "source_file": "src/pages/StockPlanner/sections/ExitStrategySection.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_investmentparamssection",
+      "label": "InvestmentParamsSection.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "investmentparamssection.tsx",
+      "source_file": "src/pages/StockPlanner/sections/InvestmentParamsSection.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_stockplanner_sections_stockplannerform",
+      "label": "StockPlannerForm.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "stockplannerform.tsx",
+      "source_file": "src/pages/StockPlanner/sections/StockPlannerForm.tsx",
       "source_location": "L1"
     },
     {
@@ -3367,7 +3480,7 @@
       "label": "TrancheDetailsTable.tsx",
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "tranchedetailstable.tsx",
       "source_file": "src/pages/StockPlanner/sections/TrancheDetailsTable.tsx",
@@ -3378,29 +3491,63 @@
       "label": "stockMath.ts",
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "stockmath.ts",
       "source_file": "src/utils/stockMath.ts",
       "source_location": "L1"
     },
     {
+      "id": "ref_lucide_react",
+      "label": "lucide-react",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "concept",
+      "norm_label": "lucide-react",
+      "source_file": "package.json",
+      "source_location": "L34"
+    },
+    {
       "id": "ref_mui_material",
       "label": "@mui/material",
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "concept",
       "norm_label": "@mui/material",
       "source_file": "package.json",
       "source_location": "L17"
     },
     {
+      "id": "ref_react",
+      "label": "react",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "concept",
+      "norm_label": "react",
+      "source_file": "package.json",
+      "source_location": "L38"
+    },
+    {
+      "id": "agents_3_naming_conventions_\u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19\u0e01\u0e32\u0e23\u0e15_\u0e07\u0e0a_\u0e2d",
+      "label": "3. Naming Conventions (\u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e0a\u0e37\u0e48\u0e2d)",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "react",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3. naming conventions (\u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19\u0e01\u0e32\u0e23\u0e15\u0e31\u0e07\u0e0a\u0e37\u0e2d)",
+      "source_file": "AGENTS.md",
+      "source_location": "L15"
+    },
+    {
       "id": "agents_skills_common_skills_skill_5_\u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19\u0e01\u0e32\u0e23\u0e15_\u0e07\u0e0a_\u0e2d_naming_conventions",
       "label": "5. \u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e0a\u0e37\u0e48\u0e2d (Naming Conventions)",
       "_origin": "ast",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "5. \u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19\u0e01\u0e32\u0e23\u0e15\u0e31\u0e07\u0e0a\u0e37\u0e2d (naming conventions)",
@@ -3657,18 +3804,6 @@
       "norm_label": "2. file length limit (\u0e08\u0e4d\u0e32\u0e01\u0e31\u0e14\u0e04\u0e27\u0e32\u0e21\u0e22\u0e32\u0e27\u0e44\u0e1f\u0e25\u0e4c\u0e44\u0e21\u0e40\u0e01\u0e34\u0e19 500-600 \u0e1a\u0e23\u0e23\u0e17\u0e31\u0e14)",
       "source_file": "AGENTS.md",
       "source_location": "L8"
-    },
-    {
-      "id": "agents_3_naming_conventions_\u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19\u0e01\u0e32\u0e23\u0e15_\u0e07\u0e0a_\u0e2d",
-      "label": "3. Naming Conventions (\u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e0a\u0e37\u0e48\u0e2d)",
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "MoneyLust Project Guidelines & Standards",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "3. naming conventions (\u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19\u0e01\u0e32\u0e23\u0e15\u0e31\u0e07\u0e0a\u0e37\u0e2d)",
-      "source_file": "AGENTS.md",
-      "source_location": "L15"
     },
     {
       "id": "agents_4_base64_handling_\u0e2b_\u0e32\u0e21\u0e43\u0e0a_btoa_atob_\u0e42\u0e14\u0e22\u0e40\u0e14_\u0e14\u0e02\u0e32\u0e14",
@@ -4352,17 +4487,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_pages_investmentplan_sections_growthplanform",
-      "label": "GrowthPlanForm.tsx",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "stockPlannerSlice.ts",
-      "file_type": "code",
-      "norm_label": "growthplanform.tsx",
-      "source_file": "src/pages/InvestmentPlan/sections/GrowthPlanForm.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_pages_investmentplan_sections_portfoliobenchmarkcard",
       "label": "PortfolioBenchmarkCard.tsx",
       "_origin": "ast",
@@ -4396,25 +4520,25 @@
       "source_location": "L29"
     },
     {
-      "id": "src_pages_savedplans_sections_savedplansmodals",
-      "label": "SavedPlansModals.tsx",
+      "id": "src_pages_stockplanner_sections_portfolioselectfield",
+      "label": "PortfolioSelectField.tsx",
       "_origin": "ast",
       "community": 2,
       "community_name": "stockPlannerSlice.ts",
       "file_type": "code",
-      "norm_label": "savedplansmodals.tsx",
-      "source_file": "src/pages/SavedPlans/sections/SavedPlansModals.tsx",
+      "norm_label": "portfolioselectfield.tsx",
+      "source_file": "src/pages/StockPlanner/sections/PortfolioSelectField.tsx",
       "source_location": "L1"
     },
     {
-      "id": "src_pages_savedplans_types",
-      "label": "SavedPlans/types.ts",
+      "id": "src_pages_stockplanner_sections_tradingfeesection",
+      "label": "TradingFeeSection.tsx",
       "_origin": "ast",
       "community": 2,
       "community_name": "stockPlannerSlice.ts",
       "file_type": "code",
-      "norm_label": "savedplans/types.ts",
-      "source_file": "src/pages/SavedPlans/types.ts",
+      "norm_label": "tradingfeesection.tsx",
+      "source_file": "src/pages/StockPlanner/sections/TradingFeeSection.tsx",
       "source_location": "L1"
     },
     {
@@ -4726,25 +4850,25 @@
       "source_location": "L6"
     },
     {
-      "id": "src_components_currencytextfield",
-      "label": "CurrencyTextField.tsx",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "currencytextfield.tsx",
-      "source_file": "src/components/CurrencyTextField.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_components_infotooltiplabel",
       "label": "InfoTooltipLabel.tsx",
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "infotooltiplabel.tsx",
       "source_file": "src/components/InfoTooltipLabel.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_stockplanner_index",
+      "label": "StockPlanner/index.ts",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "StockPlanner/types.ts",
+      "file_type": "code",
+      "norm_label": "stockplanner/index.ts",
+      "source_file": "src/pages/StockPlanner/index.ts",
       "source_location": "L1"
     },
     {
@@ -4752,32 +4876,10 @@
       "label": "CompanyInsightsCard.tsx",
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "companyinsightscard.tsx",
       "source_file": "src/pages/StockPlanner/sections/CompanyInsightsCard.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_currencyexchangefield",
-      "label": "CurrencyExchangeField.tsx",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "currencyexchangefield.tsx",
-      "source_file": "src/pages/StockPlanner/sections/CurrencyExchangeField.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_exitstrategysection",
-      "label": "ExitStrategySection.tsx",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "exitstrategysection.tsx",
-      "source_file": "src/pages/StockPlanner/sections/ExitStrategySection.tsx",
       "source_location": "L1"
     },
     {
@@ -4785,43 +4887,10 @@
       "label": "FinancialMetricCard.tsx",
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "financialmetriccard.tsx",
       "source_file": "src/pages/StockPlanner/sections/FinancialMetricCard.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_investmentparamssection",
-      "label": "InvestmentParamsSection.tsx",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "investmentparamssection.tsx",
-      "source_file": "src/pages/StockPlanner/sections/InvestmentParamsSection.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_portfolioselectfield",
-      "label": "PortfolioSelectField.tsx",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "portfolioselectfield.tsx",
-      "source_file": "src/pages/StockPlanner/sections/PortfolioSelectField.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_stockplannerform",
-      "label": "StockPlannerForm.tsx",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "stockplannerform.tsx",
-      "source_file": "src/pages/StockPlanner/sections/StockPlannerForm.tsx",
       "source_location": "L1"
     },
     {
@@ -4829,21 +4898,10 @@
       "label": "StockSearchSection.tsx",
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "stocksearchsection.tsx",
       "source_file": "src/pages/StockPlanner/sections/StockSearchSection.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_pages_stockplanner_sections_tradingfeesection",
-      "label": "TradingFeeSection.tsx",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "tradingfeesection.tsx",
-      "source_file": "src/pages/StockPlanner/sections/TradingFeeSection.tsx",
       "source_location": "L1"
     },
     {
@@ -4851,7 +4909,7 @@
       "label": "StockPlanner/types.ts",
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "stockplanner/types.ts",
       "source_file": "src/pages/StockPlanner/types.ts",
@@ -4862,33 +4920,11 @@
       "label": "stockFinancials.ts",
       "_origin": "ast",
       "community": 24,
-      "community_name": "react",
+      "community_name": "StockPlanner/types.ts",
       "file_type": "code",
       "norm_label": "stockfinancials.ts",
       "source_file": "src/utils/stockFinancials.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "ref_lucide_react",
-      "label": "lucide-react",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "concept",
-      "norm_label": "lucide-react",
-      "source_file": "package.json",
-      "source_location": "L34"
-    },
-    {
-      "id": "ref_react",
-      "label": "react",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "react",
-      "file_type": "concept",
-      "norm_label": "react",
-      "source_file": "package.json",
-      "source_location": "L38"
     },
     {
       "id": "package_scripts",
@@ -5693,17 +5729,6 @@
       "norm_label": "axios",
       "source_file": "package.json",
       "source_location": "L29"
-    },
-    {
-      "id": "ref_dayjs",
-      "label": "dayjs",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "dayjs",
-      "source_file": "package.json",
-      "source_location": "L30"
     },
     {
       "id": "ref_emotion_react",
@@ -6661,6 +6686,17 @@
       "source_location": "L5"
     },
     {
+      "id": "ref_dayjs",
+      "label": "dayjs",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "DataBackupModal.tsx",
+      "file_type": "concept",
+      "norm_label": "dayjs",
+      "source_file": "package.json",
+      "source_location": "L30"
+    },
+    {
       "id": "src_index",
       "label": "src_index",
       "_origin": "semantic",
@@ -6757,6 +6793,18 @@
       "type": "external"
     },
     {
+      "id": "src_store_stockplannerslice_resetportfoliogrowthplanrecovery",
+      "label": "src_store_stockplannerslice_resetportfoliogrowthplanrecovery",
+      "_origin": "semantic",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_store_stockplannerslice_resetportfoliogrowthplanrecovery",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "src_store_stockplannerslice_saveplan",
       "label": "src_store_stockplannerslice_saveplan",
       "_origin": "semantic",
@@ -6793,18 +6841,6 @@
       "type": "external"
     },
     {
-      "id": "src_store_stockplannerslice_updatecurrentparams",
-      "label": "src_store_stockplannerslice_updatecurrentparams",
-      "_origin": "semantic",
-      "community": 0,
-      "community_name": "SavedPlans/SavedPlans.tsx",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_store_stockplannerslice_updatecurrentparams",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "src_store_stockplannerslice_updateportfoliocapital",
       "label": "src_store_stockplannerslice_updateportfoliocapital",
       "_origin": "semantic",
@@ -6829,11 +6865,71 @@
       "type": "external"
     },
     {
+      "id": "src_store_stockplannerslice_updateportfoliogrowthplanrecovery",
+      "label": "src_store_stockplannerslice_updateportfoliogrowthplanrecovery",
+      "_origin": "semantic",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_store_stockplannerslice_updateportfoliogrowthplanrecovery",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_types_index_calculationresult",
+      "label": "src_types_index_calculationresult",
+      "_origin": "semantic",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_types_index_calculationresult",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_types_index_capitaladjustment",
+      "label": "src_types_index_capitaladjustment",
+      "_origin": "semantic",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_types_index_capitaladjustment",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_types_index_dropmode",
+      "label": "src_types_index_dropmode",
+      "_origin": "semantic",
+      "community": 1,
+      "community_name": "react",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_types_index_dropmode",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_types_index_portfolio",
+      "label": "src_types_index_portfolio",
+      "_origin": "semantic",
+      "community": 1,
+      "community_name": "react",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_types_index_portfolio",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "src_types_index_portfoliosummary",
       "label": "src_types_index_portfoliosummary",
       "_origin": "semantic",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "external": true,
       "file_type": "concept",
       "norm_label": "src_types_index_portfoliosummary",
@@ -6845,7 +6941,7 @@
       "label": "src_types_index_tranchedetail",
       "_origin": "semantic",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "external": true,
       "file_type": "concept",
       "norm_label": "src_types_index_tranchedetail",
@@ -6857,7 +6953,7 @@
       "label": "src_utils_stockmath_calculationresult",
       "_origin": "semantic",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "external": true,
       "file_type": "concept",
       "norm_label": "src_utils_stockmath_calculationresult",
@@ -6869,7 +6965,7 @@
       "label": "src_utils_stockmath_portfoliosummary",
       "_origin": "semantic",
       "community": 1,
-      "community_name": "@mui/material",
+      "community_name": "react",
       "external": true,
       "file_type": "concept",
       "norm_label": "src_utils_stockmath_portfoliosummary",
@@ -7021,26 +7117,14 @@
       "type": "external"
     },
     {
-      "id": "src_types_index_calculationresult",
-      "label": "src_types_index_calculationresult",
+      "id": "src_store_stockplannerslice_portfolio",
+      "label": "src_store_stockplannerslice_portfolio",
       "_origin": "semantic",
       "community": 2,
       "community_name": "stockPlannerSlice.ts",
       "external": true,
       "file_type": "concept",
-      "norm_label": "src_types_index_calculationresult",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "src_types_index_capitaladjustment",
-      "label": "src_types_index_capitaladjustment",
-      "_origin": "semantic",
-      "community": 2,
-      "community_name": "stockPlannerSlice.ts",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_types_index_capitaladjustment",
+      "norm_label": "src_store_stockplannerslice_portfolio",
       "source_file": "",
       "type": "external"
     },
@@ -7069,14 +7153,14 @@
       "type": "external"
     },
     {
-      "id": "src_types_index_dropmode",
-      "label": "src_types_index_dropmode",
+      "id": "src_types_index_feemode",
+      "label": "src_types_index_feemode",
       "_origin": "semantic",
       "community": 2,
       "community_name": "stockPlannerSlice.ts",
       "external": true,
       "file_type": "concept",
-      "norm_label": "src_types_index_dropmode",
+      "norm_label": "src_types_index_feemode",
       "source_file": "",
       "type": "external"
     },
@@ -7089,18 +7173,6 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "src_types_index_growthplanconfig",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "src_types_index_portfolio",
-      "label": "src_types_index_portfolio",
-      "_origin": "semantic",
-      "community": 2,
-      "community_name": "stockPlannerSlice.ts",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_types_index_portfolio",
       "source_file": "",
       "type": "external"
     },
@@ -7129,30 +7201,6 @@
       "type": "external"
     },
     {
-      "id": "src_store_stockplannerslice_portfolio",
-      "label": "src_store_stockplannerslice_portfolio",
-      "_origin": "semantic",
-      "community": 24,
-      "community_name": "react",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_store_stockplannerslice_portfolio",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "src_types_index_feemode",
-      "label": "src_types_index_feemode",
-      "_origin": "semantic",
-      "community": 24,
-      "community_name": "react",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_types_index_feemode",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "ref_child_process",
       "label": "ref_child_process",
       "_origin": "semantic",
@@ -7177,24 +7225,58 @@
       "type": "external"
     },
     {
-      "id": "src_store_stockplannerslice_resetportfoliogrowthplanrecovery",
-      "label": "src_store_stockplannerslice_resetportfoliogrowthplanrecovery",
-      "community": 0,
-      "community_name": "SavedPlans/SavedPlans.tsx",
+      "id": "src_store_stockplannerslice_updatecurrentparams",
+      "label": "src_store_stockplannerslice_updatecurrentparams",
+      "_origin": "semantic",
+      "community": 6,
+      "community_name": "MarketTable.tsx",
       "external": true,
       "file_type": "concept",
-      "norm_label": "src_store_stockplannerslice_resetportfoliogrowthplanrecovery",
+      "norm_label": "src_store_stockplannerslice_updatecurrentparams",
       "source_file": "",
       "type": "external"
     },
     {
-      "id": "src_store_stockplannerslice_updateportfoliogrowthplanrecovery",
-      "label": "src_store_stockplannerslice_updateportfoliogrowthplanrecovery",
+      "id": "src_store_stockplannerslice_adjustbasecapital",
+      "label": "src_store_stockplannerslice_adjustbasecapital",
       "community": 0,
       "community_name": "SavedPlans/SavedPlans.tsx",
       "external": true,
       "file_type": "concept",
-      "norm_label": "src_store_stockplannerslice_updateportfoliogrowthplanrecovery",
+      "norm_label": "src_store_stockplannerslice_adjustbasecapital",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_store_stockplannerslice_deleteportfolioadjustment",
+      "label": "src_store_stockplannerslice_deleteportfolioadjustment",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_store_stockplannerslice_deleteportfolioadjustment",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_store_stockplannerslice_depositportfoliocapital",
+      "label": "src_store_stockplannerslice_depositportfoliocapital",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_store_stockplannerslice_depositportfoliocapital",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_store_stockplannerslice_withdrawportfoliocapital",
+      "label": "src_store_stockplannerslice_withdrawportfoliocapital",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_store_stockplannerslice_withdrawportfoliocapital",
       "source_file": "",
       "type": "external"
     }
@@ -8361,7 +8443,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L235",
+      "source_location": "L252",
       "weight": 1.0
     },
     {
@@ -8373,7 +8455,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L248",
+      "source_location": "L265",
       "weight": 1.0
     },
     {
@@ -8385,7 +8467,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L258",
+      "source_location": "L276",
       "weight": 1.0
     },
     {
@@ -8397,7 +8479,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L272",
+      "source_location": "L290",
       "weight": 1.0
     },
     {
@@ -8409,7 +8491,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L284",
+      "source_location": "L302",
       "weight": 1.0
     },
     {
@@ -8421,7 +8503,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L292",
+      "source_location": "L311",
       "weight": 1.0
     },
     {
@@ -8433,7 +8515,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L309",
+      "source_location": "L329",
       "weight": 1.0
     },
     {
@@ -8445,7 +8527,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L313",
+      "source_location": "L333",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_savedplans_savedplans",
+      "target": "src_pages_savedplans_sections_capitalmanagementmodal_capitalmanagementmodal",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
+      "source_location": "L358",
       "weight": 1.0
     },
     {
@@ -8457,7 +8551,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L36",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -8469,7 +8563,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L40",
+      "source_location": "L45",
       "weight": 1.0
     },
     {
@@ -8481,7 +8575,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L43",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -8493,7 +8587,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L48",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -8505,7 +8599,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L89",
+      "source_location": "L95",
       "weight": 1.0
     },
     {
@@ -8517,7 +8611,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L90",
+      "source_location": "L96",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_sections_capitalmanagementmodal_capitalmanagementmodal",
+      "target": "src_utils_stockmath_formatcurrency",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/pages/SavedPlans/sections/CapitalManagementModal.tsx",
+      "source_location": "L167",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_sections_capitalmanagementmodal_capitalmanagementmodal",
+      "target": "src_components_currencytextfield_currencytextfield",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/pages/SavedPlans/sections/CapitalManagementModal.tsx",
+      "source_location": "L239",
       "weight": 1.0
     },
     {
@@ -8529,7 +8647,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/sections/PlanGridView.tsx",
-      "source_location": "L48",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -8541,7 +8659,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/sections/PlanGridView.tsx",
-      "source_location": "L73",
+      "source_location": "L75",
       "weight": 1.0
     },
     {
@@ -8553,7 +8671,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/sections/PlanTableView.tsx",
-      "source_location": "L146",
+      "source_location": "L148",
       "weight": 1.0
     },
     {
@@ -8613,7 +8731,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/sections/PortfolioSummaryCards.tsx",
-      "source_location": "L48",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -8625,7 +8743,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/sections/PortfolioSummaryCards.tsx",
-      "source_location": "L62",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -8637,7 +8755,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/sections/PortfolioSummaryCards.tsx",
-      "source_location": "L86",
+      "source_location": "L90",
       "weight": 1.0
     },
     {
@@ -10557,7 +10675,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "src/types/portfolio.ts",
-      "source_location": "L16",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -13169,6 +13287,18 @@
     },
     {
       "source": "src_pages_savedplans_savedplans",
+      "target": "src_store_stockplannerslice_adjustbasecapital",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_savedplans",
       "target": "src_store_stockplannerslice_clearportfolioadjustments",
       "relation": "imports",
       "_origin": "ast",
@@ -13205,7 +13335,31 @@
     },
     {
       "source": "src_pages_savedplans_savedplans",
+      "target": "src_store_stockplannerslice_deleteportfolioadjustment",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_savedplans",
       "target": "src_store_stockplannerslice_deleteportfoliogrowthplan",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_savedplans",
+      "target": "src_store_stockplannerslice_depositportfoliocapital",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13265,103 +13419,19 @@
     },
     {
       "source": "src_pages_savedplans_savedplans",
+      "target": "src_store_stockplannerslice_withdrawportfoliocapital",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_savedplans",
       "target": "src_types_stock_calculationresult",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L22",
-      "weight": 1.0
-    },
-    {
-      "source": "src_pages_savedplans_savedplans",
-      "target": "src_utils_stockmath_calculateportfoliosummary",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L22",
-      "weight": 1.0
-    },
-    {
-      "source": "src_pages_savedplans_savedplans",
-      "target": "src_utils_stockmath_calculationresult",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L22",
-      "weight": 1.0
-    },
-    {
-      "source": "src_pages_savedplans_savedplans",
-      "target": "src_utils_growthplanmath_getportfoliofirsttradedate",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L23",
-      "weight": 1.0
-    },
-    {
-      "source": "src_pages_savedplans_savedplans",
-      "target": "src_utils_exchangerate_fetchliveexchangerate",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L24",
-      "weight": 1.0
-    },
-    {
-      "source": "src_pages_savedplans_savedplans",
-      "target": "src_utils_exchangerate_getcachedexchangerate",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L24",
-      "weight": 1.0
-    },
-    {
-      "source": "src_pages_savedplans_savedplans",
-      "target": "src_pages_savedplans_types_plantodelete",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L25",
-      "weight": 1.0
-    },
-    {
-      "source": "src_pages_savedplans_savedplans",
-      "target": "src_pages_savedplans_types_timelineitem",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L25",
-      "weight": 1.0
-    },
-    {
-      "source": "src_pages_savedplans_savedplans",
-      "target": "src_pages_savedplans_sections_portfolioheader_portfolioheader",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13373,7 +13443,31 @@
     },
     {
       "source": "src_pages_savedplans_savedplans",
-      "target": "src_pages_savedplans_sections_portfoliosummarycards_portfoliosummarycards",
+      "target": "src_utils_stockmath_calculateportfoliosummary",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_savedplans",
+      "target": "src_utils_stockmath_calculationresult",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_savedplans",
+      "target": "src_utils_growthplanmath_getportfoliofirsttradedate",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13385,7 +13479,7 @@
     },
     {
       "source": "src_pages_savedplans_savedplans",
-      "target": "src_pages_savedplans_sections_portfoliogrowthplancard_portfoliogrowthplancard",
+      "target": "src_utils_exchangerate_fetchliveexchangerate",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13397,7 +13491,19 @@
     },
     {
       "source": "src_pages_savedplans_savedplans",
-      "target": "src_pages_savedplans_sections_timelinefilter_timelinefilter",
+      "target": "src_utils_exchangerate_getcachedexchangerate",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_savedplans",
+      "target": "src_pages_savedplans_types_plantodelete",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13409,7 +13515,19 @@
     },
     {
       "source": "src_pages_savedplans_savedplans",
-      "target": "src_pages_savedplans_sections_plangridview_plangridview",
+      "target": "src_pages_savedplans_types_timelineitem",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_savedplans",
+      "target": "src_pages_savedplans_sections_portfolioheader_portfolioheader",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13421,7 +13539,7 @@
     },
     {
       "source": "src_pages_savedplans_savedplans",
-      "target": "src_pages_savedplans_sections_plantableview_plantableview",
+      "target": "src_pages_savedplans_sections_portfoliosummarycards_portfoliosummarycards",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13433,7 +13551,7 @@
     },
     {
       "source": "src_pages_savedplans_savedplans",
-      "target": "src_pages_savedplans_sections_savedplansmodals_savedplansmodals",
+      "target": "src_pages_savedplans_sections_portfoliogrowthplancard_portfoliogrowthplancard",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13445,7 +13563,7 @@
     },
     {
       "source": "src_pages_savedplans_savedplans",
-      "target": "src_pages_savedplans_sections_emptyplansalert_emptyplansalert",
+      "target": "src_pages_savedplans_sections_timelinefilter_timelinefilter",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13453,6 +13571,90 @@
       "context": "import",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
       "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_savedplans",
+      "target": "src_pages_savedplans_sections_plangridview_plangridview",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_savedplans",
+      "target": "src_pages_savedplans_sections_plantableview_plantableview",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_savedplans",
+      "target": "src_pages_savedplans_sections_savedplansmodals_savedplansmodals",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_savedplans",
+      "target": "src_pages_savedplans_sections_capitalmanagementmodal_capitalmanagementmodal",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_savedplans",
+      "target": "src_pages_savedplans_sections_emptyplansalert_emptyplansalert",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_sections_capitalmanagementmodal",
+      "target": "src_components_currencytextfield_currencytextfield",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/sections/CapitalManagementModal.tsx",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_sections_capitalmanagementmodal",
+      "target": "src_utils_stockmath_formatcurrency",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/sections/CapitalManagementModal.tsx",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -17508,7 +17710,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L22",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -17520,7 +17722,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L23",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -17532,7 +17734,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L24",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -17544,7 +17746,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L25",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -17556,7 +17758,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L26",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -17568,7 +17770,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L27",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -17580,7 +17782,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L28",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -17592,7 +17794,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L29",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -17604,7 +17806,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L30",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -17616,7 +17818,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L31",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -17628,7 +17830,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L32",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_savedplans",
+      "target": "src_pages_savedplans_sections_capitalmanagementmodal",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -17640,7 +17854,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L33",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -17689,6 +17903,66 @@
       "context": "import",
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
       "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_sections_capitalmanagementmodal",
+      "target": "ref_lucide_react",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/sections/CapitalManagementModal.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_sections_capitalmanagementmodal",
+      "target": "src_components_currencytextfield",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/sections/CapitalManagementModal.tsx",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_sections_capitalmanagementmodal",
+      "target": "src_utils_stockmath",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/sections/CapitalManagementModal.tsx",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_sections_capitalmanagementmodal",
+      "target": "ref_react",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/sections/CapitalManagementModal.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_sections_capitalmanagementmodal",
+      "target": "ref_mui_material",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SavedPlans/sections/CapitalManagementModal.tsx",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -21876,7 +22150,29 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/SavedPlans/SavedPlans.tsx",
-      "source_location": "L35",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_sections_capitalmanagementmodal",
+      "target": "src_pages_savedplans_sections_capitalmanagementmodal_capitalmanagementmodalprops",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/SavedPlans/sections/CapitalManagementModal.tsx",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_savedplans_sections_capitalmanagementmodal",
+      "target": "src_pages_savedplans_sections_capitalmanagementmodal_capitalmanagementmodal",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/SavedPlans/sections/CapitalManagementModal.tsx",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
@@ -21909,7 +22205,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/SavedPlans/sections/PlanGridView.tsx",
-      "source_location": "L31",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -21931,7 +22227,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/SavedPlans/sections/PlanTableView.tsx",
-      "source_location": "L39",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -21997,7 +22293,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/SavedPlans/sections/PortfolioSummaryCards.tsx",
-      "source_location": "L28",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -22585,13 +22881,24 @@
     },
     {
       "source": "src_types_portfolio",
+      "target": "src_types_portfolio_portfolio",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/types/portfolio.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_types_portfolio",
       "target": "src_types_portfolio_portfoliosummary",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/types/portfolio.ts",
-      "source_location": "L19",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -22603,17 +22910,6 @@
       "confidence_score": 1.0,
       "source_file": "src/types/portfolio.ts",
       "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_types_portfolio",
-      "target": "src_types_portfolio_portfolio",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/types/portfolio.ts",
-      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -24137,5 +24433,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "5a0dc9a7c7b2a07ab21c267aa2b6ec723dc14570"
+  "built_at_commit": "917d50cbdc9c164d42bf77ef5af735e9e3a97c90"
 }
