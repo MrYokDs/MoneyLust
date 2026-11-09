@@ -44,6 +44,8 @@ export interface CapitalManagementModalProps {
   portfolioName: string;
   /** มูลค่าเงินต้นทุนปัจจุบัน */
   initialCapital: number;
+  /** มูลค่าพอร์ตปัจจุบัน (รวมหุ้นและเงินสด) */
+  currentPortfolioValue?: number;
   /** เงินสดคงเหลือที่ลงทุนได้ */
   availableCash: number;
   /** อัตราแลกเปลี่ยน THB/USD */
@@ -67,6 +69,7 @@ export const CapitalManagementModal: React.FC<CapitalManagementModalProps> = ({
   onClose,
   portfolioName,
   initialCapital,
+  currentPortfolioValue = initialCapital,
   availableCash,
   exchangeRate,
   onDeposit,
@@ -429,8 +432,9 @@ export const CapitalManagementModal: React.FC<CapitalManagementModalProps> = ({
             >
               <strong>โหมดปรับฐานเงินต้น (กรณีเคยกรอกผิด):</strong>
               <br />
-              ระบบจะแก้ไขตัวเลขเงินต้นตั้งต้นโดยตรง และ<strong>จะไม่สร้างรายการเติมเงินหรือถอนเงินในไทม์ไลน์</strong>{' '}
-              เพื่อไม่ให้ประวัติพอร์ตผิดเพี้ยน
+              ระบบจะแก้ไขเฉพาะตัวเลขเงินต้นตั้งต้นเพื่อคำนวณ % กำไร/ขาดทุนใหม่ โดย
+              <strong>จะไม่เปลี่ยนแปลงมูลค่าพอร์ตปัจจุบัน ({formatCurrency(currentPortfolioValue, 'USD', false)}) และเงินสดคงเหลือจริง</strong>{' '}
+              และจะไม่สร้างรายการในไทม์ไลน์
             </Alert>
 
             <Box>
@@ -459,7 +463,7 @@ export const CapitalManagementModal: React.FC<CapitalManagementModalProps> = ({
               )}
             </Box>
 
-            {/* แสดงการเปรียบเทียบ */}
+            {/* แสดงการเปรียบเทียบและการตรึงมูลค่าพอร์ตปัจจุบัน */}
             <Box
               sx={{
                 p: 2,
@@ -476,12 +480,29 @@ export const CapitalManagementModal: React.FC<CapitalManagementModalProps> = ({
                   {formatCurrency(initialCapital, 'USD', false)}
                 </Typography>
               </Stack>
-              <Stack direction="row" justifyContent="space-between">
+              <Stack direction="row" justifyContent="space-between" mb={1}>
                 <Typography variant="body2" fontFamily="Prompt" color="primary.main" fontWeight="bold">
                   เงินต้นใหม่ที่ปรับแก้:
                 </Typography>
                 <Typography variant="body1" fontFamily="Prompt" color="primary.main" fontWeight="bold">
                   {formatCurrency(baseCapitalNum, 'USD', false)}
+                </Typography>
+              </Stack>
+              <Divider sx={{ my: 1 }} />
+              <Stack direction="row" justifyContent="space-between" mb={1}>
+                <Typography variant="body2" fontFamily="Prompt" color="text.secondary">
+                  มูลค่าพอร์ตปัจจุบัน (คงเดิม):
+                </Typography>
+                <Typography variant="body2" fontFamily="Prompt" fontWeight="bold" color="info.main">
+                  {formatCurrency(currentPortfolioValue, 'USD', false)}
+                </Typography>
+              </Stack>
+              <Stack direction="row" justifyContent="space-between">
+                <Typography variant="body2" fontFamily="Prompt" color="text.secondary">
+                  เงินสดที่ลงทุนได้ (คงเดิม):
+                </Typography>
+                <Typography variant="body2" fontFamily="Prompt" fontWeight="bold" color="info.main">
+                  {formatCurrency(availableCash, 'USD', false)}
                 </Typography>
               </Stack>
             </Box>

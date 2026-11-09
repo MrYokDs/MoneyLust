@@ -282,7 +282,9 @@ export const stockPlannerSlice = createSlice({
       }
     },
     /**
-     * ปรับฐานเงินต้นทุนตั้งต้นของพอร์ตโดยตรง (กรณีเคยกรอกผิด) โดยไม่บันทึกเป็นรายการเติม/ถอนเงินในไทม์ไลน์
+     * ปรับฐานเงินต้นทุนตั้งต้นของพอร์ตโดยตรง (กรณีเคยกรอกผิด)
+     * โดยตรึงมูลค่าพอร์ตปัจจุบันและเงินสดคงเหลือจริงไม่ให้เปลี่ยนแปลง
+     * และไม่บันทึกเป็นรายการเติม/ถอนเงินในไทม์ไลน์
      * 
      * @param state - สถานะปัจจุบันของ Slice
      * @param action - ข้อมูลรหัสพอร์ต, จำนวนเงินต้นใหม่ และตัวเลือกล้างประวัติการปรับปรุงเงินเดิม
@@ -294,7 +296,12 @@ export const stockPlannerSlice = createSlice({
     ) => {
       const p = state.portfolios.find(p => p.id === action.payload.id);
       if (p) {
+        const oldCapital = p.initialCapital || 0;
+        const diff = action.payload.newBaseCapital - oldCapital;
         p.initialCapital = action.payload.newBaseCapital;
+        // ชดเชย capitalOffset เพื่อให้ effectiveCashBase คงเดิม มูลค่าพอร์ตและเงินสดคงเหลือจึงไม่เปลี่ยน
+        p.capitalOffset = (p.capitalOffset || 0) - diff;
+
         if (action.payload.clearExistingAdjustments) {
           p.adjustments = [];
         }

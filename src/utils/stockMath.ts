@@ -444,6 +444,8 @@ export const calculatePortfolioSummary = (
   };
 
   const initialCapital = portfolio.initialCapital !== undefined ? portfolio.initialCapital : getDefaultInitialCapital();
+  const capitalOffset = portfolio.capitalOffset || 0;
+  const effectiveCashBase = initialCapital + capitalOffset;
 
   let totalRealizedPL = 0;
   let totalUnsoldSpent = 0;
@@ -466,8 +468,8 @@ export const calculatePortfolioSummary = (
     }
   });
 
-  const availableCash = initialCapital + totalRealizedPL - totalUnsoldSpent;
-  const currentPortfolioValue = initialCapital + totalRealizedPL - totalUnsoldFees;
+  const availableCash = effectiveCashBase + totalRealizedPL - totalUnsoldSpent;
+  const currentPortfolioValue = effectiveCashBase + totalRealizedPL - totalUnsoldFees;
 
   return {
     initialCapital,

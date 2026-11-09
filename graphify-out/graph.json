@@ -326,7 +326,7 @@
       "file_type": "code",
       "norm_label": "portfoliosummary",
       "source_file": "src/types/portfolio.ts",
-      "source_location": "L20"
+      "source_location": "L21"
     },
     {
       "id": "src_types_stock_calculationresult",
@@ -365,7 +365,7 @@
       "file_type": "code",
       "norm_label": "stoplosslevels",
       "source_file": "src/utils/stockMath.ts",
-      "source_location": "L485"
+      "source_location": "L487"
     },
     {
       "id": "api_webull_quote_webullquoteapiresponse",
@@ -1605,7 +1605,7 @@
       "file_type": "code",
       "norm_label": "capitalmanagementmodal()",
       "source_file": "src/pages/SavedPlans/sections/CapitalManagementModal.tsx",
-      "source_location": "L65"
+      "source_location": "L67"
     },
     {
       "id": "src_pages_savedplans_sections_plangridview_plangridview",
@@ -1761,7 +1761,7 @@
       "file_type": "code",
       "norm_label": "calculatestoplosslevels()",
       "source_file": "src/utils/stockMath.ts",
-      "source_location": "L505"
+      "source_location": "L507"
     },
     {
       "id": "src_utils_stockmath_formatcurrency",
@@ -6733,6 +6733,18 @@
       "type": "external"
     },
     {
+      "id": "src_store_stockplannerslice_adjustbasecapital",
+      "label": "src_store_stockplannerslice_adjustbasecapital",
+      "_origin": "semantic",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_store_stockplannerslice_adjustbasecapital",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "src_store_stockplannerslice_clearportfolioadjustments",
       "label": "src_store_stockplannerslice_clearportfolioadjustments",
       "_origin": "semantic",
@@ -6769,6 +6781,18 @@
       "type": "external"
     },
     {
+      "id": "src_store_stockplannerslice_deleteportfolioadjustment",
+      "label": "src_store_stockplannerslice_deleteportfolioadjustment",
+      "_origin": "semantic",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_store_stockplannerslice_deleteportfolioadjustment",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "src_store_stockplannerslice_deleteportfoliogrowthplan",
       "label": "src_store_stockplannerslice_deleteportfoliogrowthplan",
       "_origin": "semantic",
@@ -6777,6 +6801,18 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "src_store_stockplannerslice_deleteportfoliogrowthplan",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_store_stockplannerslice_depositportfoliocapital",
+      "label": "src_store_stockplannerslice_depositportfoliocapital",
+      "_origin": "semantic",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_store_stockplannerslice_depositportfoliocapital",
       "source_file": "",
       "type": "external"
     },
@@ -6873,6 +6909,18 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "src_store_stockplannerslice_updateportfoliogrowthplanrecovery",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_store_stockplannerslice_withdrawportfoliocapital",
+      "label": "src_store_stockplannerslice_withdrawportfoliocapital",
+      "_origin": "semantic",
+      "community": 0,
+      "community_name": "SavedPlans/SavedPlans.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_store_stockplannerslice_withdrawportfoliocapital",
       "source_file": "",
       "type": "external"
     },
@@ -7233,50 +7281,6 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "src_store_stockplannerslice_updatecurrentparams",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "src_store_stockplannerslice_adjustbasecapital",
-      "label": "src_store_stockplannerslice_adjustbasecapital",
-      "community": 0,
-      "community_name": "SavedPlans/SavedPlans.tsx",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_store_stockplannerslice_adjustbasecapital",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "src_store_stockplannerslice_deleteportfolioadjustment",
-      "label": "src_store_stockplannerslice_deleteportfolioadjustment",
-      "community": 0,
-      "community_name": "SavedPlans/SavedPlans.tsx",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_store_stockplannerslice_deleteportfolioadjustment",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "src_store_stockplannerslice_depositportfoliocapital",
-      "label": "src_store_stockplannerslice_depositportfoliocapital",
-      "community": 0,
-      "community_name": "SavedPlans/SavedPlans.tsx",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_store_stockplannerslice_depositportfoliocapital",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "src_store_stockplannerslice_withdrawportfoliocapital",
-      "label": "src_store_stockplannerslice_withdrawportfoliocapital",
-      "community": 0,
-      "community_name": "SavedPlans/SavedPlans.tsx",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_store_stockplannerslice_withdrawportfoliocapital",
       "source_file": "",
       "type": "external"
     }
@@ -8623,7 +8627,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/sections/CapitalManagementModal.tsx",
-      "source_location": "L167",
+      "source_location": "L170",
       "weight": 1.0
     },
     {
@@ -8635,7 +8639,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SavedPlans/sections/CapitalManagementModal.tsx",
-      "source_location": "L239",
+      "source_location": "L242",
       "weight": 1.0
     },
     {
@@ -10675,7 +10679,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "src/types/portfolio.ts",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -22172,7 +22176,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/SavedPlans/sections/CapitalManagementModal.tsx",
-      "source_location": "L65",
+      "source_location": "L67",
       "weight": 1.0
     },
     {
@@ -22898,7 +22902,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/types/portfolio.ts",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -23569,7 +23573,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/utils/stockMath.ts",
-      "source_location": "L485",
+      "source_location": "L487",
       "weight": 1.0
     },
     {
@@ -23580,7 +23584,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/utils/stockMath.ts",
-      "source_location": "L505",
+      "source_location": "L507",
       "weight": 1.0
     },
     {
@@ -24433,5 +24437,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "917d50cbdc9c164d42bf77ef5af735e9e3a97c90"
+  "built_at_commit": "0e6d7af213835478abd07ba80d4ef4c50b66e019"
 }

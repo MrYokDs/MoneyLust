@@ -360,6 +360,7 @@ export const SavedPlans: React.FC = () => {
         onClose={() => setOpenCapitalModal(false)}
         portfolioName={portfolio.name}
         initialCapital={summary.initialCapital}
+        currentPortfolioValue={summary.currentPortfolioValue}
         availableCash={summary.availableCash}
         exchangeRate={exchangeRate}
         onDeposit={(amount, date, note) => {

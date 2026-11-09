@@ -13,6 +13,7 @@ export interface Portfolio {
   createdAt: string;
   firstTradeDate?: string;
   initialCapital?: number;
+  capitalOffset?: number;
   adjustments?: CapitalAdjustment[];
   growthPlan?: GrowthPlanConfig;
 }
